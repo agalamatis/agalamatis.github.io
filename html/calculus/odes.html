@@ -13,8 +13,45 @@
 
 <body>
     <h1>Ordinary Differential Equations</h1>
+    <!-- SM358: A.8.2 -->
+    <!-- SM358: A.8.2.1 -->
+    <!-- SM358: A.8.2.2 -->
 
+    <p>A <strong>differential equation</strong> is an equation that involves derivatives of an unknown function that we would like to find. For example, the aim of solving the differential equation \[ \frac{d}{dx}y(x) = x^2 y(x) \] is to find an expression for the dependent variable y in terms of the independent variable x.</p>
 
+    <p>If the equation involves functions of more than one variable and their partial derivatives, it is a <em>partial differential equation</em>. If it involves only ordinary derivatives with respect to a single independent variable, it is an <strong>ordinary differential equation</strong>. Ordinary differential equations are the subject of this section.</p>
+
+    <p>The <strong>order</strong> of a differential equation is the order of the highest derivative that appears in it. Assuming that \( a(x) \) is not identically equal to zero, the derivative of highest order in equation above is \( d^2y/dx^2 \), so this equation is of second order.</p>
+
+    <p>A <strong>linear</strong> differential equation is one that can be written in the form \[ \hat{L} y(x) = f(x), \] where \( \hat{L} \) is a <strong>linear differential operator</strong> — that is, one that can be expressed as \[ \hat{L} = \sum_{n=0}^N a_n(x) \frac{d^n}{dx^n}, \] where \( a_n(x) \) are functions of \( x \) and \( n \in \mathbb{Z} \). The crucial feature of a linear differential operator is that it gives \[ \hat{L}(\alpha y_1(x) + \beta y_2(x)) = \alpha \hat{L} y_1(x) + \beta \hat{L} y_2(x) \] for any smooth functions \( y_1(x) \) and \( y_2(x) \) and any constants \( \alpha \) and \( \beta \).</p>
+
+    <p>We are usually interested in the special case of second-order linear differential equation that arises when \( f(x)=0, \forall x \), called <strong>homogeneous</strong>. The distinguishing feature of a homogeneous equation is that each of its terms is proportional to \( y \) or one of its derivatives. The simplest case occurs when the coefficients, \( a \), \( b \) and \( c \) are constants. We then have a second-order linear homogeneous equation with <strong>constant coefficients</strong>.</p>
+
+    <p>In general it is found that a given differential equation is satisfied by a family of functions that can be described by a single comprehensive formula involving <strong>arbitrary constants</strong>. A solution to a differential equation of order \( n \) contains \( n \) arbitrary constants. The arbitrary constants do not appear in the differential equation itself but serve to distinguish one solution from another.</p>
+
+    <p>The solution that includes the arbitrary constants is called the <strong>general solution</strong> of the differential equation, while a solution that corresponds to a particular choice of arbitrary constants is called a <strong>particular solution</strong>. In a given physical situation, we may have enough additional information to determine the values of the arbitrary constants.</p>
+
+    <p>If \( y_1(x) \) and \( y_2(x) \) are two solutions of a linear homogeneous differential equation, we have \[ \hat{L} y_1(x) = 0 \text{ and } \hat{L} y_2(x) = 0, \] so it follows that \[ \hat{L}(\alpha y_1(x) + \beta y_2(x)) = \alpha \hat{L} y_1(x) + \beta \hat{L} y_2(x) = 0 \] for any constants \( \alpha \) and \( \beta \). Thus, any linear combination of solutions is also a solution of the differential equation. This fact is called the <strong>principle of superposition</strong>.</p>
+
+    <!-- TODO: first-order ODEs -->
+
+    <h2>Second-order linear differential equations</h2>
+    <!-- SM358: A.8.2.3 -->
+    <!-- SM358: A.8.2.4 -->
+
+    <p>In this section we will consider a general <em>second-order linear differential equation</em> taking the form \[ a(x) \frac{d^2}{dx^2} y(x) + b(x) \frac{d}{dx} y(x) + c(x) y(x) = f(x). \]</p>
+
+    <h2></h2>
+
+    <p></p>
+
+<!--
+
+-->
+
+    <h2></h2>
+
+    <p></p>
 
     <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
