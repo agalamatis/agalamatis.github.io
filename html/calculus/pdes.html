@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="agalamatis">
+    <meta name="description" content="Partial Differential Equations">
+
+    <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+    <title>Partial Differential Equations</title>
+</head>
+
+<body>
+    <h1>Partial Differential Equations</h1>
+    <!-- SM358: A.8.3.2 -->
+
+    <p>A <strong>partial differential equation</strong> is an equation that contains partial derivatives of an unknown function that we would like to find. For example, the equation \[ \frac{\partial^2}{\partial x^2} f(x,t) = \frac{1}{c^2} \frac{\partial^2}{\partial t^2} f(x,t) \] where \( c \) is a constant, is a partial differential equation for the function \( f(x,t) \). This equation governs the propagation of some one-dimensional waves</p>
+    
+    <p>A partial differential equations can be classified in much the same way as ordinary differential equations. For example, a second-order linear homogeneous partial differential equation. It can be expressed in the form \[ \hat{L} f(x,t) = 0, \text{ where } \hat{L} = \frac{\partial^2}{\partial x^2} - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \] is a linear (partial) differential operator.</p>
+
+    <p>Linear homogeneous partial differential equations satisfy the principle of superposition. So, if \( f_1(x,t) \) and \( f_2(x,t) \) are both solutions of a linear homogeneous partial differential equation, then so is the linear combination \( \alpha f_1(x,t) + \beta f_2(x,t) \), where \( \alpha \) and \( \beta \) are any constants.</p>
+
+    <p>The general solution of a partial differential equation can be very general indeed, encompassing wide classes of function that cannot be characterized by a few arbitrary constants. For example, one-dimensional wave equation is satisfied by any well-behaved function of the form \( f(x,t) = g(x \pm ct) \). The only restriction on the function \( g \) is that we should be able to differentiate it twice. Using the principle of superposition, we see that any function of the form \[ f(x,t) = \alpha g(x - ct) + \beta g(x + ct) \] where \( \alpha \) and \( \beta \) are constants, satisfies the equation (and is, in fact, the general solution of this partial differential equation).</p>
+
+    <p>The boundary conditions needed to specify a particular solution of a partial differential equation are much more extensive than those needed for an ordinary differential equation. In the case of one-dimensional wave equation, sufficient information would be provided by the initial \( (t = 0) \) values of the function \( f(x,t) \) and its partial derivative \( \partial f / \partial t \), but we would need to know these values for all \( x \).</p>
+
+    <h2>Separation of Variables</h2>
+    <!-- SM358: A.8.3.3 -->
+
+    <p>Finally, we shall describe a method that allows us to find some solutions of some partial differential equations (we can put it no more strongly than that). The method will be illustrated for one-dimensional wave equation. The basic idea is to look for solutions that are products of functions of a single variable. In the present case, we shall look for solutions of the form \[ f(x,t) = X(x) T(t), \] and then try to obtain and solve ordinary differential equations for the functions \( X(x) \) and \( T(t) \). This tactic is called the method of <strong>separation of variables</strong>.</p>
+
+    <p>Partially differentiating this <em>solution</em> twice with respect to \( x \) gives \( X''(x)T(t) \), where the primes denote differentiation of a function with respect to its argument. Similarly, partially differentiating twice with respect to \( t \) gives \( X(x)T''(t) \). When these results are substituted into the PDE, we obtain \[ X''(x)T(t) = \frac{1}{c^2} X(x)T''(t) \implies \frac{X''(x)}{X(x)} = \frac{1}{c^2} \frac{T''(t)}{T(t)}. \]</p>
+
+    <p>We notice that the left-hand side of this equation depends only on x, while the right-hand side depends only on t. This can only happen if both sides of the equation are equal to the <em>same</em> constant, \( \lambda \), say. We can therefore write \[ \frac{X''(x)}{X(x)} = \frac{1}{c^2} \frac{T''(t)}{T(t)} = \lambda, \] where the undetermined constant ∏ is called the <strong>separation constant</strong>. Our partial differential equation therefore splits into two ordinary differential equations: \[ \frac{d^2}{dx^2} X(x) = \lambda X(x) \text{ and } \frac{d^2}{dt^2} T(t) = \lambda T(t). \]</p>
+
+    <p>These are <em>eigenvalue equations</em> with allowed values of \( \lambda \) may be restricted by the boundary conditions. To take a definite case, let us suppose that \( \lambda \) is negative. Then we can write \( \lambda = -k^2 \) and express the solutions as \[ X(x) = Acos(kx) + Bsin(kx), \] \[ T(t) = Ccos(kct) + Dsin(kct). \] The PDE then has a solution of the form \[ f(x,t) = X(x) T(t) = (Acos(kx) + Bsin(kx)) (Ccos(kct) + Dsin(kct)) \] where \( A \), \( B \), \( C \) and \( D \) are arbitrary constants.</p>
+
+    <p>The method of separation of variables has two significant limitations. First, it cannot be used for all partial differential equations. If the equation involves a term such as \( e^{x^2 / c^2 t^2} \), for example, substitution of a product function \( X(x)T(t) \), followed by rearrangement, will never produce an equation  where the terms in \( x \) appear on one side of the equation, and the terms in \( t \) appear on the other side. Equations for which such a separation of variables can be achieved are called <strong>separable</strong>. The second limitation is that the method does not give the most general solution of the partial differential equation. It focuses attention on solutions of the form \( X(x)T(t) \), but it would be idle to suppose that <em>all</em> solutions have this form.</p>
+
+    <p>Nevertheless, the method of separation of variables is of major importance. One reason is that product solutions of the form \( X(x)T(t) \) are useful in many physical applications. In classical physics, they represent standing waves with fixed nodes; in quantum physics, they represent states of definite energy. Another reason is based on the principle of superposition. If the partial differential equation is linear and homogeneous, the principle of superposition allows us to use product solutions as building blocks from which more complicated solutions can be constructed. In many cases, the most general solution of a partial differential equation can be obtained by taking an arbitrary linear combination of the product solutions that emerge from the method of separation of variables.</p>
+
+<!--
+
+-->
+
+    <h2></h2>
+
+    <p></p>
+
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</body>
+</html>
