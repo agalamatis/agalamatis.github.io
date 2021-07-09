@@ -13,9 +13,55 @@
 
 <body>
     <h1>Introduction to Probability Theory</h1>
+
+    <h2>The concept of probability</h2>
     <!-- SM358: A.8.4.1 -->
 
-    <p></p>
+    <p>Many everyday experiments or trials have uncertain results or outcomes; the first aim of a theory of probability is to assign numerical probabilities to outcomes in a way that quantifies their likelihood. The scale of probability runs from zero (for outcomes that are impossible) to1(for outcomes that are certain). If the probability of an outcome is 0.5, it is as likely to happen as not. More generally, an outcome has a <strong>probability</strong> of \( p \) if it is expected to happen \( p \times 100% \) of the time.</p>
+
+    <p>A commonly-held (but erroneous) view is that a long run of tails will increase the chances of getting heads on the next coin toss, because (it is said) ‘the laws of chance tend to even things up’. This is not how blind chance works: the probability of tossing heads is 0.5 <em>irrespective</em> of the past history of coin tosses. It is reasonable to suppose that heads will occur roughly 50% of the time in the very long run, but this happens because any initial run of tails will be <em>diluted</em> and eventually swamped by a much longer run of roughly equal numbers of heads and tails that follows.</p>
+
+    <p>If a given outcome has a definite probability, and no further information is available to us about whether it will occur or not, the outcome is said to be <strong>random</strong>.</p>
+
+    <h2>Adding probabilities</h2>
+    <!-- SM358: A.8.4.2 -->
+
+    <p>We say that the outcomes of a trial are <strong>mutually exclusive</strong> if the occurrence of one of the outcomes automatically excludes the possibility of any of the other outcomes in the same trial. The <strong>addition rule for probability</strong> applies to such mutually exclusive outcomes:</p>
+
+    <p>If \( A_1, A_2, \dots , A_n \) are a set of mutually exclusive outcomes with probabilities \( p_1, p_2, \dots , p_n \) , then the probability \( P \) of obtaining either \( A_1 \) or \( A_2 \) or... \( A_n \) in a single trial is the sum of the individual probabilities: \[ P = p_1 + p_2 + \dots + p_n = \sum_{i=1}^n p_i. \]</p>
+
+    <p>A set of mutually exclusive outcomes is said to be <strong>complete</strong> if it covers every possible outcome of the experiment. In this case, we are certain to get one of these outcomes,  therefore have \[ P = \sum_{i=1}^n p_i = 1, \] where the sum is over all the mutually exclusive outcomes. This is called the <strong>normalization rule</strong> for probabilities. This condition requires us to sum over all the possible outcomes in a <em>mutually exclusive set</em>. Failing to sum over all the outcomes would give a probability less than 1, and if the outcomes were not mutually exclusive, there would be some double-counting.</p>
+
+    <h2>Average & expectation values</h2>
+    <!-- SM358: A.8.4.3 -->
+
+    <p>If a given quantity \( A \), with a discrete set of possible values, \( A_1, A_2, \dots , A_n \), is repeatedly measured in a given situation, we can record the number of times each value occurs. If the measurement of \( A \) is repeated \( N \) times, and the value \( A_i \) is obtained on \( N_i \) occasions, we define the <strong>average value</strong> or <strong>mean value</strong> of \( A \) to be \[ \bar{A} = \frac{N_1 A_1 + N_2 A_2 + \dots + N_n A_n}{N} = \frac{1}{N} \sum_{i=1}^n N_i A_i. \]</p>
+
+    <p>We can also define the <strong>relative frequency</strong> \( f_i \) of value \( A_i \) to be the fraction of times that this value occurs. We then have \[ f_i = \frac{N_i}{N}, \text{ where } \sum_{i=1}^n f_i = 1. \] In terms of the relative frequencies, the average value is given by \[ \bar{A} = f_1 A_1 + f_2 A_2 + \dots + f_n A_n = \sum_{i=1}^n f_i A_i. \] Average values provide a very convenient way of characterizing the results of repeated measurements.</p>
+
+    <p>When predicting the result of measuring of a quantity A, we may know that a number of different values, \( A_1, A_2, \dots , A_n \) are possible, with each value Ai being characterized by a probability pi. The complete set of probabilities is said to be a <strong>probability distribution</strong> for the measurement.</p>
+
+    <p>Sometimes, we do not need to know the full detail of a probability distribution; it is sufficient to characterize the distribution by a value that can be compared easily with the average value of a set of measurements. We therefore define the <strong>expectation value</strong> of a probability distribution to be \[ \langle A \rangle = p_1 A_1 + p_2 A_2 + \dots + p_n A_n = \sum_{i=1}^n p_i A_i, \] where the sum runs over all the possible values for \( A \).</p>
+
+    <p>The expectation value \( \langle A \rangle \) is a theoretical prediction for the average value \( \bar{A} \). You should not be too surprised if, over a finite sequence of measurements, the average value and the expectation value differ from one another slightly; random fluctuations are in the nature of chance. However, as the number of measurements increases, we expect the relative frequency \( f_i \) to approach the probability \( p_i \), so in the long run, the average value is expected to approach the expectation value.</p>
+
+    <h2>Standard deviation & uncertainty</h2>
+    <!-- SM358: A.8.4.4 -->
+
+    <p>It is often important to characterize the <em>spread</em> of values of a quantity around its average value. If the quantity \( A \) has a discrete set of possible values, \( A_i \), which occur with relative frequencies \( f_i \), we define the <strong>standard deviation</strong> of \( A \) to be \[ \sigma (A) = \sqrt{ \sum_{i=1}^n f_i (A_i - \bar{A})^2 } = \sqrt{ \overline{ (A - \bar{A})^2 } }. \]</p>
+
+    <p>The spread of a probability distribution around its expectation value is characterized by a quantity called the <em>uncertainty</em>. For a quantity \( A \), whose possible values \( A_i \) have probabilities \( p_i \), the <strong>uncertainty</strong> in \( A \) is defined by \[ \Delta A = \sqrt{ \sum_{i=1}^n p_i (A_i - \langle A \rangle) ^ 2 } = \sqrt{ \langle ( A - \langle A \rangle ) ^ 2 \rangle }. \] From this definition, it is clear that uncertainty is a theoretical prediction for the standard deviation. The standard deviation is expected to approach the uncertainty in the long run, as the number of measurements increases.</p>
+
+    <p>An alternative way of calculating uncertainties is often used. Squaring both sides of equation above and expanding out \( ( A - \langle A \rangle ) ^ 2 \), we see that \[ ( \Delta A ) ^ 2 = \langle A ^ 2 \rangle - \langle A \rangle ^ 2. \]</p>
+
+    <p>We stated earlier that the average value \( \bar{A} \) need not be <em>exactly</em> equal to the expectation value, \( \langle A \rangle \), but that the difference between these two quantities is expected to become very small when the number of measurements becomes very large. We can now quantify this statement. If \( N \) measurements are taken (with \( N \geq 25 \) ), it can be shown that the probability of finding an average value \( \bar{A} \) that deviates from the expectation value \( \langle A \rangle \) by more than a fraction \( f \) of the uncertainty \( \Delta A \) is <em>less than one in a million</em> if \( N > 25 / f^2 \). This result is a consequence of the <em>central limit theorem</em> in statistics and is true no matter what the shape of the probability distribution.</p>
+
+    <h2>Continuous probability distributions</h2>
+    <!-- SM358: A.8.4.5 -->
+
+    <p>So far, we have considered a discrete set of possible outcomes, which can be  labelled \( A_1, A_2, \dots \). However, we can also consider situations in which the set of possible outcomes forms a continuum. For simplicity, we shall consider the example of measuring the position \( x \) of a particle in one dimension, where \( x \) can take any value in a continuous range. In this case, it is appropriate to introduce a <strong>probability density function</strong> \( \rho(x) \), defined so that the probability of obtaining a value of \( x \) in a small range of width \( \delta x \), centred on \( x \), is \( \rho(x) \delta x \). The probability that \( x \) lies between \( a \) and \( b \) is given by the integral \[ P = \int_a^b \rho(x) dx. \] The area under the whole curve is then given by \[ \int_{-\infty}^{\infty} \rho(x) dx = 1. \] This is the normalization rule for a continuous set of outcomes.</p>
+
+    <p>In general, everything is similar to the discrete case, except that sums are replacedby integrals. For example, the expectation value of \( x \) is given by \[ \langle x \rangle = \int_{-\infty}^{\infty} \rho(x) x dx, \] and the uncertainty of x is given by \[ \Delta x = (\langle x ^ 2 \rangle - \langle x \rangle ^ 2)^{1/2}, \] where \[ \langle x ^ 2 \rangle = \int_{-\infty}^{\infty} \rho(x) x^2 dx. \] These results can easily be extended to three dimensions, using a probability density function that depends on three coordinates, \( x \), \( y \) and \( z \) and integrating over all of these coordinates.</p>
 
 <!--
 
