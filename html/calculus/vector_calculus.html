@@ -14,6 +14,104 @@
 <body>
     <h1>Vector Calculus</h1>
 
+    <h2>Scalar & vector fields</h2>
+    <!-- SMT359: B.8.3.1 -->
+
+    <p>A <strong>field</strong> is a physical quantity which, at a given instant, has definite values throughout a region of space. The region may be the whole of space or a continuous set of points within it. It should not be a discrete set of isolated points. Fields can be classified as being either scalar fields or vector fields. A <strong>scalar field</strong> is a field with scalar values throughout a region of space. Each point in the region has a particular scalar value of the field quantity. A <strong>vector field</strong> is a field with vector values throughout a region of space. Each point in the region has a particular magnitude and a direction of the field quantity.</p>
+
+    <p>For vector fields, we can use arrow maps or field line patterns. An <strong>arrow map</strong> (see the figure below on the left) displays arrows at a selection of points, with the length and direction of the arrow at a given point indicating the magnitude and direction of the vector field at the point. Alternatively, we can show a set of field lines (see the figure below on the middle). A <strong>field line</strong> is a continuous line that points in the direction of the field at each point along its path. A field line pattern tells us about the direction of the vector field, but does not automatically give quantitative information about the magnitude of the field. For scalar fields, we simply draw lines (in two dimensions) or surfaces (in three dimensions) on which the field has a constant value (see the figure below on the right). These are called <strong>contour lines</strong> (in 2D) or <strong>surfaces</strong> (in 3D), but more specific names are given in different circumstances (e.g. isobars for pressure, isotherms for temperature and equipotentials for electrostatic fields).</p>
+
+    <img src="../../images/visualising_fields.png">
+
+    <h2>Non-cartesian coordinates</h2>
+    <!-- SMT359: B.8.3.2 -->
+
+    <p>So far, we have concentrated on Cartesian coordinates, \( x \), \( y \) and \( z \). However, fields are often described in other coordinate systems. If a field has spherical symmetry about a given point, it is sensible to use spherical coordinates centred on that point. If a system has cylindrical symmetry about a given axis, it is sensible to use cylindrical coordinates centred on the axis.</p>
+
+    <h3>Spherical coordinates</h3>
+
+    <p>The figure below shows how the <strong>spherical coordinates</strong> (\( r \), \( \theta \), \( \phi \)) of a point \( P \) are defined:</p>
+
+    <ul>
+        <li>The <strong>radial coordinate</strong> \( r \) is the distance from the origin \( O \) to the point.</li>
+        <li>The <strong>polar coordinate</strong> \( \theta \) is the smaller of the angles between the positive \( z \)-axis and the line \( OP \). \( \theta = 0 \) when P lies on the positive \( z \)-axis.</li>
+        <li>The <strong>azimuthal coordinate</strong> \( \phi \) is the angle between the positive \( x \)-axis and the projection of \( OP \) in the \( xy \)-plane. The sense of increasing \( \phi \) is determined by a right-hand grip rule. With the thumb of the right hand pointing along the positive \( z \)-axis, the curled fingers of the right hand indicate the direction in which \( \phi \) increases. \( \phi = 0 \) when the projection of \( P \) in the \( xy \)-plane coincides with the positive \( x \)-axis.</li>
+    </ul>
+
+    <img src="../../images/spherical_coordinates.png">
+
+    <p>Using trigonometry in figure above, we see that a point \( P \) with spherical coordinates (\( r \), \( \theta \), \( \phi \)) has Cartesian coordinates \[ \begin{aligned} x &= r sin(\theta) cos(\phi), \\ y &= r sin(\theta) sin(\phi), \\ z &= r cos(\theta). \end{aligned} \]</p>
+
+    <p>The inverse transformations are \[ \begin{aligned} r &= \sqrt{x^2 + y^2 + z^2}, \\ \theta &= cos^{-1} \left( \frac{z}{\sqrt{x^2 + y^2 + z^2}} \right), \\ \phi &= tan^{-1} \left( \frac{y}{x} \right). \end{aligned} \]</p>
+
+    <p>We must restrict spherical coordinates to lie in the ranges: \[ 0 \leq r < \infty \text{, } 0 \leq \theta \leq \pi \text{ and } 0 \leq \phi < 2\pi, \] where we follow the usual convention of measuring angles in radians. These ranges allow spherical coordinates to cover the whole of space. Every point can be represented by a set of spherical coordinates. The given ranges also ensure that most points have only one set of spherical coordinates. The exceptions are points on the \( z \)-axis of the figure above. Any value of \( \phi \) can be chosen at these points and any values of \( \theta \) and \( \phi \) can be chosen at the origin.</p>
+
+    <p>To describe a scalar field \( f \) in spherical coordinates we express it as a function of \( r \), \( \theta \) and \( \phi \): \[ f = f(r, \theta, \phi). \]</p>
+
+    <p>To describe a vector field \( \boldsymbol{F} \) in spherical coordinates we need suitable unit vectors. At any given point, we introduce the <strong>spherical unit vectors</strong> shown in figure below. Each unit vector points in a direction where one spherical coordinate changes and the other two remain fixed:</p>
+
+    <ul>
+        <li>\( \boldsymbol{e_r}  \)is in the direction of increasing \( r \) and constant \( \theta \) and \( \phi \). This is the outward radial direction, pointing directly away from the origin.</li>
+        <li>\( \boldsymbol{e_\theta} \) is in the direction of increasing \( \theta \) and constant \( r \) and \( \phi \).</li>
+        <li>\( \boldsymbol{e_\phi} \) is in the direction of increasing \( \phi \) and constant \( r \) and \( \theta \).</li>
+    </ul>
+
+    <img src="../../images/spherical_unit_vectors.png">
+
+    <p>It is essential to realize that the directions of the spherical unit vectors vary from point to point. The notion of pointing radially outwards, for example, depends on where we are. Every point \( \boldsymbol{r} \) has its own set of unit vectors, \( \boldsymbol{e_r(r)} \), \( \boldsymbol{e_\theta(r)} \) and \( \boldsymbol{e_\phi(r)} \). In this respect spherical unit vectors are unlike Cartesian unit vectors, which remain the same everywhere once we have chosen our axes.</p>
+
+    <p>At any given point \( \boldsymbol{r} \), the triplet of vectors (\( \boldsymbol{e_r(r)} \), \( \boldsymbol{e_\theta(r)} \), \( \boldsymbol{e_\phi(r)} \)) forms an orthogonal right-handed system. For example, \[ \boldsymbol{e_r(r)} \cdot \boldsymbol{e_\theta(r)} = 0 \text{ and } \boldsymbol{e_r(r)} \times \boldsymbol{e_\theta(r)} = \boldsymbol{e_\phi(r)}. \]</p>
+
+    <p>The value of a vector field at \( \boldsymbol{r} \) can therefore can be expanded in terms of these unit vectors: \[ \boldsymbol{F(r)} = F_r(\boldsymbol{r}) \boldsymbol{e_r(r)} + F_\theta(\boldsymbol{r}) \boldsymbol{e_\theta(r)} + F_\phi(\boldsymbol{r}) \boldsymbol{e_\phi(r)}. \]</p>
+
+    <p>Spherical coordinates can also be used to describe small displacements and small volume elements. Consider a small displacement \( \delta l \) from a point \( P \) with spherical coordinates (\( r \), \( \theta \), \( \phi \)) to a neighbouring point with coordinates (\( r + \delta r \), \( \theta + \delta \theta \), \( \phi + \delta \phi \)). This displacement is assumed to be so small that we can neglect any change in direction of the spherical unit vectors between the start-point and end-point and neglect terms that are second-order (or higher, like \( (\delta r)^2 \), \( (\delta \theta)^2 \), etc.) in \( \delta r \), \( \delta \theta \) and \( \delta \phi \). As shown in figure below, the displacement can be split into separate displacements in the directions of \( \boldsymbol{e_r} \), \( \boldsymbol{e_\theta} \) and \( \boldsymbol{e_\phi} \).</p>
+
+    <img src="../../images/spherical_displacement.png">
+
+    <p>The radial displacement is simply \( \delta r \boldsymbol{e_r} \). The displacement in the direction of \( \boldsymbol{e_\theta} \) is along an arc of the blue circle in the figure above. This circle has radius \( r \) and angular coordinate \( \theta \), so the displacement is \( r \delta \theta \boldsymbol{e_\theta} \). The displacement in the direction of \( \boldsymbol{e_\phi} \) is along an arc of the red circle in the figure above. This circle has radius \( r sin(\theta) \) and angular coordinate \( \phi \), so the displacement is \( r sin(\theta) \delta \phi \boldsymbol{e_\phi} \). Adding these three displacements together gives the displacement vector \( \delta \boldsymbol{l} \) between the two neighbouring points (\( r \), \( \theta \), \( \phi \)) and (\( r + \delta r \), \( \theta + \delta \theta \), \( \phi + \delta \phi \)): \[ \delta \boldsymbol{l} = \delta r \boldsymbol{e_r} + r \delta \theta \boldsymbol{e_\theta} + r sin(\theta) \delta \phi \boldsymbol{e_\phi}. \] Note that the displacement \( \delta \boldsymbol{l} \) does not just depend on the changes in coordinates, \( \delta r \), \( \delta \theta \) and \( \delta \phi \) — it also depends on the coordinates \( r \) and \( \theta \) themselves.</p>
+
+    <p>It is useful to introduce the notation of <strong>scale factors</strong>. For any coordinate \( q \) and its associated unit vector \( \boldsymbol{e_q} \), we consider a small change \( \delta q \), while keeping the other coordinates fixed. Then the scale factor \( h_q \) is defined as the factor by which \( \delta q \boldsymbol{e_q} \) must be multiplied to give the resulting displacement.</p>
+
+    <p>Comparing with the equation for \( \delta \boldsymbol{l} \), we see that the scale factors for spherical coordinates are \[ h_r = 1 \text{, } h_{\theta} = r \text{ and } h_{\phi} = r sin(\theta), \] in terms of which the displacement takes the symmetrical form \[ \delta \boldsymbol{l} = h_r \delta r \boldsymbol{e_r} + h_{\theta} \delta \theta \boldsymbol{e_{\theta}} + h_{\phi} \delta \phi \boldsymbol{e_{\phi}}. \]</p>
+
+    <img src="../../images/small_volume_element_in_spherical_coordinates.png">
+
+    <p>Finally, because the spherical unit vectors are orthogonal, the small volume element shown in the figure above is very nearly a cube and so has volume \[ \delta V = (h_r \delta r) (h_{\theta} \delta \theta) (h_{\phi} \delta \phi). \] Therefore the volume element in spherical coordinates is \[ \delta V = (\delta r) (r \delta \theta) (r sin(\theta) \delta \phi) = r^2 sin(\theta) \delta r \delta \theta \delta \phi. \]</p>
+
+    <h3>Cylindrical coordinates</h3>
+
+    <p>The figure below shows how the <strong>cylindrical coordinates</strong> (\( r \), \( \phi \), \( z \)) of a point \( P \) are defined:</p>
+
+    <ul>
+        <li>The <strong>radial coordinate</strong> \( r \) is the perpendicular distance from the \( z \)-axis to the point.</li>
+        <li>The <strong>azimuthal coordinate</strong> \( \phi \) is the azimuthal angle, that is, the angle between the positive \( x \)-axis and the projection of OP in the \( xy \)-plane. The sense of increasing \( \phi \) is determined by a right-hand grip rule. With the thumb of the right hand pointing along the positive \( z \)-axis, the curled fingers of the right hand indicate the direction in which \( \phi \) increases. \( \phi \) = 0 when the projection of \( P \) in the \( xy \)-plane coincides with the positive \( x \)-axis.</li>
+        <li>The <strong>axial coordinate</strong> \( z \) is identical to the Cartesian \( z \)-coordinate.</li>
+    </ul>
+
+    <img src="../../images/cylindrical_coordinates.png">
+
+    <p>Note that \( r \) in cylindrical coordinates is <em>not</em> the same as \( r \) in spherical coordinates. It is therefore important always to say which coordinate system is being used in a given situation.</p>
+
+    <p>Using trigonometry in the figure above, we see that the cylindrical coordinates (\( r \), \( \phi \), \( z \)) of a point \( P \) are related to the Cartesian coordinates (\( x \), \( y \), \( z \)) of the same point by \[ \begin{aligned} x &= r cos(\phi) \\ y &= r sin(\phi) \\ z &= z. \end{aligned} \] The inverse transformations are: \[ \begin{aligned} r &= \sqrt{x^2 + y^2} \\ \phi &= tan^{-1}(y / x) \\ z &= z. \end{aligned} \] The angle \phi is measured in radians and the three coordinates are restricted to lie in the ranges: \[ 0 \leq r < \infty \text{, } 0 \leq \phi < 2 \pi \text{ and } - \infty < z < \infty. \]</p>
+
+    <p>To describe a scalar field \( f \) in cylindrical coordinates we express it as a function of \( r \), \( \phi \) and \( z \): \[ f = f(r, \phi, z). \]</p>
+
+    <p>To describe a vector field \( \boldsymbol{F} \) in cylindrical coordinates we use the <strong>cylindrical unit vectors</strong> shown in the figure below. Each unit vector points in a direction in which one cylindrical coordinate changes while the other two remain fixed.</p>
+
+    <ul>
+        <li>\( \boldsymbol{e_r} \) is in the direction of increasing \( r \) and constant \( \phi \) and \( z \). This is in the outward radial direction, perpendicular to the \( z \)-axis.</li>
+        <li>\( \boldsymbol{e_{\phi}} \) is in the direction of increasing \( \phi \) and constant \( r \) and \( z \).</li>
+        <li>\( \boldsymbol{e_z} \) is in the direction of increasing \( z \) and constant \( r \) and \( \phi \).</li>
+    </ul>
+
+    <img src="../../images/cylindrical_unit_vectors.png">
+
+    <p>Although \( \boldsymbol{e_z} \) maintains a constant direction, the other two unit vectors are functions of position. At any given point \( r \), the triplet of vectors \( (\boldsymbol{e_r(r)}, \boldsymbol{e_{\phi}(r)}, \boldsymbol{e_z}) \) forms an orthogonal right-handed system with, for example, \[ \boldsymbol{e_r(r)} \cdot \boldsymbol{e_{\phi}(r)} = 0 \text{ and } \boldsymbol{e_r(r)} \times \boldsymbol{e_{\phi}(r)} = \boldsymbol{e_z}. \]</p>
+
+    <p>The value of a vector field at \( r \) can therefore be expanded in terms of these unit vectors: \[ \boldsymbol{F(r)} = F_r(\boldsymbol{r}) \boldsymbol{e_r(r)} + F_{\phi}(\boldsymbol{r}) \boldsymbol{e_{\phi}(r)} + F_z(\boldsymbol{r}) \boldsymbol{e_z}. \]</p>
+
+    <p>In cylindrical coordinates, a small displacement is given by \[ \delta \boldsymbol{l} = \delta r \boldsymbol{e_r} + r \delta \phi \boldsymbol{e_{\phi}} + \delta z \boldsymbol{e_z}. \] The scale factors are therefore \[ h_r = 1 \text{, } h_{\phi} = r \text{ and } h_z = 1, \] and a small volume element about the point (\( r \), \( \phi \), \( z \)) is \[ \delta V = h_r h_{\phi} h_z \delta r \delta \phi \delta z = r \delta r \delta φ \delta z. \]</p>
+
     <h2>Partial Differentiation</h2>
     <!-- SM358: A.8.3.1 -->
 
@@ -26,6 +124,7 @@
 -->
 
     <h2></h2>
+    <!-- SMT359: B.8.3. -->
 
     <p></p>
 
