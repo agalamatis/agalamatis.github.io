@@ -114,17 +114,57 @@
 
     <h2>Partial Differentiation</h2>
     <!-- SM358: A.8.3.1 -->
+    <!-- SMT359: B.8.4.* -->
 
     <p>If \( f(x,t) \) is a function of the two independent variables \( x \) and \( t \), we can differentiate \( f(x,t) \) with respect to \( x \) while treating \( t \) as a constant. The result of this differentiation is called the <strong>partial derivative</strong> of \( f \) with respect to \( x \), and is written as \( \partial f / \partial x \). Similarly, we can differentiate \( f(x,t) \) with respect to \( t \) while treating \( x \)  as a constant; this gives the partial derivative of \( f \) with respect to \( t \), written as \( \partial f / \partial t \). Partial derivatives can be evaluated for functions of any number of variables (not just two); each partial derivative is obtained by differentiating the function with respect to one of its variables while keeping <em>all</em> the other variables constant.</p>
 
-    <p>The partial derivatives \( \partial f / \partial x \) and \( \partial f / \partial t \) are called <strong>first-order partial derivatives</strong> because they involve a single partial differentiation. These partial derivatives are themselves functions of \( x \) and \( t \), so they can be partially differentiated again. For a function of two independent variables, \( f(x,t) \), there are four <strong>second-order partial derivatives</strong>: \[ \frac{\partial^2 f}{\partial x^2} = \frac{\partial}{\partial x} \left( \frac{\partial f}{\partial x} \right), \frac{\partial^2 f}{\partial t^2} = \frac{\partial}{\partial t} \left( \frac{\partial f}{\partial t} \right), \frac{\partial^2 f}{\partial x \partial t} = \frac{\partial}{\partial x} \left( \frac{\partial f}{\partial t} \right), \frac{\partial^2 f}{\partial t \partial x} = \frac{\partial}{\partial t} \left( \frac{\partial f}{\partial x} \right). \] However, for well-behaved functions it turns out that the sequence of partial differentiation is irrelevant: \[ \frac{\partial^2 f}{\partial x \partial t} = \frac{\partial^2 f}{\partial t \partial x}, \] so, in practice, only three of the second-order partial derivatives are independent.</p>
+    <p>The partial derivatives \( \partial f / \partial x \) and \( \partial f / \partial t \) are called <strong>first-order partial derivatives</strong> because they involve a single partial differentiation. These partial derivatives are themselves functions of \( x \) and \( t \), so they can be partially differentiated again. For a function of two independent variables, \( f(x,t) \), there are four <strong>second-order partial derivatives</strong>: \[ \frac{\partial^2 f}{\partial x^2} = \frac{\partial}{\partial x} \left( \frac{\partial f}{\partial x} \right), \frac{\partial^2 f}{\partial t^2} = \frac{\partial}{\partial t} \left( \frac{\partial f}{\partial t} \right), \frac{\partial^2 f}{\partial x \partial t} = \frac{\partial}{\partial x} \left( \frac{\partial f}{\partial t} \right), \frac{\partial^2 f}{\partial t \partial x} = \frac{\partial}{\partial t} \left( \frac{\partial f}{\partial x} \right). \] However, for well-behaved functions, the last two partial derivatives, called <strong>mixed partial derivatives</strong>, turns out that the sequence of partial differentiation is irrelevant: \[ \frac{\partial^2 f}{\partial x \partial t} = \frac{\partial^2 f}{\partial t \partial x}, \] so, in practice, only three of the second-order partial derivatives are independent.</p>
+
+    <h2>Volume integrals</h2>
+    <!-- SMT359: B.8.5.1 -->
+
+    <p>A <strong>volume integral</strong> generalizes this idea of integration to three dimensions and the integration is performed over a definite region of three-dimensional space, such as a cube or a sphere. Nevertheless, the basic idea of integration remains the same. Suppose we have a function \( f(\boldsymbol{r}) \) which varies with position \( \boldsymbol{r} \) in threedimensional space. We want to integrate this function over a three-dimensional volume, \( V \) . This is achieved by dividing \( V \) into many small volume elements. Suppose that the volume element containing the point \( \boldsymbol{r_i} \) has volume \( \Delta V_i \). Then we can form the sum \[ \sum_{i} f(\boldsymbol{r_i}) \Delta V_i,  \] where the label \( i \) runs over all the volume elements \( \Delta V_i \) in the volume \( V \). Taking the limit of an infinite number of infinitesimal volume elements gives the required volume integral, which we write as \[ I = \int_{V} f(\boldsymbol{r}) dV. \] The subscript \( V \) on the integral sign indicates that the integral is taken over the volume \( V \). This notation is less explicit than the use of limits one dimentional integrals but it does serve to remind us that, when the equation is approximated by a sum, all the volume elements must belong to \( V \).</p>
+
+    <!-- TODO: spherical and cylindrical coordinates -->
+
+    <h2>Surface integrals and flux</h2>
+    <!-- SMT359: B.8.5.2 -->
+
+    <p>We need to consider planes that are oriented in three-dimensional space. The simplest way to describe the orientation of a plane is to specify a unit vector \( \boldsymbol{\hat{n}} \) that is perpendicular to the plane (see the figure below). There are actually two such vectors, pointing in opposite directions, but this is not a problem — we just pick one of them and specify our selection clearly. The chosen unit vector is then called the <strong>unit normal</strong> of the plane. For any given plane element, we can multiply the area \( Delta S \) of the element by its unit normal \( \boldsymbol{\hat{n}} \) to obtain the vector \[ \Delta \boldsymbol{S} = \Delta S \boldsymbol{\hat{n}}. \] This vector is called the <strong>oriented area</strong> of the plane element. It is perpendicular to the plane element and its magnitude is the area of the plane element.</p>
+
+    <img src="../../images/flux_over_element.png">
+
+    <p>Flux is a property of a vector field. Suppose a vector field \( \boldsymbol{F} \) is defined throughout a region of space. We place a small plane element somewhere in this region (see the figure above). The plane element is small enough for the field to be taken as constant all over its surface. Then the <strong>flux</strong> of the vector field over the element is defined to be the normal component of the field (the component in the direction of the unit normal \( \boldsymbol{\hat{n}} \)) times the area of the plane element: \( F_n = \Delta S. \)</p>
+
+    <p>However, the normal component of the field is given by the scalar product \( F_n = \boldsymbol{F} \cdot \boldsymbol{\hat{n}} = F \cos(\theta) \), where \( F \) is the magnitude of the vector field and \( \theta \) is the angle between \( \boldsymbol{F} \) and \( \boldsymbol{\hat{n}} \). So the flux over element is \( (\boldsymbol{F} \cdot \boldsymbol{\hat{n}}) \Delta S = \boldsymbol{F} \cdot (\boldsymbol{\hat{n}} \Delta S) = \boldsymbol{F} \cdot \Delta \boldsymbol{S} \). Hence, an alternative way of defining the flux is to say that it is the scalar product of the vector field (at the position of the element) and the oriented area of the element.</p>
+
+    <p>The name flux comes from the Latin for flow. This is not accidental because the flow of water provides useful insights into the meaning of flux. The velocity of water throughout a region of space can be described by a velocity vector field \( \boldsymbol{v}(\boldsymbol{r}) \). The flux of this vector field over a small plane element, \( \Delta \boldsymbol{S} \), is \( \boldsymbol{v} \cdot \Delta \boldsymbol{S} \). This quantity has a simple interpretation. It is the rate of flow of water through the plane surface, measured in terms of volume per unit time. To see why, note from the fiigure below that the water that passes through the brown plane element \( \Delta S \) in time \( \Delta t \) is contained in the oblique parallelepiped.</p>
+
+    <img src="../../images/oblique_parallelepiped.png">
+
+    <p>This oblique parallelepiped has the same volume as the oblong brick, namely \( \Delta V = \text{area of base} \times \text{height} = \Delta S (v \Delta t \cos(\theta)) \), where \( \theta \) is the angle between the direction of flow of the water and the unit normal \( \boldsymbol{\hat{n}} \)) to the plane element of area \( \Delta S \). So \( \Delta V = (v \Delta S \cos(\theta)) \Delta t = (\boldsymbol{v} \cdot \Delta \boldsymbol{S}) ∆t \), and the velocity flux becomes  \[ \frac{dV}{dt} = \boldsymbol{v} \cdot \Delta \boldsymbol{S}. \] This flux is positive if the direction of flow makes an acute angle with the unit normal, and is negative if the flow is in the opposite sense. For a given flow of water, the flux is greatest when the plane element is normal to the flow \( \boldsymbol{\hat{n}} \) parallel to \( \boldsymbol{v} \) and \( \theta = 0 ^{\circ} \)). The flux is zero when the plane element is parallel to the flow (\( \boldsymbol{\hat{n}} \) perpendicular to \( \boldsymbol{v} \) and \( \theta = 90 ^{\circ} \)). Our general definition of flux is a mathematical abstraction of this concept which can be used for electric and magnetic fields, where nothing actually flows.</p>
+
+    <p>The definition of flux can be extended to larger surfaces, even if they are curved. To achieve this, we imagine covering the surface with many small patches (as in the figure below). The patches are small enough for each to be treated as a plane element, and they are oriented consistently so that the unit normals of neighbouring patches are almost parallel, rather than almost antiparallel.</p>
+
+    <img src="../../images/open_surface.png">
+
+    <p>The flux over each patch can be found from the equation over an element (\( \boldsymbol{F} \cdot \Delta \boldsymbol{S} \)). To find the total flux over the whole surface we just add up the contributions of all the patches. We can avoid any inaccuracies by taking the limit of an infinite number of infinitesimal patches, so that the surface is fitted exactly. The resulting quantity is called the <strong>surface integral</strong> of the vector field over the surface, equal to \[ \int_{S} \boldsymbol{F} \cdot \Delta \boldsymbol{S}, \] where the surface integral and the subscript S on the integral sign shows that the integral is taken over a given surface \( S \).</p>
+
+    <img src="../../images/closed_surface.png">
+
+    <p>Many of the surface integrals you will be over closed surfaces. A <strong>closed surface</strong> is one that separates space into two disconnected regions, one inside the surface and one outside. It is impossible to travel between these regions without crossing the surface. An <strong>open surface</strong> is one that fails to achieve this separation. For any closed surface it is conventional to choose the unit normals to point outwards (as seen in the figure above). The flux of a vector field over a closed surface is therefore the flux outwards into the exterior space.</p>
+
+    <h2>Divergence</h2>
+    <!-- SMT359: B.8.6.* -->
+
+    <p></p>
 
 <!--
 
 -->
 
     <h2></h2>
-    <!-- SMT359: B.8.3. -->
+    <!-- SMT359: B.8.5. -->
 
     <p></p>
 
