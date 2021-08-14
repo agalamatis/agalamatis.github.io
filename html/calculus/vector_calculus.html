@@ -92,7 +92,7 @@
 
     <p>Note that \( r \) in cylindrical coordinates is <em>not</em> the same as \( r \) in spherical coordinates. It is therefore important always to say which coordinate system is being used in a given situation.</p>
 
-    <p>Using trigonometry in the figure above, we see that the cylindrical coordinates (\( r \), \( \phi \), \( z \)) of a point \( P \) are related to the Cartesian coordinates (\( x \), \( y \), \( z \)) of the same point by \[ \begin{aligned} x &= r cos(\phi) \\ y &= r sin(\phi) \\ z &= z. \end{aligned} \] The inverse transformations are: \[ \begin{aligned} r &= \sqrt{x^2 + y^2} \\ \phi &= tan^{-1}(y / x) \\ z &= z. \end{aligned} \] The angle \phi is measured in radians and the three coordinates are restricted to lie in the ranges: \[ 0 \leq r < \infty \text{, } 0 \leq \phi < 2 \pi \text{ and } - \infty < z < \infty. \]</p>
+    <p>Using trigonometry in the figure above, we see that the cylindrical coordinates (\( r \), \( \phi \), \( z \)) of a point \( P \) are related to the Cartesian coordinates (\( x \), \( y \), \( z \)) of the same point by \[ \begin{aligned} x &= r cos(\phi) \\ y &= r sin(\phi) \\ z &= z. \end{aligned} \] The inverse transformations are: \[ \begin{aligned} r &= \sqrt{x^2 + y^2} \\ \phi &= tan^{-1}(y / x) \\ z &= z. \end{aligned} \] The angle \( \phi \) is measured in radians and the three coordinates are restricted to lie in the ranges: \[ 0 \leq r < \infty \text{, } 0 \leq \phi < 2 \pi \text{ and } - \infty < z < \infty. \]</p>
 
     <p>To describe a scalar field \( f \) in cylindrical coordinates we express it as a function of \( r \), \( \phi \) and \( z \): \[ f = f(r, \phi, z). \]</p>
 
@@ -148,14 +148,57 @@
 
     <img src="../../images/open_surface.png">
 
-    <p>The flux over each patch can be found from the equation over an element (\( \boldsymbol{F} \cdot \Delta \boldsymbol{S} \)). To find the total flux over the whole surface we just add up the contributions of all the patches. We can avoid any inaccuracies by taking the limit of an infinite number of infinitesimal patches, so that the surface is fitted exactly. The resulting quantity is called the <strong>surface integral</strong> of the vector field over the surface, equal to \[ \int_{S} \boldsymbol{F} \cdot \Delta \boldsymbol{S}, \] where the surface integral and the subscript S on the integral sign shows that the integral is taken over a given surface \( S \).</p>
+    <p>The flux over each patch can be found from the equation over an element (\( \boldsymbol{F} \cdot \Delta \boldsymbol{S} \)). To find the total flux over the whole surface we just add up the contributions of all the patches. We can avoid any inaccuracies by taking the limit of an infinite number of infinitesimal patches, so that the surface is fitted exactly. The resulting quantity is called the <strong>surface integral</strong> of the vector field over the surface, equal to \[ \int_{S} \boldsymbol{F} \cdot d \boldsymbol{S}, \] where the surface integral and the subscript S on the integral sign shows that the integral is taken over a given surface \( S \).</p>
 
     <img src="../../images/closed_surface.png">
 
     <p>Many of the surface integrals you will be over closed surfaces. A <strong>closed surface</strong> is one that separates space into two disconnected regions, one inside the surface and one outside. It is impossible to travel between these regions without crossing the surface. An <strong>open surface</strong> is one that fails to achieve this separation. For any closed surface it is conventional to choose the unit normals to point outwards (as seen in the figure above). The flux of a vector field over a closed surface is therefore the flux outwards into the exterior space.</p>
 
     <h2>Divergence</h2>
-    <!-- SMT359: B.8.6.* -->
+    <!-- SMT359: B.8.6 -->
+
+    <p>Given any vector field \( \boldsymbol{F} \), we can define a scalar field called the divergence of \( \boldsymbol{F} \) and show that a surface integral of \( \boldsymbol{F} \) is related to a volume integral of the divergence of \( \boldsymbol{F} \). The development hinges on a special property of flux, its additivity.</p>
+
+    <h3>The additivity of flux</h3>
+    <!-- SMT359: B.8.6.1 -->
+
+    <p>Suppose that a volume \( V \) is split into many small volume elements. The principle of <strong>additivity of flux</strong> states that the flux of a vector field over the surface of the whole volume is the sum of the fluxes over the surfaces of all the volume elements. That is, \[ \int_{S} \boldsymbol{F} \cdot d \boldsymbol{S} = \sum_{i} \int_{S_i} \boldsymbol{F} \cdot d \boldsymbol{S} \] where \( \boldsymbol{F} \) is the vector field, \( S \) is the surface of the volume \( V \) and \( S_i \) is the surface of the \( i^{th} \) volume element in \( V \).</p>
+
+    <img src="../../images/flux_additivity.png">
+
+    <p>To establish this fact, consider two neighbouring volume elements \( \Delta V_1 \) and \( \Delta V_2 \) with surfaces \( S_1 \) and \( S_1 \) as in the figure above. The surfaces \( S_1 \) and \( S_1 \) contain a common boundary wall separating the two volume elements. At any point on this boundary wall, the unit normal \( \boldsymbol{\hat{n}_1} \) of \( S_1 \) points in the opposite direction to the unit normal \( \boldsymbol{\hat{n}_2} \) of \( S_2 \). This is because the unit normals of a closed surface point outwards. It follows that the flux contributed by the boundary wall section of \( S_1 \) is equal in magnitude and opposite in direction to the flux contributed by the boundary wall section of \( S_2 \). When we add up the fluxes over the surfaces of all the volume elements, the contributions from shared boundary walls all cancel out. The only surviving contributions come from the external surfaces, which together form the surface of the whole volume.</p>
+
+    <h3>The divergence theorem</h3>
+    <!-- SMT359: B.8.6.2 -->
+
+    <p>The divergence of a vector field \( \boldsymbol{F} \) at a given point \( \boldsymbol{r_i} \) is defined by surrounding the point by a tiny volume element \( \Delta V_i \), finding the flux of \( \boldsymbol{F} \) over the surface of this volume element, and dividing by the volume \( \Delta V_i \) of the element. It is denoted by \( \boldsymbol{\nabla} \cdot \boldsymbol{F} \) or if we wish to indicate the point of interest, by div \( \boldsymbol{\nabla} \cdot \boldsymbol{F} (\boldsymbol{r_i}) \). So \[ \boldsymbol{\nabla} \cdot \boldsymbol{F} (\boldsymbol{r_i}) = \frac{1}{\Delta V_i} \int_{S_i} \boldsymbol{F} \cdot d \boldsymbol{S}, \] where \( S_i \) is the surface enclosing the tiny volume element \( \Delta V_i \) at \( \boldsymbol{r_i} \).</p>
+
+    <p>Strictly speaking, divergence is defined in the limit where the volume element surrounding the point has become infinitesimally small. In this limit, the flux is exactly proportional to the volume of the element, and the flux-to-volume ratio tends to a definite value. The divergence of a vector field is the flux of the field <em>per unit volume</em>. Flux is a scalar quantity, so divergence is a scalar field. Intuitively, divergence is a measure of the amount by which the field spreads outwards <em>per unit volume</em>.</p>
+
+    <p>The additivity of flux equation expresses the flux over a closed surface \( S \) as a sum of terms. Each term in the sum is the flux over the surface \( S_i \) of a volume element within the surface. Our aim is to replace this sum by a volume integral. This is achieved by using the equation of the divergence earlier to obtain \[ \int_{S} \boldsymbol{F} \cdot d \boldsymbol{S} = \sum_{i} \boldsymbol{\nabla} \cdot \boldsymbol{F} (\boldsymbol{r_i}) \Delta V_i. \] Taking the limit of an infinite number of infinitesimal volume elements, \[ \int_{S} \boldsymbol{F} \cdot d \boldsymbol{S} = \int_{V} \boldsymbol{\nabla} \cdot \boldsymbol{F} dV, \] where \( \boldsymbol{F} \) is a vector field and \( \boldsymbol{\nabla} \cdot \boldsymbol{F} \) is its divergence, \( S \) is a closed surface and \( V \) is the volume inside this surface. This result is called the <strong>divergence theorem</strong>. It tells us that the surface integral of a vector field over a closed surface is equal to the volume integral of the divergence of the field over the interior of the surface.</p>
+
+    <h3>Divergence as a derivative</h3>
+    <!-- SMT359: B.8.6.3 -->
+
+    <p>Divergence involves surface integration over an <em>infinitesimal element</em>, and this leads to considerable simplification. In order to exploit this, we will take our volume element to be a cube aligned with the \( x \)-, \( y \)- and \( z \)-axes, with sides of length \( \Delta L \) , as shown in the figure below. We are interested in the flux of a vector field F over the surface of this cube.</p>
+
+    <img src="../../images/cubic_volume_vector_field.png">
+
+    <p>The cube has six faces, and we must calculate the outward flux over each face, and then add them together. We start by considering the two faces, which are perpendicular to the \( x \)-axis, shaded in the figure above. The field on the left-hand face is \( \boldsymbol{F}(x, y, z) \) and that on the right-hand face is \( \boldsymbol{F}(x + \Delta L, y, z) \). To calculate the flux contribution of both faces, we need the component of the field perpendicular to the faces, that is the \( x \)-component. The flux contribution of both faces is then found by integrating \( -F_x(x, y, z) \) over the left-hand face and integrating \( +F_x(x, y, z) \) over the right-hand face. The minus and plus signs occur because the outward normal of the left-hand face points in the negative \( x \)-direction, while the outward normal of the right-hand face points in the positive \( x \)-direction. In more physical terms they correspond to the fact that a field pointing along the positive \( x \)-axis has an inward flux on the left-hand face and an outward flux on the right-hand face. Because of this difference in sign, there would be no net flux if \( F_x(x + \Delta L, y, z) \) were equal to \( F_x(x, y, z) \). To get a non-zero flux, the field must vary as we move across the cube. To first order in \( \Delta L \), we have \[ F_x(x + \Delta L, y, z) - F_x(x, y, z) = \frac{\partial F_x}{\partial x} \Delta L, \] so the net contribution of the pair of faces is obtained by integrating \( (\partial F_x / \partial x) \Delta L \) over the right-hand face. In the limiting case of a tiny cube we can assume that \( (\partial F_x / \partial x) \Delta L \) remains constant over the face, so the flux contribution from the pair of faces is \[ \frac{\partial F_x}{\partial x} \Delta L \times (\Delta L)^2 = \frac{\partial F_x}{\partial x} \Delta V, \] where \( \Delta V = (\Delta L)^3 \) is the volume of the cube. A similar calculation can be performed for pairs of faces perpendicular to the \( y \)- and \( z \)-axes. Adding all these contributions together, we obtain the following expression for the total flux over the surface of the cube: \[ \left( \frac{\partial}{\partial x} F_x + \frac{\partial}{\partial y} F_y + \frac{\partial}{\partial z} F_z \right) \Delta V. \]</p>
+
+    <p>Recalling that the divergence is the flux per unit volume, we conclude that \[ \boldsymbol{\nabla} \cdot \boldsymbol{F} = \frac{\partial}{\partial x} F_x + \frac{\partial}{\partial y} F_y + \frac{\partial}{\partial z} F_z \] This formula gives us an explicit way of calculating a divergence in Cartesian coordinates. Because \( \boldsymbol{\nabla} \cdot \boldsymbol{F} \) is a spatial derivative, its units are those of \( \boldsymbol{F} \) divided by length. So, to get the same units on both sides of the divergence theorem, the divergence of \(\boldsymbol{F} \) must belong in the volume integral, rather than in the surface integral.</p>
+
+    <h3>Divergence in other coordinate systems</h3>
+    <!-- SMT359: B.8.6.4 -->
+
+    <p>The definition of divergence as flux per unit volume is not restricted to any particular coordinate system, but the argument leading to the formula above involving derivatives with respect to Cartesian coordinates \( x \), \( y \) and \( z \). This restriction can be removed by considering volume elements in other coordinate systems. In an orthogonal coordinate system (that is, one in which the three unit vectors, associated with the three coordinates, are mutually orthogonal) with coordinates \( q_1 \), \( q_2 \) and \( q_3 \) and scale factors \( h_1 \), \( h_2 \) and \( h_3 \), the divergence of \( \boldsymbol{F} \) turns out to be \[ \boldsymbol{\nabla} \cdot \boldsymbol{F} = \frac{1}{h_1 h_2 h_3} \left( \frac{\partial}{\partial q_1} (h_2 h_3 F_1) + \frac{\partial}{\partial q_2}(h_1 h_3 F_2) + \frac{\partial}{\partial q_3}(h_1 h_2 F_3) \right) \] where \( F_1 \), \( F_2 \) and \( F_3 \) are the components of \( \boldsymbol{F} \) along the unit vectors \( \boldsymbol{e_1} \), \( \boldsymbol{e_2} \) and \( \boldsymbol{e_3} \) that correspond to the coordinates \( q_1 \), \( q_2 \) and \( q_3 \).</p>
+
+    <p>Three special cases are important for us. In Cartesian coordinates, the scale factors are all equal to 1. In spherical coordinates \[ q_1 = r, ~ q_2 = \theta, ~ q_3 = \phi, ~ h_1 = 1, ~ h_2 = r \text{ and } h_3 = r \sin(\theta), \] so the divergence becomes \[ \boldsymbol{\nabla} \cdot \boldsymbol{F} = \frac{1}{r^2} \frac{\partial}{\partial r} (r^2 F_r) + \frac{1}{r \sin(\theta)} \frac{\partial}{\partial \theta} ( \sin(\theta) F_{\theta}) + \frac{1}{r \sin(\theta)} \frac{\partial}{\partial \phi} F_{\phi}. \]</p>
+
+    <p>In cylindrical coordinates \[ q_1 = r, ~ q_2 = \phi, ~ q_3 = z, ~ h_1 = 1, ~ h_2 = r \text{ and } h_3 = 1, \] so the divergence becomes \[ \boldsymbol{\nabla} \cdot \boldsymbol{F} = \frac{1}{r} \frac{\partial}{\partial r} (r F_r) + \frac{1}{r} \frac{\partial}{\partial \phi} F_{\phi} + \frac{\partial}{\partial z} F_z. \]</p>
+
+    <h2>Line integrals</h2>
+    <!-- SMT359: B.8.7 -->
 
     <p></p>
 
@@ -164,7 +207,7 @@
 -->
 
     <h2></h2>
-    <!-- SMT359: B.8.5. -->
+    <!-- SMT359: B.8.7. -->
 
     <p></p>
 
