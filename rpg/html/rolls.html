@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normal Distribution Roller</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: sans-serif; background: #fff; color: #111; padding: 2rem; }
+        @media (prefers-color-scheme: dark) {
+        body { background: #1a1a1a; color: #eee; }
+        }
+
+        #app { max-width: 720px; margin: 0 auto; }
+        .controls { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.75rem; }
+
+        .roll-btn {
+        padding: 10px 28px; font-size: 15px; font-weight: 500; cursor: pointer;
+        border-radius: 8px; background: transparent; border: 1px solid #ccc;
+        color: inherit; width: fit-content; transition: background 0.12s;
+        }
+        .roll-btn:hover { background: #f0f0f0; }
+        .roll-btn:active { transform: scale(0.98); }
+        @media (prefers-color-scheme: dark) {
+        .roll-btn { border-color: #555; }
+        .roll-btn:hover { background: #2a2a2a; }
+        }
+
+        .slider-row { display: flex; align-items: center; gap: 14px; }
+        .slider-label { font-size: 13px; color: #666; min-width: 52px; transition: color 0.15s; }
+        .slider-label.active { color: #111; font-weight: 500; }
+        @media (prefers-color-scheme: dark) {
+        .slider-label { color: #aaa; }
+        .slider-label.active { color: #eee; }
+        }
+        .mod-range { flex: 1; }
+        .mod-val { font-size: 14px; font-weight: 500; min-width: 36px; text-align: right; }
+
+        .roll-result {
+        font-size: 13px; color: #666; min-height: 20px;
+        display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+        }
+        .roll-result .val { color: #111; font-weight: 500; }
+        .roll-result .sep { color: #666; }
+        @media (prefers-color-scheme: dark) {
+        .roll-result { color: #aaa; }
+        .roll-result .val { color: #eee; }
+        .roll-result .sep { color: #aaa; }
+        }
+
+        /* Resisted toggle */
+        .resisted-toggle {
+        display: flex; align-items: center; gap: 8px;
+        cursor: pointer; user-select: none; width: fit-content; margin-top: 2px;
+        }
+        .resisted-toggle .arrow {
+        font-size: 10px; color: #888; transition: transform 0.2s; display: inline-block;
+        }
+        .resisted-toggle .arrow.open { transform: rotate(90deg); }
+        .resisted-toggle span { font-size: 13px; color: #888; }
+
+        /* Collapsable body */
+        .resisted-body {
+        overflow: hidden; max-height: 0;
+        transition: max-height 0.25s ease, opacity 0.2s;
+        opacity: 0;
+        }
+        .resisted-body.open { max-height: 80px; opacity: 1; }
+
+        .chart-wrap { position: relative; width: 100%; height: 320px; }
+        canvas { width: 100%; display: block; }
+
+        .legend {
+        display: flex; justify-content: space-between;
+        font-size: 12px; color: #888; margin-top: 8px;
+        }
+        .leg-dot {
+        width: 18px; height: 3px; border-radius: 2px;
+        display: inline-block; vertical-align: middle; margin-right: 5px;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="app">
+
+            <div class="controls">
+
+                <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+                    <button class="roll-btn" id="rollBtn">Roll</button>
+                    <div class="roll-result" id="rollResult">—</div>
+                </div>
+
+                <!-- Actor / Modifier slider -->
+                <div class="slider-row">
+                    <span class="slider-label" id="actorLabel">Modifier</span>
+                    <input type="range" class="mod-range" id="actorSlider" min="-5" max="5" step="1" value="0">
+                    <span class="mod-val" id="actorVal">0</span>
+                </div>
+
+                <!-- Resisted collapsable section -->
+                <div>
+                    <div class="resisted-toggle" id="resistedToggle">
+                        <span class="arrow" id="toggleArrow">&#9654;</span>
+                        <span>Resisted</span>
+                    </div>
+                    <div class="resisted-body" id="resistedBody">
+                        <div class="slider-row" style="margin-top: 10px;">
+                        <span class="slider-label active">Target</span>
+                        <input type="range" class="mod-range" id="targetSlider" min="-5" max="5" step="1" value="0">
+                        <span class="mod-val" id="targetVal">0</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="chart-wrap">
+                <canvas id="distChart"></canvas>
+            </div>
+
+            <div class="legend">
+                <span><span class="leg-dot" style="background:#3B6D11;"></span>PDF</span>
+                <span><span class="leg-dot" style="background:#111;"></span>Roll result</span>
+                <span><span class="leg-dot" style="background:#185FA5;"></span>CDF</span>
+            </div>
+
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+        <script>
+            const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+            const textColor = isDark ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.55)';
+            const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)';
+
+            let actor = 0;
+            let target = 0;
+            let resisted = false;
+            let roll1 = null;   // actor's N(0,1) sample
+            let roll2 = null;   // target's N(0,1) sample (used in resisted mode)
+            let result = null;
+
+            // --- Math helpers ---
+
+            function normalPDF(x, mu, sigma) {
+                return Math.exp(-0.5 * ((x - mu) / sigma) ** 2) / (sigma * Math.sqrt(2 * Math.PI));
+            }
+
+            function normalCDF(x, mu, sigma) {
+                return 0.5 * (1 + math.erf((x - mu) / (sigma * Math.sqrt(2))));
+            }
+
+            // Box-Muller transform: samples from N(0,1)
+            function sampleNormal() {
+                let u, v;
+                do { u = Math.random(); } while (u === 0);
+                do { v = Math.random(); } while (v === 0);
+                return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+            }
+
+            // --- Build curve data as {x, y} point objects for linear scale ---
+
+            const xMin = -10, xMax = 10;
+            const N = 400;
+            const xs = Array.from({ length: N }, (_, i) => xMin + (xMax - xMin) * i / (N - 1));
+
+            function buildData(mu) {
+                return {
+                pdf: xs.map(x => ({ x, y: normalPDF(x, mu, 1) })),
+                cdf: xs.map(x => ({ x, y: normalCDF(x, mu, 1) })),
+                };
+            }
+
+            // --- Chart setup ---
+
+            const initData = buildData(0);
+
+            const chart = new Chart(document.getElementById('distChart'), {
+                type: 'line',
+                data: {
+                datasets: [
+                    {
+                    label: 'PDF',
+                    data: initData.pdf,
+                    borderColor: '#3B6D11',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    fill: true,
+                    backgroundColor: isDark ? 'rgba(59,109,17,0.12)' : 'rgba(59,109,17,0.10)',
+                    tension: 0.4,
+                    yAxisID: 'yLeft',
+                    },
+                    {
+                    label: 'CDF',
+                    data: initData.cdf,
+                    borderColor: '#185FA5',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    fill: false,
+                    tension: 0.4,
+                    yAxisID: 'yRight',
+                    },
+                ]
+                },
+                options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 200 },
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                    callbacks: {
+                        title: items => `x = ${parseFloat(items[0].parsed.x).toFixed(2)}`,
+                        label: item => `${item.dataset.label}: ${item.parsed.y.toFixed(4)}`
+                    }
+                    }
+                },
+                scales: {
+                    x: {
+                    type: 'linear',
+                    min: xMin,
+                    max: xMax,
+                    ticks: {
+                        color: textColor,
+                        stepSize: 1,
+                        callback: v => Number.isInteger(v) ? v : ''
+                    },
+                    // Only draw gridlines exactly at integer values
+                    grid: {
+                        color: ctx => Number.isInteger(ctx.tick.value) ? gridColor : 'transparent'
+                    }
+                    },
+                    yLeft: {
+                    position: 'left',
+                    min: 0,
+                    max: 1,
+                    ticks: { color: '#3B6D11', stepSize: 0.1, callback: v => v.toFixed(1) },
+                    grid: { color: gridColor },
+                    title: { display: true, text: 'PDF', color: '#3B6D11', font: { size: 11 } }
+                    },
+                    yRight: {
+                    position: 'right',
+                    min: 0,
+                    max: 1,
+                    ticks: { color: '#185FA5', stepSize: 0.1, callback: v => v.toFixed(1) },
+                    grid: { drawOnChartArea: false },
+                    title: { display: true, text: 'CDF', color: '#185FA5', font: { size: 11 } }
+                    }
+                }
+                },
+
+                // --- Custom plugin: draws the vertical result line ---
+                plugins: [
+                {
+                    id: 'rollLine',
+                    afterDraw(chart) {
+                    if (result === null) return;
+                    const { ctx, chartArea, scales } = chart;
+                    const xPx = scales.x.getPixelForValue(result);
+                    if (xPx < chartArea.left || xPx > chartArea.right) return;
+
+                    // Dashed vertical line
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(xPx, chartArea.top);
+                    ctx.lineTo(xPx, chartArea.bottom);
+                    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.85)' : '#111';
+                    ctx.lineWidth = 1.5;
+                    ctx.setLineDash([5, 3]);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    // Label with background pill
+                    ctx.font = '500 12px sans-serif';
+                    ctx.textAlign = 'center';
+                    const label = `result = ${result.toFixed(2)}`;
+                    const labelX = Math.min(Math.max(xPx, chartArea.left + 42), chartArea.right - 42);
+                    const labelY = chartArea.top + 16;
+                    const w = ctx.measureText(label).width + 10;
+                    ctx.fillStyle = isDark ? 'rgba(30,30,30,0.75)' : 'rgba(255,255,255,0.85)';
+                    ctx.fillRect(labelX - w / 2, labelY - 13, w, 18);
+                    ctx.fillStyle = isDark ? 'rgba(255,255,255,0.9)' : '#111';
+                    ctx.fillText(label, labelX, labelY);
+                    ctx.restore();
+                    }
+                }
+                ]
+            });
+
+            // --- Helpers ---
+
+            function updateCurves() {
+                // In resisted mode the distribution of (roll1 + actor) - (roll2 + target)
+                // has mean = actor - target (difference of two N(0,1) shifted by their modifiers)
+                const mu = resisted ? actor - target : actor;
+                const d = buildData(mu);
+                chart.data.datasets[0].data = d.pdf;
+                chart.data.datasets[1].data = d.cdf;
+                chart.update('none');
+            }
+
+            function fmt(v) {
+                const sign = v >= 0 ? '+' : '−';
+                return `${sign} ${Math.abs(v)}`;
+            }
+
+            function renderResult() {
+                if (roll1 === null) return;
+                let html;
+                if (resisted) {
+                // Show: (roll1 ± actor) − (roll2 ± target) = result
+                html =
+                    `<span class="val">(${roll1.toFixed(2)} ${fmt(actor)})</span>` +
+                    `<span class="sep"> − </span>` +
+                    `<span class="val">(${roll2.toFixed(2)} ${fmt(target)})</span>` +
+                    `<span class="sep"> = </span>` +
+                    `<span class="val">${result.toFixed(3)}</span>`;
+                } else {
+                // Show: roll1 ± actor = result
+                const sign = actor >= 0 ? '+' : '−';
+                html =
+                    `<span class="val">${roll1.toFixed(3)}</span>` +
+                    `<span class="sep">${sign} ${Math.abs(actor)} =</span>` +
+                    `<span class="val">${result.toFixed(3)}</span>`;
+                }
+                document.getElementById('rollResult').innerHTML = html;
+            }
+
+            function recalcResult() {
+                if (roll1 === null) return;
+                result = resisted
+                ? (roll1 + actor) - (roll2 + target)
+                : roll1 + actor;
+                renderResult();
+                chart.update();
+            }
+
+            // --- Event handlers ---
+
+            document.getElementById('actorSlider').addEventListener('input', e => {
+                actor = parseInt(e.target.value, 10);
+                document.getElementById('actorVal').textContent = actor;
+                updateCurves();
+                recalcResult();
+            });
+
+            document.getElementById('targetSlider').addEventListener('input', e => {
+                target = parseInt(e.target.value, 10);
+                document.getElementById('targetVal').textContent = target;
+                updateCurves();
+                recalcResult();
+            });
+
+            document.getElementById('rollBtn').addEventListener('click', () => {
+                roll1 = sampleNormal();
+                roll2 = sampleNormal();
+                result = resisted
+                ? (roll1 + actor) - (roll2 + target)
+                : roll1 + actor;
+                renderResult();
+                chart.update();
+            });
+
+            document.getElementById('resistedToggle').addEventListener('click', () => {
+                resisted = !resisted;
+                document.getElementById('resistedBody').classList.toggle('open', resisted);
+                document.getElementById('toggleArrow').classList.toggle('open', resisted);
+                document.getElementById('actorLabel').textContent = resisted ? 'Actor' : 'Modifier';
+                document.getElementById('actorLabel').classList.toggle('active', resisted);
+                updateCurves();
+                recalcResult();
+            });
+        </script>
+    </body>
+</html>
