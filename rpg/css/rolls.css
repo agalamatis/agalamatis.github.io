@@ -1,0 +1,71 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background: #fff; color: #111; padding: 2rem; }
+@media (prefers-color-scheme: dark) {
+body { background: #1a1a1a; color: #eee; }
+}
+
+#app { max-width: 720px; margin: 0 auto; }
+.controls { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.75rem; }
+
+.roll-btn {
+padding: 10px 28px; font-size: 15px; font-weight: 500; cursor: pointer;
+border-radius: 8px; background: transparent; border: 1px solid #ccc;
+color: inherit; width: fit-content; transition: background 0.12s;
+}
+.roll-btn:hover { background: #f0f0f0; }
+.roll-btn:active { transform: scale(0.98); }
+@media (prefers-color-scheme: dark) {
+.roll-btn { border-color: #555; }
+.roll-btn:hover { background: #2a2a2a; }
+}
+
+.slider-row { display: flex; align-items: center; gap: 14px; }
+.slider-label { font-size: 13px; color: #666; min-width: 52px; transition: color 0.15s; }
+.slider-label.active { color: #111; font-weight: 500; }
+@media (prefers-color-scheme: dark) {
+.slider-label { color: #aaa; }
+.slider-label.active { color: #eee; }
+}
+.mod-range { flex: 1; }
+.mod-val { font-size: 14px; font-weight: 500; min-width: 36px; text-align: right; }
+
+.roll-result {
+font-size: 13px; color: #666; min-height: 20px;
+display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.roll-result .val { color: #111; font-weight: 500; }
+.roll-result .sep { color: #666; }
+@media (prefers-color-scheme: dark) {
+.roll-result { color: #aaa; }
+.roll-result .val { color: #eee; }
+.roll-result .sep { color: #aaa; }
+}
+
+.resisted-toggle {
+display: flex; align-items: center; gap: 8px;
+cursor: pointer; user-select: none; width: fit-content; margin-top: 2px;
+}
+.resisted-toggle .arrow {
+font-size: 10px; color: #888; transition: transform 0.2s; display: inline-block;
+}
+.resisted-toggle .arrow.open { transform: rotate(90deg); }
+.resisted-toggle span { font-size: 13px; color: #888; }
+
+.resisted-body {
+overflow: hidden; max-height: 0;
+transition: max-height 0.25s ease, opacity 0.2s;
+opacity: 0;
+}
+.resisted-body.open { max-height: 80px; opacity: 1; }
+
+.chart-wrap { position: relative; width: 100%; height: 320px; }
+canvas { width: 100%; display: block; }
+
+.legend {
+display: flex; justify-content: space-between;
+font-size: 12px; color: #888; margin-top: 8px;
+}
+.leg-dot {
+width: 18px; height: 3px; border-radius: 2px;
+display: inline-block; vertical-align: middle; margin-right: 5px;
+}
