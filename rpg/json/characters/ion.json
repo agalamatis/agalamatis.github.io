@@ -1,0 +1,78 @@
+{
+    "Name": "Ion Csanádyi",
+    "Attributes": {
+        "Agility": 2,
+        "Health": -1,
+        "Strength": -2,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Acrobatics": 1,
+        "Body Language": 1,
+        "Concentration": 3,
+        "Erotic Art": 1,
+        "Fast-Talk": 1,
+        "Language (Romance/Romanian/Vlach)": 3,
+        "Language (Uralic/Ugric/Magyar)": 2,
+        "Language (Slavic/South/Shtokavian)": 1,
+        "Literacy (Latin)": 1,
+        "Lockpicking": 1,
+        "Observation": 2,
+        "Riding": 1,
+        "Sex Appeal": 1,
+        "Sleight of Hand": 5,
+        "Streetwise": 1,
+        "Shadowing": 1,
+        "Stealth": 1,
+        "Weapon (Small Swords)": 3
+    },
+    "Abilities": {
+        "Awareness": [
+            {
+                "level": 1,
+                "name": "Rapture the Veil of Reason",
+                "description": "By concentrating for 1 second/round and a successful Perception+Concentration+Awareness-10, you can perceive entities that do not belong to the natural world, should they be hiding, it will still require a contested roll."
+            },
+            {
+                "level": 2,
+                "name": "Assume the Feline Fleetness",
+                "description": "By successfully concentrating for 1 second/round, you can marginally succeed (with +1) your next non-combat and non-resisted Agility roll."
+            },
+            {
+                "level": 3,
+                "name": "Deviancy of the Licentious Flesh",
+                "description": "You develop an unnatural rapport with beings carrying your seed (this can last from a few minutes up to a week depending on the circumstances of insemination). While they do, you gain the ability to (a) perceive and feel what they do (but not their thoughts and motivation), while concentrating, or (b) project all or some of your own senses and feelings (without concentrating) to them."
+            }
+            
+        ],
+        "Faith": [],
+        "Heritage": [
+            {
+                "level": 1,
+                "name": "Welcome the Penumbral Embrace",
+                "description": "Staying motionless away from direct light, forces the shadows around you to envelop your body, hiding you from sight… but staying too long in darkness, makes you also feel uneasy, feeling that you are slipping into their world. Practically, as long as you remain completely motionless in a dark area, you roll Agility+Stealth+Heritage-10 (± other unknown for now modifiers) and you add the result to contest any Perception-based roll against you."
+            }
+        ],
+        "Nobility": []
+    },
+    "Traits": [
+        {
+            "name": "Oath of Vengeance",
+            "description": "You are obsessed with avenging your birthfather\u2019s murder\n(a) Objectives:\n(i) Have Voivode László Kán of Transylvania slowly and painfully killed.\n(ii) Have his most loved person in the world tortured in front of him, before his demise and everyone else loving them traumatised by this experience.\n(iii) Have all his relatives exiled from Transylvania, deprived of any inheritance.\n(b) Taking any action that (to your understanding at the time of deciding) does not further your objectives (even indirectly) is at -1, and\n(c) taking an action that will hinder your objectives (directly/inderctly, long/short-term) requires a successful Reasoning+Concentration+Awareness-10. Success only means that you can take the action at -5 + the measure of success, which will lessen the burden on your soul for violating your oath."
+        }
+    ],
+    "Gear": [
+        "Short sword",
+        "2 Daggers",
+        "Leather trousers, shirt, boots, gloves & cap (DR:1 against crush and slash)",
+        "Stealthy black cloak",
+        "Local slavic peasant dress",
+        "Expensive and provocative highborn magyar dress",
+        "Winter (wool+sheep skin) jacket (DR:2 against crush and slash, and 1 against pierce; cold protection, but stamina drain in warm weather)",
+        "500 silver coins in a single pouch",
+        "Saddle and bags",
+        "Riding horse"
+    ]
+}

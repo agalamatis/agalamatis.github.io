@@ -1,0 +1,70 @@
+{
+    "Name": "Prince Miklós Csák-Ujlak, the young lion",
+    "Attributes": {
+        "Agility": -1,
+        "Health": 0,
+        "Strength": 1,
+        "Charisma": 1,
+        "Perception": -1,
+        "Reason": 0
+    },
+    "Skills": {
+        "Acting": 3,
+        "Administration": 1,
+        "Area Knowledge (Croatia/Syrmia-Upper)": 1,
+        "Brawling": 1,
+        "Carousing": 1,
+        "Diplomacy": 1,
+        "Economics": 1,
+        "Language (Romance/Romanian/Vlach)": 1,
+        "Language (Uralic/Ugric/Magyar)": 5,
+        "Language (Slavic/South/Shtokavian)": 1,
+        "Leadership": 3,
+        "Literacy (Turkic)": 1,
+        "Observation": 1,
+        "Riding": 1,
+        "Savoir-Faire (Nobility)": 1,
+        "Search": 1,
+        "Weapon (Clubs-Maces)": 3,
+        "Weapon (Shields)": 3
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [
+            {
+                "level": 1,
+                "name": "Fortitude of the Redeemer",
+                "description": "You can increase your Health by your Faith for all rolls and thresholds when doing “The Work of God”."
+            }
+        ],
+        "Heritage": [],
+        "Nobility": [
+            {
+                "level": 1,
+                "name": "Stipulate the Absolute Obedience",
+                "description": "With a successful Charisma + Intimidation + Nobility against Reasoning + Concentration + Nobility, you can compel the target to immediately execute a short imperative sentence. The target must be able to understand the sentence, be able to execute it, not cause him immediate harm or go against their beliefs and convictions."
+            },
+            {
+                "level": 2,
+                "name": "Vaunt at the Magnificence of the Overlord",
+                "description": "You can add your Nobility to all Charisma-based rolls that will improve the opinion of your subjects and other highborns\u2019."
+            },
+            {
+                "level": 3,
+                "name": "Orchestrate the Inconsistent Reminiscence",
+                "description": "With a successful Charisma + Fast-Talk + Nobility against Reasoning + Concentration + Nobility, you can manipulate the memories of the target. Failure is treated the same as a failed social roll; the measure of success indicates how much the target’s recollection can be altered, as well as how far back to make it logically consistent."
+            }
+            
+        ]
+    },
+    "Traits": [],
+    "Gear": [
+        "Morning star",
+        "Kite shield with the Csák golden lion on deep blue background",
+        "Chainmail armour (full body, two pieces: head/arms/chest + hips/legs, doesn’t protect face, hands and feet) (DR: 2 against crush and pierce, 4 against slash)",
+        "Leather gloves & boots (DR:1 against crush and slash)",
+        "Plated iron girdle (binding the armour with leather straps)",
+        "Saddle and bags",
+        "Riding horse"
+    ]
+}

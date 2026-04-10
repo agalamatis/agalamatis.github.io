@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Sheet</title>
+<style>
+  :root {
+    --bg: #1a1410;
+    --surface: #231d17;
+    --surface2: #2d2520;
+    --border: #4a3c2e;
+    --border-light: #5c4a38;
+    --gold: #c8a454;
+    --gold-dim: #9a7a3e;
+    --text: #e8dcc8;
+    --text-dim: #a09070;
+    --text-muted: #6a5a44;
+    --red: #c05040;
+    --green: #5a9060;
+    --blue: #4a7a9a;
+    --grey: #808080;
+    --accent: #8a6030;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─── */
+  #header {
+    background: linear-gradient(180deg, #0e0b08 0%, var(--surface) 100%);
+    border-bottom: 2px solid var(--gold-dim);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  }
+
+  #char-name {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    flex: 1;
+  }
+
+  #char-select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 7px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #char-select:hover, #char-select:focus {
+    border-color: var(--gold-dim);
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  #content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--surface2) 0%, var(--surface) 100%);
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .section-header:hover {
+    background: linear-gradient(90deg, #332b21 0%, var(--surface2) 100%);
+  }
+
+  .section-title {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .chevron {
+    color: var(--gold-dim);
+    font-size: 1rem;
+    transition: transform 0.25s;
+    display: inline-block;
+  }
+  .section.collapsed .chevron { transform: rotate(-90deg); }
+  .section.collapsed .section-body { display: none; }
+
+  .section-body {
+    padding: 16px 18px;
+  }
+
+  /* ─── ATTRIBUTES ─── */
+  .attrs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+
+  .attr-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  .attr-val {
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 32px;
+    text-align: center;
+    color: var(--gold);
+  }
+  .attr-val.neg { color: var(--red); }
+  .attr-val.zero { color: var(--text-dim); }
+
+  .attr-name {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+  }
+
+  @media (max-width: 560px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .attrs-grid { grid-template-columns: 1fr; }
+  }
+
+  .skill-row {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skill-main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    min-height: 34px;
+  }
+
+  .skill-val {
+    font-size: 1rem;
+    font-weight: bold;
+    min-width: 28px;
+    text-align: center;
+    color: var(--gold);
+  }
+  .skill-val.neg { color: var(--red); }
+  .skill-val.zero { color: var(--text-dim); }
+  .skill-val.derived { color: var(--grey); font-weight: normal; font-style: italic; }
+
+  .skill-name {
+    font-size: 0.88rem;
+    color: var(--text);
+    flex: 1;
+    line-height: 1.3;
+  }
+  .skill-name.derived { color: var(--grey); }
+
+  .skill-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1rem;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: color 0.15s, background 0.15s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .skill-toggle:hover {
+    color: var(--gold);
+    background: rgba(200,164,84,0.12);
+  }
+  .skill-toggle.open { color: var(--gold); }
+
+  .skill-detail {
+    display: none;
+    padding: 8px 12px 10px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .skill-detail.open { display: block; }
+
+  .skill-detail-section { margin-bottom: 6px; }
+  .skill-detail-label {
+    color: var(--gold-dim);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  /* ─── ABILITIES ─── */
+  .abilities-cat {
+    margin-bottom: 18px;
+  }
+  .abilities-cat:last-child { margin-bottom: 0; }
+
+  .abilities-cat-header {
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ability-level {
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+
+  .ability-item {
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .ability-item:last-child { margin-bottom: 0; }
+
+  .ability-name {
+    font-weight: bold;
+    color: var(--text);
+  }
+
+  .ability-desc {
+    color: var(--text-dim);
+  }
+
+  /* ─── TRAITS ─── */
+  .trait-item {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    border-radius: 4px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .trait-item:last-child { margin-bottom: 0; }
+  .trait-name {
+    font-weight: bold;
+    color: var(--text);
+  }
+  .trait-desc {
+    color: var(--text-dim);
+    white-space: pre-line;
+  }
+
+  /* ─── GEAR ─── */
+  .gear-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .gear-item {
+    padding: 7px 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .gear-item::before {
+    content: '◆';
+    color: var(--gold-dim);
+    font-size: 0.6rem;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .empty-msg {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div id="char-name">—</div>
+  <select id="char-select">
+    <option value="ion">Ion Csanádyi</option>
+    <option value="miklos">Prince Miklós Csák-Ujlak, the young lion</option>
+  </select>
+</div>
+
+<div id="content">
+
+  <!-- ATTRIBUTES -->
+  <div class="section" id="sec-attributes">
+    <div class="section-header" onclick="toggleSection('sec-attributes')">
+      <span class="section-title">Attributes</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="attrs-grid" id="attrs-grid"></div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section" id="sec-skills">
+    <div class="section-header" onclick="toggleSection('sec-skills')">
+      <span class="section-title">Skills</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="skills-grid" id="skills-grid"></div>
+    </div>
+  </div>
+
+  <!-- ABILITIES -->
+  <div class="section" id="sec-abilities">
+    <div class="section-header" onclick="toggleSection('sec-abilities')">
+      <span class="section-title">Abilities</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body" id="abilities-body"></div>
+  </div>
+
+  <!-- TRAITS -->
+  <div class="section" id="sec-traits">
+    <div class="section-header" onclick="toggleSection('sec-traits')">
+      <span class="section-title">Traits</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body" id="traits-body"></div>
+  </div>
+
+  <!-- GEAR -->
+  <div class="section" id="sec-gear">
+    <div class="section-header" onclick="toggleSection('sec-gear')">
+      <span class="section-title">Gear</span>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="section-body">
+      <ul class="gear-list" id="gear-list"></ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const ION_DATA = fetch('../json/characters/ion.json').then(response => response.json())
+const MIKLOS_DATA = fetch('../json/characters/miklos.json').then(response => response.json())
+const SKILLS_DB = fetch('../json/skills.json').then(response => response.json())
+</script>
+<script>
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+
+function fmtVal(v, derived) {
+  const cls = derived ? 'derived' : (v > 0 ? '' : v < 0 ? 'neg' : 'zero');
+  const str = v > 0 ? '+' + v : v === 0 ? '±0' : String(v);
+  return `<span class="skill-val ${cls}">${str}</span>`;
+}
+
+function attrFmt(v) {
+  const cls = v > 0 ? '' : v < 0 ? 'neg' : 'zero';
+  const str = v > 0 ? '+' + v : v === 0 ? '±0' : String(v);
+  return `<span class="attr-val ${cls}">${str}</span>`;
+}
+
+function toggleSection(id) {
+  document.getElementById(id).classList.toggle('collapsed');
+}
+
+let skillDetailOpen = {};
+
+function toggleSkillDetail(uid) {
+  const detail = document.getElementById('sd-' + uid);
+  const btn = document.getElementById('stb-' + uid);
+  if (!detail) return;
+  const isOpen = detail.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.textContent = isOpen ? '−' : '+';
+}
+
+// ─── BUILD SKILLS ─────────────────────────────────────────────────────────────
+
+function buildSkills(charSkills) {
+  // charSkills: { skillName: value, ... }
+  // For each skill, look up SKILLS_DB for grants and add derived skills
+  const allSkills = {};
+
+  // Add primary skills
+  for (const [name, val] of Object.entries(charSkills)) {
+    allSkills[name] = { value: val, derived: false };
+  }
+
+  // Add derived skills from grants
+  for (const [name, val] of Object.entries(charSkills)) {
+    const entry = SKILLS_DB[name];
+    if (!entry) continue;
+    for (const grantedSkill of (entry.grants || [])) {
+      if (allSkills[grantedSkill]) continue; // already have it
+      const derivedEntry = SKILLS_DB[grantedSkill];
+      const defaultOffset = derivedEntry ? derivedEntry.default : -4;
+      const derivedVal = val + defaultOffset;
+      allSkills[grantedSkill] = { value: derivedVal, derived: true };
+    }
+  }
+
+  // Sort alphabetically
+  const sorted = Object.keys(allSkills).sort((a, b) => a.localeCompare(b));
+
+  const grid = document.getElementById('skills-grid');
+  grid.innerHTML = '';
+
+  sorted.forEach((name, i) => {
+    const { value, derived } = allSkills[name];
+    const uid = 'skill_' + i;
+    const dbEntry = SKILLS_DB[name];
+
+    const hasDetail = dbEntry && (dbEntry.description || dbEntry.modifiers || dbEntry.notes);
+
+    const row = document.createElement('div');
+    row.className = 'skill-row';
+
+    const nameCls = derived ? 'skill-name derived' : 'skill-name';
+    const valHtml = fmtVal(value, derived);
+
+    let detailHtml = '';
+    if (hasDetail) {
+      const parts = [];
+      if (dbEntry.description) {
+        parts.push(`<div class="skill-detail-section"><div class="skill-detail-label">Description</div>${escHtml(dbEntry.description)}</div>`);
+      }
+      if (dbEntry.modifiers) {
+        parts.push(`<div class="skill-detail-section"><div class="skill-detail-label">Modifiers</div>${escHtml(dbEntry.modifiers)}</div>`);
+      }
+      if (dbEntry.notes) {
+        parts.push(`<div class="skill-detail-section"><div class="skill-detail-label">Notes</div>${escHtml(dbEntry.notes)}</div>`);
+      }
+      detailHtml = `<div class="skill-detail" id="sd-${uid}">${parts.join('')}</div>`;
+    }
+
+    const toggleBtn = hasDetail
+      ? `<button class="skill-toggle" id="stb-${uid}" onclick="toggleSkillDetail('${uid}')" title="Show details">+</button>`
+      : `<span style="width:22px;flex-shrink:0;"></span>`;
+
+    row.innerHTML = `
+      <div class="skill-main">
+        ${valHtml}
+        <span class="${nameCls}">${escHtml(name)}</span>
+        ${toggleBtn}
+      </div>
+      ${detailHtml}
+    `;
+
+    grid.appendChild(row);
+  });
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// ─── BUILD ABILITIES ──────────────────────────────────────────────────────────
+
+function buildAbilities(abilities) {
+  const body = document.getElementById('abilities-body');
+  body.innerHTML = '';
+  const cats = ['Awareness', 'Faith', 'Heritage', 'Nobility'];
+  let anyShown = false;
+
+  for (const cat of cats) {
+    const catData = abilities[cat];
+    if (!catData || catData.level === 0 || Object.keys(catData.abilities).length === 0) continue;
+    anyShown = true;
+
+    const div = document.createElement('div');
+    div.className = 'abilities-cat';
+
+    const level = catData.level;
+    div.innerHTML = `<div class="abilities-cat-header"><span class="ability-level">+${level}</span><span>${cat}</span></div>`;
+
+    for (const [abName, abDesc] of Object.entries(catData.abilities)) {
+      const item = document.createElement('div');
+      item.className = 'ability-item';
+      item.innerHTML = `<span class="ability-name">${escHtml(abName)}:</span> <span class="ability-desc">${escHtml(abDesc)}</span>`;
+      div.appendChild(item);
+    }
+
+    body.appendChild(div);
+  }
+
+  if (!anyShown) {
+    body.innerHTML = '<span class="empty-msg">No abilities.</span>';
+  }
+}
+
+// ─── BUILD TRAITS ─────────────────────────────────────────────────────────────
+
+function buildTraits(traits) {
+  const body = document.getElementById('traits-body');
+  body.innerHTML = '';
+
+  if (!traits || Object.keys(traits).length === 0) {
+    body.innerHTML = '<span class="empty-msg">No traits.</span>';
+    return;
+  }
+
+  for (const [tName, tDesc] of Object.entries(traits)) {
+    const item = document.createElement('div');
+    item.className = 'trait-item';
+    item.innerHTML = `<span class="trait-name">${escHtml(tName)}:</span><br><span class="trait-desc">${escHtml(tDesc)}</span>`;
+    body.appendChild(item);
+  }
+}
+
+// ─── RENDER CHARACTER ─────────────────────────────────────────────────────────
+
+function renderChar(data) {
+  // Name
+  document.getElementById('char-name').textContent = data.name;
+  document.title = data.name + ' — Character Sheet';
+
+  // Attributes — fixed display order, 2 cols × 3 rows
+  const attrOrder = ['Agility', 'Charisma', 'Health', 'Perception', 'Strength', 'Reason'];
+  const grid = document.getElementById('attrs-grid');
+  grid.innerHTML = '';
+  for (const key of attrOrder) {
+    const v = data.attributes[key] !== undefined ? data.attributes[key] : 0;
+    const item = document.createElement('div');
+    item.className = 'attr-item';
+    item.innerHTML = `${attrFmt(v)} <span class="attr-name">${escHtml(key)}</span>`;
+    grid.appendChild(item);
+  }
+
+  // Skills
+  buildSkills(data.skills);
+
+  // Abilities
+  buildAbilities(data.abilities);
+
+  // Traits
+  buildTraits(data.traits);
+
+  // Gear
+  const gearList = document.getElementById('gear-list');
+  gearList.innerHTML = '';
+  if (!data.gear || data.gear.length === 0) {
+    gearList.innerHTML = '<span class="empty-msg">No gear.</span>';
+  } else {
+    for (const item of data.gear) {
+      const li = document.createElement('li');
+      li.className = 'gear-item';
+      li.textContent = item;
+      gearList.appendChild(li);
+    }
+  }
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+
+const CHARS = {
+  ion: ION_DATA,
+  miklos: MIKLOS_DATA
+};
+
+const sel = document.getElementById('char-select');
+sel.addEventListener('change', () => renderChar(CHARS[sel.value]));
+
+renderChar(CHARS['ion']);
+</script>
+</body>
+</html>
