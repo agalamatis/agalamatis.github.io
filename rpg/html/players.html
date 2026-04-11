@@ -357,6 +357,26 @@
   a:hover {
     color: var(--gold-dim);
   }
+
+  #import-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 4px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+    padding: 0;
+  }
+  #import-btn:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+  }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.0.0/math.min.js"></script>
 </head>
@@ -364,6 +384,15 @@
 
 <div id="header">
   <div id="char-name">—</div>
+  <button id="import-btn" title="Import character JSON files" onclick="document.getElementById('file-input').click()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="12" y1="18" x2="12" y2="12"/>
+      <polyline points="9 15 12 12 15 15"/>
+    </svg>
+  </button>
+  <input type="file" id="file-input" accept=".json" multiple style="display:none;">
   <select id="char-select">
     <option value="ion">Ion Csanádyi</option>
     <option value="miklos">Prince Miklós Csák-Ujlak</option>
@@ -669,6 +698,86 @@ const CHARS = {
   leonardo: LEONARDO_DATA,
   pavo: PAVO_DATA
 };
+
+// Map from filename stem (lowercase, no extension) to CHARS key
+const FILENAME_MAP = {
+  ion: 'ion',
+  miklos: 'miklos',
+  casimir: 'casimir',
+  leonardo: 'leonardo',
+  pavo: 'pavo'
+};
+
+function normalizeChar(raw) {
+  const abilitiesMap = {};
+  for (const [cat, items] of Object.entries(raw.Abilities || {})) {
+    if (Array.isArray(items) && items.length) {
+      const maxLevel = Math.max(...items.map(x => x.level));
+      const abDict = {};
+      items.forEach(x => { abDict[x.name] = x.description; });
+      abilitiesMap[cat] = { level: maxLevel, abilities: abDict };
+    } else {
+      abilitiesMap[cat] = { level: 0, abilities: {} };
+    }
+  }
+  const traits = {};
+  for (const t of (raw.Traits || [])) traits[t.name] = t.description;
+  return {
+    name: raw.Name,
+    attributes: raw.Attributes,
+    skills: raw.Skills,
+    abilities: abilitiesMap,
+    traits,
+    gear: raw.Gear
+  };
+}
+
+function refreshSelect() {
+  const sel = document.getElementById('char-select');
+  const current = sel.value;
+  sel.innerHTML = '';
+  for (const [key, data] of Object.entries(CHARS)) {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = data.name;
+    sel.appendChild(opt);
+  }
+  // Restore selection if still valid, else pick first
+  if (CHARS[current]) sel.value = current;
+  else sel.value = Object.keys(CHARS)[0];
+  renderChar(CHARS[sel.value]);
+}
+
+document.getElementById('file-input').addEventListener('change', function() {
+  const files = Array.from(this.files);
+  if (!files.length) return;
+  let pending = files.length;
+  files.forEach(file => {
+    const stem = file.name.replace(/\.json$/i, '').toLowerCase();
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const raw = JSON.parse(e.target.result);
+        const data = normalizeChar(raw);
+        const existingKey = FILENAME_MAP[stem];
+        if (existingKey) {
+          // Update existing character
+          CHARS[existingKey] = data;
+        } else {
+          // New character — add with stem as key
+          CHARS[stem] = data;
+          FILENAME_MAP[stem] = stem;
+        }
+      } catch(err) {
+        console.warn('Failed to parse', file.name, err);
+      }
+      if (--pending === 0) refreshSelect();
+    };
+    reader.readAsText(file);
+  });
+  // Reset input so same file can be re-imported
+  this.value = '';
+});
 
 const sel = document.getElementById('char-select');
 sel.addEventListener('change', () => renderChar(CHARS[sel.value]));

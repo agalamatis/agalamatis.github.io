@@ -1,0 +1,63 @@
+{
+    "Name": "Queen-dowager Elisabetta d'Anjou",
+    "Attributes": {
+        "Agility": -1,
+        "Health": 0,
+        "Strength": -1,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 1
+    },
+    "Skills": {
+        "Area Knowledge (Hungary/Alföld)": 2,
+        "Area Knowledge (Hungary/Transdanubia)": 1,
+        "Area Knowledge (Italy/Campania)": 1,
+        "Language (Romance/Frankish/Norman)": 5,
+        "Language (Uralic/Ugric/Magyar)": 2,
+        "Language (Turkic/Kipchak/Cuman)": 1,
+        "Literacy (Latin)": 1,
+        "Naturalist": 4,
+        "Physician": 4,
+        "Research": 4,
+        "Riding": 2,
+        "Savoir-Faire (Nobility)": 3
+    },
+    "Abilities": {
+        "Awareness": [
+            {
+                "level": 1,
+                "name": "Envision the Remedy for the Ailing Body",
+                "description": "After examining a sick and wounded living being, you can concentrate to “remember” which ingredients are needed to produce a remedy. Practically, you can review sources, daydream or walk alone The Wyld undistracted to add your awareness to your Naturalist checks to identify ingredients needed to create remedies for wounds, infections, diseases, etc."
+            }
+        ],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": [
+            {
+                "level": 1,
+                "name": "Resolve the Wavering Mind",
+                "description": "You can suggest a certain course of action to any subject of your authority that does not contradict their morals by contesting your charisma+nobility against their reasoning+nobility."
+            },
+            {
+                "level": 2,
+                "name": "Inspire Purpose into a Confused Heart",
+                "description": "You can distort the motivations, memories and reasoning of your subjects by contesting your charisma or reasoning+nobility against their reasoning+nobility."
+            }
+        ]
+    },
+    "Traits": [],
+    "Gear": [
+        "Night gown",
+        "Bright dress",
+        "Dark dress",
+        "Nun\u2019s garments",
+        "Traveling robe and shoes",
+        "Traveling cloak",
+        "Heavy winter cloak",
+        "Leather gloves",
+        "Leather boots",
+        "Small knife",
+        "Personal ring seal of the Capet-Anjou family (crown over a pattern of the royal flowers)",
+        "A <a href=\"https://en.wikipedia.org/wiki/Voynich_manuscript\">1200-page bound tome</a> written in an unknown language with mystical illustrations obtained from a Cuman raid of a heretic monastery in Bosnia. Some illustrations and the scattered latin text enhanced your knowledge of the healing powers of certain plants. On a closer and more informed examination on the evening of 10 March 1300:<br>(1) The book is written a red substance (maybe blood) in an unidentified language a lot more than a century ago, but also has the occasional black ink writing from half to a century ago.<br>(2) You bookmarked the page referring to Tengri aligning with the fragment read in on of Maria\u2019s sealed scrolls.<br>(3) You also noticed that a fourth to a third of the book is devoted to illustrations of alien plants with minimal text and human stick-figures expelling liquids in bizarre postures (your best guess)."
+    ]
+}
