@@ -206,6 +206,7 @@
     line-height: 1.3;
   }
   .skill-name.derived { color: var(--grey); }
+  .skill-name.missing { color: var(--text-muted); }
 
   .skill-toggle {
     background: none;
@@ -488,6 +489,12 @@ function buildSkills(charSkills) {
     }
   }
 
+  // Add all remaining DB skills not yet present, at their raw default value
+  for (const [name, entry] of Object.entries(SKILLS_DB)) {
+    if (allSkills[name]) continue;
+    allSkills[name] = { value: entry.default, derived: false, missing: true };
+  }
+
   // Sort alphabetically
   const sorted = Object.keys(allSkills).sort((a, b) => a.localeCompare(b));
 
@@ -495,7 +502,7 @@ function buildSkills(charSkills) {
   grid.innerHTML = '';
 
   sorted.forEach((name, i) => {
-    const { value, derived } = allSkills[name];
+    const { value, derived, missing } = allSkills[name];
     const uid = 'skill_' + i;
     const dbEntry = SKILLS_DB[name];
 
@@ -504,8 +511,8 @@ function buildSkills(charSkills) {
     const row = document.createElement('div');
     row.className = 'skill-row';
 
-    const nameCls = derived ? 'skill-name derived' : 'skill-name';
-    const valHtml = fmtVal(value, derived);
+    const nameCls = missing ? 'skill-name missing' : derived ? 'skill-name derived' : 'skill-name';
+    const valHtml = fmtVal(value, derived || missing);
 
     let detailHtml = '';
     if (hasDetail) {
