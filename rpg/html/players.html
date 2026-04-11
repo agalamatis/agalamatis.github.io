@@ -348,6 +348,32 @@
     font-size: 0.9rem;
   }
 
+  /* ─── SKILL SLIDER ─── */
+  #skills-slider-bar {
+    padding: 8px 18px 10px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    display: none;
+  }
+  #skills-slider {
+    width: 100%;
+    accent-color: var(--gold);
+    cursor: pointer;
+    display: block;
+  }
+  #skills-slider-ticks {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 1px 0;
+  }
+  .slider-tick {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-align: center;
+    flex: 0 0 auto;
+    font-family: monospace;
+  }
+
 
   a {
     color: var(--gold);
@@ -571,6 +597,10 @@
       <span class="section-title">Skills <span id="skills-score" style="font-size:0.8em; color:var(--text-dim); font-weight:normal; letter-spacing:0;"></span></span>
       <span class="chevron">▾</span>
     </div>
+    <div id="skills-slider-bar">
+      <input type="range" id="skills-slider">
+      <div id="skills-slider-ticks"></div>
+    </div>
     <div class="section-body">
       <div class="skills-grid" id="skills-grid"></div>
     </div>
@@ -744,6 +774,7 @@ function buildSkills(charSkills) {
 
     const row = document.createElement('div');
     row.className = 'skill-row';
+    row.dataset.skillValue = value;
 
     const nameCls = missing ? 'skill-name missing' : derived ? 'skill-name derived' : 'skill-name';
     const valHtml = fmtVal(value, derived || missing);
@@ -787,6 +818,40 @@ function buildSkills(charSkills) {
     scoreSum += math.erf((value - mu) / (sigma * Math.sqrt(2))) / 2 + 0.5;
   }
   document.getElementById('skills-score').textContent = '(' + scoreSum.toFixed(2) + ')';
+
+  // ─── SLIDER ──────────────────────────────────────────────────────────────
+  const allValues = Object.values(allSkills).map(s => s.value);
+  const minVal = Math.min(...allValues);
+  const maxVal = Math.max(...allValues);
+
+  const sliderBar = document.getElementById('skills-slider-bar');
+  const slider    = document.getElementById('skills-slider');
+  const ticksEl   = document.getElementById('skills-slider-ticks');
+
+  slider.min   = minVal;
+  slider.max   = maxVal;
+  slider.step  = 1;
+  slider.value = minVal;
+
+  ticksEl.innerHTML = '';
+  for (let v = minVal; v <= maxVal; v++) {
+    const t = document.createElement('span');
+    t.className = 'slider-tick';
+    t.textContent = v;
+    ticksEl.appendChild(t);
+  }
+
+  sliderBar.style.display = 'block';
+
+  // Replace node to drop any previous listener
+  const fresh = slider.cloneNode(true);
+  slider.parentNode.replaceChild(fresh, slider);
+  document.getElementById('skills-slider').addEventListener('input', function() {
+    const threshold = parseInt(this.value, 10);
+    grid.querySelectorAll('.skill-row').forEach(row => {
+      row.style.display = parseInt(row.dataset.skillValue, 10) < threshold ? 'none' : '';
+    });
+  });
 
 }
 
