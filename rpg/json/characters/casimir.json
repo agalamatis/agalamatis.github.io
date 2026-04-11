@@ -1,0 +1,75 @@
+{
+    "Name": "Casimir from Metohja",
+    "Attributes": {
+        "Agility": 1,
+        "Health": -1,
+        "Strength": 0,
+        "Charisma": -1,
+        "Perception": 0,
+        "Reason": 1
+    },
+    "Skills": {
+        "Area Knowledge (Balkans/Serbia)": 1,
+        "Climbing": 1,
+        "Concentration": 1,
+        "Cooking": 1,
+        "Language (Slavic/South/Shtokavian)": 5,
+        "Language (Romance/Italic/Istro-Dalmatian)": 1,
+        "Leatherworking": 1,
+        "Naturalist": 5,
+        "Observation": 1,
+        "Orienteering": 2,
+        "Physician": 2,
+        "Riding": 2,
+        "Stealth": 2,
+        "Weapon (Curved Swords)": 5
+    },
+    "Abilities": {
+        "Awareness": [
+            {
+                "level": 1,
+                "name": "The Forbidden Delight",
+                "description": "Acquired a taste for human flesh, sensing its presence, getting intoxicated by its taste, gaining insights on your prey."
+            }
+        ],
+        "Faith": [],
+        "Heritage": [
+            {
+                "level": 1,
+                "name": "Find the Path lost to Mankind",
+                "description": "Paths open for you in the wild."
+            },
+            {
+                "level": 2,
+                "name": "Surrender to the Dreamlord",
+                "description": "You always found that dreaming (and daydreaming) in the wild offers visions and warning for the future."
+            }
+        ],
+        "Nobility": []
+    },
+    "Traits": [
+        {
+            "name": "Lycanthropy?",
+            "description": "After your dream in the Princesses\u2019 hovel (see Notes§2), you suspect that you have been infected by Milutin and have until the full moon to fall under his complete control."
+        },
+        {
+            "name": "Severed nerves on left wrist",
+            "description": "You suspect that because of lycanthropy, this wound has completely healed. If you are cured of lycanthorpy, the wound might return and rending you one-handed."
+        },
+        {
+            "name": "Torn right heel ligament",
+            "description": "You suspect that because of lycanthropy, this wound has completely healed. If you are cured of lycanthorpy, the wound might return and temporarily crippling you."
+        },
+        {
+            "name": "Fractured left kneecap and damaged ligament",
+            "description": "You suspect that because of lycanthropy, this wound has completely healed. If you are cured of lycanthorpy, the wound might return and permanently crippling you."
+        }
+    ],
+    "Gear": [
+        "Falchion",
+        "Machette",
+        "Leather trousers, shirt, boots, gloves & cap (DR:1 against crush and slash)",
+        "First Aid kit",
+        "Waterskin"
+    ]
+}

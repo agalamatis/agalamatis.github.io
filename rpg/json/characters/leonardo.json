@@ -1,0 +1,83 @@
+{
+    "Name": "Master Engineer Leonardo Spinelli",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 1,
+        "Strength": 2,
+        "Charisma": -2,
+        "Perception": 0,
+        "Reason": -1
+    },
+    "Skills": {
+        "Alchemy": 2,
+        "Architecture": 1,
+        "Area Knowledge (Balkans/Montenegro)": 1,
+        "Area Knowledge (Italy/Campania)": 1,
+        "Armoury (Gunpowder)": 3,
+        "Explosives (Demolition)": 3,
+        "Forward Observer": 1,
+        "Language (Romance/Italic/Neapolitan)": 1,
+        "Literacy (Latin)": 1,
+        "Masonry": 1,
+        "Packing": 1,
+        "Research": 2,
+        "Riding": 2,
+        "Swimming": 1,
+        "Theology": 2,
+        "Weapon (Axes-Hammers-Picks)": 3,
+        "Weapon (Handgonnes)": 3
+    },
+    "Abilities": {
+        "Awareness": [
+            {
+                "level": 1,
+                "name": "Augment the Parched Flame",
+                "description": "Add your awareness when identifying, preparing and crafting gunpowder."
+            },
+            {
+                "level": 2,
+                "name": "Infuse your Daemon into the Wizened Burn",
+                "description": "By mixing deccelerants (gravel, sand, water, oils, etc.) in black powder, you can control the speed and energy of the ignition. Even after crafting gunpowder, you can alter on the spot how fast it will burn, adding your awareness to the reasoning and explosives to control to unnatural levels of accuracy the reaction you want or even completely alter its use, but within the constraints explained below."
+            },
+            {
+                "level": 3,
+                "name": "Host the Restless Dead",
+                "description": "As you are falling asleep you can think of Rozafa and your previous encounters with her to be able to invite her in your body. Practically this requires Reasoning + Dreaming + Awareness and some other modifiers you are not aware of yet. Succeeding allows Rozafa to converse with you until you fall asleep or unconscious. Rozafa can attempt to possess your body at any point with a contested Reasoning + Dreaming + Awareness, the difference determines the duration, level of control and your ability to perceive her actions while in control of your human shell."
+            }
+        ],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": [
+            {
+                "level": 1,
+                "name": "Assume the Face of the Petty Noble",
+                "description": "Add your nobility to all charisma rolls when trying to persuade others that your motivations are honest and truthful."
+            }
+        ]
+    },
+    "Traits": [
+        {
+            "name": "Hosting the soul of Rozafa from Skadar",
+            "description": "The possession is the reason behind the third level awareness ability, Host the Restless Dead."
+        }
+    ],
+    "Gear": [
+        "2x Shirt (one silk/expensive)",
+        "2x Trousers (one wool/expensive)",
+        "Leather apron",
+        "Leather gloves",
+        "Leather boots",
+        "Traveling cloak",
+        "Handgonne",
+        "Maul",
+        "Double traveling sack",
+        "7x stone cannonballs (for the handgonne) with enough gunpowder to fire them",
+        "Ingredients to craft up to 23 explosives or less with higher yield",
+        "Cleaver",
+        "Heavy cloak",
+        "500 silver coins minted in Serbia (about 50 meals in Skadar)",
+        "Unremovable wedding gold gilded ring",
+        "Fragments of a Byzantine manuscript detailing their pre-crusade siege tactics (until now you were only able to decipher the latin text, there are parts in what seems to be greek and two another unknown language)",
+        "Latin Manuscript gifted by Theodore in Ulcinj with formulas to craft explosives. It will take research (in a library with alchemical manuscripts and/or discussion with other alchemists) to decipher, since it is notes of someone signing as M.P. written in vulgar latin of various arab translations of ancient texts."
+    ]
+}

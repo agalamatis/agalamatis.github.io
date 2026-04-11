@@ -1,0 +1,68 @@
+{
+    "Name": "Brother Pavo d'Acri",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 1,
+        "Strength": 2,
+        "Charisma": -2,
+        "Perception": 0,
+        "Reason": -1
+    },
+    "Skills": {
+        "Area Knowledge (Croatia/Dalmatia)": 1,
+        "Astronomy": 1,
+        "Armoury (Armour)": 1,
+        "Armoury (Melee Weapons)": 1,
+        "Boating (Unpowered)": 1,
+        "Fishing": 1,
+        "Intimidation": 2,
+        "Language (Romance/Italic/Istro-Dalmatian)": 5,
+        "Language (Germanic/Middle/Franconian)": 1,
+        "Literacy (Latin)": 1,
+        "Riding": 2,
+        "Swimming": 1,
+        "Theology": 2,
+        "Weapon (Long Swords)": 5,
+        "Weapon (Shields)": 5
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [
+            {
+                "level": 1,
+                "name": "By the Blood of the Fallen",
+                "description": "By holding your shield with both hands, planting your feet firmly in the ground, invoking the names of your fallen brothers in Acre, you can defend against all frontal attacks. Mechanically, you add your Faith to all parry/shield rolls, you can parry all attacks on you and 1.5m radius around you from the front, including melee, missile, and area, etc. Your shield does not lose durability, but you must not move, and keep chanting the names of the dead knights until someone gags you, breaks your stance from the sides or back or you get exhausted."
+            },
+            {
+                "level": 2,
+                "name": "Invoke the Mercy of the Martyrs",
+                "description": "By praising the resilience of each martyr and the method of torture and execution suffered, you subtract your faith from any damage roll against you and your catholic companions, but while doing so, your attacks suffer a penalty equal to the sum of the bonuses you provide, eg if you have +2 faith, and there are two more companions in hearing range with +1 faith, your attacks will suffer a total of -4 while invoking this prayer."
+            }
+        ],
+        "Heritage": [
+            {
+                "level": 1,
+                "name": "The Blessed Catch of Saint Nicholas",
+                "description": "By praying for the grace of the patron of the Adriatic fishermen, you add your heritage to any fishing related rolls."
+            }
+        ],
+        "Nobility": []
+    },
+    "Traits": [
+        {
+            "name": "Bite scar on left cheek",
+            "description": "Charisma rolls at +1 to command & intimidate, -1 to charm."
+        }
+    ],
+    "Gear": [
+        "Bastard sword (can be used one or two handed)",
+        "Kite shield bathed in the blood of last knight of Acre (increases your faith by one when used)",
+        "Iron helmet (protecting face/head/neck, no peripheral vision) (DR: 7 against crush & slash, 4 against pierce)",
+        "Chainmail armour (full body, two pieces: head/arms/chest + hips/legs, doesn’t protect face, hands and feet) (DR: 2 against crush and pierce, 4 against slash)",
+        "Plated iron girdle (binding the armour with leather straps)",
+        "Iron helmet (protecting face/head/neck, no peripheral vision) (DR: 7 against crush & slash, 4 against pierce)",
+        "Teutonic knights tunic (worn over the armour)",
+        "Teutonic knights robes (worn alone, without the armour)",
+        "Sealed letter from the grandmaster <a href=\"https://en.wikipedia.org/wiki/Gottfried_von_Hohenlohe\">Gottfried von Hohenlohe<\/a> addressed to the <a href=\"https://en.wikipedia.org/wiki/Roman_Catholic_Archdiocese_of_Kalocsa%E2%80%93Kecskem%C3%A9t\">archbishop of Kalosca<\/a>"
+    ]
+}

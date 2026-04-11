@@ -328,418 +328,552 @@
         "page": 176
     },
     {
-        "skill": "Area Knowledge (Croatia/Bosnia)",
-        "default": -3,
+        "skill": "Area Knowledge (Balkans/Bulgaria)",
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Balkans/Macedonia)",
+            "Area Knowledge (Balkans/Mutenia)",
+            "Area Knowledge (Balkans/Oltenia)",
+            "Area Knowledge (Balkans/Serbia)",
+            "Area Knowledge (Balkans/Thrace)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Balkans/Epirus)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Balkans/Macedonia)",
+            "Area Knowledge (Balkans/Serbia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Balkans/Macedonia)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Balkans/Bulgaria)",
+            "Area Knowledge (Balkans/Epirus)",
+            "Area Knowledge (Balkans/Serbia)",
+            "Area Knowledge (Balkans/Thrace)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Balkans/Moldavia)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Balkans/Mutenia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Balkans/Montenegro)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Balkans/Epirus)",
+            "Area Knowledge (Balkans/Serbia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Balkans/Mutenia)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Balkans/Bulgaria)",
+            "Area Knowledge (Balkans/Moldavia)",
+            "Area Knowledge (Balkans/Oltenia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Western Wallachia.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Balkans/Oltenia)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Balkans/Bulgaria)",
+            "Area Knowledge (Balkans/Mutenia)",
+            "Area Knowledge (Balkans/Serbia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Eastern Wallachia.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Balkans/Serbia)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Balkans/Bulgaria)",
+            "Area Knowledge (Balkans/Macedonia)",
+            "Area Knowledge (Balkans/Montenegro)",
+            "Area Knowledge (Balkans/Oltenia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Kosovo, southern Serbia and northerneastern North Macedonia.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Balkans/Thrace)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Balkans/Bulgaria)",
+            "Area Knowledge (Balkans/Macedonia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Croatia/Bosnia)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Croatia/Dalmatia)",
+            "Area Knowledge (Croatia/Hum)",
+            "Area Knowledge (Croatia/Slavonia)",
+            "Area Knowledge (Croatia/Syrmia-Lower)",
+            "Area Knowledge (Croatia/Syrmia-Upper)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Croatia/Dalmatia)",
-        "default": -3,
+        "default": -4,
         "grants": [
             "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Croatia/Hum)",
+            "Area Knowledge (Croatia/Istria)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
-        "skill": "Area Knowledge (Croatia/Herzegovina)",
-        "default": -3,
+        "skill": "Area Knowledge (Croatia/Hum)",
+        "default": -4,
         "grants": [
             "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Croatia/Dalmatia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Herzegovina & Ragusa (Dubrovnik exclave).",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Croatia/Istria)",
-        "default": -3,
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Croatia/Dalmatia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Croatia/Slavonia)",
-        "default": -3,
+        "default": -4,
         "grants": [
             "Area Knowledge (Croatia/Bosnia)",
             "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
             "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
             "Area Knowledge (Hungary/Transdanubia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Croatia/Syrmia-Lower)",
-        "default": -3,
+        "default": -4,
         "grants": [
             "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
             "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Hungary/Banat)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Croatia/Syrmia-Upper)",
-        "default": -3,
+        "default": -4,
         "grants": [
             "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
             "Area Knowledge (Croatia/Slavonia)",
             "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Hungary/Alfold)",
+            "Area Knowledge (Hungary/Alföld)",
             "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
             "Area Knowledge (Hungary/Transdanubia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
-        "skill": "Area Knowledge (Hungary/Alfold)",
-        "default": -3,
+        "skill": "Area Knowledge (Hungary/Alföld)",
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
             "Area Knowledge (Croatia/Syrmia-Upper)",
             "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
             "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
+            "Area Knowledge (Hungary/Crișana)",
             "Area Knowledge (Hungary/Transdanubia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.Also known as The Great Plains is the land between Danube and Tisza river up to the medieval Pest county.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Hungary/Banat)",
-        "default": -3,
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
             "Area Knowledge (Croatia/Syrmia-Lower)",
             "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Hungary/Alföld)",
+            "Area Knowledge (Hungary/Crișana)",
+            "Area Knowledge (Hungary/Transylvania)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. The lands between southern Carpathian mountain range, Danube, Tisza, and Mureș rivers.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Hungary/Ciscarpathia)",
-        "default": -3,
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
             "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Hungary/Crișana)",
+            "Area Knowledge (Hungary/Maramureș)",
+            "Area Knowledge (Hungary/Transcarpathia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Eastern Slovakia.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Hungary/Cisdanubia)",
-        "default": -3,
+        "default": -4,
         "grants": [
             "Area Knowledge (Croatia/Bosnia)",
             "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
+            "Area Knowledge (Croatia/Hum)",
             "Area Knowledge (Croatia/Istria)",
             "Area Knowledge (Croatia/Slavonia)",
             "Area Knowledge (Croatia/Syrmia-Lower)",
             "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
+            "Area Knowledge (Hungary/Alföld)",
             "Area Knowledge (Hungary/Banat)",
             "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
+            "Area Knowledge (Hungary/Crișana)",
+            "Area Knowledge (Hungary/Maramureș)",
             "Area Knowledge (Hungary/Transcarpathia)",
             "Area Knowledge (Hungary/Transylvania)",
             "Area Knowledge (Hungary/Transdanubia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Western Hungary.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
-        "skill": "Area Knowledge (Hungary/Crisana)",
-        "default": -3,
+        "skill": "Area Knowledge (Hungary/Crișana)",
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
+            "Area Knowledge (Hungary/Alföld)",
             "Area Knowledge (Hungary/Banat)",
             "Area Knowledge (Hungary/Ciscarpathia)",
             "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Hungary/Maramureș)",
+            "Area Knowledge (Hungary/Transylvania)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
-        "skill": "Area Knowledge (Hungary/Maramures)",
-        "default": -3,
+        "skill": "Area Knowledge (Hungary/Maramureș)",
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
             "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)",
-            "Area Knowledge (Hungary/Transdanubia)"
+            "Area Knowledge (Hungary/Crișana)",
+            "Area Knowledge (Hungary/Transylvania)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Hungary/Transcarpathia)",
-        "default": -3,
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
             "Area Knowledge (Hungary/Ciscarpathia)",
             "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transylvania)",
             "Area Knowledge (Hungary/Transdanubia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
-        "book": "Basic Set (4E)",
-        "page": 176
-    },
-    {
-        "skill": "Area Knowledge (Hungary/Transylvania)",
-        "default": -3,
-        "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
-            "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
-            "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
-            "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transdanubia)"
-        ],
-        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
-        "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Western Slovakia.",
         "book": "Basic Set (4E)",
         "page": 176
     },
     {
         "skill": "Area Knowledge (Hungary/Transdanubia)",
-        "default": -3,
+        "default": -4,
         "grants": [
-            "Area Knowledge (Croatia/Bosnia)",
-            "Area Knowledge (Croatia/Dalmatia)",
-            "Area Knowledge (Croatia/Herzegovina)",
-            "Area Knowledge (Croatia/Istria)",
             "Area Knowledge (Croatia/Slavonia)",
-            "Area Knowledge (Croatia/Syrmia-Lower)",
             "Area Knowledge (Croatia/Syrmia-Upper)",
-            "Area Knowledge (Hungary/Alfold)",
-            "Area Knowledge (Hungary/Banat)",
-            "Area Knowledge (Hungary/Ciscarpathia)",
+            "Area Knowledge (Hungary/Alföld)",
             "Area Knowledge (Hungary/Cisdanubia)",
-            "Area Knowledge (Hungary/Crisana)",
-            "Area Knowledge (Hungary/Maramures)",
-            "Area Knowledge (Hungary/Transcarpathia)",
-            "Area Knowledge (Hungary/Transylvania)"
+            "Area Knowledge (Hungary/Transcarpathia)"
         ],
         "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
         "modifiers": null,
-        "notes": "Includes Current Affairs (all specialties) and Geography (all specialies).",
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Eastern Hungary.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Hungary/Transylvania)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Hungary/Banat)",
+            "Area Knowledge (Hungary/Ciscarpathia)",
+            "Area Knowledge (Hungary/Crișana)",
+            "Area Knowledge (Hungary/Maramureș)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Apulia)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Benevato)",
+            "Area Knowledge (Italy/Calabria)",
+            "Area Knowledge (Italy/Campania)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Puglia & Basilicata",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Benevato)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Apulia)",
+            "Area Knowledge (Italy/Campania)",
+            "Area Knowledge (Italy/Lazio)",
+            "Area Knowledge (Italy/Pentapolis)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Abruzzo & Molise",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Calabria)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Apulia)",
+            "Area Knowledge (Italy/Campania)",
+            "Area Knowledge (Italy/Sicilia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Campania)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Apulia)",
+            "Area Knowledge (Italy/Benevato)",
+            "Area Knowledge (Italy/Calabria)",
+            "Area Knowledge (Italy/Lazio)",
+            "Area Knowledge (Italy/Sicilia)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Lazio)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Benevato)",
+            "Area Knowledge (Italy/Campania)",
+            "Area Knowledge (Italy/Pentapolis)",
+            "Area Knowledge (Italy/Toscana)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Liguria)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Lombadria)",
+            "Area Knowledge (Italy/Piedmonte)",
+            "Area Knowledge (Italy/Toscana)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Lombadria)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Liguria)",
+            "Area Knowledge (Italy/Pentapolis)",
+            "Area Knowledge (Italy/Piedmonte)",
+            "Area Knowledge (Italy/Toscana)",
+            "Area Knowledge (Italy/Veneto)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Includes Emilia",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Pentapolis)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Benevato)",
+            "Area Knowledge (Italy/Lazio)",
+            "Area Knowledge (Italy/Lombadria)",
+            "Area Knowledge (Italy/Toscana)",
+            "Area Knowledge (Italy/Veneto)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area. Modern Marche, Romagna & Umbria",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Piedmonte)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Liguria)",
+            "Area Knowledge (Italy/Lombadria)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Sicilia)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Calabria)",
+            "Area Knowledge (Italy/Campania)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Toscana)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Benevato)",
+            "Area Knowledge (Italy/Lazio)",
+            "Area Knowledge (Italy/Liguria)",
+            "Area Knowledge (Italy/Lombadria)",
+            "Area Knowledge (Italy/Pentapolis)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
+        "book": "Basic Set (4E)",
+        "page": 176
+    },
+    {
+        "skill": "Area Knowledge (Italy/Veneto)",
+        "default": -4,
+        "grants": [
+            "Area Knowledge (Italy/Lombadria)",
+            "Area Knowledge (Italy/Pentapolis)"
+        ],
+        "description": "This skill represents familiarity with the people, places, and politics of a given region by assimilating quickly whatever qualifies as \u201cnews\u201d in that area, and to recall it as needed. If information about other areas is available, the GM may allow you to learn additional Area Knowledge skills.\nThe GM should not require Area Knowledge rolls for ordinary situations; e.g., to find the blacksmith, tavern, or your own home. But he could require a roll to locate a smith to shoe your horse at 3 a.m., or to find the best ambush spot along a stretch of road. \u201cSecret\u201d or obscure information might give a penalty or simply be unavailable \u2013 GM\u2019s decision. For instance, Area Knowledge of Banat of Severin grants you the knowledge of the location of the Hospitalliers chapter house, but not the location of the order's secret treasury.\nThe information covered by Area Knowledge often overlaps such skills as Geography, Naturalist, and Streetwise. The difference is that Area Knowledge works for a single area; i.e. you know that the the merchant guild of Kalosca smuggles resources to the rebellious oligarch of Transdunabia, but have no special insight into the reasons and logistics of the merchants or the rebels.\nOther areas of information this skills includes are: \nBusiness:  Exchange rates, investment performance, etc.\nHeadline News:  Usually bad news, such as assassinations, plagues, and wars.\nHigh Culture:  Information on galleries, operas, symphonies, and so forth.\nPeople:  The names of and gossip on celebrities, heads of state, and the like.\nPolitics:  Election results, international treaties, etc.\nPopular Culture:  Hit songs, cool fashions, and hot products, among other things.\nRegional:  News of all kinds of the region. This is the definitive \u201ctown crier\u201d skill.\nScience & Technology:  New discoveries and inventions.\nOn a successful roll, the GM will inform you of any news that pertains to the current adventure (possibly including clues, on a good roll) or give you a small skill bonus.",
+        "modifiers": null,
+        "notes": "Includes Current Affairs (all specialties), Geography (all specialies), and the Political History of the area.",
         "book": "Basic Set (4E)",
         "page": 176
     },
