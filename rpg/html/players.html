@@ -377,6 +377,138 @@
     border-color: var(--gold-dim);
     color: var(--gold);
   }
+
+  #export-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 4px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+    padding: 0;
+  }
+  #export-btn:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+  }
+
+  /* ─── EXPORT MODAL ─── */
+  #export-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+  #export-overlay.open { display: flex; }
+
+  #export-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 340px;
+    max-width: 95vw;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+    overflow: hidden;
+  }
+
+  #export-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  #export-modal-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  #export-modal-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  #export-download-btn {
+    background: var(--accent);
+    border: 1px solid var(--gold-dim);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.82rem;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  #export-download-btn:hover:not(:disabled) { background: var(--gold-dim); }
+  #export-download-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    border-color: var(--border);
+    background: var(--surface2);
+  }
+
+  #export-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 4px;
+    transition: color 0.15s;
+  }
+  #export-close-btn:hover { color: var(--text); }
+
+  #export-modal-body {
+    padding: 12px 16px;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .export-char-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 4px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    user-select: none;
+  }
+  .export-char-row:last-child { border-bottom: none; }
+  .export-char-row:hover { color: var(--text); }
+  .export-char-row.select-all {
+    color: var(--gold-dim);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 2px;
+  }
+
+  .export-char-row input[type="checkbox"] {
+    accent-color: var(--gold);
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.0.0/math.min.js"></script>
 </head>
@@ -393,7 +525,29 @@
     </svg>
   </button>
   <input type="file" id="file-input" accept=".json" multiple style="display:none;">
+  <button id="export-btn" title="Export characters" onclick="openExportModal()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+    </svg>
+  </button>
   <select id="char-select"></select>
+</div>
+
+<!-- EXPORT MODAL -->
+<div id="export-overlay" onclick="if(event.target===this)closeExportModal()">
+  <div id="export-modal">
+    <div id="export-modal-header">
+      <span id="export-modal-title">Export Characters</span>
+      <div id="export-modal-actions">
+        <button id="export-download-btn" disabled onclick="downloadExport()">Download</button>
+        <button id="export-close-btn" onclick="closeExportModal()">✕</button>
+      </div>
+    </div>
+    <div id="export-modal-body">
+      <!-- populated by openExportModal() -->
+    </div>
+  </div>
 </div>
 
 <div id="loading-msg" style="color:var(--text-dim);font-style:italic;padding:40px 28px;font-size:0.95rem;">Loading character data…</div>
@@ -865,6 +1019,131 @@ document.getElementById('file-input').addEventListener('change', function() {
   });
   this.value = '';
 });
+
+// ─── EXPORT ──────────────────────────────────────────────────────────────────
+
+function computeAllSkills(charSkills) {
+  const allSkills = {};
+  for (const [name, val] of Object.entries(charSkills))
+    allSkills[name] = { value: val };
+  for (const [name, val] of Object.entries(charSkills)) {
+    const entry = SKILLS_DB[name];
+    if (!entry) continue;
+    for (const grantedSkill of (entry.grants || [])) {
+      if (allSkills[grantedSkill]) continue;
+      const de = SKILLS_DB[grantedSkill];
+      allSkills[grantedSkill] = { value: val + (de ? de.default : -4) };
+    }
+  }
+  function parseLang(n) {
+    const m = n.match(/^Language \(([^/]+)\/([^/]+)\/([^)]+)\)$/);
+    return m ? { group: m[1], family: m[2] } : null;
+  }
+  const charLangGroups = new Set(), charLangFamilies = new Set(), charLangsByFamily = {};
+  for (const [n, v] of Object.entries(charSkills)) {
+    const p = parseLang(n); if (!p) continue;
+    charLangGroups.add(p.group); charLangFamilies.add(p.family);
+    if (charLangsByFamily[p.family] === undefined || v > charLangsByFamily[p.family])
+      charLangsByFamily[p.family] = v;
+  }
+  for (const [name, entry] of Object.entries(SKILLS_DB)) {
+    if (allSkills[name]) continue;
+    if (name.startsWith('Language (')) {
+      const p = parseLang(name);
+      if (!p) { allSkills[name] = { value: entry.default }; continue; }
+      const inGrants = Object.keys(charSkills).some(n => {
+        const db = SKILLS_DB[n]; return db && db.grants && db.grants.includes(name);
+      });
+      if (!inGrants && !charLangGroups.has(p.group) && !charLangFamilies.has(p.family)) continue;
+      let bestVal = entry.default;
+      if (charLangFamilies.has(p.family))
+        bestVal = Math.max(bestVal, charLangsByFamily[p.family] - 3);
+      allSkills[name] = { value: bestVal };
+    } else {
+      allSkills[name] = { value: entry.default };
+    }
+  }
+  return allSkills;
+}
+
+function openExportModal() {
+  const body = document.getElementById('export-modal-body');
+  body.innerHTML = '';
+  const keys = Object.keys(CHARS);
+
+  // Select-all row
+  const allRow = document.createElement('label');
+  allRow.className = 'export-char-row select-all';
+  const allCb = document.createElement('input');
+  allCb.type = 'checkbox'; allCb.id = 'export-cb-all';
+  allCb.addEventListener('change', () => {
+    body.querySelectorAll('.export-char-cb').forEach(cb => { cb.checked = allCb.checked; });
+    updateDownloadBtn();
+  });
+  allRow.appendChild(allCb);
+  allRow.appendChild(document.createTextNode('Select all'));
+  body.appendChild(allRow);
+
+  // One row per character
+  for (const key of keys) {
+    const row = document.createElement('label');
+    row.className = 'export-char-row';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.className = 'export-char-cb'; cb.dataset.key = key;
+    cb.addEventListener('change', () => {
+      allCb.checked = [...body.querySelectorAll('.export-char-cb')].every(c => c.checked);
+      updateDownloadBtn();
+    });
+    row.appendChild(cb);
+    row.appendChild(document.createTextNode(CHARS[key].name));
+    body.appendChild(row);
+  }
+
+  updateDownloadBtn();
+  document.getElementById('export-overlay').classList.add('open');
+}
+
+function closeExportModal() {
+  document.getElementById('export-overlay').classList.remove('open');
+}
+
+function updateDownloadBtn() {
+  const any = document.querySelector('.export-char-cb:checked');
+  document.getElementById('export-download-btn').disabled = !any;
+}
+
+function downloadExport() {
+  const selected = [...document.querySelectorAll('.export-char-cb:checked')]
+    .map(cb => cb.dataset.key);
+
+  const output = {};
+  for (const key of selected) {
+    const char = CHARS[key];
+    const computedSkills = computeAllSkills(char.skills);
+    output[key] = {
+      name: char.name,
+      attributes: char.attributes,
+      skills: Object.fromEntries(
+        Object.entries(computedSkills).sort(([a],[b]) => a.localeCompare(b))
+          .map(([n, {value}]) => [n, value])
+      ),
+      abilities: char.abilities,
+      traits: char.traits,
+      gear: char.gear
+    };
+  }
+
+  const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = selected.length === 1
+    ? (selected[0] + '_export.json')
+    : 'characters_export.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  closeExportModal();
+}
 
 loadRemote();
 </script>
