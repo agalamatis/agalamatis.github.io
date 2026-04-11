@@ -2831,6 +2831,16 @@
         "page": 24
     },
     {
+        "skill": "Literacy (Latin)",
+        "default": -5,
+        "grants": [],
+        "description": "This is the ability to read and write in a language you know, see Language skill (p.23). When writiing a document you roll this skill and the result is the modifier for anyone else who uses this skill to comprehend your writting. Success means that you understand everything written, while critical success offers a deep insight by the handwriting, mannerism, choice of words, etc. Failure conveys only basic understing of the writting, similar to a broken conversation, while critical failure offers no understanding of the text.\nYou automatically can comprehend your own writtings.",
+        "modifiers": null,
+        "notes": null,
+        "book": "Basic Set (4E)",
+        "page": 24
+    },
+    {
         "skill": "Literacy (Mongolian)",
         "default": -5,
         "grants": [],
