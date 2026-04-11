@@ -837,7 +837,8 @@ function buildSkills(charSkills) {
   for (let v = minVal; v <= maxVal; v++) {
     const t = document.createElement('span');
     t.className = 'slider-tick';
-    t.textContent = v;
+    const cdf = math.erf(v / (2.958 * Math.sqrt(2))) / 2 + 0.5;
+    t.textContent = v + ' (' + (cdf * 100).toFixed(2) + '%)';
     ticksEl.appendChild(t);
   }
 
