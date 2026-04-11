@@ -348,6 +348,7 @@
     font-size: 0.9rem;
   }
 
+
   a {
     color: var(--gold);
     font-weight: bold;
@@ -609,7 +610,7 @@
 <script>
 // ─── REMOTE DATA SOURCES ──────────────────────────────────────────────────────
 const BASE_RAW = 'https://raw.githubusercontent.com/agalamatis/agalamatis.github.io/refs/heads/main/rpg/json';
-const CHAR_FILES = ['ion', 'miklos', 'casimir', 'leonardo', 'pavo'];
+const CHAR_FILES = ['casimir', 'elisabetta', 'ion', 'leonardo', 'miklos', 'pavo'];
 
 let SKILLS_DB = {};
 const CHARS = {};
@@ -786,6 +787,7 @@ function buildSkills(charSkills) {
     scoreSum += math.erf((value - mu) / (sigma * Math.sqrt(2))) / 2 + 0.5;
   }
   document.getElementById('skills-score').textContent = '(' + scoreSum.toFixed(2) + ')';
+
 }
 
 function escHtml(str) {
