@@ -358,6 +358,7 @@
     color: var(--gold-dim);
   }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.0.0/math.min.js"></script>
 </head>
 <body>
 
@@ -388,7 +389,7 @@
   <!-- SKILLS -->
   <div class="section" id="sec-skills">
     <div class="section-header" onclick="toggleSection('sec-skills')">
-      <span class="section-title">Skills</span>
+      <span class="section-title">Skills <span id="skills-score" style="font-size:0.8em; color:var(--text-dim); font-weight:normal; letter-spacing:0;"></span></span>
       <span class="chevron">▾</span>
     </div>
     <div class="section-body">
@@ -544,6 +545,15 @@ function buildSkills(charSkills) {
 
     grid.appendChild(row);
   });
+
+  // Compute sum of normal CDF(value, mu=0, sigma=2.958) for all skills
+  const mu = 0;
+  const sigma = 2.958;
+  let scoreSum = 0;
+  for (const { value } of Object.values(allSkills)) {
+    scoreSum += math.erf((value - mu) / (sigma * Math.sqrt(2))) / 2 + 0.5;
+  }
+  document.getElementById('skills-score').textContent = '(' + scoreSum.toFixed(2) + ')';
 }
 
 function escHtml(str) {
