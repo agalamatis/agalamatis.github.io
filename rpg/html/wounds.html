@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medieval Trauma: Complete Table & Clinical Effects</title>
+    <style>
+        :root {
+            --bg: #f4f1ea;
+            --text: #2c2c2c;
+            --accent: #8b0000;
+            --border: #d1c7b7;
+            --header-bg: #e0d8c3;
+            --color-border-secondary: #d1c7b7;
+            --color-background-secondary: #e0d8c3;
+            --color-text-secondary: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: #fdfaf3;
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 { border-bottom: 2px double var(--accent); padding-bottom: 10px; }
+
+        /* Table Styles */
+        .wounds-wrap { padding: 1rem 0; overflow-x: auto; margin-bottom: 50px; }
+        table { border-collapse: collapse; width: 100%; min-width: 800px; font-size: 13px; background: white; }
+        th, td { border: 1px solid var(--color-border-secondary); padding: 7px 9px; vertical-align: top; }
+        thead th { font-weight: bold; background: var(--color-background-secondary); text-align: center; }
+        td.body-part { font-weight: bold; background: var(--color-background-secondary); }
+        
+        /* Anchor Styles */
+        .w { 
+            display: block; 
+            font-size: 11px; 
+            line-height: 1.3; 
+            margin: 3px 0; 
+            padding: 4px 6px; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            color: inherit; 
+            font-weight: 500;
+        }
+        .w:hover { opacity: 0.7; text-decoration: underline; background-color: rgba(0,0,0,0.05); }
+        
+        .s1 { background: #EAF3DE; color: #27500A; }
+        .s2 { background: #FAEEDA; color: #633806; }
+        .s3 { background: #FAECE7; color: #712B13; }
+        .s4 { background: #FCEBEB; color: #791F1F; }
+
+        .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; font-size: 12px; justify-content: center; }
+        .leg { display: flex; align-items: center; gap: 5px; }
+        .leg-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+        /* Effects Section Styles */
+        .effect-section { border-top: 3px solid var(--accent); padding-top: 20px; }
+        .category-header { background-color: var(--header-bg); padding: 10px; border-left: 5px solid var(--accent); font-size: 1.4em; margin-top: 40px; text-align: left; }
+        .category-intro { font-style: italic; margin-bottom: 20px; color: #555; }
+        .wound-entry { margin-bottom: 15px; padding: 15px; border-bottom: 1px dashed var(--border); position: relative; scroll-margin-top: 20px; }
+        .wound-entry:target { background-color: #fff9e6; border: 1px solid var(--accent); }
+        .wound-name { font-weight: bold; color: var(--accent); display: block; font-size: 1.1em; margin-bottom: 5px; }
+        .effect-label { font-style: italic; font-weight: bold; text-decoration: underline; }
+        
+        .top-link {
+            float: right;
+            text-decoration: none;
+            font-size: 1.4em;
+            color: var(--accent);
+            margin-left: 10px;
+            line-height: 1;
+        }
+        .top-link:hover { transform: scale(1.2); }
+        
+        @media (prefers-color-scheme: dark) {
+            :root { --bg: #1a1a1a; --text: #e0e0e0; --accent: #ff4d4d; --border: #444; --header-bg: #2d2d2d; }
+            .container { background: #242424; }
+            table { background: #1a1a1a; }
+            .s1 { background: #27500A; color: #C0DD97; }
+            .s2 { background: #633806; color: #FAC775; }
+            .s3 { background: #712B13; color: #F5C4B3; }
+            .s4 { background: #501313; color: #F7C1C1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="top">
+    <h1>Medieval Trauma & Wound Pathophysiology</h1>
+    
+    <div class="legend">
+        <span class="leg"><span class="leg-dot s1"></span>Trivial</span>
+        <span class="leg"><span class="leg-dot s2"></span>Serious</span>
+        <span class="leg"><span class="leg-dot s3"></span>Life-changing</span>
+        <span class="leg"><span class="leg-dot s4"></span>Fatal</span>
+    </div>
+
+    <div class="wounds-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:10%">Body part</th>
+                    <th>Crushing</th>
+                    <th>Piercing</th>
+                    <th>Slashing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="body-part">Torso</td>
+                    <td>
+                        <a href="#id-bruised-rib" class="w s1">Bruised rib</a>
+                        <a href="#id-fractured-rib" class="w s2">Fractured rib</a>
+                        <a href="#id-flail-chest" class="w s3">Flail chest</a>
+                        <a href="#id-internal-haemorrhage" class="w s4">Internal haemorrhage</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-puncture" class="w s1">Superficial puncture</a>
+                        <a href="#id-pneumothorax" class="w s2">Pneumothorax</a>
+                        <a href="#id-peritonitis" class="w s3">Peritonitis</a>
+                        <a href="#id-cardiac-tamponade" class="w s4">Cardiac tamponade</a>
+                    </td>
+                    <td>
+                        <a href="#id-shallow-slash" class="w s1">Shallow slash</a>
+                        <a href="#id-deep-muscle-laceration" class="w s2">Deep muscle laceration</a>
+                        <a href="#id-evisceration" class="w s3">Evisceration</a>
+                        <a href="#id-aortic-laceration" class="w s4">Aortic laceration</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Arms</td>
+                    <td>
+                        <a href="#id-deep-bruising-arms" class="w s1">Deep bruising</a>
+                        <a href="#id-fractured-ulna-radius" class="w s2">Fractured ulna/radius</a>
+                        <a href="#id-brachial-plexus-injury" class="w s3">Brachial plexus injury</a>
+                        <a href="#id-comminuted-fracture-arterial-rupture" class="w s4">Comminuted fracture + arterial rupture</a>
+                    </td>
+                    <td>
+                        <a href="#id-muscle-puncture-arms" class="w s1">Muscle puncture</a>
+                        <a href="#id-nerve-piercing-arms" class="w s2">Nerve piercing</a>
+                        <a href="#id-brachial-artery-piercing" class="w s3">Brachial artery piercing</a>
+                        <a href="#id-deep-wound-sepsis-arms" class="w s4">Deep wound sepsis</a>
+                    </td>
+                    <td>
+                        <a href="#id-shallow-arm-slash" class="w s1">Shallow slash</a>
+                        <a href="#id-tendon-severance-arms" class="w s2">Tendon severance</a>
+                        <a href="#id-brachial-artery-laceration" class="w s3">Brachial artery laceration</a>
+                        <a href="#id-traumatic-amputation-arms" class="w s4">Traumatic amputation</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Legs</td>
+                    <td>
+                        <a href="#id-bruised-thigh" class="w s1">Bruised thigh</a>
+                        <a href="#id-fractured-tibia" class="w s2">Fractured tibia</a>
+                        <a href="#id-shattered-knee-joint" class="w s3">Shattered knee joint</a>
+                        <a href="#id-femoral-artery-rupture-legs" class="w s4">Femoral artery rupture</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-thigh-puncture" class="w s1">Superficial puncture</a>
+                        <a href="#id-deep-muscle-piercing-legs" class="w s2">Deep muscle piercing</a>
+                        <a href="#id-femoral-nerve-piercing-legs" class="w s3">Femoral nerve piercing</a>
+                        <a href="#id-femoral-artery-puncture-legs" class="w s4">Femoral artery puncture</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-leg-slash" class="w s1">Superficial slash</a>
+                        <a href="#id-hamstring-severance" class="w s2">Hamstring severance</a>
+                        <a href="#id-achilles-severance" class="w s3">Achilles severance</a>
+                        <a href="#id-femoral-artery-laceration-legs" class="w s4">Femoral artery laceration</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Torso (vitals)</td>
+                    <td>
+                        <a href="#id-bruised-kidney" class="w s1">Bruised kidney</a>
+                        <a href="#id-ruptured-spleen" class="w s2">Ruptured spleen</a>
+                        <a href="#id-crushed-liver" class="w s3">Crushed liver</a>
+                        <a href="#id-cardiac-rupture" class="w s4">Cardiac rupture</a>
+                    </td>
+                    <td>
+                        <a href="#id-lung-graze" class="w s1">Lung graze</a>
+                        <a href="#id-liver-puncture" class="w s2">Liver puncture</a>
+                        <a href="#id-kidney-piercing" class="w s3">Kidney piercing</a>
+                        <a href="#id-heart-piercing" class="w s4">Heart piercing</a>
+                    </td>
+                    <td>
+                        <a href="#id-shallow-abdominal-slash" class="w s1">Shallow abdominal slash</a>
+                        <a href="#id-diaphragm-laceration" class="w s2">Diaphragm laceration</a>
+                        <a href="#id-kidney-laceration" class="w s3">Kidney laceration</a>
+                        <a href="#id-aortic-laceration-vitals" class="w s4">Aortic laceration</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Groin</td>
+                    <td>
+                        <a href="#id-bruised-pelvis" class="w s1">Bruised pelvis</a>
+                        <a href="#id-fractured-pelvis" class="w s2">Fractured pelvis</a>
+                        <a href="#id-femoral-nerve-crush" class="w s3">Femoral nerve crush</a>
+                        <a href="#id-femoral-artery-rupture-groin" class="w s4">Femoral artery rupture</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-groin-puncture" class="w s1">Superficial puncture</a>
+                        <a href="#id-bladder-piercing" class="w s2">Bladder piercing</a>
+                        <a href="#id-hip-joint-piercing" class="w s3">Hip joint piercing</a>
+                        <a href="#id-femoral-artery-puncture-groin" class="w s4">Femoral artery puncture</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-groin-slash" class="w s1">Superficial slash</a>
+                        <a href="#id-deep-muscle-laceration-groin" class="w s2">Deep muscle laceration</a>
+                        <a href="#id-bladder-laceration" class="w s3">Bladder laceration</a>
+                        <a href="#id-femoral-artery-laceration-groin" class="w s4">Femoral artery laceration</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Hands</td>
+                    <td>
+                        <a href="#id-bruised-knuckles" class="w s1">Bruised knuckles</a>
+                        <a href="#id-fractured-metacarpals" class="w s2">Fractured metacarpals</a>
+                        <a href="#id-crushed-wrist-joint" class="w s3">Crushed wrist joint</a>
+                        <a href="#id-radial-artery-rupture" class="w s4">Radial artery rupture</a>
+                    </td>
+                    <td>
+                        <a href="#id-palm-puncture" class="w s1">Palm puncture</a>
+                        <a href="#id-tendon-piercing-hands" class="w s2">Tendon piercing</a>
+                        <a href="#id-median-nerve-piercing" class="w s3">Median nerve piercing</a>
+                        <a href="#id-deep-hand-wound-sepsis" class="w s4">Deep wound sepsis</a>
+                    </td>
+                    <td>
+                        <a href="#id-finger-cut" class="w s1">Finger cut</a>
+                        <a href="#id-tendon-severance-hands" class="w s2">Tendon severance</a>
+                        <a href="#id-finger-amputation" class="w s3">Finger amputation</a>
+                        <a href="#id-hand-amputation" class="w s4">Hand amputation</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Feet</td>
+                    <td>
+                        <a href="#id-bruised-foot-bones" class="w s1">Bruised foot bones</a>
+                        <a href="#id-fractured-metatarsals-feet" class="w s2">Fractured metatarsals</a>
+                        <a href="#id-crushed-ankle-joint" class="w s3">Crushed ankle joint</a>
+                        <a href="#id-tibial-artery-rupture" class="w s4">Tibial artery rupture</a>
+                    </td>
+                    <td>
+                        <a href="#id-foot-puncture" class="w s1">Foot puncture</a>
+                        <a href="#id-bone-deep-piercing-feet" class="w s2">Bone-deep piercing</a>
+                        <a href="#id-plantar-nerve-piercing" class="w s3">Plantar nerve piercing</a>
+                        <a href="#id-septic-gangrene-feet" class="w s4">Septic gangrene</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-foot-slash" class="w s1">Superficial slash</a>
+                        <a href="#id-toe-amputation" class="w s2">Toe amputation</a>
+                        <a href="#id-achilles-slash-feet" class="w s3">Achilles slash</a>
+                        <a href="#id-foot-amputation" class="w s4">Foot amputation</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Face</td>
+                    <td>
+                        <a href="#id-nose-fracture" class="w s1">Nose fracture</a>
+                        <a href="#id-orbital-fracture" class="w s2">Orbital fracture</a>
+                        <a href="#id-shattered-jaw" class="w s3">Shattered jaw</a>
+                        <a href="#id-airway-obstruction" class="w s4">Airway obstruction</a>
+                    </td>
+                    <td>
+                        <a href="#id-cheek-puncture" class="w s1">Cheek puncture</a>
+                        <a href="#id-facial-bone-piercing" class="w s2">Facial bone piercing</a>
+                        <a href="#id-nasal-cavity-piercing" class="w s3">Nasal cavity piercing</a>
+                        <a href="#id-visor-gap-brain-penetration" class="w s4">Visor-gap brain penetration</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-cheek-slash" class="w s1">Superficial cheek slash</a>
+                        <a href="#id-deep-facial-laceration" class="w s2">Deep facial laceration</a>
+                        <a href="#id-ear-and-cheek-severance" class="w s3">Ear and cheek severance</a>
+                        <a href="#id-facial-cleft" class="w s4">Facial cleft from axe blow</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Neck</td>
+                    <td>
+                        <a href="#id-neck-muscle-bruise" class="w s1">Neck muscle bruise</a>
+                        <a href="#id-cervical-fracture" class="w s2">Cervical fracture</a>
+                        <a href="#id-crushed-larynx" class="w s3">Crushed larynx</a>
+                        <a href="#id-spinal-cord-severance-neck" class="w s4">Spinal cord severance</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-neck-puncture" class="w s1">Superficial puncture</a>
+                        <a href="#id-trachea-piercing" class="w s2">Trachea piercing</a>
+                        <a href="#id-jugular-vein-piercing" class="w s3">Jugular vein piercing</a>
+                        <a href="#id-carotid-artery-puncture" class="w s4">Carotid artery puncture</a>
+                    </td>
+                    <td>
+                        <a href="#id-superficial-neck-slash" class="w s1">Superficial slash</a>
+                        <a href="#id-deep-muscle-slash-neck" class="w s2">Deep muscle slash</a>
+                        <a href="#id-carotid-laceration" class="w s3">Carotid laceration</a>
+                        <a href="#id-decapitation" class="w s4">Decapitation / near-decapitation</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Skull</td>
+                    <td>
+                        <a href="#id-minor-concussion" class="w s1">Minor concussion</a>
+                        <a href="#id-linear-skull-fracture" class="w s2">Linear skull fracture</a>
+                        <a href="#id-depressed-fracture" class="w s3">Depressed fracture</a>
+                        <a href="#id-comminuted-fracture-haemorrhage" class="w s4">Comminuted fracture + haemorrhage</a>
+                    </td>
+                    <td>
+                        <a href="#id-scalp-only-puncture" class="w s1">Scalp-only puncture</a>
+                        <a href="#id-shallow-skull-penetration" class="w s2">Shallow skull penetration</a>
+                        <a href="#id-war-pick-brain-penetration" class="w s3">War pick brain penetration</a>
+                        <a href="#id-full-skull-brain-penetration" class="w s4">Full skull/brain penetration</a>
+                    </td>
+                    <td>
+                        <a href="#id-scalp-laceration" class="w s1">Scalp laceration</a>
+                        <a href="#id-slash-to-bone" class="w s2">Slash to bone</a>
+                        <a href="#id-partial-skull-cleavage" class="w s3">Partial skull cleavage</a>
+                        <a href="#id-full-skull-cleavage" class="w s4">Full skull cleavage</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-part">Eyes</td>
+                    <td>
+                        <a href="#id-periorbital-swelling" class="w s1">Periorbital swelling</a>
+                        <a href="#id-retinal-detachment" class="w s2">Retinal detachment</a>
+                        <a href="#id-globe-rupture" class="w s3">Globe rupture</a>
+                        <a href="#id-orbital-crush-brain-access" class="w s4">Orbital crush + brain access</a>
+                    </td>
+                    <td>
+                        <a href="#id-corneal-puncture" class="w s1">Corneal puncture</a>
+                        <a href="#id-globe-penetration" class="w s2">Globe penetration</a>
+                        <a href="#id-total-eye-loss" class="w s3">Total eye loss</a>
+                        <a href="#id-eye-socket-to-brain-penetration" class="w s4">Eye socket to brain penetration</a>
+                    </td>
+                    <td>
+                        <a href="#id-eyelid-slash" class="w s1">Eyelid slash</a>
+                        <a href="#id-corneal-laceration" class="w s2">Corneal laceration</a>
+                        <a href="#id-eye-destruction" class="w s3">Eye destruction</a>
+                        <a href="#id-optic-nerve-severance-skull-entry" class="w s4">Optic nerve severance + skull entry</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="effect-section">
+        <h2>Clinical Progression & Prognosis</h2>
+        <p>In a pre-antibiotic era, sepsis remains a universal secondary hazard for all non-fatal entries.</p>
+
+        <h2 class="category-header">Torso & Vitals</h2>
+        <div class="category-intro">Injuries to the body core affecting respiratory and circulatory stability.</div>
+
+        <div class="wound-entry" id="id-bruised-rib">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bruised rib (Torso - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Sharp localized pain, restricted breathing.
+            <br><span class="effect-label">Long-term:</span> Chronic intercostal neuralgia; secondary pneumonia due to shallow respiration.
+        </div>
+        <div class="wound-entry" id="id-fractured-rib">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Fractured rib (Torso - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Intense pain, crepitus, risk of lung puncture.
+            <br><span class="effect-label">Long-term:</span> Malunion of bone; chronic pleurisy; potential for internal scarring.
+        </div>
+        <div class="wound-entry" id="id-flail-chest">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Flail chest (Torso - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Paradoxical chest wall movement, acute respiratory failure.
+            <br><span class="effect-label">Long-term:</span> Permanent restrictive lung disease; high mortality from respiratory fatigue.
+        </div>
+        <div class="wound-entry" id="id-internal-haemorrhage">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Internal haemorrhage (Torso - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Rapid shock, hypotension, abdominal distension.
+            <br><span class="effect-label">Long-term:</span> Multi-organ failure; death within hours without surgical intervention.
+        </div>
+        <div class="wound-entry" id="id-superficial-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial puncture (Torso - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding, localized inflammation.
+            <br><span class="effect-label">Long-term:</span> Subcutaneous abscess; risk of tetanus from soiled weaponry.
+        </div>
+        <div class="wound-entry" id="id-pneumothorax">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Pneumothorax (Torso - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Sudden dyspnea, tracheal shift, "sucking" sound.
+            <br><span class="effect-label">Long-term:</span> Permanent lung collapse; empyema (pus in the pleural cavity).
+        </div>
+        <div class="wound-entry" id="id-peritonitis">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Peritonitis (Torso - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Board-like abdominal rigidity, excruciating pain.
+            <br><span class="effect-label">Long-term:</span> Septic shock; near 100% mortality rate in a medieval setting.
+        </div>
+        <div class="wound-entry" id="id-cardiac-tamponade">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Cardiac tamponade (Torso - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Muffled heart sounds, rapid heart failure.
+            <br><span class="effect-label">Long-term:</span> Instant death due to blood filling the pericardial sac.
+        </div>
+        <div class="wound-entry" id="id-shallow-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Shallow slash (Torso - Slashing)</span>
+            <span class="effect-label">Short-term:</span> External bleeding, stinging pain.
+            <br><span class="effect-label">Long-term:</span> Extensive scarring; risk of surface infection (erysipelas).
+        </div>
+        <div class="wound-entry" id="id-deep-muscle-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Deep muscle laceration (Torso - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Loss of core mechanical strength, heavy bleeding.
+            <br><span class="effect-label">Long-term:</span> Permanent muscle atrophy; incisional hernia risk.
+        </div>
+        <div class="wound-entry" id="id-evisceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Evisceration (Torso - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Organ exposure, massive circulatory shock.
+            <br><span class="effect-label">Long-term:</span> Fatal sepsis or shock; extremely rare survival.
+        </div>
+        <div class="wound-entry" id="id-aortic-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Aortic laceration (Torso - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Sudden, massive internal/external exsanguination.
+            <br><span class="effect-label">Long-term:</span> Instant death.
+        </div>
+
+        <div class="wound-entry" id="id-bruised-kidney">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bruised kidney (Vitals - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Hematuria (blood in urine), flank pain.
+            <br><span class="effect-label">Long-term:</span> Chronic renal hypertension; potential for kidney scarring.
+        </div>
+        <div class="wound-entry" id="id-ruptured-spleen">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Ruptured spleen (Vitals - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Massive internal bleeding, Kehr's sign (left shoulder pain).
+            <br><span class="effect-label">Long-term:</span> Fatal exsanguination or permanent immune deficiency if survived.
+        </div>
+        <div class="wound-entry" id="id-crushed-liver">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Crushed liver (Vitals - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Bile peritonitis, rapid blood loss.
+            <br><span class="effect-label">Long-term:</span> High mortality; liver failure or chronic jaundice if survived.
+        </div>
+        <div class="wound-entry" id="id-cardiac-rupture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Cardiac rupture (Vitals - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Immediate cessation of circulation.
+            <br><span class="effect-label">Long-term:</span> Instant death.
+        </div>
+        <div class="wound-entry" id="id-lung-graze">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Lung graze (Vitals - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Hemoptysis (coughing blood), chest pain.
+            <br><span class="effect-label">Long-term:</span> Lung abscess; permanent pleural adhesions.
+        </div>
+        <div class="wound-entry" id="id-liver-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Liver puncture (Vitals - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Venous bleeding, localized abdominal pain.
+            <br><span class="effect-label">Long-term:</span> Chronic biliary fistula; high risk of sepsis.
+        </div>
+        <div class="wound-entry" id="id-kidney-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Kidney piercing (Vitals - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Severe renal hemorrhage, failure of urine filtration.
+            <br><span class="effect-label">Long-term:</span> Chronic pyelonephritis (kidney infection); uremia.
+        </div>
+        <div class="wound-entry" id="id-heart-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Heart piercing (Vitals - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Immediate cardiac arrest.
+            <br><span class="effect-label">Long-term:</span> Instant death.
+        </div>
+        <div class="wound-entry" id="id-shallow-abdominal-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Shallow abdominal slash (Vitals - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding, abdominal wall pain.
+            <br><span class="effect-label">Long-term:</span> Permanent scarring; potential for localized nerve damage.
+        </div>
+        <div class="wound-entry" id="id-diaphragm-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Diaphragm laceration (Vitals - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Severe respiratory distress, inability to breathe deeply.
+            <br><span class="effect-label">Long-term:</span> Diaphragmatic hernia; chronic respiratory insufficiency.
+        </div>
+        <div class="wound-entry" id="id-kidney-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Kidney laceration (Vitals - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Profuse retroperitoneal bleeding.
+            <br><span class="effect-label">Long-term:</span> Death from blood loss; permanent loss of kidney function.
+        </div>
+        <div class="wound-entry" id="id-aortic-laceration-vitals">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Aortic laceration (Vitals - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Sudden, massive internal/external exsanguination.
+            <br><span class="effect-label">Long-term:</span> Instant death.
+        </div>
+
+        <h2 class="category-header">Skull & Brain</h2>
+        <div class="category-intro">Injuries to the central nervous system and the protective cranial vault.</div>
+
+        <div class="wound-entry" id="id-minor-concussion">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Minor concussion (Skull - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Dizziness, nausea, temporary disorientation.
+            <br><span class="effect-label">Long-term:</span> Post-concussion syndrome; chronic headaches; memory issues.
+        </div>
+        <div class="wound-entry" id="id-linear-skull-fracture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Linear skull fracture (Skull - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Severe pain, scalp hematoma.
+            <br><span class="effect-label">Long-term:</span> Intracranial hemorrhage (epidural); risk of meningitis.
+        </div>
+        <div class="wound-entry" id="id-depressed-fracture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Depressed fracture (Skull - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Brain compression, potential neurological focal deficits.
+            <br><span class="effect-label">Long-term:</span> Traumatic epilepsy; permanent cognitive impairment.
+        </div>
+        <div class="wound-entry" id="id-comminuted-fracture-haemorrhage">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Comminuted fracture + haemorrhage (Skull - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Unconsciousness, elevated intracranial pressure.
+            <br><span class="effect-label">Long-term:</span> Permanent brain damage or high mortality.
+        </div>
+        <div class="wound-entry" id="id-scalp-only-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Scalp-only puncture (Skull - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Profuse bleeding (highly vascular area).
+            <br><span class="effect-label">Long-term:</span> Bone infection (osteomyelitis); localized hair loss.
+        </div>
+        <div class="wound-entry" id="id-shallow-skull-penetration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Shallow skull penetration (Skull - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Localized brain injury, risk of infection.
+            <br><span class="effect-label">Long-term:</span> Personality changes; chronic neurological deficits.
+        </div>
+        <div class="wound-entry" id="id-war-pick-brain-penetration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">War pick brain penetration (Skull - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Immediate neurological failure, seizures.
+            <br><span class="effect-label">Long-term:</span> Total disability or death.
+        </div>
+        <div class="wound-entry" id="id-full-skull-brain-penetration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Full skull/brain penetration (Skull - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Destruction of brainstem/vital centers.
+            <br><span class="effect-label">Long-term:</span> Instant death.
+        </div>
+        <div class="wound-entry" id="id-scalp-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Scalp laceration (Skull - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Severe bleeding, pain.
+            <br><span class="effect-label">Long-term:</span> Massive scarring; scalp necrosis if blood supply compromised.
+        </div>
+        <div class="wound-entry" id="id-slash-to-bone">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Slash to bone (Skull - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Bone exposure, heavy bleeding.
+            <br><span class="effect-label">Long-term:</span> Chronic bone infection; permanent sensitive scar tissue.
+        </div>
+        <div class="wound-entry" id="id-partial-skull-cleavage">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Partial skull cleavage (Skull - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Brain matter exposure, massive shock.
+            <br><span class="effect-label">Long-term:</span> High fatality; permanent paralysis or cognitive loss.
+        </div>
+        <div class="wound-entry" id="id-full-skull-cleavage">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Full skull cleavage (Skull - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Brain destruction.
+            <br><span class="effect-label">Long-term:</span> Instant death.
+        </div>
+
+        <h2 class="category-header">Face & Eyes</h2>
+        <div class="category-intro">Injuries to sensory organs and facial structures.</div>
+
+        <div class="wound-entry" id="id-nose-fracture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Nose fracture (Face - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Epistaxis (nosebleed), respiratory obstruction.
+            <br><span class="effect-label">Long-term:</span> Deviated septum; permanent facial disfigurement.
+        </div>
+        <div class="wound-entry" id="id-orbital-fracture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Orbital fracture (Face - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Diplopia (double vision), facial numbness.
+            <br><span class="effect-label">Long-term:</span> Enophthalmos (sunken eye); chronic nerve pain.
+        </div>
+        <div class="wound-entry" id="id-shattered-jaw">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Shattered jaw (Face - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Inability to masticate or speak, airway risk.
+            <br><span class="effect-label">Long-term:</span> Malnutrition; chronic osteonecrosis; social isolation.
+        </div>
+        <div class="wound-entry" id="id-airway-obstruction">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Airway obstruction (Face - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Acute suffocation.
+            <br><span class="effect-label">Long-term:</span> Immediate death without airway management.
+        </div>
+        <div class="wound-entry" id="id-cheek-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Cheek puncture (Face - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding, pain.
+            <br><span class="effect-label">Long-term:</span> Salivary gland damage; facial nerve scarring.
+        </div>
+        <div class="wound-entry" id="id-facial-bone-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Facial bone piercing (Face - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Pain, risk of sinus perforation.
+            <br><span class="effect-label">Long-term:</span> Chronic sinusitis; permanent bone pain.
+        </div>
+        <div class="wound-entry" id="id-nasal-cavity-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Nasal cavity piercing (Face - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Risk of reaching the brain or major vessels.
+            <br><span class="effect-label">Long-term:</span> Brain abscess; cerebrospinal fluid leak.
+        </div>
+        <div class="wound-entry" id="id-visor-gap-brain-penetration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Visor-gap brain penetration (Face - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Brain injury.
+            <br><span class="effect-label">Long-term:</span> Fatal or permanent profound disability.
+        </div>
+        <div class="wound-entry" id="id-superficial-cheek-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial cheek slash (Face - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding.
+            <br><span class="effect-label">Long-term:</span> Permanent cosmetic scar.
+        </div>
+        <div class="wound-entry" id="id-deep-facial-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Deep facial laceration (Face - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Massive bleeding, muscle severance.
+            <br><span class="effect-label">Long-term:</span> Facial paralysis (palsy); severe disfigurement.
+        </div>
+        <div class="wound-entry" id="id-ear-and-cheek-severance">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Ear and cheek severance (Face - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Hearing canal exposure, heavy bleeding.
+            <br><span class="effect-label">Long-term:</span> Partial deafness; permanent deformity.
+        </div>
+        <div class="wound-entry" id="id-facial-cleft">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Facial cleft from axe blow (Face - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Catastrophic tissue loss, shock.
+            <br><span class="effect-label">Long-term:</span> Death from sepsis or shock.
+        </div>
+
+        <div class="wound-entry" id="id-periorbital-swelling">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Periorbital swelling (Eyes - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Visual restriction, hematoma.
+            <br><span class="effect-label">Long-term:</span> Usually resolves; potential for subconjunctival hemorrhage.
+        </div>
+        <div class="wound-entry" id="id-retinal-detachment">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Retinal detachment (Eyes - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Visual field loss ("curtain" effect).
+            <br><span class="effect-label">Long-term:</span> Permanent blindness in the affected eye.
+        </div>
+        <div class="wound-entry" id="id-globe-rupture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Globe rupture (Eyes - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Loss of eye integrity, intense pain.
+            <br><span class="effect-label">Long-term:</span> Phthisis bulbi (eye shriveling); total blindness.
+        </div>
+        <div class="wound-entry" id="id-orbital-crush-brain-access">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Orbital crush + brain access (Eyes - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Penetration into cranial vault.
+            <br><span class="effect-label">Long-term:</span> Fatal brain trauma.
+        </div>
+        <div class="wound-entry" id="id-corneal-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Corneal puncture (Eyes - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Acute pain, blurred vision.
+            <br><span class="effect-label">Long-term:</span> Corneal scarring; partial vision loss; risk of endophthalmitis.
+        </div>
+        <div class="wound-entry" id="id-globe-penetration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Globe penetration (Eyes - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Vitreous hemorrhage, pain.
+            <br><span class="effect-label">Long-term:</span> Total eye loss; potential sympathetic ophthalmia (affecting the other eye).
+        </div>
+        <div class="wound-entry" id="id-total-eye-loss">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Total eye loss (Eyes - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Enucleation trauma.
+            <br><span class="effect-label">Long-term:</span> Blindness; risk of orbit infection.
+        </div>
+        <div class="wound-entry" id="id-eye-socket-to-brain-penetration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Eye socket to brain penetration (Eyes - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Brain penetration.
+            <br><span class="effect-label">Long-term:</span> Fatal.
+        </div>
+        <div class="wound-entry" id="id-eyelid-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Eyelid slash (Eyes - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding, eye exposure.
+            <br><span class="effect-label">Long-term:</span> Lagophthalmos (inability to close eye); corneal ulceration.
+        </div>
+        <div class="wound-entry" id="id-corneal-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Corneal laceration (Eyes - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Visual loss, ocular fluid leak.
+            <br><span class="effect-label">Long-term:</span> Permanent blindness; dense leukoma (white scar).
+        </div>
+        <div class="wound-entry" id="id-eye-destruction">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Eye destruction (Eyes - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Massive tissue trauma.
+            <br><span class="effect-label">Long-term:</span> Permanent blindness and disfigurement.
+        </div>
+        <div class="wound-entry" id="id-optic-nerve-severance-skull-entry">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Optic nerve severance + skull entry (Eyes - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Instant blindness, shock.
+            <br><span class="effect-label">Long-term:</span> Permanent blindness; high mortality.
+        </div>
+
+        <h2 class="category-header">Neck</h2>
+        <div class="category-intro">Critical conduit for air, blood, and nerves.</div>
+
+        <div class="wound-entry" id="id-neck-muscle-bruise">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Neck muscle bruise (Neck - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Pain, restricted mobility.
+            <br><span class="effect-label">Long-term:</span> Chronic stiffness; tension headaches.
+        </div>
+        <div class="wound-entry" id="id-cervical-fracture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Cervical fracture (Neck - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Risk of spinal shock.
+            <br><span class="effect-label">Long-term:</span> Permanent paralysis (quadriplegia); chronic instability.
+        </div>
+        <div class="wound-entry" id="id-crushed-larynx">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Crushed larynx (Neck - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Stridor, suffocation.
+            <br><span class="effect-label">Long-term:</span> Permanent loss of voice; death by asphyxiation.
+        </div>
+        <div class="wound-entry" id="id-spinal-cord-severance-neck">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Spinal cord severance (Neck - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Instant paralysis.
+            <br><span class="effect-label">Long-term:</span> Instant death or permanent dependence if higher than C3.
+        </div>
+        <div class="wound-entry" id="id-superficial-neck-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial neck puncture (Neck - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding.
+            <br><span class="effect-label">Long-term:</span> Potential for abscess in deep neck spaces.
+        </div>
+        <div class="wound-entry" id="id-trachea-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Trachea piercing (Neck - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Subcutaneous emphysema, air leakage.
+            <br><span class="effect-label">Long-term:</span> Chronic tracheal stenosis; permanent breathing issues.
+        </div>
+        <div class="wound-entry" id="id-jugular-vein-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Jugular vein piercing (Neck - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Profuse venous bleeding.
+            <br><span class="effect-label">Long-term:</span> Fatal hemorrhage or air embolism.
+        </div>
+        <div class="wound-entry" id="id-carotid-artery-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Carotid artery puncture (Neck - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Massive arterial spray.
+            <br><span class="effect-label">Long-term:</span> Death within seconds/minutes.
+        </div>
+        <div class="wound-entry" id="id-superficial-neck-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial neck slash (Neck - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding, stinging.
+            <br><span class="effect-label">Long-term:</span> Contracture scarring (torticollis).
+        </div>
+        <div class="wound-entry" id="id-deep-muscle-slash-neck">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Deep muscle slash (Neck - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Inability to support head.
+            <br><span class="effect-label">Long-term:</span> Chronic neck weakness; significant scarring.
+        </div>
+        <div class="wound-entry" id="id-carotid-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Carotid laceration (Neck - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Catastrophic blood loss.
+            <br><span class="effect-label">Long-term:</span> Rapid death.
+        </div>
+        <div class="wound-entry" id="id-decapitation">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Decapitation / near-decapitation (Neck - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Severance of life support.
+            <br><span class="effect-label">Long-term:</span> Instant death.
+        </div>
+
+        <h2 class="category-header">Arms & Hands</h2>
+        <div class="category-intro">Injuries primarily impacting manual utility and strength.</div>
+
+        <div class="wound-entry" id="id-deep-bruising-arms">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Deep bruising (Arms - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Hematoma, pain.
+            <br><span class="effect-label">Long-term:</span> Myositis ossificans (bone forming in muscle).
+        </div>
+        <div class="wound-entry" id="id-fractured-ulna-radius">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Fractured ulna/radius (Arms - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Loss of arm use, deformity.
+            <br><span class="effect-label">Long-term:</span> Malunion; permanent loss of rotation (pronation/supination).
+        </div>
+        <div class="wound-entry" id="id-brachial-plexus-injury">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Brachial plexus injury (Arms - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Immediate paralysis/numbness of the arm.
+            <br><span class="effect-label">Long-term:</span> Permanent "withered arm" (atrophy).
+        </div>
+        <div class="wound-entry" id="id-comminuted-fracture-arterial-rupture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Comminuted fracture + arterial rupture (Arms - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Cold extremity, pulselessness.
+            <br><span class="effect-label">Long-term:</span> Limb loss due to gangrene or fatal exsanguination.
+        </div>
+        <div class="wound-entry" id="id-muscle-puncture-arms">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Muscle puncture (Arms - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Localized weakness.
+            <br><span class="effect-label">Long-term:</span> Deep abscess; risk of chronic compartment syndrome.
+        </div>
+        <div class="wound-entry" id="id-nerve-piercing-arms">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Nerve piercing (Arms - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Paresthesia, electric pain.
+            <br><span class="effect-label">Long-term:</span> Chronic neuropathic pain; focal muscle wasting.
+        </div>
+        <div class="wound-entry" id="id-brachial-artery-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Brachial artery piercing (Arms - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Arterial bleeding.
+            <br><span class="effect-label">Long-term:</span> Ischemic contracture (Volkmann's); limb loss risk.
+        </div>
+        <div class="wound-entry" id="id-deep-wound-sepsis-arms">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Deep wound sepsis (Arms - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Fever, lymphangitis (red streaks).
+            <br><span class="effect-label">Long-term:</span> Septicemia; fatal without modern antibiotics.
+        </div>
+        <div class="wound-entry" id="id-shallow-arm-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Shallow arm slash (Arms - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Pain, minor bleeding.
+            <br><span class="effect-label">Long-term:</span> Scarring.
+        </div>
+        <div class="wound-entry" id="id-tendon-severance-arms">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Tendon severance (Arms - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Loss of finger/hand extension or flexion.
+            <br><span class="effect-label">Long-term:</span> Permanent loss of function; chronic joint stiffness.
+        </div>
+        <div class="wound-entry" id="id-brachial-artery-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Brachial artery laceration (Arms - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Heavy arterial bleeding.
+            <br><span class="effect-label">Long-term:</span> Fatal or limb amputation.
+        </div>
+        <div class="wound-entry" id="id-traumatic-amputation-arms">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Traumatic amputation (Arms - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Massive shock and hemorrhage.
+            <br><span class="effect-label">Long-term:</span> Permanent disability; high risk of fatal shock/sepsis.
+        </div>
+
+        <div class="wound-entry" id="id-bruised-knuckles">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bruised knuckles (Hands - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Swelling, inability to grip.
+            <br><span class="effect-label">Long-term:</span> Post-traumatic arthritis.
+        </div>
+        <div class="wound-entry" id="id-fractured-metacarpals">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Fractured metacarpals (Hands - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Pain, deformity of the hand.
+            <br><span class="effect-label">Long-term:</span> Malunion; chronic grip weakness.
+        </div>
+        <div class="wound-entry" id="id-crushed-wrist-joint">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Crushed wrist joint (Hands - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Complete loss of wrist motion.
+            <br><span class="effect-label">Long-term:</span> Ankylosis (fused joint); permanent manual disability.
+        </div>
+        <div class="wound-entry" id="id-radial-artery-rupture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Radial artery rupture (Hands - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Hemorrhage from wrist.
+            <br><span class="effect-label">Long-term:</span> Local tissue death; risk of exsanguination.
+        </div>
+        <div class="wound-entry" id="id-palm-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Palm puncture (Hands - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Pain in thenar/hypothenar spaces.
+            <br><span class="effect-label">Long-term:</span> Palmar space infection (fatal in medieval times); tendon adhesion.
+        </div>
+        <div class="wound-entry" id="id-tendon-piercing-hands">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Tendon piercing (Hands - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Painful movement.
+            <br><span class="effect-label">Long-term:</span> Tendon rupture; permanent trigger finger or stiffness.
+        </div>
+        <div class="wound-entry" id="id-median-nerve-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Median nerve piercing (Hands - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Loss of thumb opposition.
+            <br><span class="effect-label">Long-term:</span> Ape-hand deformity; loss of fine motor skills.
+        </div>
+        <div class="wound-entry" id="id-deep-hand-wound-sepsis">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Deep hand wound sepsis (Hands - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Severe hand swelling (cellulitis).
+            <br><span class="effect-label">Long-term:</span> Septicemia; amputation or death.
+        </div>
+        <div class="wound-entry" id="id-finger-cut">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Finger cut (Hands - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding.
+            <br><span class="effect-label">Long-term:</span> Potential localized nerve loss.
+        </div>
+        <div class="wound-entry" id="id-tendon-severance-hands">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Tendon severance (Hands - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Loss of finger utility.
+            <br><span class="effect-label">Long-term:</span> Permanent "dead" finger.
+        </div>
+        <div class="wound-entry" id="id-finger-amputation">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Finger amputation (Hands - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Hemorrhage, digit loss.
+            <br><span class="effect-label">Long-term:</span> Reduced grip; permanent loss of digit.
+        </div>
+        <div class="wound-entry" id="id-hand-amputation">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Hand amputation (Hands - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Massive shock, arterial bleeding.
+            <br><span class="effect-label">Long-term:</span> Permanent manual disability; high fatality from infection.
+        </div>
+
+        <h2 class="category-header">Legs, Feet & Groin</h2>
+        <div class="category-intro">Injuries impacting locomotion and weight bearing.</div>
+
+        <div class="wound-entry" id="id-bruised-thigh">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bruised thigh (Legs - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Hematoma, pain when walking.
+            <br><span class="effect-label">Long-term:</span> Usually resolves; potential for deep tissue scarring.
+        </div>
+        <div class="wound-entry" id="id-fractured-tibia">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Fractured tibia (Legs - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Inability to stand.
+            <br><span class="effect-label">Long-term:</span> Chronic limp; osteomyelitis; permanent shortening of the leg.
+        </div>
+        <div class="wound-entry" id="id-shattered-knee-joint">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Shattered knee joint (Legs - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Catastrophic pain, loss of limb utility.
+            <br><span class="effect-label">Long-term:</span> Fused knee (ankylosis); permanent inability to walk normally.
+        </div>
+        <div class="wound-entry" id="id-femoral-artery-rupture-legs">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Femoral artery rupture (Legs - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Massive internal/external blood loss.
+            <br><span class="effect-label">Long-term:</span> Death within minutes.
+        </div>
+        <div class="wound-entry" id="id-superficial-thigh-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial thigh puncture (Legs - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Localized pain.
+            <br><span class="effect-label">Long-term:</span> Abscess formation.
+        </div>
+        <div class="wound-entry" id="id-deep-muscle-piercing-legs">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Deep muscle piercing (Legs - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Heavy venous bleeding.
+            <br><span class="effect-label">Long-term:</span> Permanent muscle weakness; chronic pain.
+        </div>
+        <div class="wound-entry" id="id-femoral-nerve-piercing-legs">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Femoral nerve piercing (Legs - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Immediate leg collapse, loss of sensation.
+            <br><span class="effect-label">Long-term:</span> Permanent quadriceps atrophy; chronic neuropathy.
+        </div>
+        <div class="wound-entry" id="id-femoral-artery-puncture-legs">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Femoral artery puncture (Legs - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Rapid exsanguination.
+            <br><span class="effect-label">Long-term:</span> Fatal.
+        </div>
+        <div class="wound-entry" id="id-superficial-leg-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial leg slash (Legs - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Pain, bleeding.
+            <br><span class="effect-label">Long-term:</span> Permanent scar.
+        </div>
+        <div class="wound-entry" id="id-hamstring-severance">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Hamstring severance (Legs - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Loss of knee flexion.
+            <br><span class="effect-label">Long-term:</span> Permanent limp; inability to run.
+        </div>
+        <div class="wound-entry" id="id-achilles-severance">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Achilles severance (Legs - Slashing)</span>
+            <span class="effect-label">Short-term:</span> "Snapped" sensation, inability to push off foot.
+            <br><span class="effect-label">Long-term:</span> Permanent "foot drop" and locomotion disability.
+        </div>
+        <div class="wound-entry" id="id-femoral-artery-laceration-legs">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Femoral artery laceration (Legs - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Unstoppable arterial hemorrhage.
+            <br><span class="effect-label">Long-term:</span> Rapidly fatal.
+        </div>
+
+        <div class="wound-entry" id="id-bruised-pelvis">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bruised pelvis (Groin - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Pain in sitting/walking.
+            <br><span class="effect-label">Long-term:</span> Usually resolves.
+        </div>
+        <div class="wound-entry" id="id-fractured-pelvis">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Fractured pelvis (Groin - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Internal hemorrhage risk, inability to stand.
+            <br><span class="effect-label">Long-term:</span> Permanent walking disability; chronic pelvic pain.
+        </div>
+        <div class="wound-entry" id="id-femoral-nerve-crush">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Femoral nerve crush (Groin - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Leg numbness, weakness.
+            <br><span class="effect-label">Long-term:</span> Permanent nerve deficit.
+        </div>
+        <div class="wound-entry" id="id-femoral-artery-rupture-groin">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Femoral artery rupture (Groin - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Fatal shock.
+            <br><span class="effect-label">Long-term:</span> Instant death.
+        </div>
+        <div class="wound-entry" id="id-superficial-groin-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial groin puncture (Groin - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding.
+            <br><span class="effect-label">Long-term:</span> High infection risk.
+        </div>
+        <div class="wound-entry" id="id-bladder-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bladder piercing (Groin - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Hematuria, urine in the pelvic cavity.
+            <br><span class="effect-label">Long-term:</span> Peritonitis; fatal within days.
+        </div>
+        <div class="wound-entry" id="id-hip-joint-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Hip joint piercing (Groin - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Loss of leg rotation.
+            <br><span class="effect-label">Long-term:</span> Chronic joint destruction; permanent disability.
+        </div>
+        <div class="wound-entry" id="id-femoral-artery-puncture-groin">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Femoral artery puncture (Groin - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Fatal hemorrhage.
+            <br><span class="effect-label">Long-term:</span> Rapid death.
+        </div>
+        <div class="wound-entry" id="id-superficial-groin-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial groin slash (Groin - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding.
+            <br><span class="effect-label">Long-term:</span> Scarring.
+        </div>
+        <div class="wound-entry" id="id-deep-muscle-laceration-groin">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Deep muscle laceration (Groin - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Loss of adduction.
+            <br><span class="effect-label">Long-term:</span> Permanent walking instability.
+        </div>
+        <div class="wound-entry" id="id-bladder-laceration">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bladder laceration (Groin - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Urine leakage.
+            <br><span class="effect-label">Long-term:</span> Fatal sepsis.
+        </div>
+        <div class="wound-entry" id="id-femoral-artery-laceration-groin">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Femoral artery laceration (Groin - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Fatal bleeding.
+            <br><span class="effect-label">Long-term:</span> Rapid death.
+        </div>
+
+        <div class="wound-entry" id="id-bruised-foot-bones">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bruised foot bones (Feet - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Swelling, inability to bear weight.
+            <br><span class="effect-label">Long-term:</span> Chronic metatarsalgia.
+        </div>
+        <div class="wound-entry" id="id-fractured-metatarsals-feet">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Fractured metatarsals (Feet - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Deformity, pain.
+            <br><span class="effect-label">Long-term:</span> Permanent limp.
+        </div>
+        <div class="wound-entry" id="id-crushed-ankle-joint">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Crushed ankle joint (Feet - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Total loss of foot mobility.
+            <br><span class="effect-label">Long-term:</span> Fused ankle; permanent locomotor disability.
+        </div>
+        <div class="wound-entry" id="id-tibial-artery-rupture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Tibial artery rupture (Feet - Crushing)</span>
+            <span class="effect-label">Short-term:</span> Pulseless foot.
+            <br><span class="effect-label">Long-term:</span> Foot gangrene; amputation.
+        </div>
+        <div class="wound-entry" id="id-foot-puncture">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Foot puncture (Feet - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Risk of soil-borne contamination.
+            <br><span class="effect-label">Long-term:</span> Tetanus (lockjaw); fatal without vaccination.
+        </div>
+        <div class="wound-entry" id="id-bone-deep-piercing-feet">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Bone-deep piercing (Feet - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Intense pain.
+            <br><span class="effect-label">Long-term:</span> Chronic osteomyelitis (bone infection).
+        </div>
+        <div class="wound-entry" id="id-plantar-nerve-piercing">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Plantar nerve piercing (Feet - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Burning sole pain.
+            <br><span class="effect-label">Long-term:</span> Permanent neuropathy; foot ulcers.
+        </div>
+        <div class="wound-entry" id="id-septic-gangrene-feet">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Septic gangrene (Feet - Piercing)</span>
+            <span class="effect-label">Short-term:</span> Blackened tissue, foul smell.
+            <br><span class="effect-label">Long-term:</span> Fatal without amputation.
+        </div>
+        <div class="wound-entry" id="id-superficial-foot-slash">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Superficial foot slash (Feet - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Bleeding.
+            <br><span class="effect-label">Long-term:</span> Permanent scar.
+        </div>
+        <div class="wound-entry" id="id-toe-amputation">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Toe amputation (Feet - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Digit loss.
+            <br><span class="effect-label">Long-term:</span> Loss of balance; permanent disability.
+        </div>
+        <div class="wound-entry" id="id-achilles-slash-feet">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Achilles slash (Feet - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Foot drop.
+            <br><span class="effect-label">Long-term:</span> Permanent inability to walk.
+        </div>
+        <div class="wound-entry" id="id-foot-amputation">
+            <a href="#top" class="top-link" title="Back to Table">🔝</a>
+            <span class="wound-name">Foot amputation (Feet - Slashing)</span>
+            <span class="effect-label">Short-term:</span> Massive hemorrhage.
+            <br><span class="effect-label">Long-term:</span> Permanent locomotion disability; high fatality.
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+```
