@@ -1,5 +1,827 @@
 {
     "weapons": {
+        "Punch": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [0],
+                    "type": ["crush"],
+                    "skill": "Brawling"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [1],
+                    "type": ["crush"],
+                    "skill": "Brawling"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 0.5,
+            "range": null,
+            "target": "single",
+            "strength": [null, null],
+            "durability": null,
+            "weight": null,
+            "cost": null
+        },
+        "Kick": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [1],
+                    "type": ["crush"],
+                    "skill": "Brawling"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [0],
+                    "type": ["crush"],
+                    "skill": "Brawling"
+                }
+            ],
+            "parry": 1,
+            "reach": 1,
+            "range": null,
+            "target": "single",
+            "strength": [null, null],
+            "durability": null,
+            "weight": null,
+            "cost": null
+        },
+        "Teeth": {
+            "attacks": [
+                {
+                    "action": "thrust",
+                    "damage": [0],
+                    "type": ["crush"],
+                    "skill": "Brawling"
+                }
+            ],
+            "parry": null,
+            "reach": 0,
+            "range": null,
+            "target": "single",
+            "strength": [null, null],
+            "durability": null,
+            "weight": null,
+            "cost": null
+        },
+        "Fangs": {
+            "attacks": [
+                {
+                    "action": "thrust",
+                    "damage": [0],
+                    "type": ["pierce"],
+                    "skill": "Brawling"
+                }
+            ],
+            "parry": null,
+            "reach": 0,
+            "range": null,
+            "target": "single",
+            "strength": [null, null],
+            "durability": null,
+            "weight": null,
+            "cost": null
+        },
+        "Beak": {
+            "attacks": [
+                {
+                    "action": "thrust",
+                    "damage": [1],
+                    "type": ["pierce"],
+                    "skill": "Brawling"
+                }
+            ],
+            "parry": null,
+            "reach": 0,
+            "range": null,
+            "target": "single",
+            "strength": [null, null],
+            "durability": null,
+            "weight": null,
+            "cost": null
+        },
+        "Claws": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [1],
+                    "type": ["slash"],
+                    "skill": "Brawling"
+                }
+            ],
+            "parry": null,
+            "reach": 0.5,
+            "range": null,
+            "target": "single",
+            "strength": [null, null],
+            "durability": null,
+            "weight": null,
+            "cost": null
+        },
+        "Talons": {
+            "attacks": [
+                {
+                    "action": "thrust",
+                    "damage": [0],
+                    "type": ["pierce"],
+                    "skill": "Brawling"
+                }
+            ],
+            "parry": null,
+            "reach": 0.5,
+            "range": null,
+            "target": "single",
+            "strength": [null, null],
+            "durability": null,
+            "weight": null,
+            "cost": null
+        },
+        "Hatchet": {
+            "attacks": [
+                {
+                    "action": "hurl",
+                    "damage": [3],
+                    "type": ["slash"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["slash"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": "TODO",
+            "target": "single",
+            "strength": [-2, -4],
+            "durability": 200,
+            "weight": 1,
+            "cost": 40
+        },
+        "Axe": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["slash"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [1, -1],
+            "durability": 500,
+            "weight": 2,
+            "cost": 50
+        },
+        "Pickaxe": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [4],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["slash"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [0, -2],
+            "durability": 525,
+            "weight": 1.5,
+            "cost": 70
+        },
+        "Hammer": {
+            "attacks": [
+                {
+                    "action": "hurl",
+                    "damage": [5],
+                    "type": ["crush"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["crush"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": "TODO",
+            "target": "single",
+            "strength": [-2, -4],
+            "durability": 200,
+            "weight": 1,
+            "cost": 40
+        },
+        "Pick": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [4],
+                    "type": ["crush"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [0, -2],
+            "durability": 525,
+            "weight": 1.5,
+            "cost": 70
+        },
+        "Maul": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [7],
+                    "type": ["crush"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                }
+            ],
+            "parry": 1,
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [null, 2],
+            "durability": 2400,
+            "weight": 6,
+            "cost": 80
+        },
+        "Club": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [4],
+                    "type": ["crush"],
+                    "skill": "Weapon (Clubs-Maces)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [0, -2],
+            "durability": 150,
+            "weight": 1.5,
+            "cost": 20
+        },
+        "Spiked Club": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [4, 2],
+                    "type": ["crush", "pierce"],
+                    "skill": "Weapon (Clubs-Maces)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [0, -2],
+            "durability": 300,
+            "weight": 1.5,
+            "cost": 40
+        },
+        "Mace": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [6],
+                    "type": ["crush"],
+                    "skill": "Weapon (Clubs-Maces)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [1, -1],
+            "durability": 625,
+            "weight": 2.5,
+            "cost": 50
+        },
+        "Morning Star (Spiked Mace)": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [6, 2],
+                    "type": ["crush", "pierce"],
+                    "skill": "Weapon (Clubs-Maces)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [1, -1],
+            "durability": 625,
+            "weight": 2.5,
+            "cost": 50
+        },
+        "Flanged Flail": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [7],
+                    "type": ["crush"],
+                    "skill": "Weapon (Flails)"
+                }
+            ],
+            "parry": 1,
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [2, 0],
+            "durability": 900,
+            "weight": 3,
+            "cost": 60
+        },
+        "Spiked Flail": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [7, 2],
+                    "type": ["crush", "pierce"],
+                    "skill": "Weapon (Flails)"
+                }
+            ],
+            "parry": 1,
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [2, 0],
+            "durability": 900,
+            "weight": 3,
+            "cost": 60
+        },
+        "Sickle": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Sickles-Scythes)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["slash"],
+                    "skill": "Weapon (Sickles-Scythes)"
+                }
+            ],
+            "parry": 1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [-2, -4],
+            "durability": 200,
+            "weight": 1,
+            "cost": 40
+        },
+        "Scythe": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Sickles-Scythes)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["slash"],
+                    "skill": "Weapon (Sickles-Scythes)"
+                }
+            ],
+            "parry": 1,
+            "reach": 2.5,
+            "range": null,
+            "target": "single",
+            "strength": [null, 1],
+            "durability": 900,
+            "weight": 3,
+            "cost": 60
+        },
+        "Glaive / Bill-Guisearm": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [6],
+                    "type": ["slash"],
+                    "skill": "Weapon (Polearms)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [5],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Polearms)"
+                }
+            ],
+            "parry": 1,
+            "reach": 3,
+            "range": null,
+            "target": "single",
+            "strength": [null, 2],
+            "durability": 3000,
+            "weight": 5,
+            "cost": 120
+        },
+        "Halberd / Voulge": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Polearms)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [7],
+                    "type": ["slash"],
+                    "skill": "Weapon (Polearms)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [5],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Polearms)"
+                }
+            ],
+            "parry": 1,
+            "reach": 3,
+            "range": null,
+            "target": "single",
+            "strength": [null, 3],
+            "durability": 4500,
+            "weight": 6,
+            "cost": 150
+        },
+        "Javelin": {
+            "attacks": [
+                {
+                    "action": "hurl",
+                    "damage": [3],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Javelins)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["crush"],
+                    "skill": "Weapon (Staves)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [1],
+                    "type": ["crush"],
+                    "skill": "Weapon (Staves)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [3],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Javelins)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 1.5,
+            "range": "TODO",
+            "target": "single",
+            "strength": [-2, -4],
+            "durability": 150,
+            "weight": 1,
+            "cost": 30
+        },
+        "Spear": {
+            "attacks": [
+                {
+                    "action": "hurl",
+                    "damage": [4],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Javelins)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["crush"],
+                    "skill": "Weapon (Staves)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [3],
+                    "type": ["crush"],
+                    "skill": "Weapon (Staves)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [6],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Pikes)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 2.5,
+            "range": "TODO",
+            "target": "single",
+            "strength": [1, 0],
+            "durability": 750,
+            "weight": 2.5,
+            "cost": 60
+        },
+        "Pike": {
+            "attacks": [
+                {
+                    "action": "thrust",
+                    "damage": [7],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Pikes)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 4,
+            "range": null,
+            "target": "single",
+            "strength": [null, 1],
+            "durability": 1800,
+            "weight": 4,
+            "cost": 90
+        },
+        "Cane": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["crush"],
+                    "skill": "Weapon (Staves)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [1],
+                    "type": ["crush"],
+                    "skill": "Weapon (Staves)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [-1, -3],
+            "durability": 25,
+            "weight": 1,
+            "cost": 5
+        },
+        "Staff": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["crush"],
+                    "skill": "Weapon (Staves)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [3],
+                    "type": ["crush"],
+                    "skill": "Weapon (Staves)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 2.5,
+            "range": null,
+            "target": "single",
+            "strength": [null, 0],
+            "durability": 100,
+            "weight": 2,
+            "cost": 10
+        },
+        "Machette": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [4],
+                    "type": ["shash"],
+                    "skill": "Weapon (Curved Swords)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [-1, -3],
+            "durability": 3750,
+            "weight": 1.5,
+            "cost": 500
+        },
+        "Falchion / Scimitar": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["shash"],
+                    "skill": "Weapon (Curved Swords)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [0, -2],
+            "durability": 8125,
+            "weight": 2.5,
+            "cost": 650
+        },
+        "Hunting / Skinning Knife": {
+            "attacks": [
+                {
+                    "action": "hurl",
+                    "damage": [0],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Fencing Swords)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [2],
+                    "type": ["slash"],
+                    "skill": "Weapon (Curved Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [0],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Fencing Swords)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 0.5,
+            "range": "TODO",
+            "target": "single",
+            "strength": [-4, -6],
+            "durability": 75,
+            "weight": 0.5,
+            "cost": 30
+        },
+        "Cutlass": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["slash"],
+                    "skill": "Weapon (Curved Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [2],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Fencing Swords)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [-1, -3],
+            "durability": 3750,
+            "weight": 1.5,
+            "cost": 500
+        },
+        "Sabre": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [4],
+                    "type": ["slash"],
+                    "skill": "Weapon (Curved Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [3],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Fencing Swords)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [0, -2],
+            "durability": 8125,
+            "weight": 2.5,
+            "cost": 650
+        },
+        "Main-Gauche / Stiletto": {
+            "attacks": [
+                {
+                    "action": "hurl",
+                    "damage": [1],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Fencing Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [1],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Fencing Swords)"
+                }
+            ],
+            "parry": 0.1,
+            "reach": 0.5,
+            "range": "TODO",
+            "target": "single",
+            "strength": [-3, -5],
+            "durability": 100,
+            "weight": 0.5,
+            "cost": 40
+        },
+        "Estoc / Rapier": {
+            "attacks": [
+                {
+                    "action": "thrust",
+                    "damage": [4],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Fencing Swords)"
+                }
+            ],
+            "parry": 0.1,
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [-1, -3],
+            "durability": 3750,
+            "weight": 1.5,
+            "cost": 500
+        },
+        "Bastard Sword": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["slash"],
+                    "skill": "Weapon (Long Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [4],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Long Swords)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [2, 0],
+            "durability": 8125,
+            "weight": 2.5,
+            "cost": 650
+        },
+        "Great Sword": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [6],
+                    "type": ["slash"],
+                    "skill": "Weapon (Long Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [5],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Long Swords)"
+                }
+            ],
+            "parry": 0.5,
+            "reach": 2.5,
+            "range": null,
+            "target": "single",
+            "strength": [null, 3],
+            "durability": 15750,
+            "weight": 3.5,
+            "cost": 900
+        },
         "Dagger": {
             "attacks": [
                 {
@@ -16,12 +838,12 @@
                 },
                 {
                     "action": "thrust",
-                    "damage": 1,
+                    "damage": [1],
                     "type": ["pierce"],
                     "skill": "Weapon (Small Swords)"
                 }
             ],
-            "parry": "fast",
+            "parry": 0.5,
             "reach": 0.5,
             "range": "TODO",
             "target": "single",
@@ -45,7 +867,7 @@
                     "skill": "Weapon (Small Swords)"
                 }
             ],
-            "parry": "fast",
+            "parry": 0.5,
             "reach": 1.5,
             "range": null,
             "target": "single",
@@ -53,120 +875,6 @@
             "durability": 2000,
             "weight": 1,
             "cost": 400
-        },
-        "Morning Star (Spiked Mace)": {
-            "attacks": [
-                {
-                    "action": "swing",
-                    "damage": [6, 2],
-                    "type": ["crush", "pierce"],
-                    "skill": "Weapon (Clubs-Maces)"
-                }
-            ],
-            "parry": "slow",
-            "reach": 1.5,
-            "range": null,
-            "target": "single",
-            "strength": [1, -1],
-            "durability": 625,
-            "weight": 2.5,
-            "cost": 50
-        },
-        "Bastard Sword": {
-            "attacks": [
-                {
-                    "action": "swing",
-                    "damage": [3],
-                    "type": ["slash"],
-                    "skill": "Weapon (Long Swords)"
-                },
-                {
-                    "action": "thrust",
-                    "damage": [4],
-                    "type": ["pierce"],
-                    "skill": "Weapon (Long Swords)"
-                }
-            ],
-            "parry": "fast",
-            "reach": 2,
-            "range": null,
-            "target": "single",
-            "strength": [2, 0],
-            "durability": 8125,
-            "weight": 2.5,
-            "cost": 650
-        },
-        "Maul": {
-            "attacks": [
-                {
-                    "action": "swing",
-                    "damage": [7],
-                    "type": ["crush"],
-                    "skill": "Weapon (Axes-Hammers-Picks)"
-                }
-            ],
-            "parry": "slow",
-            "reach": 2,
-            "range": null,
-            "target": "single",
-            "strength": [null, 2],
-            "durability": 2400,
-            "weight": 6,
-            "cost": 80
-        },
-        "Machette": {
-            "attacks": [
-                {
-                    "action": "swing",
-                    "damage": [4],
-                    "type": ["shash"],
-                    "skill": "Weapon (Curved Swords)"
-                }
-            ],
-            "parry": "fast",
-            "reach": 1.5,
-            "range": null,
-            "target": "single",
-            "strength": [-1, -3],
-            "durability": 3750,
-            "weight": 1.5,
-            "cost": 500
-        },
-        "Falchion / Scimitar": {
-            "attacks": [
-                {
-                    "action": "swing",
-                    "damage": [5],
-                    "type": ["shash"],
-                    "skill": "Weapon (Curved Swords)"
-                }
-            ],
-            "parry": "fast",
-            "reach": 2,
-            "range": null,
-            "target": "single",
-            "strength": [0, -2],
-            "durability": 8125,
-            "weight": 2.5,
-            "cost": 650
-        },
-        "Main-Gauche / Stiletto": {
-            "attacks": [
-                {
-                    "action": "thrust",
-                    "damage": [1],
-                    "type": ["pierce"],
-                    "skill": "Weapon (Fencing Swords)"
-                }
-            ],
-            "parry": "perfect",
-            "reach": 0.5,
-            "range": null,
-            "target": "single",
-            "strength": [-3, -5],
-            "durability": 100,
-            "weight": 0.5,
-            "cost": 40
         }
     },
     "armours": {
