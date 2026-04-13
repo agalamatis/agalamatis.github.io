@@ -180,7 +180,7 @@
             },
             "description": "A heavy outer garment worn by virtually all medieval people regardless of status. Woven from sheep's wool, it offered warmth and some resistance to wind and rain. Against weapons it provides almost nothing — a thick weave might marginally slow a glancing blade, giving the faintest slash value, but a determined strike cuts straight through. It was never intended as protection.",
             "failure": "Tears and shreds; fibres split on first hard strike.",
-            "image": "/rpg/images/gear/armour/wool.jpg",
+            "image": "/rpg/images/gear/armours/wool.png",
             "components": {
                 "Cloak": {
                     "weight": 1.0,
@@ -224,7 +224,7 @@
             },
             "description": "A plain linen coat or tunic, sometimes worn as everyday dress and sometimes as a base layer beneath armour. Unlike the quilted military gambeson, this version has no stuffing and no quilting. Multiple layers of tightly woven linen do offer a small amount of resistance to blunt and slashing contact — enough to reduce bruising and minor cuts — but a thrusting weapon passes through the weave without resistance.",
             "failure": "Weave ruptures; layers separate under repeated blows.",
-            "image": "/rpg/images/gear/armour/linen.jpg",
+            "image": "/rpg/images/gear/armours/linen.png",
             "components": {
                 "Shirt": {
                     "weight": 0.3,
@@ -268,7 +268,7 @@
             },
             "description": "Animal pelts — most commonly wolf, bear, deer, or rabbit — worn as outer garments by people across all social strata, though the quality of fur signalled wealth. Fur provides negligible combat protection: the thick pile absorbs almost no impact, a blade cuts through hide easily, and a thrust meets no resistance. Its value is entirely thermal. Nonetheless it was ubiquitous in cold northern climates and commonly layered over or under other garments.",
             "failure": "?",
-            "image": "/rpg/images/gear/armour/fur.jpg",
+            "image": "/rpg/images/gear/armours/fur.png",
             "components": {
                 "Gloves": {
                     "weight": 0.2,
@@ -306,7 +306,7 @@
             },
             "description": "The workhorse armour of the medieval world. A thick jacket of linen or wool, quilted and stuffed with wool, horsehair, rags, or tow. The dense padding absorbs and disperses blunt impact remarkably well — arguably better than most armours except plate — and the layered cloth resists slashing cuts. Its weakness is piercing: a strong thrust will force the point through the fibres. It was worn alone by poorer soldiers and universally worn beneath mail and plate by everyone else. Fast, cheap, and effective, the gambeson was the foundation of medieval personal defence.",
             "failure": "Padding mats flat and compresses permanently; gradual loss of absorption.",
-            "image": "/rpg/images/gear/armour/quilted.jpg",
+            "image": "/rpg/images/gear/armours/quilted.png",
             "components": {
                 "Gambeson": {
                     "weight": 4.0,
@@ -362,7 +362,7 @@
             },
             "description": "Leather that has been hardened through boiling, wax treatment, or moulding — known as cuir bouilli. When cured properly it becomes rigid and tough, capable of turning a glancing blade or slowing a thrust. It is lighter and quieter than metal armour and relatively cheap, making it popular with scouts, light infantry, and those who needed mobility. Its crush resistance is poor; a solid mace blow deforms the leather and transmits force straight through to the body beneath.",
             "failure": "Cracks and splits; rigid sections shatter under repeated crush.",
-            "image": "/rpg/images/gear/armour/leather.jpg",
+            "image": "/rpg/images/gear/armours/leather.png",
             "components": {
                 "Cuirass": {
                     "weight": 3.5,
@@ -436,7 +436,7 @@
             },
             "description": "Hardened leather reinforced with riveted metal studs or small plates on the outer surface. The studs disrupt blade edges and help arrest the tip of a thrusting weapon, improving protection across all damage types compared to plain leather. Despite its popular appearance in fantasy settings, true studded leather as a distinct armour type was relatively rare historically — it existed on a spectrum between leather and early transitional armours. The metal reinforcement adds meaningful protection without the weight of full metal armour.",
             "failure": "Studs tear free; leather beneath cracks once rivets are gone.",
-            "image": "/rpg/images/gear/armour/studed.jpg",
+            "image": "/rpg/images/gear/armours/studed.png",
             "components": {
                 "Cuirass": {
                     "weight": 5.0,
@@ -486,7 +486,7 @@
             },
             "description": "Rows of small rigid plates — iron, bronze, or hardened leather — attached at the top and overlapping downward like fish scales or roof tiles. The hard surface deflects blade edges exceptionally well, making scale one of the strongest slash-resistant armours available short of plate. A thrusting point can be redirected by the curved surface of the scales, giving reasonable pierce protection. Crush, however, is a persistent weakness: the individual scales are not interconnected at the bottom, and blunt force causes them to flex inward against the backing material rather than spreading the impact.",
             "failure": "Scales knock free one by one; coverage gaps grow gradually.",
-            "image": "/rpg/images/gear/armour/scale.jpg",
+            "image": "/rpg/images/gear/armours/scale.png",
                 "components": {
                 "Hauberk": {
                     "weight": 8.0,
@@ -548,7 +548,7 @@
             },
             "description": "Small rectangular iron or steel plates riveted to the inside of a cloth or leather outer coat, with the rivet heads visible on the outside. The plates overlap each other, creating a continuous metal surface that distributes blows far more effectively than scale. Unlike mail, the rigid plates resist crush damage well. Unlike full plate, the many small plates allow flexibility and are cheaper to produce. Brigandine was enormously popular from the 14th to 16th centuries, worn by archers, foot soldiers, and knights alike. It was often covered in fine velvet or silk, making it a prestigious garment as much as a practical one.",
             "failure": "Internal plates crack and shift; rivets fail in clusters.",
-            "image": "/rpg/images/gear/armour/brigandine.jpg",
+            "image": "/rpg/images/gear/armours/brigandine.png",
             "components": {
                 "Coat": {
                     "weight": 7.0,
@@ -604,7 +604,7 @@
             },
             "description": "Thousands of interlocking iron or steel rings, each passing through four neighbours, forming a flexible metal fabric. Mail is outstanding against cutting and slashing attacks — a blade cannot find purchase on the rings and simply skates off — and the dense ring structure resists many thrusting points. Its critical weakness is blunt trauma: the flexible structure has nothing to stop force transferring directly through the rings into the body beneath. A mace or warhammer blow against mail may not penetrate the rings at all, yet still shatter bone. Mail was ubiquitous throughout the European Middle Ages and was always worn over a padded gambeson to offset this weakness.",
             "failure": "Rings snap open one by one; gaps accumulate slowly.",
-            "image": "/rpg/images/gear/armour/mail.jpg",
+            "image": "/rpg/images/gear/armours/mail.png",
             "components": {
                 "Hauberk": {
                     "weight": 12.0,
@@ -678,7 +678,7 @@
             },
             "description": "The pinnacle of medieval European armour craft. Large, carefully shaped and fitted steel plates covering the entire body, articulated at the joints with smaller lames and rivets. A well-made harness of plate spreads blunt impact across a large rigid surface, making it the best possible defence against crushing weapons — the maximum on our scale. Slashing attacks glance off curved surfaces. Pierce is the one remaining vulnerability: a rondel dagger, bodkin-tipped arrow, or estoc thrust can find the gaps at the armpits, visor, and joints, or drive through thinner sections with enough force. Full plate was extraordinarily expensive, requiring months of skilled labour, and was the exclusive preserve of wealthy knights and nobility.",
             "failure": "Plates deform and crack at articulation points; catastrophic failure rare.",
-            "image": "/rpg/images/gear/armour/plate.jpg",
+            "image": "/rpg/images/gear/armours/plate.png",
             "components": {
                 "Breastplate & backplate": {
                     "weight": 6.0,
