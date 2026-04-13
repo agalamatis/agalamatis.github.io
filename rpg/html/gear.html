@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Registry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0e14;
+            --surface: #151a21;
+            --primary: #c9a66b; /* Gold accent from the site */
+            --text-main: #d1d5db;
+            --text-dim: #9ca3af;
+            --border: #262f3d;
+            --accent: #e5c07b;
+            --header-bg: #1c2530;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            border-bottom: 1px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: 700;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 3rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th {
+            font-family: 'Cinzel', serif;
+            background-color: var(--header-bg);
+            color: var(--primary);
+            padding: 1.2rem 1rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--primary);
+            text-align: left;
+        }
+
+        td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .center { text-align: center; }
+        .name-cell { font-family: 'Cinzel', serif; font-weight: bold; color: #fff; font-size: 0.95rem; }
+
+        /* Expand/Collapse Toggle */
+        .toggle-btn {
+            cursor: pointer;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 22px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            border-radius: 2px;
+            margin-right: 12px;
+            font-weight: bold;
+            user-select: none;
+            color: var(--primary);
+            transition: all 0.2s ease;
+        }
+        
+        .toggle-btn:hover {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        /* Detail Row Styles */
+        .details-row { display: none; background-color: #0d1218; }
+        .details-content { display: flex; gap: 30px; padding: 25px; border-left: 3px solid var(--primary); }
+        .details-left { flex: 0 0 220px; }
+        .details-mid { flex: 1; min-width: 300px; }
+        .details-right { flex: 1.5; }
+
+        .armour-img {
+            width: 100%;
+            border-radius: 2px;
+            border: 1px solid var(--primary);
+            filter: sepia(0.3) contrast(1.1);
+            background: #000;
+        }
+
+        .comp-table {
+            width: 100%;
+            font-size: 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .comp-table th { 
+            padding: 8px; 
+            background: var(--header-bg); 
+            color: var(--primary); 
+            border-bottom: 1px solid var(--primary);
+        }
+        
+        .comp-table td { padding: 8px; border-bottom: 1px solid var(--border); }
+
+        .dmg-num { color: var(--accent); font-weight: 600; font-family: 'Cinzel', serif; }
+        .attack-tag { 
+            background: rgba(201, 166, 107, 0.05); 
+            border: 1px solid var(--border); 
+            padding: 6px 10px; 
+            margin: 4px 0; 
+            display: block; 
+        }
+
+        h4 { font-family: 'Cinzel', serif; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <h2>Weapon Arsenal</h2>
+    <div class="table-container">
+        <table id="weaponTable">
+            <thead>
+                <tr>
+                    <th>Weapon</th>
+                    <th>Actions & Damage</th>
+                    <th class="center">Reach</th>
+                    <th class="center">Parry</th>
+                    <th class="center">Durability</th>
+                    <th class="center">1H Str</th>
+                    <th class="center">2H Str</th>
+                    <th class="center">Weight</th>
+                    <th class="center">Cost</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <h2>Protection & Armour</h2>
+    <div class="table-container">
+        <table id="armourTable">
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th class="center">Crush</th>
+                    <th class="center">Pierce</th>
+                    <th class="center">Slash</th>
+                    <th class="center">Durability</th>
+                    <th class="center">Mobility</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        const gearData = {
+    "weapons": {
+        "Dagger": {
+            "attacks": [
+                {
+                    "action": "hurl",
+                    "damage": [1],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Small Swords)"
+                },
+                {
+                    "action": "swing",
+                    "damage": [1],
+                    "type": ["slash"],
+                    "skill": "Weapon (Small Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": 1,
+                    "type": ["pierce"],
+                    "skill": "Weapon (Small Swords)"
+                }
+            ],
+            "parry": "fast",
+            "reach": 0.5,
+            "range": "TODO",
+            "target": "single",
+            "strength": [-4, -6],
+            "durability": 75,
+            "weight": 0.5,
+            "cost": 30
+        },
+        "Short Sword": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [2],
+                    "type": ["slash"],
+                    "skill": "Weapon (Small Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [3],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Small Swords)"
+                }
+            ],
+            "parry": "fast",
+            "reach": 1.5,
+            "range": 2000,
+            "target": "single",
+            "strength": [-2, -4],
+            "durability": 2000,
+            "weight": 1,
+            "cost": 400
+        },
+        "Morning Star (Spiked Mace)": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [6, 2],
+                    "type": ["crush", "pierce"],
+                    "skill": "Weapon (Clubs-Maces)"
+                }
+            ],
+            "parry": "slow",
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [1, -1],
+            "durability": 625,
+            "weight": 2.5,
+            "cost": 50
+        },
+        "Bastard Sword": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [3],
+                    "type": ["slash"],
+                    "skill": "Weapon (Long Swords)"
+                },
+                {
+                    "action": "thrust",
+                    "damage": [4],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Long Swords)"
+                }
+            ],
+            "parry": "fast",
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [2, 0],
+            "durability": 8125,
+            "weight": 2.5,
+            "cost": 650
+        },
+        "Maul": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [7],
+                    "type": ["crush"],
+                    "skill": "Weapon (Axes-Hammers-Picks)"
+                }
+            ],
+            "parry": "slow",
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [null, 2],
+            "durability": 2400,
+            "weight": 6,
+            "cost": 80
+        },
+        "Machette": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [4],
+                    "type": ["shash"],
+                    "skill": "Weapon (Curved Swords)"
+                }
+            ],
+            "parry": "fast",
+            "reach": 1.5,
+            "range": null,
+            "target": "single",
+            "strength": [-1, -3],
+            "durability": 3750,
+            "weight": 1.5,
+            "cost": 500
+        },
+        "Falchion / Scimitar": {
+            "attacks": [
+                {
+                    "action": "swing",
+                    "damage": [5],
+                    "type": ["shash"],
+                    "skill": "Weapon (Curved Swords)"
+                }
+            ],
+            "parry": "fast",
+            "reach": 2,
+            "range": null,
+            "target": "single",
+            "strength": [0, -2],
+            "durability": 8125,
+            "weight": 2.5,
+            "cost": 650
+        },
+        "Main-Gauche / Stiletto": {
+            "attacks": [
+                {
+                    "action": "thrust",
+                    "damage": [1],
+                    "type": ["pierce"],
+                    "skill": "Weapon (Fencing Swords)"
+                }
+            ],
+            "parry": "perfect",
+            "reach": 0.5,
+            "range": null,
+            "target": "single",
+            "strength": [-3, -5],
+            "durability": 100,
+            "weight": 0.5,
+            "cost": 40
+        }
+    },
+    "armours": {
+        "Wool": {
+            "stats": {
+                "crush": 0,
+                "pierce": 0,
+                "slash": 1,
+                "durability": 2,
+                "mobility": 0
+            },
+            "description": "A heavy outer garment worn by virtually all medieval people regardless of status. Woven from sheep's wool, it offered warmth and some resistance to wind and rain. Against weapons it provides almost nothing — a thick weave might marginally slow a glancing blade, giving the faintest slash value, but a determined strike cuts straight through. It was never intended as protection.",
+            "failure": "Tears and shreds; fibres split on first hard strike.",
+            "image": "/rpg/images/gear/armour/wool.jpg",
+            "components": {
+                "Cloak": {
+                    "weight": 1.0,
+                    "cost": 25,
+                    "protects": ["torso", "arms"],
+                    "pair": false
+                },
+                "Hose": {
+                    "weight": 0.3,
+                    "cost": 10,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Coif": {
+                    "weight": 0.1,
+                    "cost": 8,
+                    "protects": ["skull", "neck"],
+                    "pair": false
+                },
+                "Mittens": {
+                    "weight": 0.1,
+                    "cost": 5,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Cap": {
+                    "weight": 0.1,
+                    "cost": 5,
+                    "protects": ["skull"],
+                    "pair": false
+                }
+            }
+        },
+        "Linen": {
+            "stats": {
+                "crush": 1,
+                "pierce": 0,
+                "slash": 1,
+                "durability": 3,
+                "mobility": 0
+            },
+            "description": "A plain linen coat or tunic, sometimes worn as everyday dress and sometimes as a base layer beneath armour. Unlike the quilted military gambeson, this version has no stuffing and no quilting. Multiple layers of tightly woven linen do offer a small amount of resistance to blunt and slashing contact — enough to reduce bruising and minor cuts — but a thrusting weapon passes through the weave without resistance.",
+            "failure": "Weave ruptures; layers separate under repeated blows.",
+            "image": "/rpg/images/gear/armour/linen.jpg",
+            "components": {
+                "Shirt": {
+                    "weight": 0.3,
+                    "cost": 12,
+                    "protects": ["torso", "arms"],
+                    "pair": false
+                },
+                "Chausses": {
+                    "weight": 0.3,
+                    "cost": 10,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Coif": {
+                    "weight": 0.1,
+                    "cost": 6,
+                    "protects": ["skull", "neck"],
+                    "pair": false
+                },
+                "Cap": {
+                    "weight": 0.2,
+                    "cost": 8,
+                    "protects": ["skull"],
+                    "pair": false
+                },
+                "Braies": {
+                    "weight": 0.2,
+                    "cost": 6,
+                    "protects": ["groin", "legs"],
+                    "pair": false
+                }
+            }
+        },
+        "Fur": {
+            "stats": {
+                "crush": 2,
+                "pierce": 0,
+                "slash": 2,
+                "durability": 6,
+                "mobility": 0
+            },
+            "description": "Animal pelts — most commonly wolf, bear, deer, or rabbit — worn as outer garments by people across all social strata, though the quality of fur signalled wealth. Fur provides negligible combat protection: the thick pile absorbs almost no impact, a blade cuts through hide easily, and a thrust meets no resistance. Its value is entirely thermal. Nonetheless it was ubiquitous in cold northern climates and commonly layered over or under other garments.",
+            "failure": "?",
+            "image": "/rpg/images/gear/armour/fur.jpg",
+            "components": {
+                "Gloves": {
+                    "weight": 0.2,
+                    "cost": 12,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Boots": {
+                    "weight": 0.8,
+                    "cost": 30,
+                    "protects": ["legs", "feet"],
+                    "pair": true
+                },
+                "Coat": {
+                    "weight": 2,
+                    "cost": 80,
+                    "protects": ["torso", "arms"],
+                    "pair": false
+                },
+                "Mantle": {
+                    "weight": 2.8,
+                    "cost": 145,
+                    "protects": ["torso", "arms", "skull", "neck"],
+                    "pair": false
+                }
+            }
+        },
+        "Quilted": {
+            "stats": {
+                "crush": 3,
+                "pierce": 2,
+                "slash": 4,
+                "durability": 32,
+                "mobility": -1
+            },
+            "description": "The workhorse armour of the medieval world. A thick jacket of linen or wool, quilted and stuffed with wool, horsehair, rags, or tow. The dense padding absorbs and disperses blunt impact remarkably well — arguably better than most armours except plate — and the layered cloth resists slashing cuts. Its weakness is piercing: a strong thrust will force the point through the fibres. It was worn alone by poorer soldiers and universally worn beneath mail and plate by everyone else. Fast, cheap, and effective, the gambeson was the foundation of medieval personal defence.",
+            "failure": "Padding mats flat and compresses permanently; gradual loss of absorption.",
+            "image": "/rpg/images/gear/armour/quilted.jpg",
+            "components": {
+                "Gambeson": {
+                    "weight": 4.0,
+                    "cost": 120,
+                    "protects": ["torso", "arms"],
+                    "pair": false
+                },
+                "Chausses": {
+                    "weight": 1.5,
+                    "cost": 50,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Coif": {
+                    "weight": 0.5,
+                    "cost": 30,
+                    "protects": ["skull", "neck"],
+                    "pair": false
+                },
+                "Gorget": {
+                    "weight": 0.3,
+                    "cost": 20,
+                    "protects": ["neck"],
+                    "pair": false
+                },
+                "Mittens": {
+                    "weight": 0.3,
+                    "cost": 15,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Shoes": {
+                    "weight": 0.4,
+                    "cost": 20,
+                    "protects": ["feet"],
+                    "pair": true
+                },
+                "Barding": {
+                    "weight": 28,
+                    "cost": 720,
+                    "protects": ["horse"],
+                    "pair": false
+                }
+            }
+        },
+        "Leather": {
+            "stats": {
+                "crush": 2,
+                "pierce": 3,
+                "slash": 4,
+                "durability": 24,
+                "mobility": -1
+            },
+            "description": "Leather that has been hardened through boiling, wax treatment, or moulding — known as cuir bouilli. When cured properly it becomes rigid and tough, capable of turning a glancing blade or slowing a thrust. It is lighter and quieter than metal armour and relatively cheap, making it popular with scouts, light infantry, and those who needed mobility. Its crush resistance is poor; a solid mace blow deforms the leather and transmits force straight through to the body beneath.",
+            "failure": "Cracks and splits; rigid sections shatter under repeated crush.",
+            "image": "/rpg/images/gear/armour/leather.jpg",
+            "components": {
+                "Cuirass": {
+                    "weight": 3.5,
+                    "cost": 180,
+                    "protects": ["torso"],
+                    "pair": false
+                },
+                "Vambraces": {
+                    "weight": 0.8,
+                    "cost": 60,
+                    "protects": ["arms"],
+                    "pair": true
+                },
+                "Greaves": {
+                    "weight": 1.0,
+                    "cost": 70,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Boots": {
+                    "weight": 1.2,
+                    "cost": 55,
+                    "protects": ["feet", "legs"],
+                    "pair": true
+                },
+                "Shoes": {
+                    "weight": 0.6,
+                    "cost": 25,
+                    "protects": ["feet"],
+                    "pair": true
+                },
+                "Gloves": {
+                    "weight": 0.2,
+                    "cost": 20,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Coif": {
+                    "weight": 0.4,
+                    "cost": 35,
+                    "protects": ["skull", "neck"],
+                    "pair": false
+                },
+                "Gorget": {
+                    "weight": 0.3,
+                    "cost": 30,
+                    "protects": ["neck"],
+                    "pair": false
+                },
+                "Codpiece": {
+                    "weight": 0.2,
+                    "cost": 15,
+                    "protects": ["groin"],
+                    "pair": false
+                },
+                "Barding": {
+                    "weight": 15,
+                    "cost": 700,
+                    "protects": ["horse"],
+                    "pair": false
+                }
+            }
+        },
+        "Studded": {
+            "stats": {
+                "crush": 3,
+                "pierce": 4,
+                "slash": 5,
+                "durability": 35,
+                "mobility": -1
+            },
+            "description": "Hardened leather reinforced with riveted metal studs or small plates on the outer surface. The studs disrupt blade edges and help arrest the tip of a thrusting weapon, improving protection across all damage types compared to plain leather. Despite its popular appearance in fantasy settings, true studded leather as a distinct armour type was relatively rare historically — it existed on a spectrum between leather and early transitional armours. The metal reinforcement adds meaningful protection without the weight of full metal armour.",
+            "failure": "Studs tear free; leather beneath cracks once rivets are gone.",
+            "image": "/rpg/images/gear/armour/studed.jpg",
+            "components": {
+                "Cuirass": {
+                    "weight": 5.0,
+                    "cost": 320,
+                    "protects": ["torso"],
+                    "pair": false
+                },
+                "Vambraces": {
+                    "weight": 1.2,
+                    "cost": 110,
+                    "protects": ["arms"],
+                    "pair": true
+                },
+                "Gauntlets": {
+                    "weight": 0.7,
+                    "cost": 80,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Greaves": {
+                    "weight": 1.5,
+                    "cost": 130,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Boots": {
+                    "weight": 1.8,
+                    "cost": 110,
+                    "protects": ["feet", "legs"],
+                    "pair": true
+                },
+                "Gorget": {
+                    "weight": 0.4,
+                    "cost": 60,
+                    "protects": ["neck"],
+                    "pair": false
+                }
+                }
+            },
+        "Scale": {
+            "stats": {
+                "crush": 3,
+                "pierce": 4,
+                "slash": 7,
+                "durability": 70,
+                "mobility": -2
+            },
+            "description": "Rows of small rigid plates — iron, bronze, or hardened leather — attached at the top and overlapping downward like fish scales or roof tiles. The hard surface deflects blade edges exceptionally well, making scale one of the strongest slash-resistant armours available short of plate. A thrusting point can be redirected by the curved surface of the scales, giving reasonable pierce protection. Crush, however, is a persistent weakness: the individual scales are not interconnected at the bottom, and blunt force causes them to flex inward against the backing material rather than spreading the impact.",
+            "failure": "Scales knock free one by one; coverage gaps grow gradually.",
+            "image": "/rpg/images/gear/armour/scale.jpg",
+                "components": {
+                "Hauberk": {
+                    "weight": 8.0,
+                    "cost": 550,
+                    "protects": ["torso", "arms"],
+                    "pair": false
+                },
+                "Cuirass": {
+                    "weight": 5.0,
+                    "cost": 380,
+                    "protects": ["torso"],
+                    "pair": false
+                },
+                "Skirt / Faulds": {
+                    "weight": 2.5,
+                    "cost": 200,
+                    "protects": ["groin", "legs"],
+                    "pair": false
+                },
+                "Pauldrons": {
+                    "weight": 1.5,
+                    "cost": 160,
+                    "protects": ["arms"],
+                    "pair": true
+                },
+                "Greaves": {
+                    "weight": 1.5,
+                    "cost": 150,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Coif": {
+                    "weight": 1.2,
+                    "cost": 140,
+                    "protects": ["skull", "neck"],
+                    "pair": false
+                },
+                "Gorget": {
+                    "weight": 0.5,
+                    "cost": 80,
+                    "protects": ["neck"],
+                    "pair": false
+                },
+                "Boots": {
+                    "weight": 1.2,
+                    "cost": 130,
+                    "protects": ["feet"],
+                    "pair": true
+                }
+            }
+        },
+        "Brigandine": {
+            "stats": {
+                "crush": 5,
+                "pierce": 6,
+                "slash": 7,
+                "durability": 84,
+                "mobility": -2
+            },
+            "description": "Small rectangular iron or steel plates riveted to the inside of a cloth or leather outer coat, with the rivet heads visible on the outside. The plates overlap each other, creating a continuous metal surface that distributes blows far more effectively than scale. Unlike mail, the rigid plates resist crush damage well. Unlike full plate, the many small plates allow flexibility and are cheaper to produce. Brigandine was enormously popular from the 14th to 16th centuries, worn by archers, foot soldiers, and knights alike. It was often covered in fine velvet or silk, making it a prestigious garment as much as a practical one.",
+            "failure": "Internal plates crack and shift; rivets fail in clusters.",
+            "image": "/rpg/images/gear/armour/brigandine.jpg",
+            "components": {
+                "Coat": {
+                    "weight": 7.0,
+                    "cost": 700,
+                    "protects": ["torso", "arms"],
+                    "pair": false
+                },
+                "Vest": {
+                    "weight": 5.0,
+                    "cost": 520,
+                    "protects": ["torso"],
+                    "pair": false
+                },
+                "Sleeves": {
+                    "weight": 2.0,
+                    "cost": 250,
+                    "protects": ["arms"],
+                    "pair": true
+                },
+                "Gauntlets": {
+                    "weight": 0.8,
+                    "cost": 140,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Leg Guards": {
+                    "weight": 2.5,
+                    "cost": 280,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Gorget": {
+                    "weight": 0.5,
+                    "cost": 110,
+                    "protects": ["neck"],
+                    "pair": false
+                },
+                "Barding": {
+                    "weight": 34,
+                    "cost": 4300,
+                    "protects": ["horse"],
+                    "pair": false
+                }
+            }
+        },
+        "Mail": {
+            "stats": {
+                "crush": 2,
+                "pierce": 6,
+                "slash": 7,
+                "durability": 105,
+                "mobility": -2
+            },
+            "description": "Thousands of interlocking iron or steel rings, each passing through four neighbours, forming a flexible metal fabric. Mail is outstanding against cutting and slashing attacks — a blade cannot find purchase on the rings and simply skates off — and the dense ring structure resists many thrusting points. Its critical weakness is blunt trauma: the flexible structure has nothing to stop force transferring directly through the rings into the body beneath. A mace or warhammer blow against mail may not penetrate the rings at all, yet still shatter bone. Mail was ubiquitous throughout the European Middle Ages and was always worn over a padded gambeson to offset this weakness.",
+            "failure": "Rings snap open one by one; gaps accumulate slowly.",
+            "image": "/rpg/images/gear/armour/mail.jpg",
+            "components": {
+                "Hauberk": {
+                    "weight": 12.0,
+                    "cost": 2200,
+                    "protects": ["torso", "arms"],
+                    "pair": false
+                },
+                "Shirt": {
+                    "weight": 5.0,
+                    "cost": 950,
+                    "protects": ["torso"],
+                    "pair": false
+                },
+                "Coif": {
+                    "weight": 2.5,
+                    "cost": 650,
+                    "protects": ["skull", "neck"],
+                    "pair": false
+                },
+                "Chausses": {
+                    "weight": 6.0,
+                    "cost": 1100,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Mufflers": {
+                    "weight": 1.0,
+                    "cost": 350,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Voiders": {
+                    "weight": 1.0,
+                    "cost": 300,
+                    "protects": ["arms"],
+                    "pair": true
+                },
+                "Pixane": {
+                    "weight": 0.8,
+                    "cost": 250,
+                    "protects": ["neck"],
+                    "pair": false
+                },
+                "Skirt": {
+                    "weight": 2.0,
+                    "cost": 450,
+                    "protects": ["groin", "legs"],
+                    "pair": false
+                },
+                "Sabatons": {
+                    "weight": 1.5,
+                    "cost": 380,
+                    "protects": ["feet"],
+                    "pair": true
+                },
+                "Barding": {
+                    "weight": 52,
+                    "cost": 10000,
+                    "protects": ["horse"],
+                    "pair": false
+                }
+            }
+        },
+        "Plate": {
+            "stats": {
+                "crush": 8,
+                "pierce": 6,
+                "slash": 7,
+                "durability": 160,
+                "mobility": -3
+            },
+            "description": "The pinnacle of medieval European armour craft. Large, carefully shaped and fitted steel plates covering the entire body, articulated at the joints with smaller lames and rivets. A well-made harness of plate spreads blunt impact across a large rigid surface, making it the best possible defence against crushing weapons — the maximum on our scale. Slashing attacks glance off curved surfaces. Pierce is the one remaining vulnerability: a rondel dagger, bodkin-tipped arrow, or estoc thrust can find the gaps at the armpits, visor, and joints, or drive through thinner sections with enough force. Full plate was extraordinarily expensive, requiring months of skilled labour, and was the exclusive preserve of wealthy knights and nobility.",
+            "failure": "Plates deform and crack at articulation points; catastrophic failure rare.",
+            "image": "/rpg/images/gear/armour/plate.jpg",
+            "components": {
+                "Breastplate & backplate": {
+                    "weight": 6.0,
+                    "cost": 4500,
+                    "protects": ["torso"],
+                    "pair": false
+                },
+                "Faulds & Tassets": {
+                    "weight": 2.5,
+                    "cost": 1800,
+                    "protects": ["groin", "legs"],
+                    "pair": false
+                },
+                "Culet": {
+                    "weight": 0.8,
+                    "cost": 600,
+                    "protects": ["groin"],
+                    "pair": false
+                },
+                "Pauldrons": {
+                    "weight": 2.5,
+                    "cost": 2200,
+                    "protects": ["arms"],
+                    "pair": true
+                },
+                "Gauntlets": {
+                    "weight": 1.5,
+                    "cost": 1400,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Sabatons": {
+                    "weight": 1.5,
+                    "cost": 1200,
+                    "protects": ["feet"],
+                    "pair": true
+                },
+                "Greaves": {
+                    "weight": 2.5,
+                    "cost": 1800,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Gorget": {
+                    "weight": 0.8,
+                    "cost": 800,
+                    "protects": ["neck"],
+                    "pair": false
+                },
+                "Great helm": {
+                    "weight": 2.5,
+                    "cost": 2800,
+                    "protects": ["skull", "face", "neck"],
+                    "pair": false
+                },
+                "Bascinet": {
+                    "weight": 2.0,
+                    "cost": 2200,
+                    "protects": ["skull", "neck"],
+                    "pair": false
+                },
+                "Sallet": {
+                    "weight": 1.8,
+                    "cost": 1800,
+                    "protects": ["skull", "face"],
+                    "pair": false
+                },
+                "Visor": {
+                    "weight": 0.5,
+                    "cost": 600,
+                    "protects": ["face", "eyes"],
+                    "pair": false
+                },
+                "Barding": {
+                    "weight": 40,
+                    "cost": 30000,
+                    "protects": ["horse"],
+                    "pair": false
+                }
+            }
+        }
+    }
+};
+
+        const fmtDamage = (n) => n === null || n === undefined ? '—' : (n === 0 ? `±${n}` : (n > 0 ? `+${n}` : n));
+
+        // Weapons Table
+        const wBody = document.querySelector("#weaponTable tbody");
+        Object.entries(gearData.weapons).forEach(([name, w]) => {
+            const row = wBody.insertRow();
+            const attackHtml = w.attacks.map(a => {
+                const dmgArr = Array.isArray(a.damage) ? a.damage : [a.damage];
+                const dmgString = dmgArr.map((d, i) => `<span class="dmg-num">${fmtDamage(d)}</span> ${a.type[i]}`).join(' / ');
+                return `<div class="attack-tag"><strong>${a.action}</strong>: ${dmgString} <span style="display:block; font-size:0.7rem; color:var(--text-dim)">${a.skill}</span></div>`;
+            }).join('');
+
+            row.innerHTML = `
+                <td class="name-cell">${name}</td>
+                <td>${attackHtml}</td>
+                <td class="center">${w.reach}</td>
+                <td class="center">${w.parry}</td>
+                <td class="center">${w.durability || '—'}</td>
+                <td class="center">${fmtDamage(w.strength[0])}</td>
+                <td class="center">${fmtDamage(w.strength[1])}</td>
+                <td class="center">${w.weight}</td>
+                <td class="center">${w.cost}</td>
+            `;
+        });
+
+        // Armours Table
+        const aBody = document.querySelector("#armourTable tbody");
+        Object.entries(gearData.armours).forEach(([name, a], index) => {
+            const mainRow = aBody.insertRow();
+            const detailRow = aBody.insertRow();
+            detailRow.className = 'details-row';
+            detailRow.id = `details-${index}`;
+
+            mainRow.innerHTML = `
+                <td><span class="toggle-btn" onclick="toggleDetails(${index})">+</span> <span class="name-cell">${name}</span></td>
+                <td class="center dmg-num">${a.stats.crush}</td>
+                <td class="center dmg-num">${a.stats.pierce}</td>
+                <td class="center dmg-num">${a.stats.slash}</td>
+                <td class="center">${a.stats.durability}</td>
+                <td class="center">${a.stats.mobility}</td>
+            `;
+
+            let compRows = '';
+            for (const [cName, c] of Object.entries(a.components)) {
+                compRows += `<tr><td class="name-cell" style="font-size:0.75rem">${cName}</td><td>${Array.isArray(c.protects) ? c.protects.join(', ') : c.protects}</td><td>${c.weight}</td><td>${c.cost}</td></tr>`;
+            }
+
+            detailRow.innerHTML = `
+                <td colspan="6">
+                    <div class="details-content">
+                        <div class="details-left"><img class="armour-img" src="${a.image}" alt="${name}"></div>
+                        <div class="details-mid">
+                            <h4 style="margin:0 0 10px 0; color:var(--primary)">Description</h4>
+                            <p style="font-size:0.8rem; color:var(--text-main)">${a.description}</p>
+                            <h4 style="margin:15px 0 10px 0; color:var(--accent)">Failure Condition</h4>
+                            <p style="font-size:0.8rem; color:var(--text-dim)">${a.failure}</p>
+                        </div>
+                        <div class="details-right">
+                            <h4 style="margin:0 0 10px 0; color:var(--primary)">Components</h4>
+                            <table class="comp-table">
+                                <thead><tr><th>Part</th><th>Protects</th><th>Weight</th><th>Cost</th></tr></thead>
+                                <tbody>${compRows}</tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            `;
+        });
+
+        function toggleDetails(idx) {
+            const row = document.getElementById(`details-${idx}`);
+            const btn = document.querySelectorAll('.toggle-btn')[idx];
+            if (row.style.display === 'table-row') {
+                row.style.display = 'none';
+                btn.textContent = '+';
+            } else {
+                row.style.display = 'table-row';
+                btn.textContent = '-';
+            }
+        }
+    </script>
+</body>
+</html>
