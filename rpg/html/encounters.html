@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encounters</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#16161c;--bg2:#1e1e27;--bg3s:#262632;--bg4:#30303e;--bg5:#3a3a4c;
+  --border:#333344;--border2:#4a4a60;--text:#e4e4f0;--text2:#9898b4;--text3:#585870;
+  --accent:#7c6fe0;--accent2:#5a4fb8;--accenthl:#9b8ef5;
+  --green:#4ade80;--red:#f87171;--amber:#fbbf24;--blue:#60a5fa;--teal:#2dd4bf;
+  --r:6px;--r2:10px;
+}
+body{background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;font-size:14px;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+button{background:var(--bg3s);border:1px solid var(--border);color:var(--text);padding:5px 12px;border-radius:var(--r);cursor:pointer;font-size:13px;transition:background .15s,border-color .15s}
+button:hover{background:var(--bg4);border-color:var(--border2)}
+button.primary{background:var(--accent2);border-color:var(--accent);color:#fff}
+button.primary:hover{background:var(--accent)}
+select,input[type=text],input[type=number]{background:var(--bg3s);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:var(--r);font-size:13px;width:100%}
+select:focus,input:focus{outline:none;border-color:var(--accent)}
+label{font-size:12px;color:var(--text2);display:block;margin-bottom:3px}
+#topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:7px 14px;display:flex;align-items:center;gap:8px;flex-shrink:0}
+#topbar h1{font-size:16px;font-weight:700;color:var(--text);letter-spacing:.5px;margin-right:4px}
+.sep{width:1px;height:24px;background:var(--border)}
+#main{display:flex;flex:1;overflow:hidden}
+#left-col{width:290px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sec-hdr{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1.2px;padding:6px 12px 4px;text-transform:uppercase;border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0}
+.sec-body{overflow-y:auto;padding:2px 0}
+#queue-sec{display:flex;flex-direction:column;flex-shrink:0;max-height:210px;border-bottom:1px solid var(--border)}
+#active-sec{display:flex;flex-direction:column;flex-shrink:0;max-height:240px;border-bottom:1px solid var(--border)}
+#roster-sec{display:flex;flex-direction:column;flex:1;min-height:0;border-bottom:1px solid var(--border)}
+#log-sec{display:flex;flex-direction:column;flex-shrink:0;height:150px}
+.char-row{display:flex;align-items:center;gap:5px;padding:5px 10px;cursor:pointer;border-left:3px solid transparent;transition:background .1s}
+.char-row:hover{background:var(--bg3s)}
+.char-row.selected{background:var(--bg4);border-left-color:var(--accent)}
+.char-row.acting{border-left-color:var(--amber)}
+.char-row.defending{border-left-color:var(--blue)}
+.init-badge{font-size:10px;font-weight:700;color:var(--amber);min-width:42px;background:rgba(251,191,36,.12);padding:2px 5px;border-radius:4px;text-align:center;flex-shrink:0}
+.char-name{flex:1;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.act-label{font-size:10px;color:var(--text3);white-space:nowrap;flex-shrink:0}
+.action-btn{font-size:11px;padding:2px 8px;flex-shrink:0;background:var(--accent2);border-color:var(--accent);color:#fff}
+.resolve-btn{font-size:11px;padding:2px 8px;flex-shrink:0;background:#166534;border-color:var(--green);color:var(--green);font-weight:700}
+.resolve-btn:hover{background:#15803d}
+.log-entry{font-size:11px;color:var(--text2);padding:4px 10px;border-bottom:1px solid var(--border);line-height:1.5}
+.log-ts{color:var(--accenthl);font-weight:700}
+#right-col{flex:1;display:flex;flex-direction:column;overflow:hidden}
+#map-container{flex:1;position:relative;overflow:hidden;background:#0e0e14}
+#map-canvas{display:block;cursor:crosshair}
+#map-toolbar{position:absolute;top:8px;right:8px;display:flex;gap:5px;z-index:10}
+#map-toolbar button{padding:3px 10px;font-size:14px;font-weight:700}
+#map-coords{position:absolute;bottom:6px;left:8px;font-size:11px;color:var(--text2);background:rgba(0,0,0,.7);padding:2px 8px;border-radius:4px;pointer-events:none}
+#map-hint{position:absolute;top:8px;left:8px;font-size:12px;color:var(--amber);background:rgba(0,0,0,.75);padding:4px 10px;border-radius:4px;pointer-events:none;display:none;border:1px solid var(--amber)}
+#stats-panel{height:200px;background:var(--bg2);border-top:1px solid var(--border);overflow-y:auto;padding:10px 14px;flex-shrink:0}
+#stats-panel h3{font-size:13px;font-weight:700;margin-bottom:7px;color:var(--text)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:5px;margin-bottom:7px}
+.stat-box{background:var(--bg3s);border:1px solid var(--border);border-radius:var(--r);padding:4px 7px}
+.sk{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.4px}
+.sv{font-size:14px;font-weight:700;color:var(--text)}
+.sv.pos{color:var(--green)}.sv.neg{color:var(--red)}.sv.neu{color:var(--amber)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;display:flex;align-items:center;justify-content:center}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r2);width:580px;max-width:96vw;max-height:92vh;display:flex;flex-direction:column;overflow:hidden}
+.modal.wide{width:800px}
+.modal-hdr{padding:13px 18px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.modal-hdr h2{font-size:15px;font-weight:700}
+.modal-body{padding:14px 18px;overflow-y:auto;flex:1}
+.modal-footer{padding:10px 18px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;flex-shrink:0}
+.field{margin-bottom:11px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px}
+.card{background:var(--bg3s);border:1px solid var(--border);border-radius:var(--r2);padding:12px 14px;margin-bottom:14px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--accenthl)}
+.file-area{border:2px dashed var(--border2);border-radius:var(--r2);padding:20px;text-align:center;color:var(--text2);cursor:pointer;transition:border-color .2s,background .2s}
+.file-area:hover{border-color:var(--accent);background:rgba(124,111,224,.06)}
+.file-area input{display:none}
+.ok{color:var(--green);font-weight:700}.err{color:var(--red)}
+.drop-panel{position:fixed;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r2);box-shadow:0 8px 40px rgba(0,0,0,.6);z-index:500;min-width:200px;max-height:380px;overflow-y:auto;padding:4px 0}
+.drop-item{padding:7px 14px;cursor:pointer;font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+.drop-item:hover{background:var(--bg4)}
+.drop-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;padding:7px 14px 3px}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <h1>⚔ Encounters</h1>
+  <div class="sep"></div>
+  <button id="btn-load" class="primary">⊕ Load Files</button>
+  <button id="btn-export">↓ Export JSON</button>
+</div>
+<div id="main">
+  <div id="left-col">
+    <div id="queue-sec"><div class="sec-hdr">Initiative Queue</div><div class="sec-body" id="queue-body"></div></div>
+    <div id="active-sec"><div class="sec-hdr">Active</div><div class="sec-body" id="active-body"></div></div>
+    <div id="roster-sec"><div class="sec-hdr">Roster</div><div class="sec-body" id="roster-body"></div></div>
+    <div id="log-sec"><div class="sec-hdr">Combat Log</div><div class="sec-body" id="log-body"></div></div>
+  </div>
+  <div id="right-col">
+    <div id="map-container">
+      <canvas id="map-canvas"></canvas>
+      <div id="map-toolbar">
+        <button id="btn-zi">+</button>
+        <button id="btn-zo">−</button>
+        <button id="btn-fit" title="Fit view">⊡</button>
+      </div>
+      <div id="map-coords">x: 0.00, y: 0.00</div>
+      <div id="map-hint">Click on the map to set destination</div>
+    </div>
+    <div id="stats-panel"><div id="stats-content" style="color:var(--text3);font-size:13px;padding-top:4px">Select a character to view stats.</div></div>
+  </div>
+</div>
+<script>
+// ══ STATE ══
+const S={
+  raw:{characters:null,gear:null,skills:null},
+  characters:[],
+  selectedId:null,
+  queue:[],
+  log:[],
+  mapImg:null,
+  zoom:1,pan:{x:0,y:0},
+  hoverCharId:null,hoverTargetId:null,
+  mouseCanvas:null,
+  awaitingMapClick:false,awaitingMapClickChar:null,
+};
+
+// ══ ACTIONS ══
+const ACTIONS={
+  a:{label:'Swing',      needsTarget:true, needsCoords:false,isCombat:true, includeSelf:false},
+  b:{label:'Thrust',     needsTarget:true, needsCoords:false,isCombat:true, includeSelf:false},
+  c:{label:'Hurl',       needsTarget:true, needsCoords:false,isCombat:true, includeSelf:false},
+  d:{label:'Shoot',      needsTarget:true, needsCoords:false,isCombat:true, includeSelf:false},
+  e:{label:'Charge',     needsTarget:true, needsCoords:false,isCombat:true, includeSelf:false},
+  f:{label:'Grapple/Pin',needsTarget:true, needsCoords:false,isCombat:true, includeSelf:false},
+  g:{label:'Slam/Tackle',needsTarget:true, needsCoords:false,isCombat:true, includeSelf:false},
+  h:{label:'Defend',     needsTarget:false,needsCoords:false,isCombat:false,isDefend:true},
+  i:{label:'First Aid',  needsTarget:true, needsCoords:false,isCombat:false,includeSelf:true},
+  j:{label:'Move',       needsTarget:false,needsCoords:true, isCombat:false},
+  k:{label:'Flee',       needsTarget:false,needsCoords:true, isCombat:false},
+};
+
+// ══ MATH ══
+function erf(x){
+  const p=.3275911,a=[.254829592,-.284496736,1.421413741,-1.453152027,1.061405429];
+  const s=x<0?-1:1;x=Math.abs(x);
+  const t=1/(1+p*x);
+  return s*(1-(((((a[4]*t+a[3])*t)+a[2])*t+a[1])*t+a[0])*t*Math.exp(-x*x));
+}
+function rollInit(x,react=false){
+  return react?(0.5+0.25*erf(-(x)/(2.958*Math.sqrt(2)))):(1+0.5*erf(-(x)/(2.958*Math.sqrt(2))));
+}
+function rollResolve(x){return Math.exp(-0.5*Math.pow(x/2.958,2))/(2.958*Math.sqrt(2*Math.PI))}
+function rnd(){return Math.random()*10-5}
+
+// ══ GEAR HELPERS (real schema: gear.weapons = {name:{attacks,parry,reach,range,...}}, gear.armours = {type:{stats,components:{comp:{weight,cost,protects:[]}}}}) ══
+function getWeapons(){
+  if(!S.raw.gear) return [];
+  return Object.entries(S.raw.gear.weapons||{}).map(([name,d])=>({name,...d}));
+}
+function getArmourItems(){
+  if(!S.raw.gear) return [];
+  const out=[];
+  for(const [aType,aData] of Object.entries(S.raw.gear.armours||{})){
+    for(const [comp,cData] of Object.entries(aData.components||{})){
+      out.push({label:`${aType} — ${comp}`,armourType:aType,component:comp,protects:cData.protects||[],weight:cData.weight,cost:cData.cost,stats:aData.stats||{}});
+    }
+  }
+  return out;
+}
+function weaponRange(ch){
+  const ws=[ch.left_hand,ch.right_hand].filter(Boolean);
+  return ws.length?Math.max(...ws.map(w=>w.range||w.reach||1)):1;
+}
+
+// ══ MODAL ══
+function mkModal(title,wide=false){
+  const ov=document.createElement('div');ov.className='modal-overlay';
+  const m=document.createElement('div');m.className=wide?'modal wide':'modal';
+  m.innerHTML=`<div class="modal-hdr"><h2>${title}</h2><button style="padding:2px 9px;font-size:15px" id="mx">✕</button></div><div class="modal-body"></div><div class="modal-footer"></div>`;
+  m.querySelector('#mx').onclick=()=>ov.remove();
+  ov.appendChild(m);document.body.appendChild(ov);
+  return{ov,body:m.querySelector('.modal-body'),footer:m.querySelector('.modal-footer')};
+}
+
+// ══ LOAD FILES ══
+document.getElementById('btn-load').onclick=showLoadModal;
+function showLoadModal(){
+  const{ov,body,footer}=mkModal('Load Encounter Files',true);
+  const F={characters:null,gear:null,skills:null,map:null};
+  body.innerHTML=`<div class="g2" style="gap:14px;margin-bottom:14px">
+    <div><label>characters.json <span style="color:var(--red)">*</span></label><div class="file-area"><input type="file" accept=".json" id="fi-c"><span id="fl-c">Click to select</span></div></div>
+    <div><label>gear.json <span style="color:var(--red)">*</span></label><div class="file-area"><input type="file" accept=".json" id="fi-g"><span id="fl-g">Click to select</span></div></div>
+    <div><label>skills.json (optional)</label><div class="file-area"><input type="file" accept=".json" id="fi-s"><span id="fl-s">Click to select</span></div></div>
+    <div><label>Map image (optional)</label><div class="file-area"><input type="file" accept="image/*" id="fi-m"><span id="fl-m">Click to select</span></div></div>
+  </div><div id="ls" style="font-size:12px;color:var(--red)"></div>`;
+  function wire(fid,lid,key,img){
+    const inp=body.querySelector('#'+fid),lbl=body.querySelector('#'+lid);
+    inp.closest('.file-area').onclick=()=>inp.click();
+    inp.onchange=()=>{const f=inp.files[0];if(!f)return;const r=new FileReader();
+      if(img){r.onload=e=>{F[key]=e.target.result;lbl.textContent='✓ '+f.name;lbl.className='ok'};r.readAsDataURL(f)}
+      else{r.onload=e=>{try{F[key]=JSON.parse(e.target.result);lbl.textContent='✓ '+f.name;lbl.className='ok'}catch{lbl.textContent='✗ Invalid JSON';lbl.className='err'}};r.readAsText(f)}
+    };
+  }
+  wire('fi-c','fl-c','characters',false);wire('fi-g','fl-g','gear',false);
+  wire('fi-s','fl-s','skills',false);wire('fi-m','fl-m','map',true);
+  const btn=document.createElement('button');btn.className='primary';btn.textContent='Next: Configure Characters →';
+  btn.onclick=()=>{
+    if(!F.characters||!F.gear){body.querySelector('#ls').textContent='characters.json and gear.json are required.';return}
+    S.raw={characters:F.characters,gear:F.gear,skills:F.skills||null};
+    if(F.map){const img=new Image();img.onload=()=>{S.mapImg=img;fitMap();renderMap()};img.src=F.map}
+    ov.remove();showCharSetup();
+  };
+  footer.appendChild(btn);
+}
+
+// ══ CHARACTER SETUP (uses real schema) ══
+const POSTURES=['riding','standing','sitting','kneeling','crawling','lying'];
+const SLOTS=['torso','left_arm','right_arm','left_leg','right_leg','groin','left_hand','right_hand','left_foot','right_foot','face','neck','skull','eyes'];
+const SLOT_LBL={torso:'Torso',left_arm:'L.Arm',right_arm:'R.Arm',left_leg:'L.Leg',right_leg:'R.Leg',groin:'Groin',left_hand:'L.Hand',right_hand:'R.Hand',left_foot:'L.Foot',right_foot:'R.Foot',face:'Face',neck:'Neck',skull:'Skull',eyes:'Eyes'};
+
+function showCharSetup(){
+  const raw=S.raw.characters;
+  // Support both object-of-objects (like the provided file) and array
+  const entries=Array.isArray(raw)?raw.map((c,i)=>[`char_${i}`,c]):Object.entries(raw);
+  const weapons=getWeapons();
+  const armours=getArmourItems();
+  const wpnOpts=weapons.map((w,i)=>`<option value="${i}">${w.name}</option>`).join('');
+  const armOpts=armours.map((a,i)=>`<option value="${i}">${a.label}</option>`).join('');
+  const none='<option value="">— none —</option>';
+  const{ov,body,footer}=mkModal('Configure Characters for Encounter',true);
+  let html='';
+  entries.forEach(([key,ch],ci)=>{
+    const hp=ch.attributes?.Health??0;
+    const name=ch.name||key;
+    const gearRef=Array.isArray(ch.gear)?ch.gear.map(g=>`<span style="font-size:10px;background:var(--bg4);border-radius:3px;padding:1px 5px;margin:1px;display:inline-block">${g}</span>`).join(''):'';
+    html+=`<div class="card" id="csc-${ci}"><h3>${name}</h3>
+      ${gearRef?`<div style="margin-bottom:10px;line-height:1.9"><span style="font-size:11px;color:var(--text3)">Listed gear:</span> ${gearRef}</div>`:''}
+      <div class="g3" style="margin-bottom:8px">
+        <div class="field"><label>X coordinate</label><input type="number" step="0.01" id="cx-${ci}" value="${ci*4}"></div>
+        <div class="field"><label>Y coordinate</label><input type="number" step="0.01" id="cy-${ci}" value="0"></div>
+        <div class="field"><label>Posture</label><select id="cp-${ci}">${POSTURES.map(p=>`<option>${p}</option>`).join('')}</select></div>
+      </div>
+      <div class="g2" style="margin-bottom:8px">
+        <div class="field"><label>Left hand (weapon)</label><select id="clh-${ci}">${none}${wpnOpts}</select></div>
+        <div class="field"><label>Right hand (weapon)</label><select id="crh-${ci}">${none}${wpnOpts}</select></div>
+      </div>
+      <div style="font-size:11px;color:var(--text3);margin-bottom:5px;text-transform:uppercase;letter-spacing:.8px">Armour slots</div>
+      <div class="g4" style="margin-bottom:8px">${SLOTS.map(sl=>`<div class="field"><label>${SLOT_LBL[sl]}</label><select id="ca-${sl}-${ci}">${none}${armOpts}</select></div>`).join('')}</div>
+      <div class="g4">
+        <div class="field"><label>Stamina</label><input type="number" step="0.1" id="cst-${ci}" value="${10+hp}"></div>
+        <div class="field"><label>Bleed</label><input type="number" step="1" id="cbl-${ci}" value="0"></div>
+        <div class="field"><label>Cover (0–1)</label><input type="number" step="0.01" min="0" max="1" id="ccv-${ci}" value="0"></div>
+        <div class="field"><label>Hidden (float/null)</label><input type="text" id="chd-${ci}" value="" placeholder="null"></div>
+      </div>
+    </div>`;
+  });
+  body.innerHTML=html;
+  const btn=document.createElement('button');btn.className='primary';btn.textContent='Confirm & Start Encounter';
+  btn.onclick=()=>{
+    S.characters=entries.map(([key,ch],ci)=>{
+      const lhv=document.getElementById(`clh-${ci}`).value;
+      const rhv=document.getElementById(`crh-${ci}`).value;
+      const armour={};
+      SLOTS.forEach(sl=>{const v=document.getElementById(`ca-${sl}-${ci}`).value;armour[sl]=v!==''?armours[+v]:null});
+      const hdRaw=document.getElementById(`chd-${ci}`).value.trim();
+      return{
+        id:'c_'+ci,key,raw:ch,name:ch.name||key,
+        attributes:ch.attributes||{},skills:ch.skills||{},
+        abilities:ch.abilities||{},traits:ch.traits||{},
+        coords:[parseFloat(document.getElementById(`cx-${ci}`).value)||0,parseFloat(document.getElementById(`cy-${ci}`).value)||0],
+        posture:document.getElementById(`cp-${ci}`).value,
+        left_hand:lhv!==''?weapons[+lhv]:null,
+        right_hand:rhv!==''?weapons[+rhv]:null,
+        armour,
+        stamina:parseFloat(document.getElementById(`cst-${ci}`).value)||10,
+        bleed:parseInt(document.getElementById(`cbl-${ci}`).value)||0,
+        wounds:{},cover:parseFloat(document.getElementById(`ccv-${ci}`).value)||0,
+        hidden:hdRaw===''||hdRaw==='null'?null:parseFloat(hdRaw),
+        inActive:false,inQueue:false,isDefending:false,lastInit:null,pendingAction:null,
+      };
+    });
+    ov.remove();fitMap();renderAll();
+  };
+  footer.appendChild(btn);
+}
+
+// ══ CANVAS ══
+const canvas=document.getElementById('map-canvas');
+const ctx=canvas.getContext('2d');
+function resizeCanvas(){const c=document.getElementById('map-container');canvas.width=c.clientWidth;canvas.height=c.clientHeight}
+function fitMap(){
+  resizeCanvas();
+  if(S.mapImg){const sx=canvas.width/S.mapImg.width,sy=canvas.height/S.mapImg.height;S.zoom=Math.min(sx,sy)*.95;S.pan.x=(canvas.width-S.mapImg.width*S.zoom)/2;S.pan.y=(canvas.height-S.mapImg.height*S.zoom)/2;return}
+  if(!S.characters.length)return;
+  const xs=S.characters.map(c=>c.coords[0]),ys=S.characters.map(c=>c.coords[1]);
+  const pad=70,rX=Math.max(...xs)-Math.min(...xs)||10,rY=Math.max(...ys)-Math.min(...ys)||10;
+  S.zoom=Math.min((canvas.width-pad*2)/rX,(canvas.height-pad*2)/rY,40);
+  S.pan.x=pad-Math.min(...xs)*S.zoom;S.pan.y=pad-Math.min(...ys)*S.zoom;
+}
+function w2c(wx,wy){return[wx*S.zoom+S.pan.x,wy*S.zoom+S.pan.y]}
+function c2w(cx,cy){return[(cx-S.pan.x)/S.zoom,(cy-S.pan.y)/S.zoom]}
+function rrect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.arcTo(x+w,y,x+w,y+r,r);ctx.lineTo(x+w,y+h-r);ctx.arcTo(x+w,y+h,x+w-r,y+h,r);ctx.lineTo(x+r,y+h);ctx.arcTo(x,y+h,x,y+h-r,r);ctx.lineTo(x,y+r);ctx.arcTo(x,y,x+r,y,r);ctx.closePath()}
+
+function renderMap(){
+  resizeCanvas();
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#0e0e14';ctx.fillRect(0,0,canvas.width,canvas.height);
+  if(S.mapImg) ctx.drawImage(S.mapImg,S.pan.x,S.pan.y,S.mapImg.width*S.zoom,S.mapImg.height*S.zoom);
+  const sel=S.characters.find(c=>c.id===S.selectedId);
+  if(sel){
+    const[sx,sy]=w2c(sel.coords[0],sel.coords[1]);
+    const rng=weaponRange(sel)*S.zoom;
+    ctx.beginPath();ctx.arc(sx,sy,rng,0,Math.PI*2);
+    ctx.strokeStyle='rgba(74,222,128,.3)';ctx.lineWidth=1.2;ctx.stroke();
+    ctx.fillStyle='rgba(74,222,128,.04)';ctx.fill();
+    if(S.hoverTargetId){
+      const tgt=S.characters.find(c=>c.id===S.hoverTargetId);
+      if(tgt){
+        const[tx,ty]=w2c(tgt.coords[0],tgt.coords[1]);
+        ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(tx,ty);
+        ctx.strokeStyle='#f87171';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);
+        const dist=Math.hypot(tgt.coords[0]-sel.coords[0],tgt.coords[1]-sel.coords[1]);
+        const mx=(sx+tx)/2,my=(sy+ty)/2;
+        ctx.font='11px system-ui';ctx.textAlign='center';
+        const txt=`${dist.toFixed(2)} units`;
+        const tw=ctx.measureText(txt).width+12;
+        ctx.fillStyle='rgba(0,0,0,.85)';ctx.strokeStyle='#fbbf24';ctx.lineWidth=.8;
+        rrect(mx-tw/2,my-12,tw,20,4);ctx.fill();ctx.stroke();
+        ctx.fillStyle='#fbbf24';ctx.fillText(txt,mx,my+1);
+      }
+    } else if(S.awaitingMapClick&&S.mouseCanvas){
+      const[mx,my]=S.mouseCanvas;const[wx,wy]=c2w(mx,my);
+      const dist=Math.hypot(wx-sel.coords[0],wy-sel.coords[1]);
+      ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(mx,my);
+      ctx.strokeStyle='#60a5fa';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);ctx.stroke();ctx.setLineDash([]);
+      ctx.font='11px system-ui';ctx.textAlign='center';
+      const txt=`(${wx.toFixed(1)}, ${wy.toFixed(1)}) | ${dist.toFixed(2)} units`;
+      const tw=ctx.measureText(txt).width+12;
+      ctx.fillStyle='rgba(0,0,0,.85)';ctx.strokeStyle='#60a5fa';ctx.lineWidth=.8;
+      rrect(mx-tw/2,my-22,tw,20,4);ctx.fill();ctx.stroke();
+      ctx.fillStyle='#60a5fa';ctx.fillText(txt,mx,my-12);
+    }
+  }
+  S.characters.forEach(ch=>{
+    const[cx,cy]=w2c(ch.coords[0],ch.coords[1]);
+    const isSel=ch.id===S.selectedId,isHov=ch.id===S.hoverCharId,isTgt=ch.id===S.hoverTargetId;
+    const r=isSel||isHov||isTgt?9:7;
+    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
+    ctx.fillStyle=isSel?'#4ade80':isTgt?'#f87171':isHov?'#fbbf24':ch.inQueue?'#a78bfa':ch.inActive?'#60a5fa':'#7c6fe0';
+    ctx.strokeStyle=isSel?'#16a34a':isTgt?'#dc2626':isHov?'#ca8a04':'#5a4fb8';
+    ctx.lineWidth=isSel||isTgt||isHov?2.5:1.5;ctx.fill();ctx.stroke();
+    ctx.fillStyle='#fff';ctx.font=`bold ${isSel||isHov?10:9}px system-ui`;
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(ch.name.substring(0,2).toUpperCase(),cx,cy);
+    ctx.textBaseline='alphabetic';
+    if(isSel||isHov){
+      ctx.font='10px system-ui';ctx.textAlign='center';
+      const lw=ctx.measureText(ch.name).width+8;
+      ctx.fillStyle='rgba(0,0,0,.7)';rrect(cx-lw/2,cy+r+2,lw,15,3);ctx.fill();
+      ctx.fillStyle='#fff';ctx.fillText(ch.name,cx,cy+r+13);
+    }
+  });
+}
+
+canvas.addEventListener('mousemove',e=>{
+  const rect=canvas.getBoundingClientRect();
+  const cx=e.clientX-rect.left,cy=e.clientY-rect.top;
+  const[wx,wy]=c2w(cx,cy);
+  document.getElementById('map-coords').textContent=`x: ${wx.toFixed(2)}, y: ${wy.toFixed(2)}`;
+  S.mouseCanvas=[cx,cy];
+  if(S.awaitingMapClick) renderMap();
+});
+canvas.addEventListener('click',e=>{
+  if(!S.awaitingMapClick)return;
+  const rect=canvas.getBoundingClientRect();
+  const[wx,wy]=c2w(e.clientX-rect.left,e.clientY-rect.top);
+  const ch=S.awaitingMapClickChar;
+  if(ch&&ch.pendingAction){
+    ch.pendingAction.targetCoords=[wx,wy];
+    S.awaitingMapClick=false;S.awaitingMapClickChar=null;
+    document.getElementById('map-hint').style.display='none';
+    proceedToInit(ch.id);
+  }
+});
+let drag=false,dragStart={x:0,y:0},panStart={x:0,y:0};
+canvas.addEventListener('mousedown',e=>{if(e.button===1||e.altKey){drag=true;dragStart={x:e.clientX,y:e.clientY};panStart={...S.pan};e.preventDefault()}});
+window.addEventListener('mousemove',e=>{if(drag){S.pan.x=panStart.x+(e.clientX-dragStart.x);S.pan.y=panStart.y+(e.clientY-dragStart.y);renderMap()}});
+window.addEventListener('mouseup',()=>{drag=false});
+canvas.addEventListener('wheel',e=>{e.preventDefault();const rect=canvas.getBoundingClientRect();const cx=e.clientX-rect.left,cy=e.clientY-rect.top;const f=e.deltaY<0?1.15:.87;const nz=S.zoom*f;S.pan.x=cx-(cx-S.pan.x)*nz/S.zoom;S.pan.y=cy-(cy-S.pan.y)*nz/S.zoom;S.zoom=nz;renderMap()},{passive:false});
+document.getElementById('btn-zi').onclick=()=>{S.zoom*=1.2;renderMap()};
+document.getElementById('btn-zo').onclick=()=>{S.zoom/=1.2;renderMap()};
+document.getElementById('btn-fit').onclick=()=>{fitMap();renderMap()};
+
+// ══ RENDER LEFT ══
+function renderAll(){renderMap();renderQueue();renderActive();renderRoster();renderLog();renderStats()}
+
+function renderQueue(){
+  const el=document.getElementById('queue-body');
+  const q=[...S.queue].sort((a,b)=>b.initiative-a.initiative);
+  if(!q.length){el.innerHTML='<div style="padding:7px 12px;font-size:12px;color:var(--text3)">No queued actions.</div>';return}
+  el.innerHTML='';
+  q.forEach((entry,i)=>{
+    const ch=S.characters.find(c=>c.id===entry.charId);if(!ch)return;
+    const isLast=i===q.length-1;
+    const row=document.createElement('div');
+    row.className='char-row'+(ch.id===S.selectedId?' selected':'');
+    row.dataset.id=ch.id;
+    row.innerHTML=`<span class="init-badge">${entry.initiative.toFixed(3)}</span><span class="char-name">${ch.name}</span><span class="act-label">${ACTIONS[entry.actionKey]?.label||''}${entry.targetName?' → '+entry.targetName:''}</span>${isLast?`<button class="resolve-btn" data-eid="${entry.id}">Resolve</button>`:''}`;
+    row.onclick=ev=>{if(ev.target.classList.contains('resolve-btn'))return;selectChar(ch.id)};
+    if(isLast) row.querySelector('.resolve-btn').onclick=ev=>{ev.stopPropagation();doResolve(entry)};
+    el.appendChild(row);
+  });
+}
+
+function renderActive(){
+  const el=document.getElementById('active-body');
+  const ac=S.characters.filter(c=>c.inActive&&!c.inQueue);
+  if(!ac.length){el.innerHTML='<div style="padding:7px 12px;font-size:12px;color:var(--text3)">No active characters.</div>';return}
+  el.innerHTML='';
+  ac.forEach(ch=>{
+    const row=document.createElement('div');
+    row.className='char-row acting'+(ch.id===S.selectedId?' selected':'')+(ch.isDefending?' defending':'');
+    row.dataset.id=ch.id;
+    row.innerHTML=`<span class="char-name">${ch.name}</span>${ch.isDefending?'<span class="act-label" style="color:var(--blue)">🛡 Defending</span>':''}<button class="action-btn">▶ Action</button>`;
+    row.onclick=ev=>{if(ev.target.classList.contains('action-btn'))return;selectChar(ch.id)};
+    row.querySelector('.action-btn').onclick=ev=>{ev.stopPropagation();selectChar(ch.id);showActionMenu(ev.currentTarget,ch)};
+    el.appendChild(row);
+  });
+}
+
+function renderRoster(){
+  const el=document.getElementById('roster-body');
+  const ros=S.characters.filter(c=>!c.inActive&&!c.inQueue);
+  if(!ros.length){el.innerHTML='<div style="padding:7px 12px;font-size:12px;color:var(--text3)">All characters are active.</div>';return}
+  el.innerHTML='';
+  ros.forEach(ch=>{
+    const row=document.createElement('div');
+    row.className='char-row'+(ch.id===S.selectedId?' selected':'');
+    row.dataset.id=ch.id;
+    row.innerHTML=`<span class="char-name">${ch.name}</span><button class="action-btn">▶ Action</button>`;
+    row.onclick=ev=>{if(ev.target.classList.contains('action-btn'))return;selectChar(ch.id)};
+    row.querySelector('.action-btn').onclick=ev=>{ev.stopPropagation();selectChar(ch.id);showActionMenu(ev.currentTarget,ch)};
+    el.appendChild(row);
+  });
+}
+
+function renderLog(){
+  const el=document.getElementById('log-body');
+  if(!S.log.length){el.innerHTML='<div style="padding:7px 12px;font-size:12px;color:var(--text3)">No actions resolved.</div>';return}
+  el.innerHTML='';
+  [...S.log].reverse().forEach(e=>{
+    const d=document.createElement('div');d.className='log-entry';
+    d.innerHTML=`<span class="log-ts">${e.initiative.toFixed(3)}</span> sec: <strong>${e.charName}</strong> rolled <em>${e.resolveRoll.toFixed(4)}</em> for <em>${e.actionLabel}</em>${e.suffix||''}`;
+    el.appendChild(d);
+  });
+}
+
+function selectChar(id){S.selectedId=id;renderAll()}
+
+// hover highlight
+document.getElementById('left-col').addEventListener('mouseover',e=>{const r=e.target.closest('.char-row');if(r?.dataset.id){S.hoverCharId=r.dataset.id;renderMap()}});
+document.getElementById('left-col').addEventListener('mouseout',e=>{const r=e.target.closest('.char-row');if(r&&!e.relatedTarget?.closest('.char-row')){S.hoverCharId=null;renderMap()}});
+
+// ══ ACTION MENU ══
+let _drop=null;
+function clearDrops(){if(_drop){_drop.remove();_drop=null}S.hoverTargetId=null}
+document.addEventListener('click',e=>{if(!e.target.closest('.drop-panel')&&!e.target.closest('.action-btn'))clearDrops()});
+
+function showActionMenu(btn,ch){
+  clearDrops();
+  const p=document.createElement('div');p.className='drop-panel';_drop=p;
+  const rect=btn.getBoundingClientRect();
+  p.style.top=(rect.bottom+4)+'px';p.style.left=rect.left+'px';
+  Object.entries(ACTIONS).forEach(([key,act])=>{
+    const item=document.createElement('div');item.className='drop-item';
+    if(ch.isDefending&&key==='h')item.style.color='var(--amber)';
+    item.textContent=act.label;
+    item.onclick=()=>{clearDrops();handleAction(ch,key,btn)};
+    p.appendChild(item);
+  });
+  document.body.appendChild(p);
+}
+
+function handleAction(ch,key,anchor){
+  if(ACTIONS[key].isDefend){ch.isDefending=true;ch.inActive=true;renderAll();return}
+  ch.pendingAction={key,targetId:null,targetName:null,targetCoords:null};
+  if(ACTIONS[key].needsTarget) showTargetMenu(ch,key,anchor);
+  else if(ACTIONS[key].needsCoords) showCoordsModal(ch);
+  else proceedToInit(ch.id);
+}
+
+function showTargetMenu(ch,key,anchor){
+  clearDrops();
+  const p=document.createElement('div');p.className='drop-panel';_drop=p;
+  const rect=anchor.getBoundingClientRect();
+  p.style.top=(rect.bottom+4)+'px';p.style.left=rect.left+'px';
+  const lbl=document.createElement('div');lbl.className='drop-lbl';lbl.textContent='Select target:';p.appendChild(lbl);
+  S.characters.filter(c=>ACTIONS[key].includeSelf?true:c.id!==ch.id).forEach(tgt=>{
+    const item=document.createElement('div');item.className='drop-item';
+    if(tgt.id===ch.id)item.style.color='var(--teal)';
+    item.textContent=tgt.id===ch.id?tgt.name+' (self)':tgt.name;
+    item.onmouseenter=()=>{S.hoverTargetId=tgt.id;renderMap()};
+    item.onmouseleave=()=>{S.hoverTargetId=null;renderMap()};
+    item.onclick=()=>{
+      clearDrops();
+      ch.pendingAction.targetId=tgt.id;ch.pendingAction.targetName=tgt.name;
+      const dx=tgt.coords[0]-ch.coords[0],dy=tgt.coords[1]-ch.coords[1];
+      const len=Math.hypot(dx,dy)||1;
+      ch.pendingAction.targetCoords=[tgt.coords[0]-dx/len*1.2,tgt.coords[1]-dy/len*1.2];
+      proceedToInit(ch.id);
+    };
+    p.appendChild(item);
+  });
+  document.body.appendChild(p);
+}
+
+function showCoordsModal(ch){
+  const{ov,body,footer}=mkModal('Set Destination');
+  body.innerHTML=`<p style="font-size:13px;color:var(--text2);margin-bottom:12px">Enter coordinates or close and click the map.</p>
+    <div class="g2"><div class="field"><label>X</label><input type="number" step="0.01" id="dx" value="${ch.coords[0]}"></div><div class="field"><label>Y</label><input type="number" step="0.01" id="dy" value="${ch.coords[1]}"></div></div>`;
+  const bMap=document.createElement('button');bMap.textContent='Click on map instead';
+  bMap.onclick=()=>{ov.remove();S.awaitingMapClick=true;S.awaitingMapClickChar=ch;document.getElementById('map-hint').style.display='block'};
+  const bOk=document.createElement('button');bOk.className='primary';bOk.textContent='Confirm';
+  bOk.onclick=()=>{
+    ch.pendingAction.targetCoords=[parseFloat(body.querySelector('#dx').value)||ch.coords[0],parseFloat(body.querySelector('#dy').value)||ch.coords[1]];
+    ov.remove();proceedToInit(ch.id);
+  };
+  footer.appendChild(bMap);footer.appendChild(bOk);
+}
+
+// ══ INITIATIVE & QUEUE ══
+let _eid=0;
+function proceedToInit(charId){
+  const ch=S.characters.find(c=>c.id===charId);if(!ch||!ch.pendingAction)return;
+  const x=rnd();let ir=rollInit(x);
+  if(ch.lastInit!==null)ir+=ch.lastInit;
+  ch.lastInit=ir;
+  S.queue.push({id:'e'+(++_eid),charId:ch.id,charName:ch.name,actionKey:ch.pendingAction.key,actionLabel:ACTIONS[ch.pendingAction.key].label,targetId:ch.pendingAction.targetId,targetName:ch.pendingAction.targetName,targetCoords:ch.pendingAction.targetCoords,initiative:ir});
+  ch.pendingAction=null;ch.inQueue=true;ch.inActive=true;renderAll();
+}
+
+// ══ RESOLVE ══
+function doResolve(entry){
+  if(ACTIONS[entry.actionKey].isCombat&&entry.targetId) showReactModal(entry);
+  else finalizeResolve(entry,false,null,null);
+}
+
+function showReactModal(entry){
+  const tgt=S.characters.find(c=>c.id===entry.targetId);
+  const{ov,body,footer}=mkModal('Reaction Check');
+  body.innerHTML=`<p style="font-size:14px;line-height:1.7">Does <strong style="color:var(--accenthl)">${tgt?.name||'the target'}</strong> react to <strong style="color:var(--amber)">${entry.charName}</strong>'s <em>${entry.actionLabel}</em>?</p>`;
+  footer.innerHTML='';
+  const bNo=document.createElement('button');bNo.textContent='No — proceed';
+  const bYes=document.createElement('button');bYes.className='primary';bYes.textContent='Yes — React!';
+  bNo.onclick=()=>{ov.remove();finalizeResolve(entry,false,null,null)};
+  bYes.onclick=()=>{
+    ov.remove();
+    if(tgt){
+      const rx=rnd(),rInit=rollInit(rx,true);
+      const existing=S.queue.find(e=>e.charId===tgt.id&&e!==entry);
+      if(existing)existing.initiative+=rInit;
+      else{S.queue.push({id:'e'+(++_eid),charId:tgt.id,charName:tgt.name,actionKey:'h',actionLabel:'React/Defend',targetId:null,targetName:null,targetCoords:null,initiative:rInit});tgt.inQueue=true;tgt.inActive=true}
+      S.queue.sort((a,b)=>b.initiative-a.initiative);
+      finalizeResolve(entry,true,rollResolve(rnd()),tgt);
+    } else finalizeResolve(entry,false,null,null);
+  };
+  footer.appendChild(bNo);footer.appendChild(bYes);
+}
+
+function finalizeResolve(entry,reacted,reactionRoll,reactChar){
+  const ch=S.characters.find(c=>c.id===entry.charId);
+  const rr=rollResolve(rnd());
+  if(entry.targetCoords)ch.coords=[...entry.targetCoords];
+  else if(entry.targetId){
+    const tgt=S.characters.find(c=>c.id===entry.targetId);
+    if(tgt){const dx=tgt.coords[0]-ch.coords[0],dy=tgt.coords[1]-ch.coords[1];const len=Math.hypot(dx,dy)||1;ch.coords=[tgt.coords[0]-dx/len*1.2,tgt.coords[1]-dy/len*1.2]}
+  }
+  const suffix=reacted&&reactionRoll!=null?` <span style="color:var(--teal)">(resisted: ${reactionRoll.toFixed(4)} by ${reactChar?.name||'target'})</span>`:'';
+  S.log.push({initiative:entry.initiative,charName:entry.charName,actionLabel:entry.actionLabel,resolveRoll:rr,suffix,ts:Date.now()});
+  S.queue=S.queue.filter(e=>e!==entry);
+  ch.inQueue=false;ch.lastInit=entry.initiative;renderAll();
+}
+
+// ══ STATS PANEL ══
+const COMBAT_SKILLS_SHOW=['Weapon (Small Swords)','Weapon (Long Swords)','Weapon (Clubs-Maces)','Weapon (Shields)','Weapon (Bows)','Weapon (Crossbows)','Weapon (Axes-Hammers-Picks)','Weapon (Curved Swords)','Weapon (Fencing Swords)','Brawling','First Aid','Stealth','Riding','Observation','Fast-Draw (Melee Weapon)'];
+function renderStats(){
+  const el=document.getElementById('stats-content');
+  const ch=S.characters.find(c=>c.id===S.selectedId);
+  if(!ch){el.innerHTML='<span style="color:var(--text3)">Select a character to view stats.</span>';return}
+  const attrs=ch.attributes||{};
+  const attrHtml=Object.entries(attrs).map(([k,v])=>`<div class="stat-box"><div class="sk">${k}</div><div class="sv ${v>0?'pos':v<0?'neg':'neu'}">${v>0?'+':''}${v}</div></div>`).join('');
+  const skills=ch.skills||{};
+  const csHtml=COMBAT_SKILLS_SHOW.filter(s=>skills[s]!==undefined).map(s=>{const v=skills[s];const short=s.replace('Weapon (','').replace(')','');return`<div class="stat-box"><div class="sk" style="font-size:9px">${short}</div><div class="sv ${v>0?'pos':v<0?'neg':'neu'}">${v>0?'+':''}${v}</div></div>`}).join('');
+  const abilHtml=Object.entries(ch.abilities||{}).filter(([,a])=>a.level>0).map(([k,a])=>`<span style="font-size:11px;background:rgba(124,111,224,.15);border:1px solid var(--accent2);border-radius:4px;padding:2px 7px;margin:2px;display:inline-block">${k} ${a.level}</span>`).join('');
+  const traitHtml=Object.keys(ch.traits||{}).map(t=>`<span style="font-size:11px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.5);border-radius:4px;padding:2px 7px;margin:2px;color:var(--amber);display:inline-block">${t}</span>`).join('');
+  const armFilled=SLOTS.filter(s=>ch.armour[s]).map(s=>`${SLOT_LBL[s]}: ${ch.armour[s].label||'?'}`).join(' · ')||'none';
+  el.innerHTML=`<h3>${ch.name}</h3>
+    <div style="display:flex;gap:6px;margin-bottom:7px;flex-wrap:wrap">
+      <div class="stat-box"><div class="sk">Stamina</div><div class="sv" style="color:var(--green)">${ch.stamina.toFixed(1)}</div></div>
+      <div class="stat-box"><div class="sk">Bleed</div><div class="sv" style="color:${ch.bleed>0?'var(--red)':'var(--text)'}">${ch.bleed}</div></div>
+      <div class="stat-box"><div class="sk">Cover</div><div class="sv">${ch.cover.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="sk">Hidden</div><div class="sv">${ch.hidden===null?'—':ch.hidden.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="sk">Posture</div><div class="sv" style="font-size:12px">${ch.posture}</div></div>
+      <div class="stat-box"><div class="sk">Coords</div><div class="sv" style="font-size:11px">${ch.coords[0].toFixed(1)}, ${ch.coords[1].toFixed(1)}</div></div>
+      <div class="stat-box"><div class="sk">L.Hand</div><div class="sv" style="font-size:11px">${ch.left_hand?.name||'—'}</div></div>
+      <div class="stat-box"><div class="sk">R.Hand</div><div class="sv" style="font-size:11px">${ch.right_hand?.name||'—'}</div></div>
+    </div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:4px">ATTRIBUTES</div>
+    <div class="stats-grid" style="margin-bottom:7px">${attrHtml}</div>
+    ${csHtml?`<div style="font-size:11px;color:var(--text3);margin-bottom:4px">COMBAT SKILLS</div><div class="stats-grid" style="margin-bottom:7px">${csHtml}</div>`:''}
+    ${abilHtml?`<div style="font-size:11px;color:var(--text3);margin-bottom:4px">ABILITIES</div><div style="margin-bottom:7px">${abilHtml}</div>`:''}
+    ${traitHtml?`<div style="font-size:11px;color:var(--text3);margin-bottom:4px">TRAITS</div><div style="margin-bottom:7px">${traitHtml}</div>`:''}
+    <div style="font-size:11px;color:var(--text2)"><strong style="color:var(--text3)">ARMOUR:</strong> ${armFilled}</div>
+    ${Object.keys(ch.wounds).length?`<div style="font-size:11px;color:var(--red);margin-top:4px">Wounds: ${JSON.stringify(ch.wounds)}</div>`:''}`;
+}
+
+// ══ EXPORT ══
+document.getElementById('btn-export').onclick=()=>{
+  if(!S.characters.length){alert('No encounter loaded.');return}
+  const data={
+    before:S.raw.characters,
+    during:S.log.map(e=>({initiative:e.initiative,character:e.charName,action:e.actionLabel,resolve_roll:e.resolveRoll,detail:e.suffix?.replace(/<[^>]+>/g,'')||'',timestamp:e.ts})),
+    after:S.characters.map(ch=>({id:ch.key,name:ch.name,coords:ch.coords,posture:ch.posture,left_hand:ch.left_hand?.name||null,right_hand:ch.right_hand?.name||null,armour:Object.fromEntries(SLOTS.map(s=>[s,ch.armour[s]?.label||null])),stamina:ch.stamina,bleed:ch.bleed,wounds:ch.wounds,cover:ch.cover,hidden:ch.hidden,attributes:ch.attributes,skills:ch.skills})),
+  };
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='encounter_export.json';a.click();URL.revokeObjectURL(url);
+};
+
+// ══ INIT ══
+new ResizeObserver(()=>{resizeCanvas();renderMap()}).observe(document.getElementById('map-container'));
+resizeCanvas();renderAll();
+</script>
+</body>
+</html>

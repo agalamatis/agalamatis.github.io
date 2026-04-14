@@ -1144,7 +1144,7 @@
             },
             "description": "Hardened leather reinforced with riveted metal studs or small plates on the outer surface. The studs disrupt blade edges and help arrest the tip of a thrusting weapon, improving protection across all damage types compared to plain leather. Despite its popular appearance in fantasy settings, true studded leather as a distinct armour type was relatively rare historically — it existed on a spectrum between leather and early transitional armours. The metal reinforcement adds meaningful protection without the weight of full metal armour.",
             "failure": "Studs tear free; leather beneath cracks once rivets are gone.",
-            "image": "/rpg/images/gear/armours/studed.png",
+            "image": "/rpg/images/gear/armours/studded.png",
             "components": {
                 "Cuirass": {
                     "weight": 5.0,
