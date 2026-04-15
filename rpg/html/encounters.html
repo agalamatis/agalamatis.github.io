@@ -138,6 +138,10 @@ const ACTIONS={
   i:{label:'First Aid',  needsTarget:true, needsCoords:false,isCombat:false,includeSelf:true},
   j:{label:'Move',       needsTarget:false,needsCoords:true, isCombat:false},
   k:{label:'Flee',       needsTarget:false,needsCoords:true, isCombat:false},
+  // non-combat actions based on skills
+//   l:{label:'Identify material', attribute:"Reasoning", skill:"Alchemy", needsTarget:false, needsCoords:false, isCombat:false},
+//   m:{label:'Transmute material', attribute:"Reasoning", skill:"Alchemy", needsTarget:false, needsCoords:false, isCombat:false},
+//   n:{label:'Examine building', attribute:"Reasoning", skill:"Architecture", needsTarget:false, needsCoords:false, isCombat:false}
 };
 
 // ══ MATH ══
@@ -147,8 +151,8 @@ function erf(x){
   const t=1/(1+p*x);
   return s*(1-(((((a[4]*t+a[3])*t)+a[2])*t+a[1])*t+a[0])*t*Math.exp(-x*x));
 }
-function rollInit(x,react=false){
-  return react?(0.5+0.25*erf(-(x)/(2.958*Math.sqrt(2)))):(1+0.5*erf(-(x)/(2.958*Math.sqrt(2))));
+function rollInit(x, offset=3, scale=2){
+  return offset + scale * erf(-(x) / (2.958 * Math.sqrt(2)));
 }
 function rollResolve(x){return Math.exp(-0.5*Math.pow(x/2.958,2))/(2.958*Math.sqrt(2*Math.PI))}
 function rnd(){return Math.random()*10-5}
@@ -532,8 +536,10 @@ function showCoordsModal(ch){
 // ══ INITIATIVE & QUEUE ══
 let _eid=0;
 function proceedToInit(charId){
-  const ch=S.characters.find(c=>c.id===charId);if(!ch||!ch.pendingAction)return;
-  const x=rnd();let ir=rollInit(x);
+  const ch=S.characters.find(c=>c.id===charId);
+  if(!ch||!ch.pendingAction)return;
+  const x=rnd();
+  let ir=rollInit(x);
   if(ch.lastInit!==null)ir+=ch.lastInit;
   ch.lastInit=ir;
   S.queue.push({id:'e'+(++_eid),charId:ch.id,charName:ch.name,actionKey:ch.pendingAction.key,actionLabel:ACTIONS[ch.pendingAction.key].label,targetId:ch.pendingAction.targetId,targetName:ch.pendingAction.targetName,targetCoords:ch.pendingAction.targetCoords,initiative:ir});
@@ -557,7 +563,7 @@ function showReactModal(entry){
   bYes.onclick=()=>{
     ov.remove();
     if(tgt){
-      const rx=rnd(),rInit=rollInit(rx,true);
+      const rx=rnd(),rInit=rollInit(rx, 1, 0.5);
       const existing=S.queue.find(e=>e.charId===tgt.id&&e!==entry);
       if(existing)existing.initiative+=rInit;
       else{S.queue.push({id:'e'+(++_eid),charId:tgt.id,charName:tgt.name,actionKey:'h',actionLabel:'React/Defend',targetId:null,targetName:null,targetCoords:null,initiative:rInit});tgt.inQueue=true;tgt.inActive=true}
