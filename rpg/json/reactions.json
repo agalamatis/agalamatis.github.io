@@ -1,0 +1,49 @@
+{
+  "_comments": [
+    "TODO: modifiers",
+    "TODO: trait requirements"
+],
+  "Acrobatics": [
+    {
+      "reaction": "Break Fall",
+      "action": ["Fall"],
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 1,
+      "description": "When falling or being knocked down, the character uses trained technique to absorb impact and recover quickly.",
+      "success": "Effective falling distance is reduced by 5 yards for damage purposes; the character rolls upright and can act normally.",
+      "failure": "The character takes full falling damage and lands prone.",
+      "phenomenal": "The character takes no damage whatsoever and lands standing, unperturbed.",
+      "catastrophic": "The character lands at a terrible angle, taking full damage plus an additional 1d6 and possibly spraining a limb.",
+      "traits": []
+    },
+    {
+      "reaction": "Acrobatic Dodge",
+      "action": ["TODO:ListAttacks"],
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 1,
+      "description": "In combat, the character leaps or rolls dramatically to avoid an incoming attack.",
+      "success": "The attack misses entirely; the character ends up in a better position.",
+      "failure": "The character's dodge fails and they are hit normally.",
+      "phenomenal": "The dodge moves the character behind the attacker, granting a free attack.",
+      "catastrophic": "The character stumbles into the blow, taking damage with no defence, and falls prone."
+    }
+  ],
+  "Body Language": [
+    {
+      "reactions": "Identify Deception",
+      "action": ["Feign Emotion"],
+      "attribute": "Perception",
+      "offset": 0,
+      "scale": 0,
+      "description": "The character observes a person's posture, facial expressions, and gestures to gauge their emotional state.",
+      "success": "The character accurately reads whether the person is calm, nervous, angry, or lying.",
+      "failure": "The character misreads the person's state or gets no useful information.",
+      "phenomenal": "The character reads extremely subtle cues, gaining nuanced understanding of the person's feelings and intentions.",
+      "catastrophic": "The character completely misreads the person, perhaps confusing fear for aggression or deception for sincerity.",
+      "modifiers": [],
+      "traits": []
+    }
+  ]
+}
