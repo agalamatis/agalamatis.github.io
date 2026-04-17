@@ -1,0 +1,96 @@
+{
+  "Brawling": [
+    "SWING (0) Punch (crush)",
+    "THRUST (1) Punch (crush)",
+    "SWING (1) Kick (crush)",
+    "THRUST (0) Kick (crush)",
+    "THRUST (0) Teeth (crush)",
+    "THRUST (0) Fangs (pierce)",
+    "THRUST (1) Beak (pierce)",
+    "SWING (1) Claws (slash)",
+    "THRUST (0) Talons (pierce)"
+  ],
+  "Weapon (Axes-Hammers-Picks)": [
+    "HURL (3) Hatchet (slash)",
+    "SWING (3) Hatchet (slash)",
+    "SWING (5) Axe (slash)",
+    "SWING (4) Pickaxe (pierce)",
+    "SWING (3) Pickaxe (slash)",
+    "HURL (5) Hammer (crush)",
+    "SWING (5) Hammer (crush)",
+    "SWING (4) Pick (crush)",
+    "SWING (5) Pick (pierce)",
+    "SWING (7) Maul (crush)"
+  ],
+  "Weapon (Clubs-Maces)": [
+    "SWING (4) Club (crush)",
+    "SWING (4/2) Spiked Club (crush/pierce)",
+    "SWING (6) Mace (crush)",
+    "SWING (6/2) Morning Star (Spiked Mace) (crush/pierce)"
+  ],
+  "Weapon (Flails)": [
+    "SWING (7) Flanged Flail (crush)",
+    "SWING (7/2) Spiked Flail (crush/pierce)"
+  ],
+  "Weapon (Sickles-Scythes)": [
+    "SWING (3) Sickle (pierce)",
+    "SWING (3) Sickle (slash)",
+    "SWING (5) Scythe (pierce)",
+    "SWING (5) Scythe (slash)"
+  ],
+  "Weapon (Polearms)": [
+    "SWING (6) Glaive / Bill-Guisearm (slash)",
+    "THRUST (5) Glaive / Bill-Guisearm (pierce)",
+    "SWING (5) Halberd / Voulge (pierce)",
+    "SWING (7) Halberd / Voulge (slash)",
+    "THRUST (5) Halberd / Voulge (pierce)"
+  ],
+  "Weapon (Javelins)": [
+    "HURL (3) Javelin (pierce)",
+    "THRUST (3) Javelin (pierce)",
+    "HURL (4) Spear (pierce)"
+  ],
+  "Weapon (Staves)": [
+    "SWING (3) Javelin (crush)",
+    "THRUST (1) Javelin (crush)",
+    "SWING (5) Spear (crush)",
+    "THRUST (3) Spear (crush)",
+    "SWING (3) Cane (crush)",
+    "THRUST (1) Cane (crush)",
+    "SWING (5) Staff (crush)",
+    "THRUST (3) Staff (crush)"
+  ],
+  "Weapon (Pikes)": [
+    "THRUST (6) Spear (pierce)",
+    "THRUST (7) Pike (pierce)"
+  ],
+  "Weapon (Curved Swords)": [
+    "SWING (4) Machette (shash)",
+    "SWING (5) Falchion / Scimitar (shash)",
+    "SWING (2) Hunting / Skinning Knife (slash)",
+    "SWING (3) Cutlass (slash)",
+    "SWING (4) Sabre (slash)"
+  ],
+  "Weapon (Fencing Swords)": [
+    "HURL (0) Hunting / Skinning Knife (pierce)",
+    "THRUST (0) Hunting / Skinning Knife (pierce)",
+    "THRUST (2) Cutlass (pierce)",
+    "THRUST (3) Sabre (pierce)",
+    "HURL (1) Main-Gauche / Stiletto (pierce)",
+    "THRUST (1) Main-Gauche / Stiletto (pierce)",
+    "THRUST (4) Estoc / Rapier (pierce)"
+  ],
+  "Weapon (Long Swords)": [
+    "SWING (3) Bastard Sword (slash)",
+    "THRUST (4) Bastard Sword (pierce)",
+    "SWING (6) Great Sword (slash)",
+    "THRUST (5) Great Sword (pierce)"
+  ],
+  "Weapon (Small Swords)": [
+    "HURL (1) Dagger (pierce)",
+    "SWING (1) Dagger (slash)",
+    "THRUST (1) Dagger (pierce)",
+    "SWING (2) Short Sword (slash)",
+    "THRUST (3) Short Sword (pierce)"
+  ]
+}

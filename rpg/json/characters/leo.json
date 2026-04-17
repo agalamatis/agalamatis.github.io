@@ -2,11 +2,11 @@
     "Name": "Master Engineer Leonardo Spinelli",
     "Attributes": {
         "Agility": 0,
-        "Health": 1,
+        "Health": -1,
         "Strength": 2,
         "Charisma": -2,
         "Perception": 0,
-        "Reason": -1
+        "Reason": 1
     },
     "Skills": {
         "Alchemy": 2,
