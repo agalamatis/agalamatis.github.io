@@ -15,20 +15,7 @@
       "failure": "The character's dodge fails and they are hit normally.",
       "phenomenal": "The dodge moves the character behind the attacker, granting a free attack.",
       "catastrophic": "The character stumbles into the blow, taking damage with no defence, and falls prone.",
-      "modifiers": [
-        {
-          "range": [-2, -2],
-          "description": "Carrying more than Light encumbrance"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Slippery or uneven surface"
-        },
-        {
-          "range": [-3, -3],
-          "description": "Surprised (no warning the attack was coming)"
-        }
-      ],
+      "modifiers": [],
       "traits": [],
       "gear": []
     }
@@ -95,14 +82,6 @@
     },
     {
       "reaction": "Read Mood",
-      "actions": [
-        "Feign Emotion",
-        "Impersonate a Person",
-        "Sustain a Lie",
-        "Talk Past a Guard",
-        "Escape an Accusation",
-        "Cow a Person into Compliance"
-      ],
       "attribute": "Perception",
       "offset": 10,
       "scale": 5,
@@ -130,9 +109,6 @@
     },
     {
       "reaction": "Detect Hidden Weapon",
-      "actions": [
-        "Conceal a Weapon on One's Person"
-      ],
       "attribute": "Perception",
       "offset": 10,
       "scale": 5,
@@ -168,28 +144,24 @@
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Blocking a one-handed attack with both hands"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Blocking a two-handed attack with one hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand block"
         },
         {
-          "range": [-4, -4],
-          "description": "Parrying a flail (chain catches the blocking weapon)"
+          "range": [-2, -2],
+          "description": "Blocking with either legleg"
         },
         {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
-        },
-        {
-          "range": [0.5, 0.5],
-          "description": "Using Kick (parry modifier +0.5 vs base)"
+          "range": [-3, -3],
+          "description": "Blocking a flail (chain catches the blocking weapon)"
         }
       ],
       "traits": [],
@@ -205,20 +177,7 @@
       "failure": "The character's dodge fails and they are hit normally.",
       "phenomenal": "The dodge moves the character behind the attacker, granting a free attack.",
       "catastrophic": "The character stumbles into the blow, taking damage with no defence, and falls prone.",
-      "modifiers": [
-        {
-          "range": [-2, -2],
-          "description": "Flanked or attacked from behind (-2 to all active defences)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Already used a dodge this turn"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Stunned or injured"
-        }
-      ],
+      "modifiers": [],
       "traits": [],
       "gear": []
     }
@@ -405,11 +364,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -436,11 +395,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -467,11 +426,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -498,11 +457,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -529,11 +488,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -560,7 +519,7 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-3, -3],
@@ -585,11 +544,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -616,11 +575,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -647,11 +606,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -678,11 +637,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -711,11 +670,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -742,11 +701,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -775,11 +734,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -806,7 +765,7 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-3, -3],
@@ -831,7 +790,7 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-3, -3],
@@ -854,7 +813,7 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-3, -3],
@@ -879,11 +838,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -910,11 +869,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -943,11 +902,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -974,7 +933,7 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-3, -3],
@@ -997,11 +956,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1028,11 +987,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1059,7 +1018,7 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-3, -3],
@@ -1084,11 +1043,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1115,7 +1074,7 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-3, -3],
@@ -1140,11 +1099,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1171,11 +1130,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1202,11 +1161,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1233,11 +1192,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1264,11 +1223,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1297,11 +1256,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-3, -3],
@@ -1324,11 +1283,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1355,11 +1314,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1386,11 +1345,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-3, -3],
@@ -1413,11 +1372,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1446,11 +1405,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1477,7 +1436,7 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-3, -3],
@@ -1502,11 +1461,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
@@ -1533,11 +1492,11 @@
       "modifiers": [
         {
           "range": [1, 1],
-          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+          "description": "Parrying a one-handed attack with the weapon used two-handed"
         },
         {
           "range": [-1, -1],
-          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+          "description": "Parrying a two-handed attack with the weapon on one-hand"
         },
         {
           "range": [-2, -2],
