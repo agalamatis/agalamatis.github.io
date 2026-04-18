@@ -1,60 +1,12 @@
 {
   "_comments": [
-    "gear: items required or usable for this reaction",
-    "traits: character traits that modify this reaction",
-    "modifiers: list of {range:[min,max], description} skill modifiers",
-    "actions: action names in actions.json that can trigger this reaction"
+    "TODO gear: items required or usable for this reaction",
+    "TODO traits: character traits that modify this reaction",
+    "REVIEW modifiers: list of {range:[min,max], description} skill modifiers"
   ],
   "Acrobatics": [
     {
       "reaction": "Acrobatic Dodge",
-      "actions": [
-        "Punch",
-        "Kick",
-        "Headbutt",
-        "Grapple and Pin",
-        "Strike to Disable a Limb",
-        "Disarm an Opponent",
-        "Attack with Punch",
-        "Attack with Kick",
-        "Attack with Teeth",
-        "Attack with Fangs",
-        "Attack with Beak",
-        "Attack with Claws",
-        "Attack with Talons",
-        "Attack with Hatchet",
-        "Attack with Axe",
-        "Attack with Pickaxe",
-        "Attack with Hammer",
-        "Attack with Pick",
-        "Attack with Maul",
-        "Attack with Club",
-        "Attack with Spiked Club",
-        "Attack with Mace",
-        "Attack with Morning Star (Spiked Mace)",
-        "Attack with Flanged Flail",
-        "Attack with Spiked Flail",
-        "Attack with Sickle",
-        "Attack with Scythe",
-        "Attack with Glaive / Bill-Guisearm",
-        "Attack with Halberd / Voulge",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Cane",
-        "Attack with Staff",
-        "Attack with Pike",
-        "Attack with Machette",
-        "Attack with Falchion / Scimitar",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Main-Gauche / Stiletto",
-        "Attack with Estoc / Rapier",
-        "Attack with Bastard Sword",
-        "Attack with Great Sword",
-        "Attack with Dagger",
-        "Attack with Short Sword"
-      ],
       "attribute": "Agility",
       "offset": 1,
       "scale": 1,
@@ -79,77 +31,31 @@
       ],
       "traits": [],
       "gear": []
-    },
+    }
+  ],
+  "Acting": [
     {
-      "reaction": "Break Fall",
-      "actions": [
-        "Grapple and Pin",
-        "Punch",
-        "Kick",
-        "Headbutt",
-        "Strike to Disable a Limb",
-        "Attack with Punch",
-        "Attack with Kick",
-        "Attack with Teeth",
-        "Attack with Fangs",
-        "Attack with Beak",
-        "Attack with Claws",
-        "Attack with Talons",
-        "Attack with Hatchet",
-        "Attack with Axe",
-        "Attack with Pickaxe",
-        "Attack with Hammer",
-        "Attack with Pick",
-        "Attack with Maul",
-        "Attack with Club",
-        "Attack with Spiked Club",
-        "Attack with Mace",
-        "Attack with Morning Star (Spiked Mace)",
-        "Attack with Flanged Flail",
-        "Attack with Spiked Flail",
-        "Attack with Sickle",
-        "Attack with Scythe",
-        "Attack with Glaive / Bill-Guisearm",
-        "Attack with Halberd / Voulge",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Cane",
-        "Attack with Staff",
-        "Attack with Spear",
-        "Attack with Pike",
-        "Attack with Machette",
-        "Attack with Falchion / Scimitar",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Main-Gauche / Stiletto",
-        "Attack with Estoc / Rapier",
-        "Attack with Bastard Sword",
-        "Attack with Great Sword",
-        "Attack with Dagger",
-        "Attack with Short Sword"
-      ],
-      "attribute": "Agility",
-      "offset": 1,
-      "scale": 1,
-      "description": "When falling or being knocked down, the character uses trained technique to absorb impact and recover quickly.",
-      "success": "Effective falling distance is reduced by 5 yards for damage purposes; the character rolls upright and can act normally.",
-      "failure": "The character takes full falling damage and lands prone.",
-      "phenomenal": "The character takes no damage whatsoever and lands standing, unperturbed.",
-      "catastrophic": "The character lands at a terrible angle, taking full damage plus an additional 1d6 and possibly spraining a limb.",
+      "reaction": "Play Dead",
+      "attribute": "Charisma",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character collapses and convincingly mimics unconsciousness or death during or after a fight.",
+      "success": "Enemies or witnesses believe the character is incapacitated and leave them or lower their guard.",
+      "failure": "An enemy notices movement or breathing and knows the ruse.",
+      "phenomenal": "Even a close inspection fails to reveal the deception; the character may act freely on a later turn.",
+      "catastrophic": "The character is so unconvincing that observers immediately attack to make sure.",
       "modifiers": [
         {
-          "range": [-2, -2],
-          "description": "Wearing heavy armour (DR 4+) impedes rolling"
+          "range": [-5, -5],
+          "description": "Opponent has reason to confirm the kill"
         },
         {
-          "range": [-5, -5],
-          "description": "Unconscious or stunned when falling"
+          "range": [-3, -3],
+          "description": "Opponent is suspicious or was not fooled recently"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Character is already wounded and bleeding"
         }
       ],
       "traits": [],
@@ -158,6 +64,7 @@
   ],
   "Body Language": [
     {
+      "reaction": "Identify Deception",
       "actions": [
         "Feign Emotion"
       ],
@@ -184,7 +91,6 @@
         }
       ],
       "traits": [],
-      "reaction": "Identify Deception",
       "gear": []
     },
     {
@@ -251,94 +157,7 @@
   ],
   "Brawling": [
     {
-      "reaction": "Dodge",
-      "actions": [
-        "Punch",
-        "Kick",
-        "Headbutt",
-        "Grapple and Pin",
-        "Strike to Disable a Limb",
-        "Disarm an Opponent",
-        "Attack with Punch",
-        "Attack with Kick",
-        "Attack with Teeth",
-        "Attack with Fangs",
-        "Attack with Beak",
-        "Attack with Claws",
-        "Attack with Talons",
-        "Attack with Hatchet",
-        "Attack with Axe",
-        "Attack with Pickaxe",
-        "Attack with Hammer",
-        "Attack with Pick",
-        "Attack with Maul",
-        "Attack with Club",
-        "Attack with Spiked Club",
-        "Attack with Mace",
-        "Attack with Morning Star (Spiked Mace)",
-        "Attack with Flanged Flail",
-        "Attack with Spiked Flail",
-        "Attack with Sickle",
-        "Attack with Scythe",
-        "Attack with Glaive / Bill-Guisearm",
-        "Attack with Halberd / Voulge",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Cane",
-        "Attack with Staff",
-        "Attack with Pike",
-        "Attack with Machette",
-        "Attack with Falchion / Scimitar",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Main-Gauche / Stiletto",
-        "Attack with Estoc / Rapier",
-        "Attack with Bastard Sword",
-        "Attack with Great Sword",
-        "Attack with Dagger",
-        "Attack with Short Sword"
-      ],
-      "attribute": "Agility",
-      "offset": 1,
-      "scale": 1,
-      "description": "In combat, the character sideseps to avoid an incoming attack.",
-      "success": "The attack misses entirely.",
-      "failure": "The character's dodge fails and they are hit normally.",
-      "phenomenal": "The dodge moves the character behind the attacker, granting a free attack.",
-      "catastrophic": "The character stumbles into the blow, taking damage with no defence, and falls prone.",
-      "modifiers": [
-        {
-          "range": [-2, -2],
-          "description": "Flanked or attacked from behind (-2 to all active defences)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Already used a dodge this turn"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Stunned or injured"
-        }
-      ],
-      "traits": [],
-      "gear": []
-    },
-    {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Punch",
-        "Attack with Kick",
-        "Attack with Teeth",
-        "Attack with Fangs",
-        "Attack with Beak",
-        "Attack with Claws",
-        "Attack with Talons",
-        "Punch",
-        "Kick",
-        "Headbutt",
-        "Strike to Disable a Limb"
-      ],
+      "reaction": "Block",
       "attribute": "Agility",
       "offset": 0.5,
       "scale": 0.5,
@@ -369,148 +188,35 @@
           "description": "Parrying after already parrying once this turn"
         },
         {
-          "range": [
-            0.5,
-            0.5
-          ],
+          "range": [0.5, 0.5],
           "description": "Using Kick (parry modifier +0.5 vs base)"
-        }
-      ],
-      "traits": [],
-      "gear": []
-    }
-  ],
-  "Acting": [
-    {
-      "reaction": "Play Dead",
-      "actions": [
-        "Strike to Disable a Limb",
-        "Punch",
-        "Kick",
-        "Headbutt",
-        "Attack with Punch",
-        "Attack with Kick",
-        "Attack with Teeth",
-        "Attack with Fangs",
-        "Attack with Beak",
-        "Attack with Claws",
-        "Attack with Talons",
-        "Attack with Hatchet",
-        "Attack with Axe",
-        "Attack with Pickaxe",
-        "Attack with Hammer",
-        "Attack with Pick",
-        "Attack with Maul",
-        "Attack with Club",
-        "Attack with Spiked Club",
-        "Attack with Mace",
-        "Attack with Morning Star (Spiked Mace)",
-        "Attack with Flanged Flail",
-        "Attack with Spiked Flail",
-        "Attack with Sickle",
-        "Attack with Scythe",
-        "Attack with Glaive / Bill-Guisearm",
-        "Attack with Halberd / Voulge",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Cane",
-        "Attack with Staff",
-        "Attack with Spear",
-        "Attack with Pike",
-        "Attack with Machette",
-        "Attack with Falchion / Scimitar",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Main-Gauche / Stiletto",
-        "Attack with Estoc / Rapier",
-        "Attack with Bastard Sword",
-        "Attack with Great Sword",
-        "Attack with Dagger",
-        "Attack with Short Sword"
-      ],
-      "attribute": "Charisma",
-      "offset": 3,
-      "scale": 2,
-      "description": "The character collapses and convincingly mimics unconsciousness or death during or after a fight.",
-      "success": "Enemies or witnesses believe the character is incapacitated and leave them or lower their guard.",
-      "failure": "An enemy notices movement or breathing and knows the ruse.",
-      "phenomenal": "Even a close inspection fails to reveal the deception; the character may act freely on a later turn.",
-      "catastrophic": "The character is so unconvincing that observers immediately attack to make sure.",
-      "modifiers": [
-        {
-          "range": [-5, -5],
-          "description": "Opponent has reason to confirm the kill"
-        },
-        {
-          "range": [-3, -3],
-          "description": "Opponent is suspicious or was not fooled recently"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Character is already wounded and bleeding"
-        }
-      ],
-      "traits": [],
-      "gear": []
-    }
-  ],
-  "Breath Control": [
-    {
-      "reaction": "Hold Breath Underwater",
-      "actions": [
-        "Grapple and Pin"
-      ],
-      "attribute": "Health",
-      "offset": 60,
-      "scale": 30,
-      "description": "The character controls their breathing to stay submerged longer than normal.",
-      "success": "The character doubles their normal breath-holding time, enabling extended underwater activity.",
-      "failure": "The technique fails; breath-holding time is normal.",
-      "phenomenal": "The character holds their breath for three times the normal duration.",
-      "catastrophic": "The character hyperventilates or panics, surfacing immediately or blacking out underwater.",
-      "modifiers": [
-        {
-          "range": [-3, -3],
-          "description": "Character is surprised or panicking"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Character prepared in advance"
         }
       ],
       "traits": [],
       "gear": []
     },
     {
-      "reaction": "Suppress Pain Response",
-      "actions": [
-        "Torture: Extract Confession Under Duress",
-        "Strike to Disable a Limb",
-        "Punch",
-        "Kick"
-      ],
-      "attribute": "Health",
-      "offset": 10,
-      "scale": 5,
-      "description": "Through controlled breathing and mental focus, the character suppresses visible signs of pain.",
-      "success": "The character appears unaffected by pain; they can act normally for the current scene.",
-      "failure": "The technique provides no benefit.",
-      "phenomenal": "The character is so composed under pain that observers may question whether they were actually struck.",
-      "catastrophic": "The mental effort backfires; the character is actually more impaired by the pain.",
+      "reaction": "Dodge",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 1,
+      "description": "In combat, the character sideseps to avoid an incoming attack.",
+      "success": "The attack misses entirely.",
+      "failure": "The character's dodge fails and they are hit normally.",
+      "phenomenal": "The dodge moves the character behind the attacker, granting a free attack.",
+      "catastrophic": "The character stumbles into the blow, taking damage with no defence, and falls prone.",
       "modifiers": [
         {
           "range": [-2, -2],
-          "description": "Injury is catastrophic (more than half HP lost)"
+          "description": "Flanked or attacked from behind (-2 to all active defences)"
         },
         {
           "range": [-1, -1],
-          "description": "Character has been trained to endure pain"
+          "description": "Already used a dodge this turn"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Stunned or injured"
         }
       ],
       "traits": [],
@@ -520,11 +226,6 @@
   "Concentration": [
     {
       "reaction": "Resist Interrogation",
-      "actions": [
-        "Psychologically Break a Prisoner",
-        "Question a Reluctant Witness",
-        "Extract Confession Under Duress"
-      ],
       "attribute": "Reasoning",
       "offset": 3600,
       "scale": 1800,
@@ -549,18 +250,34 @@
       ],
       "traits": [],
       "gear": []
+    },
+    {
+      "reaction": "Suppress Pain Response",
+      "attribute": "Health",
+      "offset": 10,
+      "scale": 5,
+      "description": "Through controlled breathing and mental focus, the character suppresses visible signs of pain.",
+      "success": "The character appears unaffected by pain; they can act normally for the current scene.",
+      "failure": "The technique provides no benefit.",
+      "phenomenal": "The character is so composed under pain that observers may question whether they were actually struck.",
+      "catastrophic": "The mental effort backfires; the character is actually more impaired by the pain.",
+      "modifiers": [
+        {
+          "range": [-2, -2],
+          "description": "Injury is catastrophic (more than half HP lost)"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Character has been trained to endure pain"
+        }
+      ],
+      "traits": [],
+      "gear": []
     }
   ],
   "Detect Lies": [
     {
       "reaction": "Spot a Deceptive Answer",
-      "actions": [
-        "Feign Emotion",
-        "Sustain a Lie",
-        "Talk Past a Guard",
-        "Escape an Accusation",
-        "Impersonate a Person"
-      ],
       "attribute": "Perception",
       "offset": 10,
       "scale": 5,
@@ -592,12 +309,6 @@
     },
     {
       "reaction": "Assess Witness Credibility",
-      "actions": [
-        "Sustain a Lie",
-        "Forge a Letter of Passage",
-        "Write a Spy's Report",
-        "Spread a Rumour"
-      ],
       "attribute": "Perception",
       "offset": 300,
       "scale": 120,
@@ -623,9 +334,6 @@
   "Escape": [
     {
       "reaction": "Slip Rope Bonds",
-      "actions": [
-        "Bind a Prisoner Securely"
-      ],
       "attribute": "Agility",
       "offset": 60,
       "scale": 30,
@@ -657,10 +365,6 @@
     },
     {
       "reaction": "Escape from Confinement",
-      "actions": [
-        "Bind a Prisoner Securely",
-        "Forced Entry: Kick Down a Door"
-      ],
       "attribute": "Agility",
       "offset": 600,
       "scale": 300,
@@ -687,258 +391,318 @@
       "gear": []
     }
   ],
-  "Weapon": [
-    {
-      "reaction": "Parry and Riposte",
-      "actions": [
-        "Attack with Punch",
-        "Attack with Kick",
-        "Attack with Teeth",
-        "Attack with Fangs",
-        "Attack with Beak",
-        "Attack with Claws",
-        "Attack with Talons",
-        "Attack with Hatchet",
-        "Attack with Axe",
-        "Attack with Pickaxe",
-        "Attack with Hammer",
-        "Attack with Pick",
-        "Attack with Maul",
-        "Attack with Club",
-        "Attack with Spiked Club",
-        "Attack with Mace",
-        "Attack with Morning Star (Spiked Mace)",
-        "Attack with Flanged Flail",
-        "Attack with Spiked Flail",
-        "Attack with Sickle",
-        "Attack with Scythe",
-        "Attack with Glaive / Bill-Guisearm",
-        "Attack with Halberd / Voulge",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Cane",
-        "Attack with Staff",
-        "Attack with Spear",
-        "Attack with Pike",
-        "Attack with Machette",
-        "Attack with Falchion / Scimitar",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Main-Gauche / Stiletto",
-        "Attack with Estoc / Rapier",
-        "Attack with Bastard Sword",
-        "Attack with Great Sword",
-        "Attack with Dagger",
-        "Attack with Short Sword"
-      ],
-      "attribute": "Agility",
-      "offset": 1,
-      "scale": 1,
-      "description": "The character deflects an incoming attack and immediately follows with a counter-strike.",
-      "success": "The parry succeeds and the riposte connects; the opponent is dealt a blow.",
-      "failure": "The parry succeeds but the riposte misses.",
-      "phenomenal": "The parry disarms the opponent and the riposte is a critical hit.",
-      "catastrophic": "The parry fails; the character takes full damage from the attack.",
-      "modifiers": [
-        {
-          "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
-        },
-        {
-          "range": [-4, -4],
-          "description": "Parrying a flail"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon with a parry bonus (e.g. main-gauche)"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry penalty (varies by training)"
-        }
-      ],
-      "traits": [],
-      "gear": []
-    },
-    {
-      "reaction": "Fight Defensively",
-      "actions": [
-        "Attack with Punch",
-        "Attack with Kick",
-        "Attack with Teeth",
-        "Attack with Fangs",
-        "Attack with Beak",
-        "Attack with Claws",
-        "Attack with Talons",
-        "Attack with Hatchet",
-        "Attack with Axe",
-        "Attack with Pickaxe",
-        "Attack with Hammer",
-        "Attack with Pick",
-        "Attack with Maul",
-        "Attack with Club",
-        "Attack with Spiked Club",
-        "Attack with Mace",
-        "Attack with Morning Star (Spiked Mace)",
-        "Attack with Flanged Flail",
-        "Attack with Spiked Flail",
-        "Attack with Sickle",
-        "Attack with Scythe",
-        "Attack with Glaive / Bill-Guisearm",
-        "Attack with Halberd / Voulge",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Cane",
-        "Attack with Staff",
-        "Attack with Spear",
-        "Attack with Pike",
-        "Attack with Machette",
-        "Attack with Falchion / Scimitar",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Main-Gauche / Stiletto",
-        "Attack with Estoc / Rapier",
-        "Attack with Bastard Sword",
-        "Attack with Great Sword",
-        "Attack with Dagger",
-        "Attack with Short Sword"
-      ],
-      "attribute": "Agility",
-      "offset": 5,
-      "scale": 3,
-      "description": "The character adopts a defensive posture, sacrificing offensive effectiveness to maximise their chance of blocking attacks.",
-      "success": "The character's defences hold; incoming attacks are parried or dodged consistently.",
-      "failure": "The defensive strategy provides no particular advantage.",
-      "phenomenal": "The character is untouchable for the duration; no attack gets through.",
-      "catastrophic": "The overly cautious stance leaves a critical opening; the opponent exploits it for a devastating hit.",
-      "modifiers": [
-        {
-          "range": [-4, -4],
-          "description": "All attacks are at -4 while in full defensive posture"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Bonus to all active defences while fighting defensively"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Difficult terrain further reduces defensive options"
-        }
-      ],
-      "traits": [],
-      "gear": []
-    }
-  ],
   "Weapon (Axes-Hammers-Picks)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Hatchet",
-        "Attack with Axe",
-        "Attack with Pickaxe",
-        "Attack with Hammer",
-        "Attack with Pick",
-        "Attack with Maul"
-      ],
+      "reaction": "Parry with Hatchet",
       "attribute": "Agility",
-      "offset": 1,
-      "scale": 1,
-      "description": "The character uses the haft or head of their axe, hammer, or pick to block an incoming blow.",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character uses the haft or head of their hatchet to block an incoming blow.",
       "success": "The attack is deflected; no damage is taken.",
       "failure": "The parry fails; the attack connects and damage is dealt normally.",
       "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Hatchet"]
+    },
+    {
+      "reaction": "Parry with Axe",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character uses the haft or head of their axe to block an incoming blow.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Axe"]
+    },
+    {
+      "reaction": "Parry with Pickaxe",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character uses the haft or head of their pickaxe to block an incoming blow.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Pickaxe"]
+    },
+    {
+      "reaction": "Parry with Pick",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character uses the haft or head of their pick to block an incoming blow.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Pick"]
+    },
+    {
+      "reaction": "Parry with Hammer",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character uses the haft or head of their hammer to block an incoming blow.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Hammer"]
+    },
+    {
+      "reaction": "Parry with Maul",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character uses the haft or head of their maul to block an incoming blow.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Maul"]
     }
   ],
   "Weapon (Clubs-Maces)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Club",
-        "Attack with Spiked Club",
-        "Attack with Mace",
-        "Attack with Morning Star (Spiked Mace)"
-      ],
+      "reaction": "Parry with Club",
       "attribute": "Agility",
-      "offset": 1,
-      "scale": 1,
-      "description": "The character interposes their club or mace to absorb or redirect the incoming attack.",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character interposes their club to absorb or redirect an incoming attack.",
       "success": "The attack is deflected; no damage is taken.",
       "failure": "The parry fails; the attack connects and damage is dealt normally.",
       "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Club"]
+    },
+    {
+      "reaction": "Parry with Spiked Club",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character interposes their spiked club to absorb or redirect an incoming attack.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Spiked Club"]
+    },
+    {
+      "reaction": "Parry with Mace",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character interposes their Mace to absorb or redirect an incoming attack.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Mace"]
+    },
+    {
+      "reaction": "Parry with Morning Star (Spiked Mace)",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character interposes their morning star (spiked mace) to absorb or redirect an incoming attack.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Morning Star (Spiked Mace)"]
     }
   ],
   "Weapon (Flails)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Flanged Flail",
-        "Attack with Spiked Flail"
-      ],
+      "reaction": "Parry with Spiked Flail",
       "attribute": "Agility",
-      "offset": 1,
-      "scale": 1,
+      "offset": 3,
+      "scale": 2,
       "description": "The character swings the flail chain to catch and redirect the incoming weapon.",
       "success": "The attack is deflected; no damage is taken.",
       "failure": "The parry fails; the attack connects and damage is dealt normally.",
@@ -946,81 +710,119 @@
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
-    }
-  ],
-  "Weapon (Sickles-Scythes)": [
+      "gear": ["Spiked Flail"]
+    },
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Sickle",
-        "Attack with Scythe"
-      ],
+      "reaction": "Parry with Flanged Flail",
       "attribute": "Agility",
-      "offset": 1,
-      "scale": 1,
-      "description": "The character hooks or blocks the incoming weapon with the curved blade.",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character swings the flail chain to catch and redirect the incoming weapon.",
       "success": "The attack is deflected; no damage is taken.",
       "failure": "The parry fails; the attack connects and damage is dealt normally.",
       "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Flanged Flail"]
+    }
+  ],
+  "Weapon (Sickles-Scythes)": [
+    {
+      "reaction": "Parry with Sickle",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character hooks or deflects the incoming weapon with the curved blade.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Sickle"]
+    },
+    {
+      "reaction": "Parry with Scythe",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character hooks or deflects the incoming weapon with the curved blade or blocks with the shaft.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Sickle"]
     }
   ],
   "Weapon (Polearms)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Glaive / Bill-Guisearm",
-        "Attack with Halberd / Voulge"
-      ],
+      "reaction": "Parry with Glaive / Bill-Guisearm",
       "attribute": "Agility",
-      "offset": 1,
-      "scale": 1,
+      "offset": 3,
+      "scale": 2,
       "description": "The character uses the polearm shaft or blade to sweep aside the incoming attack.",
       "success": "The attack is deflected; no damage is taken.",
       "failure": "The parry fails; the attack connects and damage is dealt normally.",
@@ -1028,39 +830,46 @@
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
-          "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Glaive / Bill-Guisearm"]
+    },
+    {
+      "reaction": "Parry with Halberd / Voulge",
+      "attribute": "Agility",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character uses the polearm shaft or blade to sweep aside the incoming attack.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Halberd / Voulge"]
     }
   ],
   "Weapon (Javelins)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Javelin",
-        "Attack with Spear"
-      ],
+      "reaction": "Parry with Javelin",
       "attribute": "Agility",
-      "offset": 0.5,
+      "offset": 1,
       "scale": 0.5,
       "description": "The character uses the shaft of the javelin to intercept and deflect the blow.",
       "success": "The attack is deflected; no damage is taken.",
@@ -1069,126 +878,259 @@
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Javelin"]
+    },
+    {
+      "reaction": "Parry with Spear",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character uses the shaft of the spear to intercept and deflect the blow.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Spear"]
     }
   ],
   "Weapon (Staves)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Javelin",
-        "Attack with Spear",
-        "Attack with Cane",
-        "Attack with Staff"
-      ],
+      "reaction": "Parry with Cane",
       "attribute": "Agility",
-      "offset": 0.5,
+      "offset": 1,
       "scale": 0.5,
-      "description": "The character rotates the staff to interpose it between themselves and the incoming blow.",
+      "description": "The character rotates the cane to interpose it between themselves and the incoming blow, deflecting it.",
       "success": "The attack is deflected; no damage is taken.",
       "failure": "The parry fails; the attack connects and damage is dealt normally.",
       "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Cane"]
+    },
+    {
+      "reaction": "Parry with Staff",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character rotates the staff to interpose it between themselves and the incoming blow, deflecting it.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Staff"]
+    },
+    {
+      "reaction": "Parry with Javelin",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character uses the shaft of the javelin to intercept and deflect the blow.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Javelin"]
+    },
+    {
+      "reaction": "Parry with Spear",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character uses the shaft of the spear to intercept and deflect the blow.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Spear"]
+    },
+    {
+      "reaction": "Parry with Pike",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character rotates the pike to interpose it between themselves and the incoming blow, deflecting it.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Pike"]
     }
   ],
   "Weapon (Pikes)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Spear",
-        "Attack with Pike"
-      ],
+      "reaction": "Parry with Spear",
       "attribute": "Agility",
-      "offset": 0.5,
+      "offset": 1,
       "scale": 0.5,
-      "description": "The character uses the long shaft to keep the attacker at distance and deflect their weapon.",
+      "description": "The character uses the shaft of the spear to intercept and deflect the blow.",
       "success": "The attack is deflected; no damage is taken.",
       "failure": "The parry fails; the attack connects and damage is dealt normally.",
       "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Spear"]
+    },
+    {
+      "reaction": "Parry with Pike",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character rotates the pike to interpose it between themselves and the incoming blow, deflecting it.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Pike"]
     }
   ],
   "Weapon (Curved Swords)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Machette",
-        "Attack with Falchion / Scimitar",
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre"
-      ],
+      "reaction": "Parry with Machette",
       "attribute": "Agility",
-      "offset": 0.5,
+      "offset": 1,
       "scale": 0.5,
       "description": "The character uses the curved blade to guide the attack away from their body.",
       "success": "The attack is deflected; no damage is taken.",
@@ -1197,90 +1139,304 @@
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
-    }
-  ],
-  "Weapon (Fencing Swords)": [
+      "gear": ["Machette"]
+    },
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Hunting / Skinning Knife",
-        "Attack with Cutlass",
-        "Attack with Sabre",
-        "Attack with Main-Gauche / Stiletto",
-        "Attack with Estoc / Rapier"
-      ],
+      "reaction": "Parry with Falchion / Scimmitar",
       "attribute": "Agility",
-      "offset": 0.5,
+      "offset": 1,
       "scale": 0.5,
-      "description": "The character uses precise footwork and blade control to deflect the incoming thrust or cut.",
+      "description": "The character uses the curved blade to guide the attack away from their body.",
       "success": "The attack is deflected; no damage is taken.",
       "failure": "The parry fails; the attack connects and damage is dealt normally.",
       "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
-        },
-        {
-          "range": [
-            -0.4,
-            -0.4
-          ],
-          "description": "Using Main-Gauche / Stiletto, Estoc / Rapier (parry modifier -0.4 vs base)"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Falchion / Scimmitar"]
+    },
+    {
+      "reaction": "Parry with Hunting / Skinning Knife",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character uses the curved blade to guide the attack away from their body.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Hunting / Skinning Knife"]
+    },
+    {
+      "reaction": "Parry with Cutlass",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character uses the curved blade to guide the attack away from their body.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Cutlass"]
+    },
+    {
+      "reaction": "Parry with Sabre",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character uses the curved blade to guide the attack away from their body.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Sabre"]
+    }
+  ],
+  "Weapon (Fencing Swords)": [
+    {
+      "reaction": "Parry with Hunting / Skinning Knife",
+      "attribute": "Agility",
+      "offset": 0.5,
+      "scale": 0.5,
+      "description": "The character uses precise footwork and blade control to deflect the incoming attacks.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Hunting / Skinning Knife"]
+    },
+    {
+      "reaction": "Parry with Cutlass",
+      "attribute": "Agility",
+      "offset": 0.5,
+      "scale": 0.5,
+      "description": "The character uses precise footwork and blade control to deflect the incoming attacks.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Cutlass"]
+    },
+    {
+      "reaction": "Parry with Sabre",
+      "attribute": "Agility",
+      "offset": 0.5,
+      "scale": 0.5,
+      "description": "The character uses precise footwork and blade control to deflect the incoming attacks.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Sabre"]
+    },
+    {
+      "reaction": "Parry with Main-Gauche / Stiletto",
+      "attribute": "Agility",
+      "offset": 0.5,
+      "scale": 0.5,
+      "description": "The character uses precise footwork and blade control to deflect the incoming attacks.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Main-Gauche / Stiletto"]
+    },
+    {
+      "reaction": "Parry with Estoc / Rapier",
+      "attribute": "Agility",
+      "offset": 0.5,
+      "scale": 0.5,
+      "description": "The character uses precise footwork and blade control to deflect the incoming attacks.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Estoc / Rapier"]
     }
   ],
   "Weapon (Long Swords)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Bastard Sword",
-        "Attack with Great Sword"
-      ],
+      "reaction": "Parry with Bastard Sword",
       "attribute": "Agility",
-      "offset": 0.5,
+      "offset": 1,
       "scale": 0.5,
       "description": "The character brings their long blade across to bear the force of the incoming attack.",
       "success": "The attack is deflected; no damage is taken.",
@@ -1289,39 +1445,54 @@
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Bastard Sword"]
+    },
+    {
+      "reaction": "Parry with Great Sword",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character brings their long blade across to bear the force of the incoming attack.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Great Sword"]
     }
   ],
   "Weapon (Small Swords)": [
     {
-      "reaction": "Parry",
-      "actions": [
-        "Attack with Dagger",
-        "Attack with Short Sword"
-      ],
+      "reaction": "Parry with Dagger",
       "attribute": "Agility",
-      "offset": 0.5,
+      "offset": 1,
       "scale": 0.5,
       "description": "The character uses the nimble blade to flick the incoming attack off-line.",
       "success": "The attack is deflected; no damage is taken.",
@@ -1330,28 +1501,55 @@
       "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
       "modifiers": [
         {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
           "range": [-2, -2],
-          "description": "Parrying a two-handed weapon with a one-handed weapon"
+          "description": "Off-hand parry"
         },
         {
-          "range": [-4, -4],
+          "range": [-3, -3],
           "description": "Parrying a flail (chain catches the blocking weapon)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Using a weapon or hand that has a parry bonus noted"
-        },
-        {
-          "range": [-1, -0],
-          "description": "Off-hand parry (varies by training level)"
-        },
-        {
-          "range": [-1, -1],
-          "description": "Parrying after already parrying once this turn"
         }
       ],
       "traits": [],
-      "gear": []
+      "gear": ["Dagger"]
+    },
+    {
+      "reaction": "Parry with Short Sword",
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 0.5,
+      "description": "The character uses the nimble blade to flick the incoming attack off-line.",
+      "success": "The attack is deflected; no damage is taken.",
+      "failure": "The parry fails; the attack connects and damage is dealt normally.",
+      "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+      "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+      "modifiers": [
+        {
+          "range": [1, 1],
+          "description": "Parrying a one-handed attack with with the weapon used two-handed"
+        },
+        {
+          "range": [-1, -1],
+          "description": "Parrying a two-handed attack with with the weapon on one-hand"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Off-hand parry"
+        },
+        {
+          "range": [-3, -3],
+          "description": "Parrying a flail (chain catches the blocking weapon)"
+        }
+      ],
+      "traits": [],
+      "gear": ["Short Sword"]
     }
   ]
 }

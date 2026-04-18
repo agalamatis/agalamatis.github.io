@@ -7,6 +7,33 @@
   ],
   "Acrobatics": [
     {
+      "action": "Break Fall",
+      "reactions": [],
+      "attribute": "Agility",
+      "offset": 1,
+      "scale": 1,
+      "description": "When falling or being knocked down, the character uses trained technique to absorb impact and recover quickly.",
+      "success": "Effective falling distance is reduced by 5 yards for damage purposes; the character rolls upright and can act normally.",
+      "failure": "The character takes full falling damage and lands prone.",
+      "phenomenal": "The character takes no damage whatsoever and lands standing, unperturbed.",
+      "catastrophic": "The character lands at a terrible angle, taking full damage plus an additional 1d6 and possibly spraining a limb.",
+      "modifiers": [
+        {
+          "range": [-2, -2],
+          "description": "Wearing heavy armour (DR 4+) impedes rolling"
+        },
+        {
+          "range": [-5, -5],
+          "description": "Unconscious or stunned when falling"
+        }
+      ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
+      "traits": [],
+      "gear": []
+    },
+    {
       "action": "Tumble Through Gap",
       "reactions": [],
       "attribute": "Agility",
@@ -31,6 +58,9 @@
           "description": "Using the roll to recover from a known manoeuvre (prepared)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -59,6 +89,9 @@
           "description": "Using the roll to recover from a known manoeuvre (prepared)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -103,6 +136,9 @@
           "description": "Being observed by close acquaintances of the impersonated subject"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -143,6 +179,9 @@
           "description": "Being observed by close acquaintances of the impersonated subject"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -183,6 +222,9 @@
           "description": "Being observed by close acquaintances of the impersonated subject"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -213,6 +255,9 @@
           "description": "Records are in poor condition or incomplete"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -241,6 +286,9 @@
           "description": "Records are in poor condition or incomplete"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -269,6 +317,9 @@
           "description": "Records are in poor condition or incomplete"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -303,6 +354,9 @@
           "description": "Preparing an unfamiliar formula for the first time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -335,6 +389,9 @@
           "description": "Preparing an unfamiliar formula for the first time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -367,6 +424,9 @@
           "description": "Preparing an unfamiliar formula for the first time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -399,6 +459,9 @@
           "description": "Preparing an unfamiliar formula for the first time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -433,6 +496,9 @@
           "description": "Complex multi-step problem under time pressure"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -465,6 +531,9 @@
           "description": "Complex multi-step problem under time pressure"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -497,6 +566,9 @@
           "description": "Complex multi-step problem under time pressure"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -538,6 +610,9 @@
           "description": "Task is complex or multi-step"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -577,6 +652,9 @@
           "description": "Task is complex or multi-step"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -616,6 +694,9 @@
           "description": "Task is complex or multi-step"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -655,6 +736,9 @@
           "description": "Task is complex or multi-step"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -685,6 +769,9 @@
           "description": "Working from memory rather than direct inspection"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -713,6 +800,9 @@
           "description": "Working from memory rather than direct inspection"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -741,6 +831,9 @@
           "description": "Working from memory rather than direct inspection"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -769,6 +862,9 @@
           "description": "Working from memory rather than direct inspection"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -799,6 +895,9 @@
           "description": "Character lived in the area for many years"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -827,6 +926,9 @@
           "description": "Character lived in the area for many years"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -855,6 +957,9 @@
           "description": "Character lived in the area for many years"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -885,6 +990,9 @@
           "description": "Full workshop with all appropriate tools"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -913,6 +1021,9 @@
           "description": "Full workshop with all appropriate tools"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -941,6 +1052,9 @@
           "description": "Full workshop with all appropriate tools"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -971,6 +1085,9 @@
           "description": "Full workshop with measurement tools"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -999,6 +1116,9 @@
           "description": "Full workshop with measurement tools"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1029,6 +1149,9 @@
           "description": "Full smithy with all tools and materials"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1057,6 +1180,9 @@
           "description": "Full smithy with all tools and materials"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1085,6 +1211,9 @@
           "description": "Full smithy with all tools and materials"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1111,6 +1240,9 @@
           "description": "Quality materials and proper tools available"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1135,6 +1267,9 @@
           "description": "Quality materials and proper tools available"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1159,6 +1294,9 @@
           "description": "Quality materials and proper tools available"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1176,6 +1314,9 @@
       "phenomenal": "The tattoo is a work of art that provokes admiration and may serve as a social asset.",
       "catastrophic": "The technique is so rough it causes unnecessary scarring or infection risk.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1191,6 +1332,9 @@
       "phenomenal": "The body paint is stunning and considered a blessing; reaction bonus for the ceremony.",
       "catastrophic": "The symbols are applied wrongly; the result may be considered offensive or inauspicious.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1208,6 +1352,9 @@
       "phenomenal": "The calligraphy is exquisite; the document impresses recipients and gains credibility.",
       "catastrophic": "The character makes a transcription error that changes the meaning of the text.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1223,6 +1370,9 @@
       "phenomenal": "The illuminated document is considered a minor work of art; it increases the prestige of its sender.",
       "catastrophic": "An ink spill or botched brush stroke ruins the document entirely.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1240,6 +1390,9 @@
       "phenomenal": "The portrait captures the subject's character so well it can aid in social interactions involving the subject.",
       "catastrophic": "The portrait is so unlike the subject it may cause the wrong person to be mistaken for them.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1255,6 +1408,9 @@
       "phenomenal": "The diagram is precise and beautifully clear; it provides a bonus to anyone using it as a reference.",
       "catastrophic": "The diagram contains a serious error that leads those relying on it astray.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1272,6 +1428,9 @@
       "phenomenal": "The page is a masterwork; it draws admiration and significantly increases the manuscript's worth.",
       "catastrophic": "The gold leaf is misapplied or the pigments bleed; the page is ruined.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1289,6 +1448,9 @@
       "phenomenal": "The decoration is so tasteful and striking it becomes a talking point; host gains a reaction bonus.",
       "catastrophic": "The arrangement is considered garish or improper; the host is embarrassed and may blame the character.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1306,6 +1468,9 @@
       "phenomenal": "The portrait is considered a masterwork; it greatly flatters the patron and may attract further commissions.",
       "catastrophic": "The portrait is so unflattering or inaccurate the patron refuses to pay and the character's reputation suffers.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1321,6 +1486,9 @@
       "phenomenal": "The icon is deemed of unusual spiritual power and beauty; it is treasured.",
       "catastrophic": "A serious error in iconography is considered blasphemous; the character faces censure.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1338,6 +1506,9 @@
       "phenomenal": "The vessel is beautifully proportioned; it is of fine quality and commands a higher price.",
       "catastrophic": "The clay flies off the wheel or the fired piece shatters; material is wasted.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1355,6 +1526,9 @@
       "phenomenal": "The staging is memorable and striking; it receives praise and enhances the event's impact.",
       "catastrophic": "A prop or structure fails during the performance, causing disruption or injury.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1372,6 +1546,9 @@
       "phenomenal": "The statue is a fine work; it is considered excellent craftsmanship and commands a high price.",
       "catastrophic": "A chisel slip ruins the stone or wood; the material is wasted and must be replaced.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1389,6 +1566,9 @@
       "phenomenal": "The carvings are of exceptional quality; the item is considered a work of fine craftsmanship.",
       "catastrophic": "A miscut splits the panel; the material is ruined.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1419,6 +1599,9 @@
           "description": "Clear sky and access to accurate star charts"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1447,6 +1630,9 @@
           "description": "Clear sky and access to accurate star charts"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1475,6 +1661,9 @@
           "description": "Clear sky and access to accurate star charts"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1505,6 +1694,9 @@
           "description": "Favourable wind and clear water"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1533,6 +1725,9 @@
           "description": "Favourable wind and clear water"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1561,6 +1756,9 @@
           "description": "Favourable wind and clear water"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1591,6 +1789,9 @@
           "description": "Calm, flat water"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1619,6 +1820,9 @@
           "description": "Calm, flat water"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -1626,7 +1830,7 @@
   "Body Language": [],
   "Brawling": [
     {
-      "action": "Punch",
+      "action": "Swing (0) punch (crush)",
       "reactions": [
         "Acrobatic Dodge",
         "Dodge",
@@ -1654,6 +1858,9 @@
           "description": "Off-hand attack"
         }
       ],
+      "combat": false,
+      "targets": ["chatacter"],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1685,6 +1892,9 @@
           "description": "Off-hand attack"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1716,6 +1926,9 @@
           "description": "Off-hand attack"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1748,6 +1961,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1780,6 +1996,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1811,6 +2030,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1842,6 +2064,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1873,6 +2098,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1904,6 +2132,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1935,11 +2166,42 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
   ],
-  "Breath Control": [],
+  "Breath Control": [
+    {
+      "action": "Hold Breath Underwater",
+      "reaction": [],
+      "attribute": "Health",
+      "offset": 60,
+      "scale": 30,
+      "description": "The character controls their breathing to stay submerged longer than normal.",
+      "success": "The character doubles their normal breath-holding time, enabling extended underwater activity.",
+      "failure": "The technique fails; breath-holding time is normal.",
+      "phenomenal": "The character holds their breath for three times the normal duration.",
+      "catastrophic": "The character hyperventilates or panics, surfacing immediately or blacking out underwater.",
+      "modifiers": [
+        {
+          "range": [-3, -3],
+          "description": "Character is surprised or panicking"
+        },
+        {
+          "range": [-2, -2],
+          "description": "Character prepared in advance"
+        }
+      ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
+      "traits": [],
+      "gear": []
+    }
+  ],
   "Camouflage": [
     {
       "action": "Conceal a Camp or Position",
@@ -1966,6 +2228,9 @@
           "description": "Ideal natural materials available and ample time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -1994,6 +2259,9 @@
           "description": "Ideal natural materials available and ample time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2022,6 +2290,9 @@
           "description": "Ideal natural materials available and ample time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2052,6 +2323,9 @@
           "description": "Character has a poor local reputation"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2080,6 +2354,9 @@
           "description": "Character has a poor local reputation"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2110,6 +2387,9 @@
           "description": "Quality seasoned wood and full tool kit"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2138,6 +2418,9 @@
           "description": "Quality seasoned wood and full tool kit"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2166,6 +2449,9 @@
           "description": "Quality seasoned wood and full tool kit"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2196,6 +2482,9 @@
           "description": "Access to reliable prior surveys and reference points"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2224,6 +2513,9 @@
           "description": "Access to reliable prior surveys and reference points"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2241,6 +2533,9 @@
       "phenomenal": "The dance is elegant and original; it is the talk of the gathering and reflects well on the patron.",
       "catastrophic": "A major choreographic error causes performers to collide or the routine to fall apart publicly.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2275,6 +2570,9 @@
           "description": "Completely smooth vertical surface with no handholds"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2307,6 +2605,9 @@
           "description": "Completely smooth vertical surface with no handholds"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2339,6 +2640,9 @@
           "description": "Completely smooth vertical surface with no handholds"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2369,6 +2673,9 @@
           "description": "Quiet, controlled environment"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2386,6 +2693,9 @@
       "phenomenal": "The performance is exceptional; audience members are moved and the ensemble gains reputation.",
       "catastrophic": "A serious conducting error confuses the ensemble; the performance collapses in disorder.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2416,6 +2726,9 @@
           "description": "Full kitchen, quality ingredients, ample time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2444,6 +2757,9 @@
           "description": "Full kitchen, quality ingredients, ample time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2472,6 +2788,9 @@
           "description": "Full kitchen, quality ingredients, ample time"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2506,6 +2825,9 @@
           "description": "Target audience includes trained assayers or heralds"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2538,6 +2860,9 @@
           "description": "Target audience includes trained assayers or heralds"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2568,6 +2893,9 @@
           "description": "Calm conditions and well-maintained vessel"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2596,6 +2924,9 @@
           "description": "Calm conditions and well-maintained vessel"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2630,6 +2961,9 @@
           "description": "Extra time spent (Time Spent modifiers apply)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2662,6 +2996,9 @@
           "description": "Extra time spent (Time Spent modifiers apply)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2692,6 +3029,9 @@
           "description": "Familiar music being played at correct tempo"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2720,6 +3060,9 @@
           "description": "Familiar music being played at correct tempo"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2751,6 +3094,9 @@
           "description": "Physician assisting with diagnosis"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2779,6 +3125,9 @@
           "description": "Physician assisting with diagnosis"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2813,6 +3162,9 @@
           "description": "Offering a genuine concession or gift"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2845,6 +3197,9 @@
           "description": "Offering a genuine concession or gift"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2877,6 +3232,9 @@
           "description": "Offering a genuine concession or gift"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2894,6 +3252,9 @@
       "phenomenal": "The production is acclaimed; it builds the company's reputation and draws a large audience.",
       "catastrophic": "The production is a disaster; major failures on stage humiliate performers and director alike.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2932,6 +3293,9 @@
           "description": "Hasty disguise under time pressure"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -2968,6 +3332,9 @@
           "description": "Hasty disguise under time pressure"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -2985,6 +3352,9 @@
       "phenomenal": "The character achieves profound clarity; a crucial answer or hidden memory emerges with striking precision.",
       "catastrophic": "The character has a deeply disturbing nightmare and wakes exhausted, suffering penalties to all actions until they rest.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3015,6 +3385,9 @@
           "description": "Market is artificially manipulated or information is scarce"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3043,6 +3416,9 @@
           "description": "Market is artificially manipulated or information is scarce"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3060,6 +3436,9 @@
       "phenomenal": "The shot is precisely calibrated and hits its target directly.",
       "catastrophic": "A major miscalculation causes the projectile to land among friendly troops or demolishes the machine itself.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3075,6 +3454,9 @@
       "phenomenal": "The design incorporates clever improvements that increase range or damage beyond normal.",
       "catastrophic": "The design has a critical structural flaw; the engine will fail catastrophically when used.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3092,6 +3474,9 @@
       "phenomenal": "The repair improves the clock's accuracy beyond its original specification.",
       "catastrophic": "The character's intervention breaks a delicate component; the clock cannot function until a part is replaced.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3107,6 +3492,9 @@
       "phenomenal": "The device works flawlessly and shows exceptional craftsmanship.",
       "catastrophic": "A fundamental assembly error means the device will not function and may be damaged beyond repair.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3124,6 +3512,9 @@
       "phenomenal": "The position is strongly fortified; attackers suffer significant penalties to assault.",
       "catastrophic": "The fortifications are placed badly or structurally unsound; they hinder the defenders instead.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3139,6 +3530,9 @@
       "phenomenal": "The collapse is larger than expected; a significant breach is opened.",
       "catastrophic": "The mine collapses prematurely or in the wrong direction, killing workers or causing no breach.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3156,6 +3550,9 @@
       "phenomenal": "The detonation is precisely timed and positioned; the breach is wide and clean.",
       "catastrophic": "The mine detonates prematurely, endangering or killing the engineer and nearby allies.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3173,6 +3570,9 @@
       "phenomenal": "The plan is optimally efficient; the shaft reaches ore faster and at lower cost.",
       "catastrophic": "The shaft design leads into unstable ground; a collapse is likely during excavation.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3188,6 +3588,9 @@
       "phenomenal": "The shoring is so thorough the tunnel could bear heavy loads without risk.",
       "catastrophic": "Improper shoring triggers the very collapse it was meant to prevent.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3205,6 +3608,9 @@
       "phenomenal": "The patron is deeply pleased; they become a regular and generous supporter, offering gifts or information.",
       "catastrophic": "The encounter goes badly wrong; the patron is offended or a complication arises with serious social consequences.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3223,6 +3629,9 @@
       "phenomenal": "The gate is completely destroyed; no obstacle remains.",
       "catastrophic": "The charge detonates prematurely or wildly, injuring the character and companions.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3253,6 +3662,9 @@
           "description": "Working with a bird trained by this same falconer for 1+ year"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3281,6 +3693,9 @@
           "description": "Working with a bird trained by this same falconer for 1+ year"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3311,6 +3726,9 @@
           "description": "Drought, flood, or pest infestation active"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3339,6 +3757,9 @@
           "description": "Drought, flood, or pest infestation active"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3367,6 +3788,9 @@
           "description": "Drought, flood, or pest infestation active"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3393,6 +3817,9 @@
           "description": "Darkness or severely restricted movement"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3423,6 +3850,9 @@
           "description": "Seated or severely restricted posture"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3449,6 +3879,9 @@
           "description": "Wearing heavy gloves or hand wrappings"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3483,6 +3916,9 @@
           "description": "Plausible and largely true cover story"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3515,6 +3951,9 @@
           "description": "Plausible and largely true cover story"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3545,6 +3984,9 @@
           "description": "Crowd or distraction drawing the target's attention elsewhere"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3573,6 +4015,9 @@
           "description": "Crowd or distraction drawing the target's attention elsewhere"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3607,6 +4052,9 @@
           "description": "Patient is conscious and struggling"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3639,6 +4087,9 @@
           "description": "Patient is conscious and struggling"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3671,6 +4122,9 @@
           "description": "Patient is conscious and struggling"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3701,6 +4155,9 @@
           "description": "Improvised tackle rather than proper equipment"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3729,6 +4186,9 @@
           "description": "Improvised tackle rather than proper equipment"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3759,6 +4219,9 @@
           "description": "Iron-bound or stone door"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3787,6 +4250,9 @@
           "description": "Iron-bound or stone door"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3817,6 +4283,9 @@
           "description": "Scene is fresh and undisturbed"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3851,6 +4320,9 @@
           "description": "Document will be scrutinised by an expert (herald, notary)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3883,6 +4355,9 @@
           "description": "Document will be scrutinised by an expert (herald, notary)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3900,6 +4375,9 @@
       "phenomenal": "Pinpoint observations allow a critical hit on a specific target.",
       "catastrophic": "The observer gives incorrect corrections; friendly fire results.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3917,6 +4395,9 @@
       "phenomenal": "The load is optimised; more cargo than expected fits and the cart is perfectly balanced.",
       "catastrophic": "The load is dangerously unbalanced; the cart tips or breaks an axle.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3932,6 +4413,9 @@
       "phenomenal": "The character finds the contraband and the method of concealment, providing evidence for prosecution.",
       "catastrophic": "The character overlooks obvious contraband or reports a legitimate shipment as suspicious.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -3962,6 +4446,9 @@
           "description": "Opponent is cheating and character is unaware"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -3990,6 +4477,9 @@
           "description": "Opponent is cheating and character is unaware"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4007,6 +4497,9 @@
       "phenomenal": "The harvest is exceptional in quality and quantity; surplus is available for trade or medicine.",
       "catastrophic": "Disease or mismanagement ruins the herb garden completely; it must be replanted.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4033,6 +4526,9 @@
           "description": "Access to survey tools and samples for testing"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4057,6 +4553,9 @@
           "description": "Access to survey tools and samples for testing"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4074,6 +4573,9 @@
       "phenomenal": "The survey is precise enough to resolve boundary disputes without further measurement.",
       "catastrophic": "A systematic error results in a badly wrong measurement, causing legal or financial problems.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4091,6 +4593,9 @@
       "phenomenal": "The entire message is conveyed with perfect clarity and speed.",
       "catastrophic": "The gesture is badly misinterpreted, leading to a dangerous mistake.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4121,6 +4626,9 @@
           "description": "Access to a heraldic roll or reference"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4149,6 +4657,9 @@
           "description": "Access to a heraldic roll or reference"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4179,6 +4690,9 @@
           "description": "Well-maintained road and good weather"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4207,6 +4721,9 @@
           "description": "Well-maintained road and good weather"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4237,6 +4754,9 @@
           "description": "Recalling details under stress or time pressure"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4265,6 +4785,9 @@
           "description": "Recalling details under stress or time pressure"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4299,6 +4822,9 @@
           "description": "Wearing tight-fitting or light clothing"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4316,6 +4842,9 @@
       "phenomenal": "The preparation is so thorough and thoughtful that the lord comments favourably; a small favour may result.",
       "catastrophic": "An important item is misplaced or damaged; serious displeasure results.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4333,6 +4862,9 @@
       "phenomenal": "The character draws subtle inferences that reveal enemy intentions not explicitly stated in the report.",
       "catastrophic": "The character reaches completely wrong conclusions; decisions based on this analysis backfire badly.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4367,6 +4899,9 @@
           "description": "Subject has Concentration (Resist Interrogation) skill"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4399,6 +4934,9 @@
           "description": "Subject has Concentration (Resist Interrogation) skill"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4433,6 +4971,9 @@
           "description": "Character has a fearsome reputation known to the target"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4463,6 +5004,9 @@
           "description": "Working in poor light"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4491,6 +5035,9 @@
           "description": "Working in poor light"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4521,6 +5068,9 @@
           "description": "Slippery or uneven take-off surface"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4555,6 +5105,9 @@
           "description": "Target is unconscious or fully cooperative"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4587,6 +5140,9 @@
           "description": "Target is unconscious or fully cooperative"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4617,6 +5173,9 @@
           "description": "Simple, common vocabulary topic"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4645,6 +5204,9 @@
           "description": "Simple, common vocabulary topic"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4675,6 +5237,9 @@
           "description": "Judge is hostile or corrupt"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4703,6 +5268,9 @@
           "description": "Judge is hostile or corrupt"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4737,6 +5305,9 @@
           "description": "Character is visibly wounded"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4769,6 +5340,9 @@
           "description": "Character is visibly wounded"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4799,6 +5373,9 @@
           "description": "Quality leather and complete tool set"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4827,6 +5404,9 @@
           "description": "Quality leather and complete tool set"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4857,6 +5437,9 @@
           "description": "Team lift with another person of equal ST"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4874,6 +5457,9 @@
       "phenomenal": "The character identifies the precise dialect and region, and can make informed guesses about meaning.",
       "catastrophic": "The character completely misidentifies the language family, drawing false inferences.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4908,6 +5494,9 @@
           "description": "Good lighting and clear line of sight"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4938,6 +5527,9 @@
           "description": "Clear, formal script in trained language"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -4966,6 +5558,9 @@
           "description": "Clear, formal script in trained language"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -4983,6 +5578,9 @@
       "phenomenal": "The poem is a masterwork that spreads the patron's fame widely and is memorised by bards.",
       "catastrophic": "The poem contains embarrassing errors or insults; the patron is angered and refuses to pay.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5017,6 +5615,9 @@
           "description": "Lock has been previously picked by this character"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5049,6 +5650,9 @@
           "description": "Lock has been previously picked by this character"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5066,6 +5670,9 @@
       "phenomenal": "The makeup is masterful; the performer is unrecognisable and the effect is entirely convincing at close range.",
       "catastrophic": "The makeup is badly applied; it cracks, runs, or is clearly artificial in poor lighting.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5096,6 +5703,9 @@
           "description": "Working in rain or freezing conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5124,6 +5734,9 @@
           "description": "Working in rain or freezing conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5141,6 +5754,9 @@
       "phenomenal": "The repair improves the mill's efficiency beyond its original state.",
       "catastrophic": "The character's work damages the mechanism further; the mill cannot function until a replacement part is obtained.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5171,6 +5787,9 @@
           "description": "Negotiating with a professional guild merchant on their own goods"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5199,6 +5818,9 @@
           "description": "Negotiating with a professional guild merchant on their own goods"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5229,6 +5851,9 @@
           "description": "Unfamiliar climate or geographical region"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5257,6 +5882,9 @@
           "description": "Unfamiliar climate or geographical region"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5283,6 +5911,9 @@
           "description": "Calling in ideal conditions (correct season, correct habitat)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5309,6 +5940,9 @@
           "description": "Common local species being called"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5339,6 +5973,9 @@
           "description": "Listener has only heard the person once or twice"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5356,6 +5993,9 @@
       "phenomenal": "The composition is inspired and catches on quickly; people hum it for months.",
       "catastrophic": "The composition is embarrassingly bad or offensive; the patron refuses it and the character's reputation suffers.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5386,6 +6026,9 @@
           "description": "Performing a well-rehearsed piece on a quality instrument"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5414,6 +6057,9 @@
           "description": "Performing a well-rehearsed piece on a quality instrument"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5444,6 +6090,9 @@
           "description": "Working from memory rather than direct examination"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5472,6 +6121,9 @@
           "description": "Working from memory rather than direct examination"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5506,6 +6158,9 @@
           "description": "Distracted or fatigued observer"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5538,6 +6193,9 @@
           "description": "Distracted or fatigued observer"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5568,6 +6226,9 @@
           "description": "Map and compass available"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5585,6 +6246,9 @@
       "phenomenal": "The load is packed so efficiently more can be carried without penalty.",
       "catastrophic": "The pack shifts and falls or causes the animal to stumble, potentially injuring it.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5602,6 +6266,9 @@
       "phenomenal": "The character's appeal is compelling; a generous donor gives significantly.",
       "catastrophic": "The character is driven off by a guard or hostile merchant for causing a nuisance.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5632,6 +6299,9 @@
           "description": "Hostile or unruly audience"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5649,6 +6319,9 @@
       "phenomenal": "The character's arguments are so compelling the opponent is genuinely persuaded.",
       "catastrophic": "The character's argument is logically flawed; even supporters are embarrassed.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5679,6 +6352,9 @@
           "description": "Exotic or unfamiliar disease"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5707,6 +6383,9 @@
           "description": "Exotic or unfamiliar disease"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5724,6 +6403,9 @@
       "phenomenal": "The calculation is precise; the first shot hits target.",
       "catastrophic": "The calculation is grossly wrong; the projectile goes in a completely unexpected direction.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5754,6 +6436,9 @@
           "description": "Purse is secured or worn against the body"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5771,6 +6456,9 @@
       "phenomenal": "The verse is clever and memorable; the recipient is genuinely moved and may offer a gift.",
       "catastrophic": "The verse is offensive or embarrassing; the recipient takes it as an insult.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5801,6 +6489,9 @@
           "description": "Working in field conditions without proper equipment"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5829,6 +6520,9 @@
           "description": "Working in field conditions without proper equipment"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5859,6 +6553,9 @@
           "description": "Rapidly changing political situation with incomplete information"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5887,6 +6584,9 @@
           "description": "Rapidly changing political situation with incomplete information"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5904,6 +6604,9 @@
       "phenomenal": "The rumour spreads widely and convincingly; the target suffers a significant reaction penalty.",
       "catastrophic": "The rumour is traced back to the character; their own reputation suffers and the target may pursue action.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -5919,6 +6622,9 @@
       "phenomenal": "The piece is widely believed and quoted; the target's standing falls significantly.",
       "catastrophic": "The authorship is identified; the character faces legal or violent reprisal.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5936,6 +6642,9 @@
       "phenomenal": "An unusually rich pocket of sediment yields significant gold.",
       "catastrophic": "The character is deceived by fool's gold and invests time in a worthless site.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -5970,6 +6679,9 @@
           "description": "Character has a well-known positive reputation"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6004,6 +6716,9 @@
           "description": "Time Spent bonuses apply for extended research"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6038,6 +6753,9 @@
           "description": "Well-trained, familiar mount in good conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6070,6 +6788,9 @@
           "description": "Well-trained, familiar mount in good conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6102,6 +6823,9 @@
           "description": "Well-trained, familiar mount in good conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6136,6 +6860,9 @@
           "description": "Rite is for a sect or variant the character has not specifically studied"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6168,6 +6895,9 @@
           "description": "Rite is for a sect or variant the character has not specifically studied"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6198,6 +6928,9 @@
           "description": "Flat, even road in good weather"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6226,6 +6959,9 @@
           "description": "Flat, even road in good weather"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6252,6 +6988,9 @@
           "description": "Character is a member in good standing of this guild"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6278,6 +7017,9 @@
           "description": "Character has a reputation as a fighter or commander"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6308,6 +7050,9 @@
           "description": "Character is noble-born or has extensive court experience"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6334,6 +7079,9 @@
           "description": "Character is the recognised head of household or their agent"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6364,6 +7112,9 @@
           "description": "Guard has reason to be suspicious of the character"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6394,6 +7145,9 @@
           "description": "Searching quickly under time pressure"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6428,6 +7182,9 @@
           "description": "Hidden item was placed by someone with Holdout 15+"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6460,6 +7217,9 @@
           "description": "Hidden item was placed by someone with Holdout 15+"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6490,6 +7250,9 @@
           "description": "Working in poor light"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6518,6 +7281,9 @@
           "description": "Working in poor light"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6535,6 +7301,9 @@
       "phenomenal": "The target is completely disarmed; they share sensitive information and may become an ally.",
       "catastrophic": "The attempt is seen through; the target becomes defensive or alerts companions.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6565,6 +7334,9 @@
           "description": "Target is specifically looking for a tail"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6582,6 +7354,9 @@
       "phenomenal": "The manoeuvre is executed with impressive precision; onlookers are impressed.",
       "catastrophic": "The ship strikes another vessel or the pier hard, causing significant damage.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6599,6 +7374,9 @@
       "phenomenal": "The mixture is exceptionally potent and ignites powerfully on contact.",
       "catastrophic": "The mixture ignites during preparation; fire breaks out among friendly stores.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6616,6 +7394,9 @@
       "phenomenal": "The bolt strikes a critical point on the target, causing maximum damage and possibly disabling a defender.",
       "catastrophic": "A mechanical failure causes the bowstring to snap, injuring the crew.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6646,6 +7427,9 @@
           "description": "Performing in noisy or unfavourable acoustic conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6676,6 +7460,9 @@
           "description": "Switching large or heavy objects"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6704,6 +7491,9 @@
           "description": "Switching large or heavy objects"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6730,6 +7520,9 @@
           "description": "Proper foundry tools and quality copper available"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6760,6 +7553,9 @@
           "description": "Attempting to replicate an unfamiliar technique or style"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6788,6 +7584,9 @@
           "description": "Attempting to replicate an unfamiliar technique or style"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6814,6 +7613,9 @@
           "description": "New, well-fitted moulds and clean metal stock"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6844,6 +7646,9 @@
           "description": "Contraband is bulky or unusually heavy"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6861,6 +7666,9 @@
       "phenomenal": "The character extracts all critical information and forms an accurate picture of the whole document.",
       "catastrophic": "The character misses critical passages and draws incorrect conclusions from the partial reading.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6891,6 +7699,9 @@
           "description": "Flat, hard surface in good weather"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6929,6 +7740,9 @@
           "description": "Wearing metal armour (DR 5+)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -6965,6 +7779,9 @@
           "description": "Wearing metal armour (DR 5+)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -6995,6 +7812,9 @@
           "description": "Planning for a foreign or unfamiliar theatre of war"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7023,6 +7843,9 @@
           "description": "Planning for a foreign or unfamiliar theatre of war"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7053,6 +7876,9 @@
           "description": "Character has a known reputation as an informant or outsider"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7081,6 +7907,9 @@
           "description": "Character has a known reputation as an informant or outsider"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7115,6 +7944,9 @@
           "description": "Patient is conscious and in pain, no anaesthetic available"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7147,6 +7979,9 @@
           "description": "Patient is conscious and in pain, no anaesthetic available"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7177,6 +8012,9 @@
           "description": "Poor weather conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7205,6 +8043,9 @@
           "description": "Poor weather conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7233,6 +8074,9 @@
           "description": "Poor weather conditions"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7263,6 +8107,9 @@
           "description": "Calm, warm water with no current"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7291,6 +8138,9 @@
           "description": "Calm, warm water with no current"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7321,6 +8171,9 @@
           "description": "Troops are of different nationalities or cannot communicate"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7349,6 +8202,9 @@
           "description": "Troops are of different nationalities or cannot communicate"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7379,6 +8235,9 @@
           "description": "Teaching more than one student simultaneously"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7396,6 +8255,9 @@
       "phenomenal": "The character finds the best line and the wagon makes unusually good time.",
       "catastrophic": "The wagon overturns or an axle breaks; cargo may be damaged or lost.",
       "modifiers": [],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7426,6 +8288,9 @@
           "description": "Audience is of a different faith or is hostile to the character's"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7454,6 +8319,9 @@
           "description": "Audience is of a different faith or is hostile to the character's"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7484,6 +8352,9 @@
           "description": "Subject has Concentration (Resist Interrogation) trained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7518,6 +8389,9 @@
           "description": "Multiple overlapping sets of tracks"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7550,6 +8424,9 @@
           "description": "Multiple overlapping sets of tracks"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7584,6 +8461,9 @@
           "description": "Improvised materials rather than purpose-made components"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7616,6 +8496,9 @@
           "description": "Improvised materials rather than purpose-made components"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7648,6 +8531,9 @@
           "description": "Improvised materials rather than purpose-made components"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7678,6 +8564,9 @@
           "description": "Actively hunted by organised forces (city watch)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7706,6 +8595,9 @@
           "description": "Actively hunted by organised forces (city watch)"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7736,6 +8628,9 @@
           "description": "Listener is focused and specifically listening for the voice source"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7777,6 +8672,9 @@
           "description": "Unfamiliar weapon of the same type"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7816,6 +8714,9 @@
           "description": "Unfamiliar weapon of the same type"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7846,6 +8747,9 @@
           "description": "Ample time and high quality materials"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7874,6 +8778,9 @@
           "description": "Ample time and high quality materials"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -7912,6 +8819,9 @@
           "description": "Range beyond half maximum"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7944,6 +8854,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -7976,6 +8889,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8012,6 +8928,9 @@
           "description": "Range beyond half maximum"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8044,6 +8963,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8076,6 +8998,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8110,6 +9035,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8142,6 +9070,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8174,6 +9105,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8206,6 +9140,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8240,6 +9177,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8272,6 +9212,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8306,6 +9249,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8338,6 +9284,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8372,6 +9321,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8404,6 +9356,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8442,6 +9397,9 @@
           "description": "Range beyond half maximum"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8478,6 +9436,9 @@
           "description": "Range beyond half maximum"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8512,6 +9473,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8544,6 +9508,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8576,6 +9543,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8608,6 +9578,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8642,6 +9615,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8674,6 +9650,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8708,6 +9687,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8740,6 +9722,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8772,6 +9757,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8804,6 +9792,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8836,6 +9827,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -8874,6 +9868,9 @@
           "description": "Range beyond half maximum"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8906,6 +9903,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8938,6 +9938,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -8974,6 +9977,9 @@
           "description": "Range beyond half maximum"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -9006,6 +10012,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -9040,6 +10049,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -9072,6 +10084,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
@@ -9110,6 +10125,9 @@
           "description": "Range beyond half maximum"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     },
@@ -9142,6 +10160,9 @@
           "description": "Weapon is damaged or poorly maintained"
         }
       ],
+      "combat": false,
+      "targets": [],
+      "coords": false,
       "traits": [],
       "gear": []
     }
