@@ -350,6 +350,32 @@
       "gear": []
     }
   ],
+  "Running": [
+    {
+      "reaction": "Escape from a Pursuer on Foot",
+      "attribute": "Health",
+      "offset": null,
+      "scale": null,
+      "description": "The character runs to outpace a persuer.",
+      "success": "The persuee opens the distance.",
+      "failure": "The pursuer closes the distance.",
+      "phenomenal": null,
+      "catastrophic": null,
+      "default": 0,
+      "modifiers": [
+        {
+          "range": [-5, 5],
+          "description": "Surface"
+        },
+        {
+          "range": [-5, 5],
+          "description": "Weather"
+        }
+      ],
+      "traits": [],
+      "gear": []
+    }
+  ],
   "Weapon (Axes-Hammers-Picks)": [
     {
       "reaction": "Parry with Hatchet",

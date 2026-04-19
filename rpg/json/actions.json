@@ -4604,71 +4604,67 @@
     {
       "action": "Bind a Wound",
       "reactions": [],
-      "attribute": "Reasoning",
+      "attribute": "Agility",
       "offset": 60,
       "scale": 30,
-      "description": "The character applies a bandage and pressure to stop bleeding from a wound.",
-      "success": "Bleeding is stopped; the patient recovers 1 HP and is stable.",
-      "failure": "The bandage fails to stop bleeding; the patient continues to lose HP.",
-      "phenomenal": "The wound is expertly bound; the patient recovers 2 HP and heals faster.",
-      "catastrophic": "The bandage is applied incorrectly and the wound is made worse; the patient loses an additional HP.",
-      "default": 0,
+      "description": "The character applies a bandage and pressure to stop the bleeding from one wound.",
+      "success": "Bleeding is stopped, as long as the target doesn't use that part.",
+      "failure": "The bandage fails to stop bleeding; the patient continues to lose blood as before.",
+      "phenomenal": "The wound is expertly bound; the patient immediately use it without the danger of bleeding from it.",
+      "catastrophic": "The bandage is applied incorrectly and the wound is made worse, doubling the amount of bleeding.",
+      "default": 1,
       "modifiers": [
         {
-          "range": [-2, -2],
-          "description": "Working without a first aid kit"
+          "range": [1, 3],
+          "description": "First aid kit"
         },
         {
-          "range": [-3, -3],
-          "description": "Working in darkness or extreme conditions"
+          "range": [-1, -3],
+          "description": "Working in poor visibility and/or weather"
         },
         {
-          "range": [-2, -2],
-          "description": "Full medical supplies available"
+          "range": [-1, -3],
+          "description": "Patient is struggling and panicing"
         },
         {
-          "range": [-2, -2],
-          "description": "Patient is conscious and struggling"
+          "range": [-1, -10],
+          "description": "Wound severity"
         }
       ],
-      "combat": false,
+      "combat": true,
       "damage": false,
-      "targets": [],
+      "targets": ["chatacter", "self"],
       "coords": false,
       "traits": [],
       "gear": []
     },
     {
-      "action": "Splint a Broken Limb",
+      "action": "Reset a Dislocated Bone",
       "reactions": [],
       "attribute": "Reasoning",
-      "offset": 600,
-      "scale": 300,
-      "description": "The character immobilises a fractured limb using improvised splints and bindings.",
-      "success": "The limb is correctly immobilised; the patient can be moved without worsening the break.",
-      "failure": "The splint is insufficient; the break may worsen with movement.",
-      "phenomenal": "The splint is so well applied it aids healing; the patient recovers faster than expected.",
-      "catastrophic": "The limb is set at the wrong angle; the break worsens and permanent impairment is possible.",
+      "offset": 3,
+      "scale": 2,
+      "description": "The character resets a dislocated bone to its proper position.",
+      "success": "The bone is correctly reset; the patient can use it henceforth.",
+      "failure": "The attempt fails the bone remain dislocated and unusable.",
+      "phenomenal": "The bone is gently reset; immediately negating the penalties from the shock.",
+      "catastrophic": "The dislocated bone is fractured in the attempt with all additional penalties applied immediately.",
       "default": 0,
       "modifiers": [
         {
-          "range": [-2, -2],
-          "description": "Working without a first aid kit"
+          "range": [-1, -3],
+          "description": "Working in poor visibility and/or weather"
         },
         {
-          "range": [-3, -3],
-          "description": "Working in darkness or extreme conditions"
+          "range": [-1, -3],
+          "description": "Patient is struggling and panicing"
         },
         {
-          "range": [-2, -2],
-          "description": "Full medical supplies available"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Patient is conscious and struggling"
+          "range": [-1, -10],
+          "description": "Wound severity"
         }
       ],
-      "combat": false,
+      "combat": true,
       "damage": false,
       "targets": [],
       "coords": false,
@@ -4678,36 +4674,102 @@
     {
       "action": "Stabilise an Unconscious Patient",
       "reactions": [],
-      "attribute": "Reasoning",
+      "attribute": "Agility",
       "offset": 120,
       "scale": 60,
-      "description": "The character applies emergency care to a dying or deeply unconscious person to prevent them from slipping further.",
-      "success": "The patient is stabilised; they will not die without further intervention.",
+      "description": "The character applies emergency care to stabilise a dying or unconscious person to prevent them from dying of shock.",
+      "success": "The patient is stabilised; they will not die without from their current wounds.",
       "failure": "The care has no effect; the patient continues to deteriorate.",
       "phenomenal": "The patient regains consciousness briefly and their condition improves enough to survive without immediate surgery.",
-      "catastrophic": "The treatment is counterproductive; the patient's condition worsens immediately.",
+      "catastrophic": "The treatment is counterproductive; the patient's condition worsens immediately doubling the risk of death.",
       "default": 0,
       "modifiers": [
         {
-          "range": [-2, -2],
-          "description": "Working without a first aid kit"
+          "range": [1, 3],
+          "description": "First aid kit"
         },
         {
-          "range": [-3, -3],
-          "description": "Working in darkness or extreme conditions"
+          "range": [-1, -3],
+          "description": "Working in poor visibility and/or weather"
         },
         {
-          "range": [-2, -2],
-          "description": "Full medical supplies available"
+          "range": [-1, -10],
+          "description": "Wound severity"
+        }
+      ],
+      "combat": true,
+      "damage": false,
+      "targets": ["chatacter", "self"],
+      "coords": false,
+      "traits": [],
+      "gear": []
+    },
+    {
+      "action": "Splint a Broken Limb",
+      "reactions": [],
+      "attribute": "Reasoning",
+      "offset": 300,
+      "scale": 240,
+      "description": "The character immobilises a fractured limb using improvised splints and bindings.",
+      "success": "The limb is correctly immobilised; the patient can be walk without worsening the break.",
+      "failure": "The splint is insufficient; the break may worsen with movement.",
+      "phenomenal": "The splint is so well applied; the patient can even fight, but without using the bound limb.",
+      "catastrophic": "The limb is set at the wrong angle; the break worsens doubling its penalties.",
+      "default": 0,
+      "modifiers": [
+        {
+          "range": [1, 3],
+          "description": "First aid kit"
         },
         {
-          "range": [-2, -2],
-          "description": "Patient is conscious and struggling"
+          "range": [-1, -3],
+          "description": "Working in poor visibility and/or weather"
+        },
+        {
+          "range": [-1, -3],
+          "description": "Patient is struggling and panicing"
+        },
+        {
+          "range": [-1, -10],
+          "description": "Wound severity"
         }
       ],
       "combat": false,
       "damage": false,
       "targets": [],
+      "coords": false,
+      "traits": [],
+      "gear": []
+    },
+    {
+      "action": "Suppress Bleeding Wound",
+      "reactions": [],
+      "attribute": "Agility",
+      "offset": null,
+      "scale": null,
+      "description": "The character applies a pressure to temporarily stop the bleeding from one wound.",
+      "success": "Bleeding is stopped; as long as the actor and target don't act.",
+      "failure": "The actor fails to stop bleeding; the patient continues to lose blood as before.",
+      "phenomenal": "Bleeding is stopped, as long as the target doesn't use that part.",
+      "catastrophic": "The pressure is applied incorrectly and the wound is made worse, doubling the amount of bleeding from the wound.",
+      "default": 3,
+      "modifiers": [
+        {
+          "range": [1, 3],
+          "description": "First aid kit"
+        },
+        {
+          "range": [-1, -3],
+          "description": "Working in poor visibility and/or weather"
+        },
+        {
+          "range": [-1, -3],
+          "description": "Patient is struggling and panicing"
+        }
+      ],
+      "combat": true,
+      "damage": false,
+      "targets": ["chatacter", "self"],
       "coords": false,
       "traits": [],
       "gear": []
@@ -7672,67 +7734,55 @@
   ],
   "Running": [
     {
-      "action": "Sprint to Deliver a Message",
+      "action": "Run",
       "reactions": [],
       "attribute": "Health",
-      "offset": 300,
-      "scale": 120,
-      "description": "The character runs at high speed over a meaningful distance to deliver urgent news.",
-      "success": "The message is delivered in time; the character arrives winded but functional.",
-      "failure": "The character cannot maintain pace; delivery is significantly delayed.",
-      "phenomenal": "The character arrives well ahead of any possible alternative; the early warning is decisive.",
-      "catastrophic": "The character collapses from exhaustion short of the destination.",
+      "offset": null,
+      "scale": null,
+      "description": "The character runs with constant speed, ready to react on the way.",
+      "success": "The character covers the distance faster.",
+      "failure": "The character covers the distance slower.",
+      "phenomenal": null,
+      "catastrophic": null,
       "default": 0,
       "modifiers": [
         {
-          "range": [-1, -1],
-          "description": "-1 per encumbrance level"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Difficult terrain (mud, uneven ground, undergrowth)"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Flat, even road in good weather"
+          "range": [-5, 5],
+          "description": "Surface"
         }
       ],
-      "combat": false,
+      "combat": true,
       "damage": false,
       "targets": [],
-      "coords": false,
+      "coords": true,
       "traits": [],
       "gear": []
     },
     {
-      "action": "Escape a Pursuer on Foot",
-      "reactions": [],
+      "action": "Pursue on Foot",
+      "reactions": ["Outrun Persuer"],
       "attribute": "Health",
       "offset": 300,
-      "scale": 150,
-      "description": "The character runs at full exertion to outpace someone chasing them.",
-      "success": "The character opens enough distance to escape.",
-      "failure": "The pursuer keeps pace; escape is not achieved this attempt.",
-      "phenomenal": "The character loses the pursuer entirely and doubles back to a safe location.",
-      "catastrophic": "The character trips or is cornered; the pursuer catches up.",
+      "scale": 60,
+      "description": "The character runs to outpace and reach their target.",
+      "success": "The persuers shortens the distance.",
+      "failure": "The pursuee opens the distance.",
+      "phenomenal": null,
+      "catastrophic": null,
       "default": 0,
       "modifiers": [
         {
-          "range": [-1, -1],
-          "description": "-1 per encumbrance level"
+          "range": [-5, 5],
+          "description": "Surface"
         },
         {
-          "range": [-2, -2],
-          "description": "Difficult terrain (mud, uneven ground, undergrowth)"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Flat, even road in good weather"
+          "range": [-5, 5],
+          "description": "Weather"
         }
       ],
       "combat": false,
       "damage": false,
-      "targets": [],
+      "targets": ["character"],
       "coords": false,
       "traits": [],
       "gear": []
@@ -8495,35 +8545,27 @@
   ],
   "Sprinting": [
     {
-      "action": "Sprint Across Dangerous Ground",
+      "action": "Sprint",
       "reactions": [],
-      "attribute": "Health",
-      "offset": 10,
-      "scale": 5,
-      "description": "The character runs at maximum speed across open ground under fire or pursuit.",
-      "success": "The character crosses successfully; speed is maximised.",
-      "failure": "The character cannot sustain top speed; they cross slower than intended.",
-      "phenomenal": "The character crosses with startling speed, outpacing any pursuit or fire.",
-      "catastrophic": "The character trips and falls in the open, making them an easy target.",
+      "attribute": "Strength",
+      "offset": null,
+      "scale": null,
+      "description": "The character runs with constant acceleration, but is unable to react on the way.",
+      "success": "The character covers the distance faster.",
+      "failure": "The character covers the distance slower.",
+      "phenomenal": null,
+      "catastrophic": null,
       "default": 0,
       "modifiers": [
         {
-          "range": [-1, -1],
-          "description": "-1 per encumbrance level"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Difficult terrain (mud, gravel, cobblestones)"
-        },
-        {
-          "range": [-2, -2],
-          "description": "Flat, hard surface in good weather"
+          "range": [-5, 5],
+          "description": "Surface"
         }
       ],
-      "combat": false,
+      "combat": true,
       "damage": false,
       "targets": [],
-      "coords": false,
+      "coords": true,
       "traits": [],
       "gear": []
     }
