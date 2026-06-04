@@ -1,0 +1,31 @@
+{
+    "Name": ["Minstrel"],
+    "Description": "A versatile, often formally employed composer, musician and storyteller who performed for noble households or in public squares, reciting the deeds of the lords and vassals, exalting them.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": -2,
+        "Charisma": 2,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Carousing": 2,
+        "Language (*)": 5,
+        "Musical Instrument (*)": 3,
+        "Performance": 2,
+        "Savoir-Faire (Nobility)": 1,
+        "Singing": 3
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Patron", "description": "Liege Lord"}
+    ],
+    "Rank/Status": [],
+    "Wealth": 1
+}

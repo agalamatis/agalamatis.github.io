@@ -7079,7 +7079,6 @@
             "Acrobatic Dodge",
             "Unarmed Block",
             "Dodge",
-            "Parry with Hatchet",
             "Parry with a Fencing Weapon",
             "Parry with a Balanced Weapon",
             "Parry with an Unbalanced Weapon"
@@ -7123,7 +7122,6 @@
             "Acrobatic Dodge",
             "Unarmed Block",
             "Dodge",
-            "Parry with Hatchet",
             "Parry with a Fencing Weapon",
             "Parry with a Balanced Weapon",
             "Parry with an Unbalanced Weapon"
@@ -7152,6 +7150,10 @@
             {"range": [1, 1], "description": "High Ground"},
             {"range": [2, 2], "description": "Using both hands to attack"},
             {"range": [2, 2], "description": "Attacking from the side of the target"},
+            {"range": [3, 3], "description": "Target is kneeling"},
+            {"range": [3, 3], "description": "Target is sitting"},
+            {"range": [4, 4], "description": "Target is crawling"},
+            {"range": [5, 5], "description": "Target is lying down"},
             {"range": [5, 5], "description": "Attacking from the rear of the target"},
             {"range": [5, 5], "description": "The target is grappled or pinned"}
         ],
@@ -7178,10 +7180,10 @@
             "Acrobatic Dodge",
             "Unarmed Block",
             "Dodge",
-            "Parry with Hatchet",
             "Parry with a Fencing Weapon",
             "Parry with a Balanced Weapon",
-            "Parry with an Unbalanced Weapon"
+            "Parry with an Unbalanced Weapon",
+            "Counter-charge"
         ],
         "attribute": "Agility",
         "skills": [
@@ -7207,6 +7209,10 @@
             {"range": [1, 1], "description": "High Ground"},
             {"range": [2, 2], "description": "Using both hands to attack"},
             {"range": [2, 2], "description": "Attacking from the side of the target"},
+            {"range": [3, 3], "description": "Target is kneeling"},
+            {"range": [3, 3], "description": "Target is sitting"},
+            {"range": [4, 4], "description": "Target is crawling"},
+            {"range": [5, 5], "description": "Target is lying down"},
             {"range": [5, 5], "description": "Attacking from the rear of the target"},
             {"range": [5, 5], "description": "The target is grappled or pinned"}
         ],
@@ -7226,5 +7232,26 @@
             "Main-Gauche / Stiletto", "Estoc / Rapier",
             "Bastard Sword", "Great Sword", "Dagger", "Short Sword"
         ]
+    },
+    {
+        "action": "Idle",
+        "reactions": [],
+        "attribute": null,
+        "skills": [],
+        "offset": null,
+        "scale": null,
+        "description": "The character stays in place, ready to react, not taking any action.",
+        "success": null,
+        "failure": null,
+        "phenomenal": null,
+        "catastrophic": null,
+        "default": null,
+        "modifiers": [],
+        "combat": true,
+        "damage": true,
+        "targets": [],
+        "coords": false,
+        "traits": [],
+        "gear": []
     }
 ]

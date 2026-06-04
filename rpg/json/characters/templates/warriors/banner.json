@@ -1,0 +1,45 @@
+{
+    "Name": ["Bannerman", "Kinght Bennerette", "Knight Commander"],
+    "Description": "Senior knight commanding men under the banner of his manor.",
+    "Attributes": {
+        "Agility": 1,
+        "Health": 1,
+        "Strength": 2,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Heraldry": 2,
+        "Language (*)": 5,
+        "Leadership": 4,
+        "Riding": 5,
+        "Savoir-Faire (Nobility)": 2,
+        "Tactics": 4,
+        "Weapon (Long Swords)": 5,
+        "Weapon (Shields)": 4,
+        "Weapon (Spears)": 4
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": [
+            {
+                "level": 1,
+                "name": "Resolve the Wavering Mind",
+                "description": "You can suggest a certain course of action to any subject of your authority that does not contradict their morals by contesting your charisma+nobility against their reasoning+nobility."
+            }
+        ]
+    },
+    "Traits": [
+        {"name": "Allies", "description": "Knights under his command"},
+        {"name": "Code of Honor", "description": "Chivalry"},
+        {"name": "Duty", "description": "Liege Lord"},
+        {"name": "Sense of Duty", "description": "Comraades"}
+    ],
+    "Rank/Status": [
+        {"level": 4, "specialty": "Military"}
+    ],
+    "Wealth": 4
+}

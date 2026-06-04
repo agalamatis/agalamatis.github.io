@@ -470,5 +470,31 @@
           "Sickles", "Scythes",
           "Glaive / Bill-Guisearm", "Halberd / Voulge"
         ]
+    },
+    {
+        "reaction": "Counter-charge",
+        "attribute": "Agility",
+        "skills": ["Weapon (Pikes)", "Weapon (Polearms)"],
+        "offset": 3,
+        "scale": 2,
+        "description": "The character stays firm, pointing the tip of their weapon towards the charging opponent.",
+        "success": "The attack is deflected; no damage is taken.",
+        "failure": "The parry fails; the attack connects and damage is dealt normally.",
+        "phenomenal": "The parry is so clean it leaves the attacker momentarily off-balance; the character may counter-attack freely.",
+        "catastrophic": "The parry collapses; the character takes full damage and their weapon may be knocked aside or broken.",
+        "modifiers": [
+          {
+              "range": [1, 1],
+              "description": "Countering a one-handed attack with the weapon used two-handed"
+          },
+          {
+              "range": [-1, -1],
+              "description": "Countering a two-handed attack with the weapon on one-hand"
+          }
+        ],
+        "traits": [],
+        "gear": [
+          "Spear", "Pike", "Glaive / Bill-Guisearm", "Halberd / Voulge"
+        ]
     }
 ]

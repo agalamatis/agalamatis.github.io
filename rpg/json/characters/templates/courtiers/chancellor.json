@@ -1,0 +1,39 @@
+{
+    "Name": ["Chancellor", "Master of Coin", "Treasurer"],
+    "Description": "Head of administration, including the treasury and often of the royal chapel.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": -1,
+        "Strength": -2,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 2
+    },
+    "Skills": {
+        "Administration": 5,
+        "Algebra": 4,
+        "Economics": 5,
+        "Diplomacy": 4,
+        "Language (*)": 5,
+        "Leadership": 2,
+        "Literacy (*)": 5,
+        "Politics": 5,
+        "Savoir-Faire (Nobility)": 5,
+        "Writing": 4
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Allies", "description": "Royal Clerks"},
+        {"name": "Duty", "description": "Liege Lord"},
+        {"name": "Patron", "description": "Liege Lord"}
+    ],
+    "Rank/Status": [
+        {"level": 6, "specialty": "Administrative"}
+    ],
+    "Wealth": 6
+}

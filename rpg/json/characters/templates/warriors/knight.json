@@ -1,0 +1,41 @@
+{
+    "Name": ["Hedge Kinght", "Kinght Bachelor", "Knight Errant"],
+    "Description": "Landless or single-manor knight; mounted warrior of noble status.",
+    "Attributes": {
+        "Agility": 1,
+        "Health": 1,
+        "Strength": 2,
+        "Charisma": -2,
+        "Perception": -1,
+        "Reason": -1
+    },
+    "Skills": {
+        "Heraldry": 1,
+        "Language (*)": 5,
+        "Riding": 4,
+        "Savoir-Faire (Nobility)": 2,
+        "Weapon (Long Swords)": 5,
+        "Weapon (Shields)": 4,
+        "Weapon (Spears)": 4
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": [
+            {
+                "level": 1,
+                "name": "Resolve the Wavering Mind",
+                "description": "You can suggest a certain course of action to any subject of your authority that does not contradict their morals by contesting your charisma+nobility against their reasoning+nobility."
+            }
+        ]
+    },
+    "Traits": [
+        {"name": "Code of Honor", "description": "Chivalry"},
+        {"name": "Duty", "description": "Liege Lord & Banner"}
+    ],
+    "Rank/Status": [
+        {"level": 2,  "specialty": "Military"}
+    ],
+    "Wealth": 2
+}

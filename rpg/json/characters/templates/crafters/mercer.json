@@ -1,0 +1,33 @@
+{
+    "Name": ["Mercer", "Mercier"],
+    "Description": "Dealer of fine textiles, like silk and velvet.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": -1,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Language (*)": 5,
+        "Merchant": 4,
+        "Savoir-Faire (Guilds)": 3,
+        "Sewing": 1,
+        "Streetwise": 3
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Allies", "description": "Apprentices"},
+        {"name": "Contacts", "description": "Silk/Velvet Merchants"}
+    ],
+    "Rank/Status": [
+        {"level": 2, "specialty": null}
+    ],
+    "Wealth": 4
+}

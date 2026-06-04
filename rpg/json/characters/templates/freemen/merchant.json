@@ -1,0 +1,43 @@
+{
+    "Name": ["Merchant"],
+    "Description": "Trades valuable medieval commodity across realms.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": -1,
+        "Charisma": 0,
+        "Perception": 0,
+        "Reason": 1
+    },
+    "Skills": {
+        "Area Knowledge (*)": 1,
+        "Area Knowledge (**)": 1,
+        "Algebra": 2,
+        "Carousing": 4,
+        "Language (*)": 5,
+        "Language (**)": 1,
+        "Language (***)": 1,
+        "Merchant": 5,
+        "Riding": 1,
+        "Savoir-Faire (Guilds)": 2,
+        "Savoir-Faire (Mercenaries)": 1,
+        "Savoir-Faire (Town Watch)": 1,
+        "Streetwise": 1,
+        "Weapon (*)": 1
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Contacts", "description": "Craftsmen"},
+        {"name": "Contacts", "description": "Mercenaries"},
+        {"name": "Contacts", "description": "Town Watchmen"}
+    ],
+    "Rank/Status": [
+        {"level": 2, "specialty": null}
+    ],
+    "Wealth": 6
+}

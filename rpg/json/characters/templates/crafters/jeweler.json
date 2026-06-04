@@ -1,0 +1,35 @@
+{
+    "Name": ["Goldsmith", "Jeweler", "Silversmith"],
+    "Description": "Works with precious metals (gold & silver) and gemstones, usually crafting jewelry; frequently doubled as a banker.",
+    "Attributes": {
+        "Agility": 1,
+        "Health": 0,
+        "Strength": -1,
+        "Charisma": 0,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Geology": 3,
+        "Jeweler": 5,
+        "Language (*)": 5,
+        "Merchant": 3,
+        "Savoir-Faire (Guilds)": 3,
+        "Streetwise": 3
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Allies", "description": "Apprentices"},
+        {"name": "Contacts", "description": "Nobles"},
+        {"name": "Enemies", "description": "Thieves"}
+    ],
+    "Rank/Status": [
+        {"level": 2, "specialty": null}
+    ],
+    "Wealth": 6
+}

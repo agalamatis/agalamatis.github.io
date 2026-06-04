@@ -1,0 +1,38 @@
+{
+    "Name": ["Constable", "Marshal", "Master of War"],
+    "Description": "Commander of armies and royal castles, including cavalry and stables.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": 2,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Heraldry": 2,
+        "Language (*)": 5,
+        "Leadership": 4,
+        "Riding": 4,
+        "Savoir-Faire (Nobility)": 2,
+        "Strategy": 4,
+        "Tactics": 5,
+        "Weapon (Long Swords)": 4
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Allies", "description": "Officers"},
+        {"name": "Code of Honor", "description": "Chivalry"},
+        {"name": "Duty", "description": "Liege Lord"},
+        {"name": "Patron", "description": "Liege Lord"}
+    ],
+    "Rank/Status": [
+        {"level": 6, "specialty": "Military"}
+    ],
+    "Wealth": 6
+}

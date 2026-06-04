@@ -1,0 +1,40 @@
+{
+    "Name": ["Forester", "Huntsman", "Pathfinder", "Ranger", "Scout", "Tracker", "Verder"],
+    "Description": "Guardian of a lord's forest and game; managing hounds and conducting hunts.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": 0,
+        "Charisma": -2,
+        "Perception": 2,
+        "Reason": 0
+    },
+    "Skills": {
+        "Animal Handling (Mamalia/Canidae)": 3,
+        "Area Knowledge (*)": 3,
+        "Cooking": 1,
+        "First Aid": 1,
+        "Language (*)": 5,
+        "Meteorology": 1,
+        "Orienteering": 1,
+        "Riding": 2,
+        "Shadowing": 2,
+        "Survival": 3,
+        "Tracking": 3,
+        "Weapon (Bows)": 2,
+        "Weapon (Spear)": 2
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Enemy", "description": "Poachers (non-royal hunters)"}
+    ],
+    "Rank/Status": [
+        {"level": 1, "specialty": "forest law"}
+    ],
+    "Wealth": 2
+}

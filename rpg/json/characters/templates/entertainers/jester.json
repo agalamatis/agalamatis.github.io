@@ -1,0 +1,33 @@
+{
+    "Name": ["Fool", "Jester"],
+    "Description": "A professional \"fool\" employed by a monarch or nobleman to provide comic relief and, occasionally, pointed social critique through satire.",
+    "Attributes": {
+        "Agility": 1,
+        "Health": 0,
+        "Strength": -1,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Acrobatics": 2,
+        "Acting": 3,
+        "Language (*)": 5,
+        "Performance": 4,
+        "Public Speaking": 3,
+        "Savoir-Faire (Nobility)": 2
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Legal Immunity", "description": "Allowed to mock their Liege Lord"}
+    ],
+    "Rank/Status": [
+        {"name": "Patron", "description": "Liege Lord"}
+    ],
+    "Wealth": 2
+}

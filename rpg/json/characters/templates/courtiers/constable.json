@@ -1,0 +1,39 @@
+{
+    "Name": ["Constable", "Justiciar", "Sheriff (Shire Reeve)"],
+    "Description": "Officer enforcing law in the realm.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": 2,
+        "Charisma": 0,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Administration": 2,
+        "Diplomacy": 3,
+        "Intimidation": 2,
+        "Language (*)": 5,
+        "Law": 3,
+        "Politics": 4,
+        "Public Speaking": 3,
+        "Riding": 2,
+        "Streetwise": 2,
+        "Weapon (Long Swords)": 2,
+        "Weapon (Shields)": 2
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Duty", "description": "Liege Lord"},
+        {"name": "Patron", "description": "Liege Lord"}
+    ],
+    "Rank/Status": [
+        {"level": 6, "specialty": "Administrative"}
+    ],
+    "Wealth": 6
+}

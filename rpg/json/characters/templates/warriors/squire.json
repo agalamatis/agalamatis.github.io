@@ -1,0 +1,39 @@
+{
+    "Name": ["Aide", "Attendant", "Companion", "Page", "Retainer", "Squire", "Valet", "Varlet"],
+    "Description": "Apprentice knight serving a noble; often a young gentleman in training.",
+    "Attributes": {
+        "Agility": 1,
+        "Health": 1,
+        "Strength": 2,
+        "Charisma": -2,
+        "Perception": -1,
+        "Reason": -1
+    },
+    "Skills": {
+        "Heraldry": 1,
+        "Language (*)": 5,
+        "Riding": 1,
+        "Savoir-Faire (Nobility)": 1,
+        "Weapon (Long Swords)": 1,
+        "Weapon (Shields)": 2,
+        "Weapon (Spears)": 2
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": [
+            {
+                "level": 1,
+                "name": "Resolve the Wavering Mind",
+                "description": "You can suggest a certain course of action to any subject of your authority that does not contradict their morals by contesting your charisma+nobility against their reasoning+nobility."
+            }
+        ]
+    },
+    "Traits": [
+        {"name": "Code of Honor", "description": "Chivalry"},
+        {"name": "Duty", "description": "Knight"}
+    ],
+    "Rank/Status": {},
+    "Wealth": 0
+}

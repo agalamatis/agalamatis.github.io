@@ -1,0 +1,30 @@
+{
+    "Name": ["Acrobat", "Jongleur", "Juggler"],
+    "Description": "An itenerant, multi-talented performer who provided a mix of music, juggling, animal tricks, and news to the common folk.",
+    "Attributes": {
+        "Agility": 2,
+        "Health": 0,
+        "Strength": -2,
+        "Charisma": 0,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Acrobatics": 5,
+        "Climbing": 3,
+        "Language (*)": 5,
+        "Performance": 2,
+        "Sleight of Hand": 2,
+        "Singing": 1,
+        "Streetwise": 1
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [],
+    "Rank/Status": [],
+    "Wealth": 0
+}

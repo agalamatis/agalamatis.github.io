@@ -1,0 +1,34 @@
+{
+    "Name": ["Mason"],
+    "Description": "Designs and builts stone structures, including castles and churches.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": -1,
+        "Strength": 1,
+        "Charisma": -1,
+        "Perception": 0,
+        "Reason": 1
+    },
+    "Skills": {
+        "Architecture": 4,
+        "Carpentry": 2,
+        "Geometry": 2,
+        "Language (*)": 5,
+        "Masonry": 5,
+        "Savoir-Faire (Guilds)": 2,
+        "Streetwise": 2
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Allies", "description": "Apprentices"}
+    ],
+    "Rank/Status": [
+        {"level": 1, "specialty": null}
+    ],
+    "Wealth": 4
+}

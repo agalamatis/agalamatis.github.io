@@ -1,0 +1,33 @@
+{
+    "Name": ["Bard", "Druid", "Outes", "Vates"],
+    "Description": "A poet and singer of Celtic descent tasked with preserving a tribe's history and genealogy through song. Most practice this away from the eyes of the church supported by secret networks preserving the “old ways”, while a few others have incorporated christianity in their stories (the Matter of Brittain is a good example).",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": -1,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 1
+    },
+    "Skills": {
+        "Area Knowledge (*)": 4,
+        "Language (Celtic/*)": 5,
+        "Musical Instrument (*)": 3,
+        "Performance": 3,
+        "Poetry": 2,
+        "Singing": 3
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Patron", "description": "Liege Lord"}
+    ],
+    "Rank/Status": [
+        {"level": 2, "specialty": "Celts"}
+    ],
+    "Wealth": 1
+}

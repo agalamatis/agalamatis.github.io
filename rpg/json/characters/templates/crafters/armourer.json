@@ -1,0 +1,31 @@
+{
+    "Name": ["Armourer"],
+    "Description": "Forges and repairs scale, mail, and plate armour and barding for knights. Also can reinforce leather armour with studs and plates",
+    "Attributes": {
+        "Agility": 1,
+        "Health": -1,
+        "Strength": 1,
+        "Charisma": -1,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Armoury (Armour)": 5,
+        "Language (*)": 5,
+        "Savoir-Faire (Guilds)": 2,
+        "Streetwise": 2
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Allies", "description": "Apprentices"}
+    ],
+    "Rank/Status": [
+        {"level": 1, "specialty": null}
+    ],
+    "Wealth": 4
+}

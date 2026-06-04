@@ -1246,62 +1246,6 @@
                 }
             }
         },
-        "Brigandine": {
-            "stats": {
-                "crush": 5,
-                "pierce": 6,
-                "slash": 7,
-                "durability": 84,
-                "mobility": -2
-            },
-            "description": "Small rectangular iron or steel plates riveted to the inside of a cloth or leather outer coat, with the rivet heads visible on the outside. The plates overlap each other, creating a continuous metal surface that distributes blows far more effectively than scale. Unlike mail, the rigid plates resist crush damage well. Unlike full plate, the many small plates allow flexibility and are cheaper to produce. Brigandine was enormously popular from the 14th to 16th centuries, worn by archers, foot soldiers, and knights alike. It was often covered in fine velvet or silk, making it a prestigious garment as much as a practical one.",
-            "failure": "Internal plates crack and shift; rivets fail in clusters.",
-            "image": "/rpg/images/gear/armours/brigandine.png",
-            "components": {
-                "Coat": {
-                    "weight": 7.0,
-                    "cost": 700,
-                    "protects": ["torso", "arms"],
-                    "pair": false
-                },
-                "Vest": {
-                    "weight": 5.0,
-                    "cost": 520,
-                    "protects": ["torso"],
-                    "pair": false
-                },
-                "Sleeves": {
-                    "weight": 2.0,
-                    "cost": 250,
-                    "protects": ["arms"],
-                    "pair": true
-                },
-                "Gauntlets": {
-                    "weight": 0.8,
-                    "cost": 140,
-                    "protects": ["hands"],
-                    "pair": true
-                },
-                "Leg Guards": {
-                    "weight": 2.5,
-                    "cost": 280,
-                    "protects": ["legs"],
-                    "pair": true
-                },
-                "Gorget": {
-                    "weight": 0.5,
-                    "cost": 110,
-                    "protects": ["neck"],
-                    "pair": false
-                },
-                "Barding": {
-                    "weight": 34,
-                    "cost": 4300,
-                    "protects": ["horse"],
-                    "pair": false
-                }
-            }
-        },
         "Mail": {
             "stats": {
                 "crush": 2,
@@ -1371,6 +1315,62 @@
                 "Barding": {
                     "weight": 52,
                     "cost": 10000,
+                    "protects": ["horse"],
+                    "pair": false
+                }
+            }
+        },
+        "Brigandine": {
+            "stats": {
+                "crush": 5,
+                "pierce": 6,
+                "slash": 7,
+                "durability": 84,
+                "mobility": -2
+            },
+            "description": "Small rectangular iron or steel plates riveted to the inside of a cloth or leather outer coat, with the rivet heads visible on the outside. The plates overlap each other, creating a continuous metal surface that distributes blows far more effectively than scale. Unlike mail, the rigid plates resist crush damage well. Unlike full plate, the many small plates allow flexibility and are cheaper to produce. Brigandine was enormously popular from the 14th to 16th centuries, worn by archers, foot soldiers, and knights alike. It was often covered in fine velvet or silk, making it a prestigious garment as much as a practical one.",
+            "failure": "Internal plates crack and shift; rivets fail in clusters.",
+            "image": "/rpg/images/gear/armours/brigandine.png",
+            "components": {
+                "Coat": {
+                    "weight": 7.0,
+                    "cost": 700,
+                    "protects": ["torso", "arms"],
+                    "pair": false
+                },
+                "Vest": {
+                    "weight": 5.0,
+                    "cost": 520,
+                    "protects": ["torso"],
+                    "pair": false
+                },
+                "Sleeves": {
+                    "weight": 2.0,
+                    "cost": 250,
+                    "protects": ["arms"],
+                    "pair": true
+                },
+                "Gauntlets": {
+                    "weight": 0.8,
+                    "cost": 140,
+                    "protects": ["hands"],
+                    "pair": true
+                },
+                "Leg Guards": {
+                    "weight": 2.5,
+                    "cost": 280,
+                    "protects": ["legs"],
+                    "pair": true
+                },
+                "Gorget": {
+                    "weight": 0.5,
+                    "cost": 110,
+                    "protects": ["neck"],
+                    "pair": false
+                },
+                "Barding": {
+                    "weight": 34,
+                    "cost": 4300,
                     "protects": ["horse"],
                     "pair": false
                 }
@@ -1467,6 +1467,14 @@
                     "pair": false
                 }
             }
+        }
+    },
+    "other": {
+        "Banner": {
+            "description": "",
+            "durability": null,
+            "weight": null,
+            "cost": null
         }
     }
 }

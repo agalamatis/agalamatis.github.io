@@ -1,0 +1,27 @@
+{
+    "Name": ["Actor", "Mummer", "Mystery Player"],
+    "Description": "An often masked performer who participated in folk plays and pantomimes, often during festivals.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": -1,
+        "Charisma": 1,
+        "Perception": 0,
+        "Reason": 0
+    },
+    "Skills": {
+        "Acting": 3,
+        "Language (*)": 5,
+        "Performance": 2,
+        "Singing": 1
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [],
+    "Rank/Status": [],
+    "Wealth": 0
+}

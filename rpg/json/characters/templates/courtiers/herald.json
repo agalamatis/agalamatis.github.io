@@ -1,0 +1,36 @@
+{
+    "Name": ["Herald"],
+    "Description": "Specialist in heraldry and protocol; messenger between courts.",
+    "Attributes": {
+        "Agility": 0,
+        "Health": 0,
+        "Strength": -1,
+        "Charisma": 0,
+        "Perception": 0,
+        "Reason": 1
+    },
+    "Skills": {
+        "Diplomacy": 5,
+        "Heraldry": 5,
+        "Language (*)": 5,
+        "Language (**)": 2,
+        "Public Speaking": 3,
+        "Riding": 1,
+        "Savoir-Faire (Nobility)": 3,
+        "Weapon (*)": 1
+    },
+    "Abilities": {
+        "Awareness": [],
+        "Faith": [],
+        "Heritage": [],
+        "Nobility": []
+    },
+    "Traits": [
+        {"name": "Duty", "description": "Liege Lord"},
+        {"name": "Patron", "description": "Liege Lord"}
+    ],
+    "Rank/Status": [
+        {"level": 2, "specialty": "Administrative"}
+    ],
+    "Wealth": 5
+}
