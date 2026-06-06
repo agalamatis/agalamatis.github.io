@@ -2,11 +2,13 @@
     "Name": "Ion Csanádyi",
     "Attributes": {
         "Agility": 2,
-        "Health": -1,
-        "Strength": -2,
-        "Charisma": 1,
-        "Perception": 0,
-        "Reason": 0
+        "Appearance": 1,
+        "Health": -2,
+        "Strength": -3,
+        "Charisma": 2,
+        "Perception": 1,
+        "Reason": 0,
+        "Willpoer": -1
     },
     "Skills": {
         "Acrobatics": 1,
@@ -61,6 +63,10 @@
         {
             "name": "Oath of Vengeance",
             "description": "You are obsessed with avenging your birthfather\u2019s murder\n(a) Objectives:\n(i) Have Voivode László Kán of Transylvania slowly and painfully killed.\n(ii) Have his most loved person in the world tortured in front of him, before his demise and everyone else loving them traumatised by this experience.\n(iii) Have all his relatives exiled from Transylvania, deprived of any inheritance.\n(b) Taking any action that (to your understanding at the time of deciding) does not further your objectives (even indirectly) is at -1, and\n(c) taking an action that will hinder your objectives (directly/inderctly, long/short-term) requires a successful Reasoning+Concentration+Awareness-10. Success only means that you can take the action at -5 + the measure of success, which will lessen the burden on your soul for violating your oath."
+        },
+        {
+            "name": "Patron",
+            "description": "Ispan Ugrin Csak-Uljak, hosting you in return for undertaking the occasional \"mission\" off-the-beaten path outside his protection."
         }
     ],
     "Gear": [
