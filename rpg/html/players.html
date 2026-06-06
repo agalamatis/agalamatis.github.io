@@ -924,8 +924,8 @@ function renderChar(data) {
   document.getElementById('char-name').textContent = data.name;
   document.title = data.name + ' — Character Sheet';
 
-  // Attributes — fixed display order, 2 cols × 3 rows
-  const attrOrder = ['Agility', 'Charisma', 'Health', 'Perception', 'Strength', 'Reason'];
+  // Attributes — fixed display order, 2 cols × 4 rows
+  const attrOrder = ['Agility', 'Appearance', 'Charisma', 'Health', 'Perception', 'Strength', 'Reason', 'Willpower'];
   const grid = document.getElementById('attrs-grid');
   grid.innerHTML = '';
   for (const key of attrOrder) {
