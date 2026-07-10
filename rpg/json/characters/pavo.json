@@ -2,11 +2,13 @@
     "Name": "Brother Pavo d'Acri",
     "Attributes": {
         "Agility": 0,
+        "Appearance": -2,
         "Health": 1,
         "Strength": 2,
-        "Charisma": -2,
+        "Charisma": 0,
         "Perception": 0,
-        "Reason": -1
+        "Reason": -1,
+        "Willpower": 0
     },
     "Skills": {
         "Area Knowledge (Croatia/Dalmatia)": 1,
