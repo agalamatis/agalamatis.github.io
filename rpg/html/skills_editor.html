@@ -213,6 +213,45 @@
     font-size: 12px;
     line-height: 1.5;
   }
+
+  .sname { cursor: help; }
+
+  #skillTooltip {
+    position: fixed;
+    z-index: 500;
+    max-width: 420px;
+    background: #16130e;
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text);
+    display: none;
+    pointer-events: none;
+  }
+  #skillTooltip .tt-title {
+    color: var(--gold-bright);
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  #skillTooltip .tt-tier {
+    color: var(--text-dim);
+    font-size: 11.5px;
+    margin-bottom: 8px;
+  }
+  #skillTooltip .tt-desc { margin-bottom: 8px; }
+  #skillTooltip .tt-label {
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 6px;
+  }
+  #skillTooltip .tt-modline { margin: 2px 0; }
 </style>
 </head>
 <body>
@@ -234,13 +273,15 @@
 </header>
 
 <main id="app"></main>
+<div id="skillTooltip"></div>
 
 <footer class="note">
   Values are shown as default + slider + any bonus received from other skills in the same group (or, for
   Arts &amp; Sciences, Crafts &amp; Trades, and Weapons, from skills whose "grants" list names this skill).
   Probability is P(3d6 ≤ value) via the normal approximation used across the campaign. The top-left counter
-  sums the probability of every skill currently invested with slider points; it is not a hard cap, just a
-  soft budget indicator.
+  sums the probability of every skill and specialty, invested or not, and converts how far that sum has
+  moved since the last Load/Clear into weeks (one week per 0.25 of probability moved). Hover a skill's name
+  to see its full rules.md entry.
 </footer>
 
 <script>
@@ -308,6 +349,12 @@ const skills = SKILLS_DATA.map((d, id) => {
     slider: 0,
     isSpecialty,
     baseName: isSpecialty ? d.skill.slice(0, parenIdx) : null,
+    // full rules.md entry, carried straight through from generate_skills_json.py
+    // (specialty leaves inherit their parent skill's own entry text)
+    description: d.description || '',
+    actions: d.actions || [],
+    reactions: d.reactions || [],
+    modifiers: d.modifiers || [],
   };
 });
 const byName = new Map(skills.map(s => [s.name, s]));
@@ -462,6 +509,79 @@ function buildUI() {
   // wire sliders
   app.querySelectorAll('input.slider').forEach(inp => {
     inp.addEventListener('input', onSliderInput);
+  });
+
+  wireSkillTooltip();
+}
+
+/* ---------------------------------------------------------------------- */
+/* Hover tooltip: the skill's full rules.md entry                         */
+/* ---------------------------------------------------------------------- */
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function fmtModifierLine(m) {
+  const [n0, n1, desc] = m;
+  const range = n0 === n1 ? fmtSigned(n0) : `${fmtSigned(n0)} to ${fmtSigned(n1)}`;
+  return `${range}: ${escapeHtml(desc)}`;
+}
+
+function skillTooltipHTML(s) {
+  let html = `<div class="tt-title">${escapeHtml(s.name)}</div>`;
+  if (s.difficulty) {
+    html += `<div class="tt-tier">${escapeHtml(s.difficulty)} (${fmtSigned(s.displayDefault)})</div>`;
+  }
+  if (s.description) {
+    html += `<div class="tt-desc">${escapeHtml(s.description)}</div>`;
+  }
+  html += `<div class="tt-label">Actions</div><div>${s.actions.length ? escapeHtml(s.actions.join(', ')) : 'None'}</div>`;
+  html += `<div class="tt-label">Reactions</div><div>${s.reactions.length ? escapeHtml(s.reactions.join(', ')) : 'None'}</div>`;
+  if (s.modifiers.length) {
+    html += `<div class="tt-label">Modifiers</div>`;
+    s.modifiers.forEach(m => { html += `<div class="tt-modline">${fmtModifierLine(m)}</div>`; });
+  }
+  return html;
+}
+
+function wireSkillTooltip() {
+  const tooltip = document.getElementById('skillTooltip');
+
+  function position(e) {
+    const margin = 16;
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const rect = tooltip.getBoundingClientRect();
+    let x = e.clientX + margin;
+    let y = e.clientY + margin;
+    if (x + rect.width > vw - margin) x = e.clientX - rect.width - margin;
+    if (y + rect.height > vh - margin) y = e.clientY - rect.height - margin;
+    tooltip.style.left = Math.max(margin, x) + 'px';
+    tooltip.style.top = Math.max(margin, y) + 'px';
+  }
+
+  app.addEventListener('mouseover', (e) => {
+    const nameEl = e.target.closest('.sname');
+    if (!nameEl) return;
+    const row = nameEl.closest('.skill-row');
+    if (!row) return;
+    const s = skills[parseInt(row.dataset.id, 10)];
+    tooltip.innerHTML = skillTooltipHTML(s);
+    tooltip.style.display = 'block';
+    position(e);
+  });
+
+  app.addEventListener('mousemove', (e) => {
+    if (tooltip.style.display === 'block' && e.target.closest('.sname')) position(e);
+  });
+
+  app.addEventListener('mouseout', (e) => {
+    const nameEl = e.target.closest('.sname');
+    if (!nameEl) return;
+    if (e.relatedTarget && nameEl.contains(e.relatedTarget)) return;
+    tooltip.style.display = 'none';
   });
 }
 
