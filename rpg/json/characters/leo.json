@@ -13,22 +13,21 @@
     "Skills": {
         "Alchemy": 3,
         "Architecture": 1,
-        "Area Knowledge (Balkans/Montenegro)": 1,
-        "Area Knowledge (Italy/Campania)": 1,
-        "Armoury (Gunpowder)": 3,
+        "Area Knowledge (Serbian Empire > Travunia/Zeta > Skadar)": 1,
+        "Area Knowledge (Kingdom of Naples > Campania > Neapoli)": 1,
+        "Axes-Hammers-Picks": 3,
+        "Demolution": 3,
         "Dreaming": 1,
-        "Explosives (Demolition)": 3,
         "Forward Observer": 1,
-        "Language (Romance/Italic/Neapolitan)": 5,
-        "Literacy (Latin)": 1,
+        "Handgonnes": 3,
+        "Language (Indo-European > Latin & Romance > Western > Italo-Dalmatian , Italian & Vulgar Latin > Italo-Romance > Neapolitan)": 5,
+        "Literacy (Indo-European > Latin & Romance > Western > Italo-Dalmatian , Italian & Vulgar Latin > Italo-Romance)": 1,
         "Masonry": 1,
         "Packing": 2,
         "Research": 2,
         "Riding": 2,
         "Swimming": 1,
-        "Theology (Western Christianity)": 2,
-        "Weapon (Axes-Hammers-Picks)": 3,
-        "Weapon (Handgonnes)": 3
+        "Theology (Abrahamic > Christianity > Catholicism)": 2
     },
     "Abilities": {
         "Awareness": [

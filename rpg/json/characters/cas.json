@@ -9,20 +9,20 @@
         "Reason": 1
     },
     "Skills": {
-        "Area Knowledge (Balkans/Serbia)": 1,
+        "Area Knowledge (Serbian Empire > Metohja > Peć)": 1,
         "Climbing": 1,
         "Concentration": 1,
         "Cooking": 1,
-        "Language (Slavic/South/Shtokavian)": 5,
-        "Language (Romance/Italic/Istro-Dalmatian)": 1,
+        "Curved Swords": 5,
+        "Language (Indo-European > Balto-Slavic > Slavic > South > Western South > Shtokavian)": 5,
+        "Language (Indo-European > Latin & Romance > Western > Italo-Dalmatian , Italian & Vulgar Latin > Istro-Dalmatian > Dalmatian)": 1,
         "Leatherworking": 1,
         "Naturalist": 5,
         "Observation": 1,
         "Orienteering": 2,
         "Physician": 2,
         "Riding": 2,
-        "Stealth": 2,
-        "Weapon (Curved Swords)": 5
+        "Stealth": 2
     },
     "Abilities": {
         "Awareness": [

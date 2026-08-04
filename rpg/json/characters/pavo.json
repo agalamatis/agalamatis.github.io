@@ -11,21 +11,21 @@
         "Willpower": 0
     },
     "Skills": {
-        "Area Knowledge (Croatia/Dalmatia)": 1,
+        "Area Knowledge (Realm of Saint Stephen > Dalmatia > Zara)": 1,
         "Astronomy": 1,
-        "Armoury (Armour)": 1,
-        "Armoury (Melee Weapons)": 1,
-        "Boating (Unpowered)": 1,
+        "Armoury": 1,
+        "Bladesmith": 1,
         "Fishing": 1,
         "Intimidation": 2,
-        "Language (Romance/Italic/Istro-Dalmatian)": 5,
-        "Language (Germanic/Middle/Franconian)": 1,
-        "Literacy (Latin)": 1,
+        "Language (Indo-European > Latin & Romance > Western > Italo-Dalmatian , Italian & Vulgar Latin > Istro-Dalmatian > Dalmatian)": 5,
+        "Language (Indo-European > Germanic > West > High > Upper > Austro-Bavarian)": 1,
+        "Literacy (Indo-European > Latin & Romance > Western > Italo-Dalmatian , Italian & Vulgar Latin > Istro-Dalmatian)": 1,
+        "Long Swords": 5,
         "Riding": 2,
+        "Rowing": 1,
+        "Shields": 5,
         "Swimming": 1,
-        "Theology (Western Christianity)": 2,
-        "Weapon (Long Swords)": 5,
-        "Weapon (Shields)": 5
+        "Theology (Abrahamic > Christianity > Catholicism)": 2
     },
     "Abilities": {
         "Awareness": [],

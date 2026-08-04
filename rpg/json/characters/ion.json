@@ -16,19 +16,19 @@
         "Concentration": 3,
         "Erotic Art": 1,
         "Fast-Talk": 1,
-        "Language (Romance/Romanian/Vlach)": 3,
-        "Language (Uralic/Ugric/Magyar)": 2,
-        "Language (Slavic/South/Shtokavian)": 1,
-        "Literacy (Latin)": 1,
+        "Language (Indo-European > Latin & Romance > Eastern > Northern > Romanian & Dialects > Banat/Hunedoara)": 3,
+        "Language (Turko-Mongol > Uralic > Finno-Ugric > Ugric > Hungarian > Körösvidékyi)": 2,
+        "Language (Indo-European > Balto-Slavic > Slavic > South > Western South > Shtokavian)": 1,
+        "Literacy (Turko-Mongol > Uralic > Finno-Ugric > Ugric > Hungarian)": 1,
         "Lockpicking": 1,
         "Observation": 2,
         "Riding": 1,
         "Sex Appeal": 1,
+        "Small Swords": 3,
         "Sleight of Hand": 5,
         "Streetwise": 1,
         "Shadowing": 1,
-        "Stealth": 1,
-        "Weapon (Small Swords)": 3
+        "Stealth": 1
     },
     "Abilities": {
         "Awareness": [
