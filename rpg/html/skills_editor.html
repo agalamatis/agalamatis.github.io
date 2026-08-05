@@ -280,7 +280,7 @@
   Arts &amp; Sciences, Crafts &amp; Trades, and Weapons, from skills whose "grants" list names this skill).
   Probability is P(3d6 ≤ value) via the normal approximation used across the campaign. The top-left counter
   sums the probability of every skill and specialty, invested or not, and converts how far that sum has
-  moved since the last Load/Clear into weeks (one week per 0.25 of probability moved). Hover a skill's name
+  moved since the last Load/Clear into weeks (one week per 0.05 of probability moved). Hover a skill's name
   to see its full rules.md entry.
 </footer>
 
@@ -381,14 +381,14 @@ function fmtPct(p) {
 /* ---------------------------------------------------------------------- */
 /* "Weeks" counter                                                        */
 /* ---------------------------------------------------------------------- */
-// "for every 25% (0.25 probability) change in the sum add one week... If a
+// "for every 5% (0.05 probability) change in the sum add one week... If a
 // slider is lowered, subtract. Reset the weeks calculation when a
 // character is loaded and the clear button is pressed." Weeks are tracked
 // as a simple linear function of how far the probability sum has moved
 // away from a baseline -- the sum at the last Load/Clear (or at page
 // load) -- rather than an incremental per-move accumulator, since summing
 // every individual delta is mathematically identical to (current - the
-// last reset point) / 0.25: the ups and downs of moving a slider back and
+// last reset point) / 0.05: the ups and downs of moving a slider back and
 // forth telescope out to the same net result either way.
 let weeksBaselineSum = 0;
 
@@ -624,7 +624,7 @@ function refreshAll() {
   // negative value rounds toward zero, e.g. -1.5 -> -1) and drive the
   // green/red colouring themselves now: green at 35 weeks or fewer, red
   // above 35. Shown as a plain number -- no +/± sign in front.
-  const weeksExact = (probSum - weeksBaselineSum) / 0.25;
+  const weeksExact = (probSum - weeksBaselineSum) / 0.05;
   const weeks = Math.ceil(weeksExact);
   const sumBox = document.getElementById('sumBox');
   sumBox.textContent = probSum.toFixed(4) + ' needs ' + weeks + ' weeks';
