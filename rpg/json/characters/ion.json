@@ -70,15 +70,21 @@
         }
     ],
     "Gear": [
-        "Short sword",
-        "2 Daggers",
-        "Leather trousers, shirt, boots, gloves & cap (DR:1 against crush and slash)",
-        "Stealthy black cloak",
-        "Local slavic peasant dress",
-        "Expensive and provocative highborn magyar dress",
-        "Winter (wool+sheep skin) jacket (DR:2 against crush and slash, and 1 against pierce; cold protection, but stamina drain in warm weather)",
+        "short sword",
+        "dagger",
+        "dagger",
+        "leather boots",
+        "leather codpiece",
+        "leather cuirass",
+        "leather vambraces",
+        "leather gloves",
+        "leather coif",
+        "fur mantle",
+        "stealthy black cloak",
+        "local slavic peasant dress",
+        "expensive and provocative highborn magyar dress",
         "500 silver coins in a single pouch",
-        "Saddle and bags",
-        "Riding horse"
+        "saddle and bags",
+        "riding horse"
     ]
 }

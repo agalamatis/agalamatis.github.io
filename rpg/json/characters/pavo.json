@@ -18,7 +18,7 @@
         "Fishing": 1,
         "Intimidation": 2,
         "Language (Indo-European > Latin & Romance > Western > Italo-Dalmatian , Italian & Vulgar Latin > Istro-Dalmatian > Dalmatian)": 5,
-        "Language (Indo-European > Germanic > West > High > Upper > Austro-Bavarian)": 1,
+        "Language (Indo-European > Germanic > West > High > Franconian > Central)": 1,
         "Literacy (Indo-European > Latin & Romance > Western > Italo-Dalmatian , Italian & Vulgar Latin > Istro-Dalmatian)": 1,
         "Long Swords": 5,
         "Riding": 2,
@@ -57,14 +57,18 @@
         }
     ],
     "Gear": [
-        "Bastard sword (can be used one or two handed)",
-        "Kite shield bathed in the blood of last knight of Acre (increases your faith by one when used)",
-        "Iron helmet (protecting face/head/neck, no peripheral vision) (DR: 7 against crush & slash, 4 against pierce)",
-        "Chainmail armour (full body, two pieces: head/arms/chest + hips/legs, doesn’t protect face, hands and feet) (DR: 2 against crush and pierce, 4 against slash)",
-        "Plated iron girdle (binding the armour with leather straps)",
-        "Iron helmet (protecting face/head/neck, no peripheral vision) (DR: 7 against crush & slash, 4 against pierce)",
+        "bastard sword",
+        "targe / kite shield (bathed in the blood of last knights of Acre, increases your faith by one when used)",
+        "plate helm",
+        "mail hauberk",
+        "mail skirt",
+        "studded boots",
+        "studded gauntlets",
+        "iron girdle (binding the armour with leather straps)",
         "Teutonic knights tunic (worn over the armour)",
         "Teutonic knights robes (worn alone, without the armour)",
-        "Sealed letter from the grandmaster <a href=\"https://en.wikipedia.org/wiki/Gottfried_von_Hohenlohe\">Gottfried von Hohenlohe<\/a> addressed to the <a href=\"https://en.wikipedia.org/wiki/Roman_Catholic_Archdiocese_of_Kalocsa%E2%80%93Kecskem%C3%A9t\">archbishop of Kalosca<\/a>"
+        "sealed letter from the grandmaster <a href=\"https://en.wikipedia.org/wiki/Gottfried_von_Hohenlohe\">Gottfried von Hohenlohe<\/a> addressed to the <a href=\"https://en.wikipedia.org/wiki/Roman_Catholic_Archdiocese_of_Kalocsa%E2%80%93Kecskem%C3%A9t\">archbishop of Kalosca<\/a>",
+        "saddle and bags",
+        "riding horse"
     ]
 }

@@ -2,11 +2,13 @@
     "Name": "Casimir Metohijac",
     "Attributes": {
         "Agility": 1,
+        "Appearance": 0,
         "Health": -1,
         "Strength": 0,
         "Charisma": -1,
         "Perception": 0,
-        "Reason": 1
+        "Reason": 1,
+        "Willpower": 0
     },
     "Skills": {
         "Area Knowledge (Serbian Empire > Metohja > Peć)": 1,
@@ -36,13 +38,28 @@
         "Heritage": [
             {
                 "level": 1,
-                "name": "Find the Path lost to Mankind",
+                "name": "Tread the path lost to mankind",
                 "description": "Paths open for you in the wild."
             },
             {
                 "level": 2,
                 "name": "Surrender to the Dreamlord",
                 "description": "You always found that dreaming (and daydreaming) in the wild offers visions and warning for the future."
+            },
+            {
+                "level": 1,
+                "name": "Sight of the Nocturnal Predator",
+                "description": "By closing your eyes for about three seconds and succeeding in a Willpower+Concentration+Heritage roll, you transform your eyes to those of a wolf, granting you excellent vision under even the faintest of light, removing any vision penalties. Note that a source of light is required, however faint, but won’t be able to gain any advantage in total darkness."
+            },
+            {
+                "level": 2,
+                "name": "Instruments of the Feral Hunter",
+                "description": "By concentrating for about three seconds and succeeding in a Willpower+Concentration+Heritage roll, you transform your teeth and nails into a wolf’s fangs (thrust ±0 pierce / reach 0m) and claws (swing +1 slash or thrust ±0 pierce, both reach 0m) granting you their damage types and bonuses, but not the skill (brawling) to use them."
+            },
+            {
+                "level": 3,
+                "name": "Assume the Form of the Great Beast",
+                "description": "By covering yourself in the wolf-skin, concentrating for about three seconds, and succeeding in a Willpower+Concentration+Heritage roll, you (and all the gear on you) transform into a dire wolf, gaining its physical characteristics (see below), but unable to perform any skills actions that require a human shape, e.g. speak, use equipment made for humans, etc. To transform back you need the same roll, but sometimes it feels difficult to “discipline” yourself. Dire wolf characteristics: +2 Agility, +2 Health, ±0 Strength, +4 Perception (all senses),2x short distance movement (acceleration), +4 Brawling, +4 Tracking (as long as you can smell), Tread the path lost to mankind (see above), Sight of the Nocturnal Predator (see above), and Instruments of the Feral Hunter (see above)."
             }
         ],
         "Nobility": []
@@ -66,10 +83,18 @@
         }
     ],
     "Gear": [
-        "Falchion",
-        "Machette",
-        "Leather trousers, shirt, boots, gloves & cap (DR:1 against crush and slash)",
-        "First Aid kit",
-        "Waterskin"
+        "falchion / scimitar",
+        "machette",
+        "leather boots",
+        "leather codpiece",
+        "leather cuirass",
+        "leather vambraces",
+        "leather gloves",
+        "leather coif",
+        "first aid kit",
+        "waterskin",
+        "saddle and bags",
+        "riding horse",
+        "The Skin of the King of All Wolves (granting the abilities Sight of the Nocturnal Predator, Instruments of the Feral Hunter, Assume the Form of the Great Beast)"
     ]
 }
