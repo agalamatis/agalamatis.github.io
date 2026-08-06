@@ -538,6 +538,19 @@ function uniform() {
   return sign * _randomUnit() * Number.MAX_VALUE;
 }
 
+/**
+ * A random float drawn from a normal distribution via the Box-Muller
+ * transform: two independent uniform draws in (0, 1) -- rejecting exact 0,
+ * since ln(0) is -Infinity -- combined into a standard normal variate, then
+ * scaled/shifted to the requested mean and standard deviation.
+ */
+function sampleNormal(mean = 0, sd = SD_3D6) {
+  let u, v;
+  do { u = Math.random(); } while (u === 0);
+  do { v = Math.random(); } while (v === 0);
+  return mean + sd * Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+}
+
 /* ---------------------------------------------------------------------- */
 /* Build runtime skill records                                            */
 /* ---------------------------------------------------------------------- */
@@ -1475,13 +1488,11 @@ function computeSkillModalMean() {
 function updateSkillModalChance() {
   const mean = computeSkillModalMean();
   document.getElementById('skChance').textContent = '(' + fmtPct(cdf(mean)) + ')';
+  document.getElementById('skRollBtn').textContent = `Roll at ${fmtSigned(mean)}?`;
 }
 
 function formatPdfResult(v) {
-  if (v === 0) return '0';
-  const av = Math.abs(v);
-  if (av < 1e-4 || av >= 1e6) return v.toExponential(4);
-  return v.toFixed(6);
+  return v.toFixed(4);
 }
 
 function openSkillModal(s) {
@@ -1516,13 +1527,19 @@ function closeSkillModal() {
 }
 
 document.getElementById('skRollBtn').addEventListener('click', () => {
-  const x = uniform();
   const mean = computeSkillModalMean();
-  const result = pdf(x, mean);
+  const x = sampleNormal(mean);
+  // A normal distribution is symmetric about its own mean, so P(X <= 0)
+  // is exactly 50% whenever mean = 0 -- for ANY standard deviation, since
+  // sd only stretches or compresses the curve around that same centre
+  // point, it never shifts where the 50/50 split falls. So the roll itself
+  // (not a density derived from it) is what red/green must check against
+  // zero.
+  const success = x > 0;
   const el = document.getElementById('skRollResult');
-  el.textContent = formatPdfResult(result);
-  el.classList.toggle('roll-green', result > 0);
-  el.classList.toggle('roll-red', result <= 0);
+  el.textContent = formatPdfResult(x);
+  el.classList.toggle('roll-green', success);
+  el.classList.toggle('roll-red', !success);
 });
 document.getElementById('skModalClose').addEventListener('click', closeSkillModal);
 document.getElementById('skillModalOverlay').addEventListener('click', (e) => {
