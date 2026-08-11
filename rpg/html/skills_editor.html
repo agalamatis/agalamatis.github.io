@@ -369,7 +369,8 @@
   #skillModal .sk-roll-result { font-size: 16px; font-weight: bold; min-width: 1.5em; text-align: right; }
   #skillModal .sk-roll-result.roll-green { color: var(--green, #4caf50); }
   #skillModal .sk-roll-result.roll-red { color: var(--red, #e05555); }
-  #skillModal .cm-close, #skillModal .sk-roll-btn {
+  #skillModal .sk-init-result { font-size: 16px; font-weight: bold; min-width: 1.5em; text-align: right; color: var(--text); }
+  #skillModal .cm-close, #skillModal .sk-roll-btn, #skillModal .sk-init-btn {
     background: var(--panel-alt);
     border: 1px solid var(--gold);
     color: var(--gold-bright);
@@ -378,7 +379,7 @@
     cursor: pointer;
     font-family: inherit;
   }
-  #skillModal .cm-close:hover, #skillModal .sk-roll-btn:hover { background: #362d1e; }
+  #skillModal .cm-close:hover, #skillModal .sk-roll-btn:hover, #skillModal .sk-init-btn:hover { background: #362d1e; }
   #skillModal .cm-section { margin-bottom: 16px; }
   #skillModal .cm-section-title {
     color: var(--gold);
@@ -462,6 +463,8 @@
         <span class="sk-chance" id="skChance">(0.00%)</span>
       </div>
       <div class="cm-header-actions">
+        <span class="sk-init-result" id="skInitResult"></span>
+        <button class="sk-init-btn" id="skInitBtn" style="display:none;">Init</button>
         <span class="sk-roll-result" id="skRollResult"></span>
         <button class="sk-roll-btn" id="skRollBtn">Roll</button>
         <button class="cm-close" id="skModalClose">Close</button>
@@ -1524,9 +1527,21 @@ function findAttributeLine(lines) {
   return line.replace(/^Attribute:\s*/i, '').trim();
 }
 
+// Generic "Label: value" line finder, used for Mean:/Offset: as well as
+// Attribute:.
+function findFieldLine(lines, label) {
+  if (!lines) return null;
+  const re = new RegExp('^' + label + ':', 'i');
+  const line = lines.find(l => re.test(l.trim()));
+  if (!line) return null;
+  return line.replace(new RegExp('^' + label + ':\\s*', 'i'), '').trim();
+}
+
 // Most Attribute: lines are a single name ("Agility"), but a few list
 // alternatives ("Agility or Strength"). Try the whole text first, then
-// fall back to each alternative in turn.
+// each alternative, then a loose prefix match -- rules.md's Actions
+// section spells Reason as "Reasoning" in its Attribute: lines, which
+// won't match the Attributes block's "Reason" key exactly otherwise.
 function resolveAttributeValue(attrText) {
   if (!attrText || !currentCharacter || !currentCharacter.Attributes) return 0;
   const attrs = currentCharacter.Attributes;
@@ -1535,7 +1550,60 @@ function resolveAttributeValue(attrText) {
   for (const p of parts) {
     if (p in attrs) return typeof attrs[p] === 'number' ? attrs[p] : 0;
   }
+  const keys = Object.keys(attrs);
+  for (const p of parts) {
+    const pl = p.toLowerCase();
+    const match = keys.find(k => pl.startsWith(k.toLowerCase()) || k.toLowerCase().startsWith(pl));
+    if (match && typeof attrs[match] === 'number') return attrs[match];
+  }
   return 0;
+}
+
+// Converts a Mean:/Offset: field's free-text duration ("30 minutes 0
+// seconds", "6 days 23 hours 59 minutes 59 seconds", "1 second") into a
+// plain number of seconds, summing every unit found.
+function parseTimeToSeconds(text) {
+  if (!text) return 0;
+  const unitSeconds = {
+    second: 1, seconds: 1,
+    minute: 60, minutes: 60,
+    hour: 3600, hours: 3600,
+    day: 86400, days: 86400
+  };
+  const re = /(\d+(?:\.\d+)?)\s*(seconds?|minutes?|hours?|days?)/gi;
+  let total = 0;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    total += parseFloat(m[1]) * unitSeconds[m[2].toLowerCase()];
+  }
+  return total;
+}
+
+// Standard bivariate-normal construction (Azzalini) for the skew-normal
+// distribution: U0, U1 iid N(0,1), delta = shape/sqrt(1+shape^2); Z =
+// delta*|U0| + sqrt(1-delta^2)*U1 is standard skew-normal(0,1,shape).
+// Shifting/scaling by mean/sigma gives the general case; shape = 0 makes
+// delta = 0, leaving Z = U1 -- i.e. a plain N(mean, sigma).
+function skew(mean = 3, sigma = SD_3D6, shape = 0) {
+  const delta = shape / Math.sqrt(1 + shape * shape);
+  const u0 = sampleNormal(0, 1);
+  const u1 = sampleNormal(0, 1);
+  const z = delta * Math.abs(u0) + Math.sqrt(1 - delta * delta) * u1;
+  return mean + sigma * z;
+}
+
+// The Init generator: mean/offset come straight from the selected
+// action/reaction's own Mean:/Offset: fields (in seconds), converted to a
+// skew-normal draw via sigma = offset/3. shape defaults to 0 (a plain
+// normal, same as before) but the Init button now passes a real shape
+// derived from the character's attribute/skill/modifiers.
+function initiative(mean = 3, offset = 2, shape = 0) {
+  const sigma = offset / 3;
+  return skew(mean, sigma, shape);
+}
+
+function formatSecondsResult(v) {
+  return v.toFixed(2) + ' sec';
 }
 
 function computeSkillModalMean() {
@@ -1570,6 +1638,8 @@ function openSkillModal(s) {
   const resultEl = document.getElementById('skRollResult');
   resultEl.textContent = '';
   resultEl.classList.remove('roll-green', 'roll-red');
+  document.getElementById('skInitResult').textContent = '';
+  document.getElementById('skInitBtn').style.display = 'none';
 
   document.querySelectorAll('#skBody .skm-modcheck').forEach(cb => {
     cb.addEventListener('change', () => {
@@ -1616,6 +1686,16 @@ function openSkillModal(s) {
   document.getElementById('skillModalOverlay').style.display = 'flex';
 }
 
+// Selecting/deselecting/switching an action or reaction always invalidates
+// whatever Init/Roll results are currently showing, since they were drawn
+// for a different (or no) selection.
+function clearRollAndInitResults() {
+  const rollEl = document.getElementById('skRollResult');
+  rollEl.textContent = '';
+  rollEl.classList.remove('roll-green', 'roll-red');
+  document.getElementById('skInitResult').textContent = '';
+}
+
 // Clicking an action or reaction selects it (highlighted, its Attribute:
 // line resolved against the loaded character and folded into the roll
 // mean); clicking the same one again deselects it; clicking a different
@@ -1633,6 +1713,8 @@ document.getElementById('skBody').addEventListener('click', (e) => {
     const tag = el.querySelector('.ar-attr-tag');
     if (tag) tag.remove();
     selectedActionReaction = null;
+    document.getElementById('skInitBtn').style.display = 'none';
+    clearRollAndInitResults();
     updateSkillModalChance();
     return;
   }
@@ -1654,7 +1736,22 @@ document.getElementById('skBody').addEventListener('click', (e) => {
   el.appendChild(tag);
 
   selectedActionReaction = { kind, name, el, attrText, attrValue };
+  document.getElementById('skInitBtn').style.display = 'inline-block';
+  clearRollAndInitResults();
   updateSkillModalChance();
+});
+
+document.getElementById('skInitBtn').addEventListener('click', () => {
+  if (!selectedActionReaction) return;
+  const dataMap = selectedActionReaction.kind === 'action' ? ACTIONS_DATA : REACTIONS_DATA;
+  const lines = dataMap[selectedActionReaction.name];
+  const meanSeconds = parseTimeToSeconds(findFieldLine(lines, 'Mean'));
+  const offsetSeconds = parseTimeToSeconds(findFieldLine(lines, 'Offset'));
+  // shape = -1/10 of the same total the roll button uses as its mean
+  // (skill total + checked modifiers + slider + selected attribute).
+  const shape = -0.1 * computeSkillModalMean();
+  const result = initiative(meanSeconds, offsetSeconds, shape);
+  document.getElementById('skInitResult').textContent = formatSecondsResult(result);
 });
 
 function closeSkillModal() {
