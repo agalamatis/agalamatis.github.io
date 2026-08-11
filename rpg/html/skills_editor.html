@@ -403,6 +403,23 @@
   #skillModal .skm-slider-row { display: flex; align-items: center; gap: 10px; }
   #skillModal .skm-slider-row input[type="range"] { flex: 1; }
   #skillModal .skm-slider-row span { color: var(--gold-bright); font-weight: bold; min-width: 2.5em; text-align: right; }
+  #skillModal .skm-modslider-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0 8px 24px;
+  }
+  #skillModal .skm-modslider-row input[type="range"] { flex: 1; }
+  #skillModal .skm-modslider-val { color: var(--gold-bright); font-weight: bold; min-width: 2.5em; text-align: right; }
+  #skillModal .ar-selected {
+    background: var(--gold);
+    color: #16130e;
+    border-radius: 4px;
+    padding: 1px 4px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #skillModal .ar-attr-tag { font-weight: bold; }
 </style>
 </head>
 <body>
@@ -1436,14 +1453,33 @@ function linkTraitMentions(text) {
   return result;
 }
 
-function modifierCheckboxRow(m) {
+function modifierCheckboxRow(m, idx) {
   const [n0, n1, desc] = m;
-  const range = n0 === n1 ? fmtSigned(n0) : `${fmtSigned(n0)} to ${fmtSigned(n1)}`;
-  return `<label class="skm-modrow">
-    <input type="checkbox" class="skm-modcheck" data-value="${n0}">
-    <span class="skm-modrange">${range}</span>
-    <span class="skm-moddesc">${linkTraitMentions(desc)}</span>
-  </label>`;
+  const ranged = n0 !== n1;
+  const range = ranged ? `${fmtSigned(n0)} to ${fmtSigned(n1)}` : fmtSigned(n0);
+  // The pair isn't always stored low-to-high (e.g. "-1 to -5"), so derive
+  // the slider's actual min/max/starting value independently of display
+  // order -- "beginning at the minimum" means the true minimum.
+  const lo = Math.min(n0, n1);
+  const hi = Math.max(n0, n1);
+  let html = `<div class="skm-modrow-wrap">
+    <label class="skm-modrow">
+      <input type="checkbox" class="skm-modcheck" data-idx="${idx}" data-value="${n0}">
+      <span class="skm-modrange">${range}</span>
+      <span class="skm-moddesc">${linkTraitMentions(desc)}</span>
+    </label>`;
+  // Ranged modifiers ("-5 to -1", "-3 to +3") don't have one fixed value --
+  // checking the box reveals a slider (integer steps, starting at the
+  // minimum) so the player can pick exactly which value in the range
+  // applies to this roll. Fixed (n0 === n1) modifiers need no slider.
+  if (ranged) {
+    html += `<div class="skm-modslider-row" id="skm-modslider-row-${idx}" style="display:none;">
+      <span class="skm-modslider-val" id="skm-modslider-val-${idx}">${fmtSigned(lo)}</span>
+      <input type="range" class="skm-modslider" id="skm-modslider-${idx}" data-idx="${idx}" min="${lo}" max="${hi}" step="1" value="${lo}">
+    </div>`;
+  }
+  html += `</div>`;
+  return html;
 }
 
 function skillModalBodyHTML(s) {
@@ -1456,7 +1492,7 @@ function skillModalBodyHTML(s) {
 
   html += `<div class="cm-section"><div class="cm-section-title">Modifiers</div>`;
   html += s.modifiers.length
-    ? s.modifiers.map(m => modifierCheckboxRow(m)).join('')
+    ? s.modifiers.map((m, idx) => modifierCheckboxRow(m, idx)).join('')
     : `<div class="cm-empty">None</div>`;
   html += `</div>`;
 
@@ -1475,6 +1511,33 @@ function skillModalBodyHTML(s) {
 // folded into the roll mean alongside the checked modifiers and slider.
 let skillModalBaseTotal = 0;
 
+// At most one action or reaction can be "selected" (highlighted) at a time
+// in the roll modal. When selected, its Attribute: line is resolved against
+// the loaded character and folded into the roll mean like any other
+// modifier. Reset to null every time the modal opens for a new skill.
+let selectedActionReaction = null; // { kind, name, el, attrText, attrValue }
+
+function findAttributeLine(lines) {
+  if (!lines) return null;
+  const line = lines.find(l => /^Attribute:/i.test(l.trim()));
+  if (!line) return null;
+  return line.replace(/^Attribute:\s*/i, '').trim();
+}
+
+// Most Attribute: lines are a single name ("Agility"), but a few list
+// alternatives ("Agility or Strength"). Try the whole text first, then
+// fall back to each alternative in turn.
+function resolveAttributeValue(attrText) {
+  if (!attrText || !currentCharacter || !currentCharacter.Attributes) return 0;
+  const attrs = currentCharacter.Attributes;
+  if (attrText in attrs) return typeof attrs[attrText] === 'number' ? attrs[attrText] : 0;
+  const parts = attrText.split(/\s+or\s+|\/|,/i).map(s => s.trim());
+  for (const p of parts) {
+    if (p in attrs) return typeof attrs[p] === 'number' ? attrs[p] : 0;
+  }
+  return 0;
+}
+
 function computeSkillModalMean() {
   let sum = skillModalBaseTotal;
   document.querySelectorAll('#skBody .skm-modcheck:checked').forEach(cb => {
@@ -1482,6 +1545,7 @@ function computeSkillModalMean() {
   });
   const slider = document.getElementById('skSlider');
   if (slider) sum += parseInt(slider.value, 10);
+  if (selectedActionReaction) sum += selectedActionReaction.attrValue;
   return sum;
 }
 
@@ -1498,6 +1562,7 @@ function formatPdfResult(v) {
 function openSkillModal(s) {
   document.getElementById('skillTooltip').style.display = 'none';
   skillModalBaseTotal = computeTotals()[s.id];
+  selectedActionReaction = null;
   document.getElementById('skCurrentMod').textContent = fmtSigned(skillModalBaseTotal);
   document.getElementById('skTitle').textContent = s.name;
   document.getElementById('skBody').innerHTML = skillModalBodyHTML(s);
@@ -1507,7 +1572,37 @@ function openSkillModal(s) {
   resultEl.classList.remove('roll-green', 'roll-red');
 
   document.querySelectorAll('#skBody .skm-modcheck').forEach(cb => {
-    cb.addEventListener('change', updateSkillModalChance);
+    cb.addEventListener('change', () => {
+      // Ranged modifiers reveal an integer-step slider (starting at the
+      // minimum) the moment they're checked, and hide it again when
+      // unchecked; the checkbox's own data-value stays in sync with
+      // whatever the slider is currently set to, so computeSkillModalMean
+      // doesn't need any special-casing for ranged vs fixed modifiers.
+      const idx = cb.dataset.idx;
+      const sliderRow = document.getElementById('skm-modslider-row-' + idx);
+      if (sliderRow) {
+        if (cb.checked) {
+          const modSlider = document.getElementById('skm-modslider-' + idx);
+          modSlider.value = modSlider.min;
+          cb.dataset.value = modSlider.min;
+          document.getElementById('skm-modslider-val-' + idx).textContent = fmtSigned(parseInt(modSlider.min, 10));
+          sliderRow.style.display = 'flex';
+        } else {
+          sliderRow.style.display = 'none';
+        }
+      }
+      updateSkillModalChance();
+    });
+  });
+  document.querySelectorAll('#skBody .skm-modslider').forEach(modSlider => {
+    modSlider.addEventListener('input', () => {
+      const idx = modSlider.dataset.idx;
+      const val = parseInt(modSlider.value, 10);
+      document.getElementById('skm-modslider-val-' + idx).textContent = fmtSigned(val);
+      const cb = document.querySelector('#skBody .skm-modcheck[data-idx="' + idx + '"]');
+      if (cb) cb.dataset.value = val;
+      updateSkillModalChance();
+    });
   });
   const slider = document.getElementById('skSlider');
   if (slider) {
@@ -1520,6 +1615,47 @@ function openSkillModal(s) {
 
   document.getElementById('skillModalOverlay').style.display = 'flex';
 }
+
+// Clicking an action or reaction selects it (highlighted, its Attribute:
+// line resolved against the loaded character and folded into the roll
+// mean); clicking the same one again deselects it; clicking a different
+// one moves the selection -- at most one action/reaction is ever selected
+// at a time. Wired once via delegation since #skBody's contents are
+// replaced wholesale on every modal open.
+document.getElementById('skBody').addEventListener('click', (e) => {
+  const el = e.target.closest('[data-kind="action"], [data-kind="reaction"]');
+  if (!el) return;
+  const kind = el.dataset.kind;
+  const name = el.dataset.name;
+
+  if (selectedActionReaction && selectedActionReaction.kind === kind && selectedActionReaction.name === name) {
+    el.classList.remove('ar-selected');
+    const tag = el.querySelector('.ar-attr-tag');
+    if (tag) tag.remove();
+    selectedActionReaction = null;
+    updateSkillModalChance();
+    return;
+  }
+
+  if (selectedActionReaction && selectedActionReaction.el) {
+    selectedActionReaction.el.classList.remove('ar-selected');
+    const oldTag = selectedActionReaction.el.querySelector('.ar-attr-tag');
+    if (oldTag) oldTag.remove();
+  }
+
+  const dataMap = kind === 'action' ? ACTIONS_DATA : REACTIONS_DATA;
+  const attrText = findAttributeLine(dataMap[name]);
+  const attrValue = resolveAttributeValue(attrText);
+
+  el.classList.add('ar-selected');
+  const tag = document.createElement('span');
+  tag.className = 'ar-attr-tag';
+  tag.textContent = ' (' + (attrText || 'n/a') + ' ' + fmtSigned(attrValue) + ')';
+  el.appendChild(tag);
+
+  selectedActionReaction = { kind, name, el, attrText, attrValue };
+  updateSkillModalChance();
+});
 
 function closeSkillModal() {
   document.getElementById('skillModalOverlay').style.display = 'none';
