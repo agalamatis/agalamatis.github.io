@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local config (copy .env.example -> .env)
+.env
+
+# Local data / celery beat state
+*.db
+*.sqlite3
+celerybeat-schedule*
