@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Slovak Attractions Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap">
+<style>
+/* layout: masthead over a sticky control bar over one dense, sortable table */
+:root{
+  --paper:#f7f6f3; --card:#ffffff; --ink:#1d1f23; --muted:#6b7078; --faint:#8d939c;
+  --line:#e2e0da; --line2:#efede8; --vermilion:#c2431f; --accent:#c2431f;
+  --pill:#f1efe9; --badge:#fbf2ef;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#15171a; --card:#1b1e22; --ink:#e9e7e2; --muted:#9aa1aa; --faint:#767d87;
+  --line:#2b2f35; --line2:#22262b; --vermilion:#e2673f; --accent:#e2673f;
+  --pill:#23272c; --badge:#2a211e; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#15171a; --card:#1b1e22; --ink:#e9e7e2; --muted:#9aa1aa; --faint:#767d87;
+  --line:#2b2f35; --line2:#22262b; --vermilion:#e2673f; --accent:#e2673f;
+  --pill:#23272c; --badge:#2a211e; color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+header.mast{padding-block:34px 20px}
+.eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+  margin:0 0 10px;font-weight:600}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,5.4vw,46px);line-height:1.04;
+  margin:0 0 14px;letter-spacing:-.015em;text-wrap:balance}
+.masthead{display:flex;gap:28px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.mast-left{flex:1 1 380px;min-width:0}
+.lede{color:var(--muted);max-width:56ch;margin:0;font-size:14.5px}
+.figs{display:flex;gap:26px;flex-wrap:wrap;padding-top:6px}
+.fig{min-width:64px}
+.fig b{display:block;font-family:var(--display);font-size:26px;font-weight:600;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fig span{display:block;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);
+  margin-top:2px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper);
+  border-bottom:1px solid var(--line);padding-block:12px 10px}
+.barrow{display:flex;gap:10px;align-items:center}
+#q{flex:1 1 auto;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:9px 12px;font:inherit;color:inherit}
+#q:focus{outline:2px solid var(--accent);outline-offset:1px}
+.btn{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 13px;
+  font:inherit;color:inherit;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+#nf{display:inline-block;min-width:17px;padding:0 5px;margin-left:6px;border-radius:9px;
+  background:var(--accent);color:#fff;font-size:11px;line-height:17px;text-align:center;
+  font-variant-numeric:tabular-nums}
+.statusrow{display:flex;gap:12px;align-items:baseline;justify-content:space-between;
+  padding-top:9px;flex-wrap:wrap}
+.count{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.count b{color:var(--ink)}
+.linkish{background:none;border:0;padding:0;font:inherit;font-size:12.5px;color:var(--accent);
+  cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+#facets{border-bottom:1px solid var(--line);background:var(--paper)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px;
+  padding-block:16px 18px}
+.grp h3{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);
+  margin:0 0 7px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.find{width:100%;background:var(--card);border:1px solid var(--line);border-radius:6px;
+  padding:5px 8px;font:inherit;font-size:12px;color:inherit;margin-bottom:6px}
+.opts{max-height:186px;overflow:auto;border:1px solid var(--line2);border-radius:6px;
+  background:var(--card);padding:5px 7px}
+.opt{display:flex;gap:7px;align-items:baseline;font-size:12.5px;padding:2px 0;cursor:pointer}
+.opt input{margin:0;accent-color:var(--accent);flex:0 0 auto;position:relative;top:1px}
+.opt span.lbl{flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+.opt span.n{color:var(--faint);font-variant-numeric:tabular-nums;font-size:11.5px}
+.tablewrap{overflow-x:auto;padding-block:2px 0}
+table{border-collapse:collapse;width:100%;min-width:900px}
+thead th{position:sticky;top:0;z-index:5;background:var(--paper);text-align:left;
+  font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);font-weight:600;
+  padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;
+  user-select:none}
+thead th:hover{color:var(--ink)}
+thead th.on{color:var(--accent)}
+th .ar{font-size:9px;margin-left:5px;opacity:.75}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--line2);vertical-align:top}
+tbody tr:hover{background:var(--card)}
+.name{font-weight:600;font-size:13.5px}
+.sub{display:block;font-size:11px;color:var(--faint);margin-top:2px}
+.pill{display:inline-block;background:var(--pill);border-radius:999px;padding:2px 9px;
+  font-size:11.5px;color:var(--muted);white-space:nowrap}
+td.era{white-space:nowrap}
+.eratag{font-size:11.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:7px;
+  display:inline-block}
+.eratag.e-natural{border-color:#5f9a6d}
+.eratag.e-pre-historic{border-color:#8a6a3a}
+.eratag.e-roman{border-color:#a8813c}
+.eratag.e-lombard{border-color:#9a6b52}
+.eratag.e-avar{border-color:#8f7a5a}
+.eratag.e-slavic{border-color:#9a7b3a}
+.eratag.e-arpad{border-color:var(--vermilion)}
+.eratag.e-medieval{border-color:#7a5aa0}
+.eratag.e-habsburg{border-color:#3f6fae}
+.eratag.e-modern{border-color:#b0b6c2}
+td.dest{font-size:13px}
+td.reg{font-size:12px;color:var(--faint);white-space:nowrap}
+td.links{white-space:nowrap}
+.lk{display:inline-block;border:1px solid var(--line);border-radius:5px;padding:1px 6px;
+  font-size:10.5px;color:var(--muted);text-decoration:none;margin-right:4px}
+.lk:hover{border-color:var(--accent);color:var(--accent)}
+.whs{border-color:var(--accent);color:var(--accent);background:var(--badge)}
+.whstl{border-style:dashed;border-color:var(--accent);color:var(--accent)}
+.badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);background:var(--badge);
+  border-radius:4px;padding:0 5px;font-size:9.5px;letter-spacing:.06em;margin-left:7px;
+  vertical-align:2px;font-weight:600}
+.badge.t{border-style:dashed}
+.empty{padding:40px 4px;color:var(--muted);text-align:center}
+section.eras{padding-block:30px 6px;border-top:1px solid var(--line);margin-top:26px}
+h2{font-family:var(--display);font-weight:600;font-size:19px;margin:0 0 14px;letter-spacing:-.01em}
+.erabars{display:grid;gap:7px;max-width:720px}
+.erabar{display:grid;grid-template-columns:230px 1fr 46px;gap:10px;align-items:center;font-size:12.5px}
+.erabar .nm{color:var(--muted);overflow-wrap:anywhere}
+.erabar .nm i{display:block;font-style:normal;font-size:10.5px;color:var(--faint)}
+.track{background:var(--line2);border-radius:3px;height:9px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.erabar .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+footer{padding-block:26px 44px;color:var(--faint);font-size:12px;line-height:1.65;
+  border-top:1px solid var(--line);margin-top:30px;max-width:80ch}
+@media (max-width:560px){
+  .figs{gap:18px}
+  .fig b{font-size:21px}
+  .erabar{grid-template-columns:130px 1fr 40px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="masthead">
+      <div class="mast-left">
+        <p class="eyebrow">Osem krajov</p>
+        <h1>Slovak Attractions Atlas</h1>
+        <p class="lede">Every attraction Lonely Planet lists in Slovakia, grouped by region, each one typed, dated to the era it was founded in, and linked to Wikipedia, Google Maps and its World Heritage listing.</p>
+      </div>
+      <div class="figs"><div class="fig"><b>121</b><span>Entries</span></div><div class="fig"><b>24</b><span>Site types</span></div><div class="fig"><b>8</b><span>WHS properties</span></div><div class="fig"><b>8</b><span>Regions</span></div></div>
+    </div>
+  </header>
+</div>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="barrow">
+      <input id="q" type="search" placeholder="Search name, destination or type&hellip;" autocomplete="off">
+      <button class="btn" id="ftoggle" aria-expanded="false" aria-controls="facets">Filters <span aria-hidden="true">&#9662;</span><span id="nf" hidden>0</span></button>
+    </div>
+    <div class="statusrow">
+      <span class="count"><b id="nshown">0</b> of 121 entries</span>
+      <button class="linkish" id="clearall">Clear all filters</button>
+    </div>
+  </div>
+</div>
+
+<div id="facets" hidden>
+  <div class="wrap"><div class="fgrid" id="fgrid"></div></div>
+</div>
+
+<div class="wrap">
+  <div class="tablewrap">
+    <table>
+      <thead><tr id="hrow"></tr></thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
+  <p class="empty" id="empty" hidden>No attraction matches those filters.</p>
+
+  <section class="eras">
+    <h2>The ten eras, by number of entries</h2>
+    <div class="erabars" id="erabars"></div>
+  </section>
+
+  <footer>All 8 of Slovakia’s World Heritage properties are tagged and all 12 of its tentative-list entries are represented. Seven inscribed properties and five tentative entries were matched to Lonely Planet listings; the beech-forest inscription and seven tentative entries have no Lonely Planet listing and were added as rows of their own, marked “not in Lonely Planet” — Stužica, the Gemer and Abov wall-painting churches, the Muránska planina meadows, the Chatam Sófer memorial, the Komárno fortifications, the Bukovské fungal flora, the Herľany geyser and the church of St Margaret at Kopčany. Slovakia has never had a property delisted, so there is no former-site category. Three eras are empty — Pre-Historic, Lombard and Avar — which is a gap in Lonely Planet’s index rather than in Slovakia: the Moravany Palaeolithic sites, the Lombard cemeteries of the middle Danube and the Avar burials of the southwest are simply not listed. Slovakia’s eight kraje all appear; Lonely Planet’s own East / West / Central groupings cut across them, so the 21 sights filed that way were placed by naming the town each stands in. Founding dates come from Wikidata and from the opening paragraph of each Wikipedia article; rows with no article of their own — 74 of 121 — are dated by site type, which is an estimate rather than a source. A direct Wikipedia lookup on Slovak sight names returns many generic articles and foreign namesakes, so every candidate was checked against its own opening paragraph and eight false matches were dropped. The town inscriptions — Banská Štiavnica, Bardejov, Levoča with Spišský hrad — are tagged at destination level. Map links are searches, not pins: Lonely Planet publishes no coordinates.</footer>
+</div>
+
+<script id="data" type="application/json">{"secs": ["Bratislavský", "Trnavský", "Trenčiansky", "Nitriansky", "Žilinský", "Banskobystrický", "Prešovský", "Košický"], "rows": [["Blue Church", "Church", "Habsburg", "Bratislava", 0, "blue-church/448137", "Blue Church", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Blue%20Church%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Blue_Church", null], ["Bratislava Castle", "Castle or fortress", "Medieval", "Bratislava", 0, "bratislava-castle/1145556", "Bratislava Castle", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Bratislava%20Castle%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislava_Castle", null], ["Bratislava Forest Park", "Nature reserve or national park", "Natural", "Bratislava", 0, "bratislava-forest-park/1339717", "Bratislavský lesný park", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Bratislava%20Forest%20Park%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislavsk%C3%BD_lesn%C3%BD_park", null], ["Chatam Sófer Memorial", "Synagogue or Jewish site", "Habsburg", "Bratislava", 0, null, "Chatam Sofer Memorial", 1, null, 1731, "https://www.google.com/maps/search/?api=1&query=Chatam%20S%C3%B3fer%20Memorial%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Chatam_Sofer_Memorial", null], ["Hlavné Námestie", "Square", "Medieval", "Bratislava", 0, "hlavne-namestie/1251973", "Hlavné námestie (Bratislava)", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Hlavn%C3%A9%20N%C3%A1mestie%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Hlavn%C3%A9_n%C3%A1mestie_%28Bratislava%29", null], ["Hviezdoslavovo Námestie", "Square", "Medieval", "Bratislava", 0, "hviezdoslavovo-namestie/1251911", "Hviezdoslavovo námestie", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Hviezdoslavovo%20N%C3%A1mestie%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Hviezdoslavovo_n%C3%A1mestie", null], ["Jesuit Church", "Church", "Habsburg", "Bratislava", 0, "jesuit-church/1271585", "Jesuit Church, Bratislava", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Jesuit%20Church%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Jesuit_Church,_Bratislava", null], ["Michael's Gate & Weapons Museum", "City gate or wall", "Árpád", "Bratislava", 0, "michael-s-gate-weapons-museum/1251785", "Michael's Gate", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Michael%27s%20Gate%20%26%20Weapons%20Museum%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Michael's_Gate", null], ["Monument of the Slovak National Uprising", "Memorial or documentation centre", "Modern", "Bratislava", 0, "monument-of-the-slovak-national-uprising/448187", "Museum of the Slovak National Uprising", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Monument%20of%20the%20Slovak%20National%20Uprising%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Museum_of_the_Slovak_National_Uprising", null], ["Most SNP", "Transport or infrastructure", "Modern", "Bratislava", 0, "most-snp/448197", "Most SNP", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Most%20SNP%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Most_SNP", null], ["Museum of City History", "Museum", "Habsburg", "Bratislava", 0, "museum-of-city-history/1251975", "Bratislava", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Museum%20of%20City%20History%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislava", null], ["Museum of Clocks", "Museum", "Habsburg", "Bratislava", 0, "museum-of-clocks/1145557", "Bratislava", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Museum%20of%20Clocks%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislava", null], ["Museum of Jewish Culture", "Synagogue or Jewish site", "Modern", "Bratislava", 0, "museum-of-jewish-culture/1145558", "Museum of Jewish Culture", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Museum%20of%20Jewish%20Culture%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Museum_of_Jewish_Culture", null], ["Museum of Pharmacy", "Museum", "Habsburg", "Bratislava", 0, "museum-of-pharmacy/1612354", "Bratislava", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Museum%20of%20Pharmacy%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislava", null], ["Napoleon's Soldier", "Monument or sculpture", "Habsburg", "Bratislava", 0, "napoleon-s-soldier/1546159", "Bratislava", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Napoleon%27s%20Soldier%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislava", null], ["Námestie Slobody", "Square", "Medieval", "Bratislava", 0, "namestie-slobody/1612586", "Námestie Slobody", 1, null, null, "https://www.google.com/maps/search/?api=1&query=N%C3%A1mestie%20Slobody%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/N%C3%A1mestie_Slobody", null], ["Period Rooms Museum", "Museum", "Habsburg", "Bratislava", 0, "period-rooms-museum/1612757", "Bratislava", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Period%20Rooms%20Museum%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislava", null], ["Petržalka", "Historic district or townscape", "Modern", "Bratislava", 0, "petrzalka/1339550", "Petržalka", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Petr%C5%BEalka%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Petr%C5%BEalka", null], ["Roland's Fountain", "Monument or sculpture", "Habsburg", "Bratislava", 0, "roland-s-fountain/448215", "Bratislava", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Roland%27s%20Fountain%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislava", null], ["Schöner Náci", "Monument or sculpture", "Modern", "Bratislava", 0, "schoener-naci/1546158", "Schöner Náci", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Sch%C3%B6ner%20N%C3%A1ci%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Sch%C3%B6ner_N%C3%A1ci", null], ["Slavín War Memorial", "Memorial or documentation centre", "Modern", "Bratislava", 0, "slavin-war-memorial/448193", "Slavín", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Slav%C3%ADn%20War%20Memorial%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Slav%C3%ADn", null], ["Slovak National Gallery", "Art museum or gallery", "Modern", "Bratislava", 0, "slovak-national-gallery/448195", "Slovak National Gallery", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Slovak%20National%20Gallery%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Slovak_National_Gallery", null], ["Slovak National Museum", "Museum", "Modern", "Bratislava", 0, "slovak-national-museum/448201", "Slovak National Museum", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Slovak%20National%20Museum%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Slovak_National_Museum", null], ["Slovak Radio Building", "Notable building", "Modern", "Bratislava", 0, "slovak-radio-building/448207", "Slovak Radio Building", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Slovak%20Radio%20Building%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Slovak_Radio_Building", null], ["St Martin's Cathedral", "Cathedral", "Medieval", "Bratislava", 0, "st-martin-s-cathedral/1145559", "St Martin's Cathedral, Bratislava", 1, null, null, "https://www.google.com/maps/search/?api=1&query=St%20Martin%27s%20Cathedral%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/St_Martin's_Cathedral,_Bratislava", null], ["Transport Museum", "Museum", "Habsburg", "Bratislava", 0, "transport-museum/1387458", "Bratislava", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Transport%20Museum%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bratislava", null], ["Watcher", "Monument or sculpture", "Modern", "Bratislava", 0, "watcher/1271587", "Iné Kafe", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Watcher%2C%20Bratislava%2C%20Slovakia", "https://en.wikipedia.org/wiki/In%C3%A9_Kafe", null], ["Devín Castle", "Castle or fortress", "Slavic", "Devín", 0, "devin-castle/448151", "Devín Castle", 1, 1608, null, "https://www.google.com/maps/search/?api=1&query=Dev%C3%ADn%20Castle%2C%20Dev%C3%ADn%2C%20Slovakia", "https://en.wikipedia.org/wiki/Dev%C3%ADn_Castle", "Danubian Limes"], ["Hrad Červený Kameň", "Castle or fortress", "Árpád", "Častá", 0, "hrad-cerveny-kamen/1335631", "Červený Kameň Castle", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Hrad%20%C4%8Cerven%C3%BD%20Kame%C5%88%2C%20%C4%8Cast%C3%A1%2C%20Slovakia", "https://en.wikipedia.org/wiki/%C4%8Cerven%C3%BD_Kame%C5%88_Castle", null], ["Danubiana Meulensteen Art Museum", "Art museum or gallery", "Modern", "Čunovo", 0, "danubiana-meulensteen-art-museum/1335635", "Čunovo", 0, null, 1739, "https://www.google.com/maps/search/?api=1&query=Danubiana%20Meulensteen%20Art%20Museum%2C%20%C4%8Cunovo%2C%20Slovakia", "https://en.wikipedia.org/wiki/%C4%8Cunovo", null], ["Church of St Margaret of Antioch, Kopčany", "Church", "Slavic", "Kopčany", 1, null, "Church of Saint Margaret of Antioch, Kopčany", 1, null, 5093, "https://www.google.com/maps/search/?api=1&query=Church%20of%20St%20Margaret%20of%20Antioch%2C%20Kop%C4%8Dany%2C%20Kop%C4%8Dany%2C%20Slovakia", "https://en.wikipedia.org/wiki/Church_of_Saint_Margaret_of_Antioch,_Kop%C4%8Dany", null], ["Spa Museum", "Museum", "Habsburg", "Piešťany", 1, "spa-museum/1611313", "Piešťany", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Spa%20Museum%2C%20Pie%C5%A1%C5%A5any%2C%20Slovakia", "https://en.wikipedia.org/wiki/Pie%C5%A1%C5%A5any", null], ["Beckov Castle", "Castle or fortress", "Árpád", "Beckov", 2, "beckov-castle/1556238", "Beckov Castle", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Beckov%20Castle%2C%20Beckov%2C%20Slovakia", "https://en.wikipedia.org/wiki/Beckov_Castle", null], ["Bojnice Castle", "Castle or fortress", "Árpád", "Bojnice", 2, "bojnice-castle/1251810", "Bojnice Castle", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Bojnice%20Castle%2C%20Bojnice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bojnice_Castle", null], ["Galéria Bazovského", "Art museum or gallery", "Modern", "Trenčín", 2, "galeria-bazovskeho/1076744", "Trenčín", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Gal%C3%A9ria%20Bazovsk%C3%A9ho%2C%20Tren%C4%8D%C3%ADn%2C%20Slovakia", "https://en.wikipedia.org/wiki/Tren%C4%8D%C3%ADn", null], ["Roman Inscription", "Monument or sculpture", "Roman", "Trenčín", 2, "roman-inscription/1253868", "Trenčín", 0, 1608, null, "https://www.google.com/maps/search/?api=1&query=Roman%20Inscription%2C%20Tren%C4%8D%C3%ADn%2C%20Slovakia", "https://en.wikipedia.org/wiki/Tren%C4%8D%C3%ADn", "Danubian Limes"], ["Synagogue", "Synagogue or Jewish site", "Habsburg", "Trenčín", 2, "synagogue/1555742", "Trenčín", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Synagogue%2C%20Tren%C4%8D%C3%ADn%2C%20Slovakia", "https://en.wikipedia.org/wiki/Tren%C4%8D%C3%ADn", null], ["Town Gate Tower", "City gate or wall", "Medieval", "Trenčín", 2, "town-gate-tower/1252988", "Trenčín", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Town%20Gate%20Tower%2C%20Tren%C4%8D%C3%ADn%2C%20Slovakia", "https://en.wikipedia.org/wiki/Tren%C4%8D%C3%ADn", null], ["Trenčín Castle", "Castle or fortress", "Árpád", "Trenčín", 2, "trencin-castle/1076742", "Trenčín Castle", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Tren%C4%8D%C3%ADn%20Castle%2C%20Tren%C4%8D%C3%ADn%2C%20Slovakia", "https://en.wikipedia.org/wiki/Tren%C4%8D%C3%ADn_Castle", null], ["Komárno Fortification System", "Castle or fortress", "Habsburg", "Komárno", 3, null, "Komárno", 1, null, 1733, "https://www.google.com/maps/search/?api=1&query=Kom%C3%A1rno%20Fortification%20System%2C%20Kom%C3%A1rno%2C%20Slovakia", "https://en.wikipedia.org/wiki/Kom%C3%A1rno", null], ["Horné Diery", "Gorge or valley", "Natural", "Malá Fatra National Park", 4, "horne-diery/1556436", "Malá Fatra", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Horn%C3%A9%20Diery%2C%20Mal%C3%A1%20Fatra%20National%20Park%2C%20Slovakia", "https://en.wikipedia.org/wiki/Mal%C3%A1_Fatra", null], ["Juraj Jánošík Statue", "Monument or sculpture", "Habsburg", "Malá Fatra National Park", 4, "juraj-janosik-statue/1253199", "Malá Fatra", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Juraj%20J%C3%A1no%C5%A1%C3%ADk%20Statue%2C%20Mal%C3%A1%20Fatra%20National%20Park%2C%20Slovakia", "https://en.wikipedia.org/wiki/Mal%C3%A1_Fatra", null], ["Považké Museum", "Museum", "Habsburg", "Malá Fatra National Park", 4, "povazke-museum/1253203", "Malá Fatra", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Pova%C5%BEk%C3%A9%20Museum%2C%20Mal%C3%A1%20Fatra%20National%20Park%2C%20Slovakia", "https://en.wikipedia.org/wiki/Mal%C3%A1_Fatra", null], ["Strečno Castle", "Castle or fortress", "Árpád", "Malá Fatra National Park", 4, "strecno-castle/1545744", "Strečno Castle", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Stre%C4%8Dno%20Castle%2C%20Mal%C3%A1%20Fatra%20National%20Park%2C%20Slovakia", "https://en.wikipedia.org/wiki/Stre%C4%8Dno_Castle", null], ["Vrátna Valley", "Nature reserve or national park", "Natural", "Malá Fatra National Park", 4, "vratna-valley/1253215", "Malá Fatra", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Vr%C3%A1tna%20Valley%2C%20Mal%C3%A1%20Fatra%20National%20Park%2C%20Slovakia", "https://en.wikipedia.org/wiki/Mal%C3%A1_Fatra", null], ["Museum of the Slovak Village", "Museum", "Modern", "Martin", 4, "museum-of-the-slovak-village/1253168", "Museum of the Slovak Village", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Museum%20of%20the%20Slovak%20Village%2C%20Martin%2C%20Slovakia", "https://en.wikipedia.org/wiki/Museum_of_the_Slovak_Village", null], ["Turiec Gallery", "Art museum or gallery", "Modern", "Martin", 4, "turiec-gallery/1544705", "Martin, Slovakia", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Turiec%20Gallery%2C%20Martin%2C%20Slovakia", "https://en.wikipedia.org/wiki/Martin,_Slovakia", null], ["Orava Castle", "Castle or fortress", "Árpád", "Oravský Podzámok", 4, "orava-castle/1251814", "Orava Castle", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Orava%20Castle%2C%20Oravsk%C3%BD%20Podz%C3%A1mok%2C%20Slovakia", "https://en.wikipedia.org/wiki/Orava_Castle", null], ["Slovenský Betlehem", "Museum", "Modern", "Rajecká Lesná", 4, "slovensky-betlehem/1545849", "Rajecká Lesná", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Slovensk%C3%BD%20Betlehem%2C%20Rajeck%C3%A1%20Lesn%C3%A1%2C%20Slovakia", "https://en.wikipedia.org/wiki/Rajeck%C3%A1_Lesn%C3%A1", null], ["Mauzóleum Andreja Hlinku", "Memorial or documentation centre", "Modern", "Ružomberok", 4, "mauzoleum-andreja-hlinku/1610786", "Ružomberok", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Mauz%C3%B3leum%20Andreja%20Hlinku%2C%20Ru%C5%BEomberok%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ru%C5%BEomberok", null], ["Vlkolínec", "Historic district or townscape", "Habsburg", "Vlkolínec", 4, "vlkolinec/1535926", "Vlkolínec", 1, 622, null, "https://www.google.com/maps/search/?api=1&query=Vlkol%C3%ADnec%2C%20Vlkol%C3%ADnec%2C%20Slovakia", "https://en.wikipedia.org/wiki/Vlkol%C3%ADnec", "Vlkolínec"], ["Radenov House", "Historic house or residence", "Medieval", "Čičmany", 4, "radenov-house/1253176", "Čičmany", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Radenov%20House%2C%20%C4%8Ci%C4%8Dmany%2C%20Slovakia", "https://en.wikipedia.org/wiki/%C4%8Ci%C4%8Dmany", null], ["Burian's Tower", "Tower", "Medieval", "Žilina", 4, "burian-s-tower/1545847", "Žilina", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Burian%27s%20Tower%2C%20%C5%BDilina%2C%20Slovakia", "https://en.wikipedia.org/wiki/%C5%BDilina", null], ["Holy Trinity Cathedral", "Cathedral", "Medieval", "Žilina", 4, "holy-trinity-cathedral/1545435", "Holy Trinity Cathedral, Žilina", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Holy%20Trinity%20Cathedral%2C%20%C5%BDilina%2C%20Slovakia", "https://en.wikipedia.org/wiki/Holy_Trinity_Cathedral,_%C5%BDilina", null], ["Clock Tower", "Tower", "Medieval", "Banská Bystrica", 5, "clock-tower/1546945", "Banská Bystrica", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Clock%20Tower%2C%20Bansk%C3%A1%20Bystrica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_Bystrica", null], ["Folk Music Museum & Puppet Theatre", "Museum", "Habsburg", "Banská Bystrica", 5, "folk-music-museum-puppet-theatre/1609930", "Banská Bystrica", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Folk%20Music%20Museum%20%26%20Puppet%20Theatre%2C%20Bansk%C3%A1%20Bystrica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_Bystrica", null], ["SNP Museum", "Memorial or documentation centre", "Modern", "Banská Bystrica", 5, "snp-museum/1335185", "Banská Bystrica", 0, null, null, "https://www.google.com/maps/search/?api=1&query=SNP%20Museum%2C%20Bansk%C3%A1%20Bystrica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_Bystrica", null], ["Holy Trinity Plague Column", "Monument or sculpture", "Habsburg", "Banská Štiavnica", 5, "holy-trinity-plague-column/1546759", "Banská Štiavnica", 0, 618, null, "https://www.google.com/maps/search/?api=1&query=Holy%20Trinity%20Plague%20Column%2C%20Bansk%C3%A1%20%C5%A0tiavnica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_%C5%A0tiavnica", "Banská Štiavnica"], ["Kalvária", "Chapel", "Habsburg", "Banská Štiavnica", 5, "kalvaria/1335197", "Banská Štiavnica", 0, 618, null, "https://www.google.com/maps/search/?api=1&query=Kalv%C3%A1ria%2C%20Bansk%C3%A1%20%C5%A0tiavnica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_%C5%A0tiavnica", "Banská Štiavnica"], ["Kostol sv Kataríny", "Church", "Habsburg", "Banská Štiavnica", 5, "kostol-sv-katariny/1546760", "Banská Štiavnica", 0, 618, null, "https://www.google.com/maps/search/?api=1&query=Kostol%20sv%20Katar%C3%ADny%2C%20Bansk%C3%A1%20%C5%A0tiavnica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_%C5%A0tiavnica", "Banská Štiavnica"], ["New Castle", "Castle or fortress", "Habsburg", "Banská Štiavnica", 5, "new-castle/1252933", "Banská Štiavnica", 0, 618, null, "https://www.google.com/maps/search/?api=1&query=New%20Castle%2C%20Bansk%C3%A1%20%C5%A0tiavnica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_%C5%A0tiavnica", "Banská Štiavnica"], ["Old Castle", "Castle or fortress", "Árpád", "Banská Štiavnica", 5, "old-castle/1252931", "Banská Štiavnica", 0, 618, null, "https://www.google.com/maps/search/?api=1&query=Old%20Castle%2C%20Bansk%C3%A1%20%C5%A0tiavnica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_%C5%A0tiavnica", "Banská Štiavnica"], ["Open-Air Mining Museum", "Museum", "Habsburg", "Banská Štiavnica", 5, "open-air-mining-museum/1252927", "Banská Štiavnica", 0, 618, null, "https://www.google.com/maps/search/?api=1&query=Open-Air%20Mining%20Museum%2C%20Bansk%C3%A1%20%C5%A0tiavnica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bansk%C3%A1_%C5%A0tiavnica", "Banská Štiavnica"], ["Gemer & Abov Churches — Kraskovo", "Church", "Árpád", "Kraskovo", 5, null, "Kraskovo", 1, null, 580, "https://www.google.com/maps/search/?api=1&query=Gemer%20%26%20Abov%20Churches%2C%20Kraskovo%2C%20Slovakia", "https://en.wikipedia.org/wiki/Kraskovo", null], ["Muránska planina Meadow & Pasture Sites", "Nature reserve or national park", "Natural", "Muránska planina", 5, null, "Muránska planina", 1, null, 1685, "https://www.google.com/maps/search/?api=1&query=Mur%C3%A1nska%20planina%20Meadow%20%26%20Pasture%20Sites%2C%20Mur%C3%A1nska%20planina%2C%20Slovakia", "https://en.wikipedia.org/wiki/Mur%C3%A1nska_planina", null], ["Basilica of St Egídius", "Cathedral", "Medieval", "Bardejov", 6, "basilica-of-st-egidius/1076727", "Bardejov", 0, 973, null, "https://www.google.com/maps/search/?api=1&query=Basilica%20of%20St%20Eg%C3%ADdius%2C%20Bardejov%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bardejov", "Bardejov"], ["Hervartov Church", "Church", "Habsburg", "Bardejov", 6, "hervartov-church/1337032", "Bardejov", 0, 1273, null, "https://www.google.com/maps/search/?api=1&query=Hervartov%20Church%2C%20Bardejov%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bardejov", "Wooden churches of the Slovak Carpathians"], ["Holocaust Memorial", "Memorial or documentation centre", "Modern", "Bardejov", 6, "holocaust-memorial/1611229", "Chatam Sofer Memorial", 1, 973, null, "https://www.google.com/maps/search/?api=1&query=Holocaust%20Memorial%2C%20Bardejov%2C%20Slovakia", "https://en.wikipedia.org/wiki/Chatam_Sofer_Memorial", "Bardejov"], ["Icon Exposition", "Art museum or gallery", "Modern", "Bardejov", 6, "icon-exposition/1253889", "Bardejov", 0, 973, null, "https://www.google.com/maps/search/?api=1&query=Icon%20Exposition%2C%20Bardejov%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bardejov", "Bardejov"], ["Old City Walls", "City gate or wall", "Medieval", "Bardejov", 6, "old-city-walls/1545902", "Bardejov", 0, 973, null, "https://www.google.com/maps/search/?api=1&query=Old%20City%20Walls%2C%20Bardejov%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bardejov", "Bardejov"], ["Old Synagogue", "Synagogue or Jewish site", "Habsburg", "Bardejov", 6, "old-synagogue/1556437", "Bardejov", 1, 973, null, "https://www.google.com/maps/search/?api=1&query=Old%20Synagogue%2C%20Bardejov%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bardejov", "Bardejov"], ["Šariš Museum", "Museum", "Habsburg", "Bardejov", 6, "saris-museum/1076724", "Šariš Museum in Bardejov", 1, 973, null, "https://www.google.com/maps/search/?api=1&query=%C5%A0ari%C5%A1%20Museum%2C%20Bardejov%2C%20Slovakia", "https://en.wikipedia.org/wiki/%C5%A0ari%C5%A1_Museum_in_Bardejov", "Bardejov"], ["Elizabeth's Room", "Spa or colonnade", "Habsburg", "Bardejovské Kúpele", 6, "elizabeth-s-room/1611227", "Bardejov", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Elizabeth%27s%20Room%2C%20Bardejovsk%C3%A9%20K%C3%BApele%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bardejov", null], ["Kolonáda", "Spa or colonnade", "Habsburg", "Bardejovské Kúpele", 6, "kolonada/1611228", "Bardejov", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Kolon%C3%A1da%2C%20Bardejovsk%C3%A9%20K%C3%BApele%2C%20Slovakia", "https://en.wikipedia.org/wiki/Bardejov", null], ["Belianska Cave", "Cave", "Natural", "Belá Tatras", 6, "belianska-cave/1546687", "Belianska Cave", 1, null, 1737, "https://www.google.com/maps/search/?api=1&query=Belianska%20Cave%2C%20Bel%C3%A1%20Tatras%2C%20Slovakia", "https://en.wikipedia.org/wiki/Belianska_Cave", null], ["Hunkovce Church", "Church", "Habsburg", "Hunkovce", 6, "hunkovce-church/1545909", "Hunkovce", 0, 1273, null, "https://www.google.com/maps/search/?api=1&query=Hunkovce%20Church%2C%20Hunkovce%2C%20Slovakia", "https://en.wikipedia.org/wiki/Hunkovce", "Wooden churches of the Slovak Carpathians"], ["Kežmarok Castle", "Castle or fortress", "Árpád", "Kežmarok", 6, "kezmarok-castle/1253516", "Kežmarok", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Ke%C5%BEmarok%20Castle%2C%20Ke%C5%BEmarok%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ke%C5%BEmarok", null], ["New Evangelical Church", "Church", "Habsburg", "Kežmarok", 6, "new-evangelical-church/1253515", "Kežmarok", 0, null, null, "https://www.google.com/maps/search/?api=1&query=New%20Evangelical%20Church%2C%20Ke%C5%BEmarok%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ke%C5%BEmarok", null], ["Wooden Church", "Church", "Habsburg", "Kežmarok", 6, "wooden-church/1545845", "Kežmarok", 0, 1273, null, "https://www.google.com/maps/search/?api=1&query=Wooden%20Church%2C%20Ke%C5%BEmarok%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ke%C5%BEmarok", "Wooden churches of the Slovak Carpathians"], ["Krajné Čierno Church", "Church", "Habsburg", "Krajné Čierno", 6, "krajne-cierno-church/1545907", "Krajné Čierno", 0, 1273, null, "https://www.google.com/maps/search/?api=1&query=Krajn%C3%A9%20%C4%8Cierno%20Church%2C%20Krajn%C3%A9%20%C4%8Cierno%2C%20Slovakia", "https://en.wikipedia.org/wiki/Krajn%C3%A9_%C4%8Cierno", "Wooden churches of the Slovak Carpathians"], ["Ladomirová Church", "Church", "Habsburg", "Ladomirová", 6, "ladomirova-church/1545906", "Ladomirová", 0, 1273, null, "https://www.google.com/maps/search/?api=1&query=Ladomirov%C3%A1%20Church%2C%20Ladomirov%C3%A1%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ladomirov%C3%A1", "Wooden churches of the Slovak Carpathians"], ["Church of Mariánska Hora", "Church", "Habsburg", "Levoča", 6, "church-of-marianska-hora/1253554", "Levoča", 0, 620, null, "https://www.google.com/maps/search/?api=1&query=Church%20of%20Mari%C3%A1nska%20Hora%2C%20Levo%C4%8Da%2C%20Slovakia", "https://en.wikipedia.org/wiki/Levo%C4%8Da", "Spiš Castle"], ["Church of St Jacob", "Church", "Árpád", "Levoča", 6, "church-of-st-jacob/1253548", "Basilica of St. James, Levoča", 1, 620, null, "https://www.google.com/maps/search/?api=1&query=Church%20of%20St%20Jacob%2C%20Levo%C4%8Da%2C%20Slovakia", "https://en.wikipedia.org/wiki/Basilica_of_St._James,_Levo%C4%8Da", "Spiš Castle"], ["Dom Majstra Pavla", "Historic house or residence", "Medieval", "Levoča", 6, "dom-majstra-pavla/1556191", "Levoča", 0, 620, null, "https://www.google.com/maps/search/?api=1&query=Dom%20Majstra%20Pavla%2C%20Levo%C4%8Da%2C%20Slovakia", "https://en.wikipedia.org/wiki/Levo%C4%8Da", "Spiš Castle"], ["Historic Town Hall", "Town hall or civic building", "Habsburg", "Levoča", 6, "historic-town-hall/1556192", "Levoča", 0, 620, null, "https://www.google.com/maps/search/?api=1&query=Historic%20Town%20Hall%2C%20Levo%C4%8Da%2C%20Slovakia", "https://en.wikipedia.org/wiki/Levo%C4%8Da", "Spiš Castle"], ["Majstra Pavla Nám", "Square", "Medieval", "Levoča", 6, "majstra-pavla-nam/1253553", "Levoča", 0, 620, null, "https://www.google.com/maps/search/?api=1&query=Majstra%20Pavla%20N%C3%A1m%2C%20Levo%C4%8Da%2C%20Slovakia", "https://en.wikipedia.org/wiki/Levo%C4%8Da", "Spiš Castle"], ["Spiš Museum", "Museum", "Habsburg", "Levoča", 6, "spis-museum/1253551", "Levoča", 0, 620, null, "https://www.google.com/maps/search/?api=1&query=Spi%C5%A1%20Museum%2C%20Levo%C4%8Da%2C%20Slovakia", "https://en.wikipedia.org/wiki/Levo%C4%8Da", "Spiš Castle"], ["Andy Warhol Museum of Modern Art", "Art museum or gallery", "Modern", "Medzilaborce", 6, "andy-warhol-museum-of-modern-art/1340411", "Andy Warhol Museum of Modern Art", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Andy%20Warhol%20Museum%20of%20Modern%20Art%2C%20Medzilaborce%2C%20Slovakia", "https://en.wikipedia.org/wiki/Andy_Warhol_Museum_of_Modern_Art", null], ["Pieniny National Park", "Nature reserve or national park", "Natural", "Pieniny", 6, "pieniny-national-park/1609355", "Pieniny National Park (Slovakia)", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Pieniny%20National%20Park%2C%20Pieniny%2C%20Slovakia", "https://en.wikipedia.org/wiki/Pieniny_National_Park_%28Slovakia%29", null], ["Red Monastery", "Abbey or monastery", "Habsburg", "Pieniny National Park", 6, "red-monastery/1253531", "Červený Kláštor", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Red%20Monastery%2C%20Pieniny%20National%20Park%2C%20Slovakia", "https://en.wikipedia.org/wiki/%C4%8Cerven%C3%BD_Kl%C3%A1%C5%A1tor", null], ["Bukovské Hills Fungal Flora", "Nature reserve or national park", "Natural", "Poloniny", 6, null, "Poloniny National Park", 1, null, 1740, "https://www.google.com/maps/search/?api=1&query=Bukovsk%C3%A9%20Hills%20Fungal%20Flora%2C%20Poloniny%2C%20Slovakia", "https://en.wikipedia.org/wiki/Poloniny_National_Park", null], ["Spišská Sobota", "Historic district or townscape", "Modern", "Poprad", 6, "spisska-sobota/1253503", "Spišská Sobota", 1, null, null, "https://www.google.com/maps/search/?api=1&query=Spi%C5%A1sk%C3%A1%20Sobota%2C%20Poprad%2C%20Slovakia", "https://en.wikipedia.org/wiki/Spi%C5%A1sk%C3%A1_Sobota", null], ["Tatra Gallery", "Art museum or gallery", "Modern", "Poprad", 6, "tatra-gallery/1611390", "Poprad", 0, null, 1737, "https://www.google.com/maps/search/?api=1&query=Tatra%20Gallery%2C%20Poprad%2C%20Slovakia", "https://en.wikipedia.org/wiki/Poprad", null], ["Dobšinská Ice Cave", "Cave", "Natural", "Slovenský raj", 6, "dobsinska-ice-cave/1253594", "Dobšiná Ice Cave", 1, null, 1738, "https://www.google.com/maps/search/?api=1&query=Dob%C5%A1insk%C3%A1%20Ice%20Cave%2C%20Slovensk%C3%BD%20raj%2C%20Slovakia", "https://en.wikipedia.org/wiki/Dob%C5%A1in%C3%A1_Ice_Cave", null], ["Slovenský Raj National Park", "Nature reserve or national park", "Natural", "Slovenský raj", 6, "slovensky-raj-national-park/1253589", "Slovak Paradise National Park", 1, null, 1738, "https://www.google.com/maps/search/?api=1&query=Slovensk%C3%BD%20Raj%20National%20Park%2C%20Slovensk%C3%BD%20raj%2C%20Slovakia", "https://en.wikipedia.org/wiki/Slovak_Paradise_National_Park", null], ["Spiš Castle", "Castle or fortress", "Árpád", "Spišské Podhradie", 6, "spis-castle/1253574", "Spiš Castle", 1, 620, null, "https://www.google.com/maps/search/?api=1&query=Spi%C5%A1%20Castle%2C%20Spi%C5%A1sk%C3%A9%20Podhradie%2C%20Slovakia", "https://en.wikipedia.org/wiki/Spi%C5%A1_Castle", "Spiš Castle"], ["Spiš Chapter", "Historic district or townscape", "Árpád", "Spišské Podhradie", 6, "spis-chapter/1253576", "Spišská Kapitula", 1, 620, null, "https://www.google.com/maps/search/?api=1&query=Spi%C5%A1%20Chapter%2C%20Spi%C5%A1sk%C3%A9%20Podhradie%2C%20Slovakia", "https://en.wikipedia.org/wiki/Spi%C5%A1sk%C3%A1_Kapitula", "Spiš Castle"], ["Stužica Primeval Beech Forest", "Nature reserve or national park", "Natural", "Stužica", 6, null, "Stužica", 1, 1133, null, "https://www.google.com/maps/search/?api=1&query=Stu%C5%BEica%20Primeval%20Beech%20Forest%2C%20Stu%C5%BEica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Stu%C5%BEica", "Ancient and Primeval Beech Forests of the Carpathians and Other Regions of Europe"], ["Museum of Folk Architecture", "Museum", "Habsburg", "Svidník", 6, "museum-of-folk-architecture/1253747", "Svidník", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Museum%20of%20Folk%20Architecture%2C%20Svidn%C3%ADk%2C%20Slovakia", "https://en.wikipedia.org/wiki/Svidn%C3%ADk", null], ["Ski Museum", "Museum", "Modern", "Tatranská Lomnica", 6, "ski-museum/1555189", "Tatranská Lomnica", 0, null, null, "https://www.google.com/maps/search/?api=1&query=Ski%20Museum%2C%20Tatransk%C3%A1%20Lomnica%2C%20Slovakia", "https://en.wikipedia.org/wiki/Tatransk%C3%A1_Lomnica", null], ["Šemetkovce Church", "Church", "Habsburg", "Šemetkovce", 6, "semetkovce-church/1545908", "Šemetkovce", 0, 1273, null, "https://www.google.com/maps/search/?api=1&query=%C5%A0emetkovce%20Church%2C%20%C5%A0emetkovce%2C%20Slovakia", "https://en.wikipedia.org/wiki/%C5%A0emetkovce", "Wooden churches of the Slovak Carpathians"], ["Ždiar House Museum", "Museum", "Habsburg", "Ždiar", 6, "zdiar-house-museum/1253816", "Ždiar", 0, null, 1737, "https://www.google.com/maps/search/?api=1&query=%C5%BDdiar%20House%20Museum%2C%20%C5%BDdiar%2C%20Slovakia", "https://en.wikipedia.org/wiki/%C5%BDdiar", null], ["Herľany Geyser", "Nature reserve or national park", "Habsburg", "Herľany", 7, null, "Herľany", 1, null, 1741, "https://www.google.com/maps/search/?api=1&query=Her%C4%BEany%20Geyser%2C%20Her%C4%BEany%2C%20Slovakia", "https://en.wikipedia.org/wiki/Her%C4%BEany", null], ["Domica Cave", "Cave", "Natural", "Kečovo", 7, "domica-cave/1321196", "Domica Cave", 1, 725, null, "https://www.google.com/maps/search/?api=1&query=Domica%20Cave%2C%20Ke%C4%8Dovo%2C%20Slovakia", "https://en.wikipedia.org/wiki/Domica_Cave", "Aggtelek National Park"], ["Cathedral of St Elizabeth", "Cathedral", "Medieval", "Košice", 7, "cathedral-of-st-elizabeth/477624", "Cathedral of St. Elizabeth", 1, null, 1734, "https://www.google.com/maps/search/?api=1&query=Cathedral%20of%20St%20Elizabeth%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Cathedral_of_St._Elizabeth", null], ["East Slovak Gallery", "Art museum or gallery", "Modern", "Košice", 7, "east-slovak-gallery/1556035", "East Slovak Gallery", 1, null, 1734, "https://www.google.com/maps/search/?api=1&query=East%20Slovak%20Gallery%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/East_Slovak_Gallery", null], ["East Slovak Museum", "Museum", "Habsburg", "Košice", 7, "east-slovak-museum/477628", "East Slovak Museum", 1, null, 1734, "https://www.google.com/maps/search/?api=1&query=East%20Slovak%20Museum%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/East_Slovak_Museum", null], ["Hlavné Nám", "Square", "Medieval", "Košice", 7, "hlavne-nam/1253619", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Hlavn%C3%A9%20N%C3%A1m%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Hrnčiarska", "Historic district or townscape", "Medieval", "Košice", 7, "hrnciarska/1504429", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Hrn%C4%8Diarska%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Kunsthalle", "Art museum or gallery", "Modern", "Košice", 7, "kunsthalle/1320850", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Kunsthalle%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Lower Gate Underground Museum", "Museum", "Habsburg", "Košice", 7, "lower-gate-underground-museum/1253622", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Lower%20Gate%20Underground%20Museum%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Mihal Gallery", "Art museum or gallery", "Modern", "Košice", 7, "mihal-gallery/1340414", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Mihal%20Gallery%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Plague Column", "Monument or sculpture", "Habsburg", "Košice", 7, "plague-column/477636", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Plague%20Column%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Rodošto & Mikluš Prison", "Museum", "Habsburg", "Košice", 7, "rodosto-miklus-prison/1556033", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Rodo%C5%A1to%20%26%20Miklu%C5%A1%20Prison%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Shire Hall", "Palace or residence", "Habsburg", "Košice", 7, "shire-hall/1271605", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Shire%20Hall%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Singing Fountain", "Monument or sculpture", "Habsburg", "Košice", 7, "singing-fountain/1271604", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=Singing%20Fountain%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["St Michael's Chapel", "Chapel", "Medieval", "Košice", 7, "st-michael-s-chapel/477642", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=St%20Michael%27s%20Chapel%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Sándor Márai Memorial Room", "Memorial or documentation centre", "Modern", "Košice", 7, "sandor-marai-memorial-room/1320846", "Košice", 0, null, 1734, "https://www.google.com/maps/search/?api=1&query=S%C3%A1ndor%20M%C3%A1rai%20Memorial%20Room%2C%20Ko%C5%A1ice%2C%20Slovakia", "https://en.wikipedia.org/wiki/Ko%C5%A1ice", null], ["Tokaj Macik", "Industrial or mining site", "Habsburg", "Malá Tŕňa", 7, "tokaj-macik/1610796", "Malá Tŕňa", 0, null, 1684, "https://www.google.com/maps/search/?api=1&query=Tokaj%20Macik%2C%20Mal%C3%A1%20T%C5%95%C5%88a%2C%20Slovakia", "https://en.wikipedia.org/wiki/Mal%C3%A1_T%C5%95%C5%88a", null], ["Tokaj Observation Tower", "Tower", "Modern", "Malá Tŕňa", 7, "tokaj-observation-tower/1610797", "Malá Tŕňa", 0, null, 1684, "https://www.google.com/maps/search/?api=1&query=Tokaj%20Observation%20Tower%2C%20Mal%C3%A1%20T%C5%95%C5%88a%2C%20Slovakia", "https://en.wikipedia.org/wiki/Mal%C3%A1_T%C5%95%C5%88a", null], ["Slovak Karst National Park", "Nature reserve or national park", "Natural", "Slovak Karst", 7, "slovak-karst-national-park/1321195", "Slovak Karst National Park", 1, 725, null, "https://www.google.com/maps/search/?api=1&query=Slovak%20Karst%20National%20Park%2C%20Slovak%20Karst%2C%20Slovakia", "https://en.wikipedia.org/wiki/Slovak_Karst_National_Park", "Aggtelek National Park"]], "props": {"1608": "Frontiers of the Roman Empire – The Danube Limes (Western Segment)", "622": "Vlkolínec", "618": "Historic Town of Banská Štiavnica and the Technical Monuments in its Vicinity", "973": "Bardejov Town Conservation Reserve", "1273": "Wooden Churches of the Slovak part of the Carpathian Mountain Area", "620": "Levoča, Spišský Hrad and the Associated Cultural Monuments", "1133": "Ancient and Primeval Beech Forests of the Carpathians and Other Regions of Europe", "725": "Caves of Aggtelek Karst and Slovak Karst"}, "tprops": {"1731": ["The Memorial of Chatam Sófer", 2002], "1739": ["Natural and Cultural Landscape of Danube Region", 2002], "5093": ["Sites of Great Moravia: Slavonic Fortified Settlement at Mikulčice – Church of St. Margaret at Kopčany", 2007], "1733": ["System of Fortifications at the Confluence of the Rivers Danube and Váh in Komárno - Komárom", 2002], "580": ["Gemer and Abov churches with the medieval wall paintings", 1995], "1685": ["Original Meadow - Pasture Sites of Slovakia", 2002], "1737": ["Natural Reserves of Tatras Mountain", 2002], "1740": ["Fungal Flora of Bukovské Hills", 2002], "1738": ["Karst Valleys of Slovakia", 2002], "1741": ["Geyser in Herlany", 2002], "1734": ["The concept of the lenticular historical town core of Košice City", 2002], "1684": ["Tokaj Wine Region", 2002]}, "types": [["Museum", 20], ["Church", 14], ["Castle or fortress", 13], ["Art museum or gallery", 10], ["Monument or sculpture", 9], ["Nature reserve or national park", 9], ["Memorial or documentation centre", 6], ["Historic district or townscape", 5], ["Square", 5], ["Cathedral", 4], ["Synagogue or Jewish site", 4], ["Cave", 3], ["City gate or wall", 3], ["Tower", 3], ["Chapel", 2], ["Historic house or residence", 2], ["Spa or colonnade", 2], ["Abbey or monastery", 1], ["Gorge or valley", 1], ["Industrial or mining site", 1], ["Notable building", 1], ["Palace or residence", 1], ["Town hall or civic building", 1], ["Transport or infrastructure", 1]], "eras": [["Natural", "", 12], ["Pre-Historic", "to AD 20", 0], ["Roman", "AD 20–380", 1], ["Lombard", "488–568", 0], ["Avar", "568–805", 0], ["Slavic", "805–895", 2], ["Árpád", "895–1301", 13], ["Medieval", "1301–1526", 18], ["Habsburg", "1526–1918", 47], ["Modern", "1918–", 28]]}</script>
+<script>
+(function(){
+var D=JSON.parse(document.getElementById('data').textContent);
+var ROWS=D.rows, SECS=D.secs, PROPS=D.props, TPROPS=D.tprops, ERAS=D.eras;
+var ERAIDX={}; ERAS.forEach(function(e,i){ERAIDX[e[0]]=i;});
+var ERASPAN={}; ERAS.forEach(function(e){ERASPAN[e[0]]=e[1];});
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function fold(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+
+var GROUPS=[
+ {key:'reg',  label:'Region',      val:function(r){return SECS[r[4]];}},
+ {key:'dest', label:'Destination', val:function(r){return r[3];}},
+ {key:'type', label:'Site type',   val:function(r){return r[1];}},
+ {key:'era',  label:'Era founded', val:function(r){return r[2];}},
+ {key:'src',  label:'Listing',     val:function(r){
+    var o=[]; if(r[5])o.push('Lonely Planet'); else o.push('Not in Lonely Planet');
+    if(r[8])o.push('World Heritage'); if(r[9])o.push('Tentative list');
+    if(r[7])o.push('Own Wikipedia article'); return o;}}
+];
+var sel={}; GROUPS.forEach(function(g){sel[g.key]=new Set();});
+var counts={};
+GROUPS.forEach(function(g){
+  var m=new Map();
+  ROWS.forEach(function(r){
+    var v=g.val(r); (Array.isArray(v)?v:[v]).forEach(function(x){
+      if(x==null)return; m.set(x,(m.get(x)||0)+1);});
+  });
+  var keys=Array.from(m.keys());
+  if(g.key==='era') keys.sort(function(a,b){return ERAIDX[a]-ERAIDX[b];});
+  else if(g.key==='reg') keys.sort(function(a,b){return SECS.indexOf(a)-SECS.indexOf(b);});
+  else keys.sort(function(a,b){return m.get(b)-m.get(a)||a.localeCompare(b);});
+  counts[g.key]={map:m,keys:keys};
+});
+
+var fgrid=document.getElementById('fgrid');
+GROUPS.forEach(function(g){
+  var c=counts[g.key];
+  var div=document.createElement('div'); div.className='grp';
+  var h='<h3><span>'+esc(g.label)+'</span><button class="linkish" data-clear="'+g.key+'">clear</button></h3>';
+  if(c.keys.length>9) h+='<input class="find" type="search" placeholder="Find\u2026" data-find="'+g.key+'" autocomplete="off">';
+  h+='<div class="opts" data-opts="'+g.key+'">'+c.keys.map(function(k){
+    return '<label class="opt"><input type="checkbox" value="'+esc(k)+'" data-g="'+g.key+'">'+
+      '<span class="lbl">'+esc(k)+'</span><span class="n">'+c.map.get(k)+'</span></label>';}).join('')+'</div>';
+  div.innerHTML=h; fgrid.appendChild(div);
+});
+
+var COLS=[
+ {label:'Attraction',  cls:'',      sort:function(r){return fold(r[0]);}},
+ {label:'Site type',   cls:'',      sort:function(r){return fold(r[1]);}},
+ {label:'Era founded', cls:'era',   sort:function(r){return ERAIDX[r[2]];}},
+ {label:'Destination', cls:'dest',  sort:function(r){return fold(r[3]);}},
+ {label:'Region',      cls:'reg',   sort:function(r){return SECS.indexOf(SECS[r[4]]);}},
+ {label:'Links',       cls:'links', sort:null}
+];
+var sortCol=0, sortDir=1;
+var hrow=document.getElementById('hrow');
+hrow.innerHTML=COLS.map(function(c,i){
+  return '<th data-i="'+i+'">'+esc(c.label)+(c.sort?'<span class="ar" aria-hidden="true">\u2195</span>':'')+'</th>';}).join('');
+function paintHead(){
+  Array.prototype.forEach.call(hrow.children,function(th,i){
+    var c=COLS[i]; if(!c.sort){th.className='';return;}
+    th.className = i===sortCol?'on':'';
+    var ar=th.querySelector('.ar');
+    if(ar) ar.textContent = i===sortCol ? (sortDir>0?'\u25b2':'\u25bc') : '\u2195';
+  });
+}
+hrow.addEventListener('click',function(e){
+  var th=e.target.closest('th'); if(!th)return;
+  var i=+th.dataset.i; if(!COLS[i].sort)return;
+  if(i===sortCol) sortDir=-sortDir; else {sortCol=i; sortDir=1;}
+  paintHead(); render();
+});
+
+function rowHTML(r){
+  var name=r[0],ty=r[1],era=r[2],dest=r[3],reg=SECS[r[4]],lp=r[5],wiki=r[6],own=r[7],
+      uref=r[8],utref=r[9],map=r[10],wurl=r[11],uwiki=r[12];
+  var badge='';
+  if(uref) badge+='<span class="badge">WHS</span>';
+  else if(utref) badge+='<span class="badge t">WHS-T</span>';
+  var sub = lp?'':'<span class="sub">not in Lonely Planet</span>';
+  var sp = ERASPAN[era]?'<span class="sub">'+esc(ERASPAN[era])+'</span>':'';
+  var cls = fold(era).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  var links='';
+  if(lp) links+='<a class="lk" href="https://www.lonelyplanet.com/points-of-interest/'+esc(lp)+'" target="_blank" rel="noopener">LP</a>';
+  if(wurl) links+='<a class="lk" href="'+esc(wurl)+'" target="_blank" rel="noopener" title="'+esc(wiki)+'">'+(own?'W':'w')+'</a>';
+  if(map) links+='<a class="lk" href="'+esc(map)+'" target="_blank" rel="noopener">Map</a>';
+  if(uref) links+='<a class="lk whs" href="https://whc.unesco.org/en/list/'+uref+'" target="_blank" rel="noopener" title="'+esc(PROPS[uref]||'')+'">WHS</a>';
+  else if(utref){var tp=TPROPS[utref]||['',''];
+    links+='<a class="lk whstl" href="https://whc.unesco.org/en/tentativelists/'+utref+'/" target="_blank" rel="noopener" title="'+esc(tp[0])+' \u2014 tentative list, '+tp[1]+'">WHS-T</a>';}
+  return '<tr><td><span class="name">'+esc(name)+'</span>'+badge+sub+'</td>'+
+    '<td><span class="pill">'+esc(ty)+'</span></td>'+
+    '<td class="era"><span class="eratag e-'+cls+'">'+esc(era)+'</span>'+sp+'</td>'+
+    '<td class="dest">'+esc(dest)+'</td>'+
+    '<td class="reg">'+esc(reg)+'</td>'+
+    '<td class="links">'+links+'</td></tr>';
+}
+
+var qEl=document.getElementById('q'), tb=document.getElementById('tb'),
+    nsh=document.getElementById('nshown'), emptyEl=document.getElementById('empty'),
+    nf=document.getElementById('nf');
+function matches(r){
+  for(var i=0;i<GROUPS.length;i++){
+    var g=GROUPS[i], s=sel[g.key]; if(!s.size) continue;
+    var v=g.val(r), arr=Array.isArray(v)?v:[v], hit=false;
+    for(var j=0;j<arr.length;j++){ if(s.has(arr[j])){hit=true;break;} }
+    if(!hit) return false;
+  }
+  var q=fold(qEl.value.trim());
+  if(q){
+    var hay=fold(r[0]+' '+r[1]+' '+r[2]+' '+r[3]+' '+SECS[r[4]]+' '+(r[6]||''));
+    if(hay.indexOf(q)<0) return false;
+  }
+  return true;
+}
+function render(){
+  var out=ROWS.filter(matches);
+  var c=COLS[sortCol];
+  if(c.sort){
+    out=out.slice().sort(function(a,b){
+      var x=c.sort(a), y=c.sort(b);
+      if(x<y)return -sortDir; if(x>y)return sortDir;
+      return fold(a[0])<fold(b[0])?-1:1;
+    });
+  }
+  nsh.textContent=out.length.toLocaleString('en-US');
+  tb.innerHTML=out.map(rowHTML).join('');
+  emptyEl.hidden=out.length>0;
+  var n=0; GROUPS.forEach(function(g){n+=sel[g.key].size;});
+  nf.textContent=n; nf.hidden=n===0;
+}
+qEl.addEventListener('input',render);
+fgrid.addEventListener('change',function(e){
+  var cb=e.target; if(cb.type!=='checkbox')return;
+  var s=sel[cb.dataset.g];
+  if(cb.checked) s.add(cb.value); else s.delete(cb.value);
+  render();
+});
+fgrid.addEventListener('input',function(e){
+  var inp=e.target; if(!inp.dataset.find)return;
+  var q=fold(inp.value), box=fgrid.querySelector('[data-opts="'+inp.dataset.find+'"]');
+  Array.prototype.forEach.call(box.children,function(lab){
+    lab.hidden = q ? fold(lab.querySelector('.lbl').textContent).indexOf(q)<0 : false;});
+});
+fgrid.addEventListener('click',function(e){
+  var b=e.target.closest('[data-clear]'); if(!b)return;
+  var k=b.dataset.clear; sel[k].clear();
+  fgrid.querySelectorAll('input[data-g="'+k+'"]').forEach(function(cb){cb.checked=false;});
+  render();
+});
+document.getElementById('clearall').addEventListener('click',function(){
+  GROUPS.forEach(function(g){sel[g.key].clear();});
+  fgrid.querySelectorAll('input[type=checkbox]').forEach(function(cb){cb.checked=false;});
+  qEl.value=''; render();
+});
+var ft=document.getElementById('ftoggle'), fp=document.getElementById('facets');
+ft.addEventListener('click',function(){
+  var open=fp.hidden; fp.hidden=!open; ft.setAttribute('aria-expanded',String(open));
+});
+
+var mx=Math.max.apply(null,ERAS.map(function(e){return e[2];}))||1;
+document.getElementById('erabars').innerHTML=ERAS.map(function(e){
+  return '<div class="erabar"><div class="nm">'+esc(e[0])+(e[1]?'<i>'+esc(e[1])+'</i>':'')+'</div>'+
+    '<div class="track"><i style="width:'+(e[2]/mx*100).toFixed(1)+'%"></i></div>'+
+    '<div class="v">'+e[2]+'</div></div>';}).join('');
+
+paintHead(); render();
+})();
+</script>
+
+</body>
+</html>
