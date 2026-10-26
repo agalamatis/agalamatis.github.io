@@ -66,9 +66,8 @@
     "Gear": [
         "handgonne",
         "maul",
-        "double traveling sack",
         "7x stone cannonballs (for the handgonne) with enough gunpowder to fire them",
-        "Ingredients to craft up to 23 explosives or less with higher yield",
+        "Ingredients to craft up to 22 explosives or less with higher yield",
         "silk shirt",
         "travelling shirt",
         "silk trousers",
@@ -82,12 +81,16 @@
         "fur mantle",
         "machette",
         "fur mantle",
-        "450 silver coins minted in Serbia (about 45 meals in Skadar)",
-        "unremovable wedding gold gilded ring",
-        "fragments of a byzantine manuscript detailing their pre-crusade siege tactics (until now you were only able to decipher the latin text, there are parts in what seems to be greek and two another unknown language)",
-        "latin manuscript gifted by Theodore in Ulcinj with formulas to craft explosives. It will take research (in a library with alchemical manuscripts and/or discussion with other alchemists) to decipher, since it is notes of someone signing as M.P. written in vulgar latin of various arab translations of ancient texts.",
-        "Calendar of Archbishop Ugrin Csak of Kalocsa documenting his campaign, strategy, and tactics against the Mongol invasion of 1240s, including the excavation of the mausoleum near Mitrovica (7 pages are missing from that “chapter”).",
+        "pouch with 370 silver coins minted in Serbia",
         "saddle and bags",
-        "riding horse"
+        "riding horse",
+        "seal-ring of the constable of Mitrovica (belonged to Vladislav, Dragutin's and Katalina's firstborn son)",
+        "<s>unremovable wedding gold gilded ring</s>",
+        "keys to the bishop's palace (outer and inner front gates, writing cabinet of the study/library, old rooms of Vencel and Urosica)",
+        "fragments of a byzantine manuscript detailing their pre-crusade siege tactics (until now you were only able to decipher the latin text, there are parts in what seems to be greek and two another unknown language) (<i>currently with Mihaly for studying</i>)",
+        "latin manuscript gifted by Theodore in Ulcinj with formulas to craft explosives. It will take research (in a library with alchemical manuscripts and/or discussion with other alchemists) to decipher, since it is notes of someone signing as M.P. written in vulgar latin of various arab translations of ancient texts. (<i>currently with Mihaly for studying</i>)",
+        "calendar of Archbishop Ugrin Csak of Kalocsa documenting his campaign, strategy, and tactics against the Mongol invasion of 1240s, including the excavation of the mausoleum near Mitrovica (7 pages are missing from that “chapter”).",
+        "Annotated book collecting the letter from Hermes Trismegistus to Alexander the Great (themes: (a) military campaigns, (b) medicine, (c) botany, (d) midlle easter demonology, (e) apotheosis through gnosis). (<i>reading it blackens the reader's fingertips</i>)",
+        "sealed letter from Sandra, only to be opened when her favour is to bereturned, by following its instructions"
     ]
 }

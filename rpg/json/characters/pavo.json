@@ -54,6 +54,14 @@
         {
             "name": "Bite scar on left cheek",
             "description": "Charisma rolls at +1 to command & intimidate, -1 to charm."
+        },
+        {
+            "name": "Duty",
+            "description": "Restoration of the Teutonic chapterhouse of Transylvania."
+        },
+        {
+            "name": "Oath of Secrecy",
+            "description": "Pavo (along with Ion) vowed not to share the information/help Bishop Antal shared/offered regarding Voivode Laszlo Kan of Transylvania."
         }
     ],
     "Gear": [
@@ -67,8 +75,16 @@
         "iron girdle (binding the armour with leather straps)",
         "Teutonic knights tunic (worn over the armour)",
         "Teutonic knights robes (worn alone, without the armour)",
-        "sealed letter from the grandmaster <a href=\"https://en.wikipedia.org/wiki/Gottfried_von_Hohenlohe\">Gottfried von Hohenlohe<\/a> addressed to the <a href=\"https://en.wikipedia.org/wiki/Roman_Catholic_Archdiocese_of_Kalocsa%E2%80%93Kecskem%C3%A9t\">archbishop of Kalosca<\/a>",
+        "sealed letter from archbishop John Hont-Pázmány of Kalosca<\/a> for the bishop of Apulum (aka Weißenburg, Gyulafehérvár, and Alba-Iulia)",
         "saddle and bags",
-        "riding horse"
+        "riding horse",
+        "finshing net",
+        "fishing string and hook",
+        "leather cover for his targe / kite shield",
+        "pouch with 600 silver coins minted in Naples",
+        "pouch with 100 silver coins minted in Hungary",
+        "pouch with 100 silver coins minted in Hungary",
+        "pouch with 100 silver coins minted in Hungary",
+        "pouch with 70 silver coins minted in Hungary"
     ]
 }

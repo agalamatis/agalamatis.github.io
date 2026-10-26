@@ -54,7 +54,7 @@
             {
                 "level": 1,
                 "name": "Welcome the Penumbral Embrace",
-                "description": "Staying motionless away from direct light, forces the shadows around you to envelop your body, hiding you from sight… but staying too long in darkness, makes you also feel uneasy, feeling that you are slipping into their world. Practically, as long as you remain completely motionless in a dark area, you roll Agility+Stealth+Heritage-10 (± other unknown for now modifiers) and you add the result to contest any Perception-based roll against you."
+                "description": "Staying motionless away from direct light, forces the shadows around you to envelop your body, hiding you from sight… but staying too long in darkness, makes you also feel uneasy, feeling that you are slipping into their world. In the graveyard of Csanad you were drawn to a different bizarre world, where you met an entity calling itself \"the inevitable\" and your long dead father trapped, craving for vengeace (see also the trait: Oath of Vengeance below). Practically, as long as you remain completely motionless in a dark area, you roll Agility+Stealth+Heritage-10 (± other unknown for now modifiers) and you add the result to contest any Perception-based roll against you."
             }
         ],
         "Nobility": []
@@ -67,6 +67,14 @@
         {
             "name": "Patron",
             "description": "Ispan Ugrin Csak-Uljak, hosting you in return for undertaking the occasional \"mission\" off-the-beaten path outside his protection."
+        },
+        {
+            "name": "Patron",
+            "description": "Bishop Antal of Csanad, offered his old room (now a cell) in the diocece's abbey as his henceforth, and proposed to welcome him into his monastic order to \"follow the path of his father\"."
+        },
+        {
+            "name": "Oath of Secrecy",
+            "description": "Ion (along with Pavo) vowed not to share the information/help Bishop Antal shared/offered regarding Voivode Laszlo Kan of Transylvania."
         }
     ],
     "Gear": [
@@ -83,8 +91,12 @@
         "stealthy black cloak",
         "local slavic peasant dress",
         "expensive and provocative highborn magyar dress",
-        "500 silver coins in a single pouch",
+        "220 silver coins in a single pouch",
         "saddle and bags",
-        "riding horse"
+        "riding horse",
+        "small camping tent to shelter from light rain",
+        "beef jerky for one day of travel",
+        "lantern",
+        "flint (to spark flammable materials quickly)"
     ]
 }

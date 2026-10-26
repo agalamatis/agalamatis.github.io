@@ -66,25 +66,13 @@
     },
     "Traits": [
         {
-            "name": "Lycanthropy?",
-            "description": "After your dream in the Princesses\u2019 hovel (see Notes§2), you suspect that you have been infected by Milutin and have until the full moon to fall under his complete control."
-        },
-        {
-            "name": "Severed nerves on left wrist",
-            "description": "You suspect that because of lycanthropy, this wound has completely healed. If you are cured of lycanthorpy, the wound might return and rending you one-handed."
-        },
-        {
-            "name": "Torn right heel ligament",
-            "description": "You suspect that because of lycanthropy, this wound has completely healed. If you are cured of lycanthorpy, the wound might return and temporarily crippling you."
-        },
-        {
-            "name": "Fractured left kneecap and damaged ligament",
-            "description": "You suspect that because of lycanthropy, this wound has completely healed. If you are cured of lycanthorpy, the wound might return and permanently crippling you."
+            "name": "Lycanthropy",
+            "description": "Since Ragusa, you notice that your reflection when human is distorted with your face looking closer to a wolf. Otherwise you can control the rest your body and the \"beast's\" urges, as long as you satisfy them (not spending too much time in enclosed spaces, hunting and eating raw meat, procreate with bitches in heat, etc)."
         }
     ],
     "Gear": [
         "falchion / scimitar",
-        "machette",
+        "machette (dulled)",
         "leather boots",
         "leather codpiece",
         "leather cuirass",
@@ -93,8 +81,7 @@
         "leather coif",
         "first aid kit",
         "waterskin",
-        "saddle and bags",
-        "riding horse",
+        "pouch with 320 silver coins minted in Hungary",
         "The Skin of the King of All Wolves (granting the abilities Sight of the Nocturnal Predator, Instruments of the Feral Hunter, Assume the Form of the Great Beast)"
     ]
 }
