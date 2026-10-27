@@ -29,7 +29,7 @@ body{margin:0;background:var(--lapis);color:var(--silver);font-family:var(--seri
 header h1{font-weight:500;font-size:2.1rem;letter-spacing:.01em;margin:0 0 4px}
 header p{margin:0;color:var(--silver-dim);font-style:italic}
 
-.controls{display:flex;flex-wrap:wrap;gap:16px 20px;align-items:flex-end;margin:28px 0 30px;padding:18px 20px;background:var(--lapis-2);border:1px solid var(--gold-soft);border-radius:3px}
+.controls{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:16px 20px;align-items:flex-end;margin:28px 0 30px;padding:18px 20px;background:var(--lapis-2);border:1px solid var(--gold-soft);border-radius:0 0 3px 3px;box-shadow:0 10px 18px -12px rgba(5,9,30,.9)}
 .field{display:flex;flex-direction:column;gap:4px}
 .field label{font-size:.9rem;color:var(--silver-dim)}
 select,input[type=search]{font:inherit;font-size:1.05rem;color:var(--silver);background:var(--lapis);border:1px solid var(--lapis-3);border-radius:2px;padding:8px 12px;min-height:44px}
@@ -43,7 +43,7 @@ select:hover,input[type=search]:hover{border-color:var(--gold-soft)}
 .pick:active{transform:translateY(1px)}
 
 .layout{display:grid;grid-template-columns:minmax(300px,410px) 1fr;gap:36px;align-items:start}
-.folio{position:sticky;top:20px;background:var(--lapis-2);border:1px solid var(--gold-soft);border-radius:3px;padding:28px 28px 26px;min-height:300px}
+.folio{position:sticky;top:calc(var(--ctrl-h,0px) + 20px);background:var(--lapis-2);border:1px solid var(--gold-soft);border-radius:3px;padding:28px 28px 26px;min-height:300px}
 .folio .empty{color:var(--silver-dim);font-style:italic;margin:0}
 .chosen{display:flex;align-items:flex-start;gap:14px}
 .initial{flex:none;width:86px;height:92px;display:grid;place-items:center;background:var(--lapis);border:3px double var(--gold);color:var(--vermilion);font-size:4.4rem;line-height:1;font-weight:600;padding-bottom:6px;text-shadow:0 0 1px rgba(0,0,0,.4)}
@@ -67,7 +67,12 @@ select:hover,input[type=search]:hover{border-color:var(--gold-soft)}
 .letters{display:flex;flex-wrap:wrap;gap:2px;margin:0 0 18px}
 .letters a{color:var(--gold);text-decoration:none;padding:2px 7px;border-radius:2px;font-size:1rem}
 .letters a:hover{background:var(--lapis-3)}
-.group{margin:0 0 18px}
+.group{margin:0 0 18px;scroll-margin-top:calc(var(--ctrl-h,0px) + 16px)}
+.names li{scroll-margin-top:calc(var(--ctrl-h,0px) + 16px);scroll-margin-bottom:16px}
+#tip{position:fixed;z-index:40;max-width:340px;padding:10px 13px 11px;background:#0e1534;color:var(--silver);border:1px solid var(--gold-soft);border-radius:3px;font-size:.98rem;line-height:1.45;pointer-events:none;box-shadow:0 8px 22px rgba(0,0,0,.45);opacity:0;transition:opacity .12s}
+#tip.on{opacity:1}
+#tip b{display:block;font-weight:600;color:var(--gold);margin-bottom:2px}
+mark{background:rgba(207,168,74,.28);color:inherit;border-radius:2px}
 .group h3{margin:0 0 6px;color:var(--vermilion);font-weight:600;font-size:1.7rem;line-height:1;border-bottom:1px solid var(--lapis-3);padding-bottom:4px}
 .names{list-style:none;margin:0;padding:0;columns:2 290px;column-gap:28px}
 .names li{break-inside:avoid}
@@ -89,8 +94,11 @@ select:hover,input[type=search]:hover{border-color:var(--gold-soft)}
 }
 @media (max-width:480px){
   .wrap{padding:20px 16px 48px}
-  .controls{padding:14px}
-  .field,select,#culture,input[type=search]{width:100%;min-width:0}
+  .controls{display:grid;grid-template-columns:7.5em 1fr;gap:8px 10px;padding:10px 12px;margin:20px -16px 22px;border-left:0;border-right:0}
+  .controls .field label{font-size:.8rem}
+  select,#culture,input[type=search]{width:100%;min-width:0;font-size:1rem;padding:6px 8px;min-height:40px}
+  .controls .field:nth-child(3){grid-column:1/-1}
+  .pick{grid-column:1/-1;min-height:42px;padding:6px 16px}
   .initial{width:70px;height:76px;font-size:3.5rem}
   .rest{padding-top:14px}
 }
@@ -118,8 +126,8 @@ select:hover,input[type=search]:hover{border-color:var(--gold-soft)}
       <select id="culture"></select>
     </div>
     <div class="field">
-      <label for="filter">Filter the list</label>
-      <input id="filter" type="search" placeholder="Type part of a name" autocomplete="off">
+      <label for="filter">Search names, IPA or meanings</label>
+      <input id="filter" type="search" placeholder="e.g. Péter, ʃ, wolf" autocomplete="off">
     </div>
     <button type="button" class="pick" id="pick">Pick a random name</button>
   </form>
@@ -177,7 +185,9 @@ function render(){
   current = g[sex].slice().sort((a,b) => collator.compare(a.n, b.n));
   const q = filterIn.value.trim().toLowerCase();
   const strip = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-  const shown = q ? current.filter(x => strip(x.n).includes(strip(q))) : current;
+  const sq = strip(q);
+  const shown = q ? current.filter(x => strip(x.n).includes(sq) || x.i.toLowerCase().includes(q) || strip(x.i).includes(sq) || strip(x.m).includes(sq)) : current;
+  const why = x => (!q || strip(x.n).includes(sq) || strip(x.i).includes(sq) || x.i.toLowerCase().includes(q)) ? '' : ' data-m="1"';
   $('#listtitle').textContent = (sex === 'M' ? 'Male' : 'Female') + ' names';
   count.textContent = q ? `${shown.length} of ${current.length} names` : `${current.length} names`;
 
@@ -187,10 +197,10 @@ function render(){
   const groups = new Map();
   shown.forEach(x => { const L = headLetter(x.n); if (!groups.has(L)) groups.set(L, []); groups.get(L).push(x); });
   letters.innerHTML = [...groups.keys()].map(L => `<a href="#L-${L}">${L}</a>`).join('');
-  if (!shown.length){ list.innerHTML = `<p class="none">No ${sex==='M'?'male':'female'} names contain “${esc(q)}”. Clear the filter to see all ${current.length}.</p>`; return; }
+  if (!shown.length){ list.innerHTML = `<p class="none">No ${sex==='M'?'male':'female'} name, pronunciation or meaning contains “${esc(q)}”. Clear the filter to see all ${current.length}.</p>`; return; }
   list.innerHTML = [...groups].map(([L, xs]) =>
     `<div class="group" id="L-${L}"><h3>${L}</h3><ul class="names">` +
-    xs.map(x => `<li><button type="button" data-n="${esc(x.n)}" class="${selected && selected.n===x.n ? 'on':''}">` +
+    xs.map(x => `<li><button type="button" data-n="${esc(x.n)}"${why(x)} class="${selected && selected.n===x.n ? 'on':''}">` +
       `<span class="n">${esc(baseName(x.n))}</span><span class="i">${esc(x.i)}</span>` +
       `<span class="tag ${x.t}">${TAGS[x.t]}</span></button></li>`).join('') +
     `</ul></div>`).join('');
@@ -247,6 +257,33 @@ function changed(){
 sexSel.addEventListener('change', changed);
 cultSel.addEventListener('change', changed);
 filterIn.addEventListener('input', render);
+
+// meaning tooltip on hover / keyboard focus
+const tip = document.createElement('div'); tip.id = 'tip'; tip.setAttribute('role','tooltip'); document.body.appendChild(tip);
+function tipFor(b){
+  const x = current.find(y => y.n === b.dataset.n); if (!x) return;
+  const q = filterIn.value.trim();
+  let m = esc(x.m);
+  if (q){ const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi'); m = m.replace(re, t => `<mark>${t}</mark>`); }
+  tip.innerHTML = `<b>${esc(baseName(x.n))}</b>${m}`;
+  tip.classList.add('on');
+  const r = b.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = Math.min(Math.max(8, r.left + 8), innerWidth - tw - 8);
+  let top = r.bottom + 6;
+  if (top + th > innerHeight - 8) top = r.top - th - 6;
+  tip.style.left = left + 'px'; tip.style.top = top + 'px';
+}
+const hideTip = () => tip.classList.remove('on');
+list.addEventListener('mouseover', e => { const b = e.target.closest('button[data-n]'); if (b) tipFor(b); });
+list.addEventListener('mouseout', e => { const b = e.target.closest('button[data-n]'); if (b && !b.contains(e.relatedTarget)) hideTip(); });
+list.addEventListener('focusin', e => { const b = e.target.closest('button[data-n]'); if (b) tipFor(b); });
+list.addEventListener('focusout', hideTip);
+addEventListener('scroll', hideTip, {passive:true});
+
+// keep the sticky offset in step with the controls' real height
+const ctrl = document.querySelector('.controls');
+const setH = () => document.documentElement.style.setProperty('--ctrl-h', ctrl.offsetHeight + 'px');
+new ResizeObserver(setH).observe(ctrl); setH();
 render();
 </script>
 </body>
