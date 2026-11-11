@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <title>The MCCC Chronicle</title>
+        <style>
+            :root{--bg:#faf7f0;--fg:#231f1a;--muted:#6b6257;--accent:#7a1f1f;--line:#e2dacb;--side:#f1ebdf;--hl:#ffe08a;--red:#c62828}
+            @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#17150f;--fg:#e9e2d4;--muted:#a59a88;--accent:#d98a6b;--line:#3a342a;--side:#1f1c15;--hl:#7a5d00;--red:#ef5350}}
+            :root[data-theme=dark]{--bg:#17150f;--fg:#e9e2d4;--muted:#a59a88;--accent:#d98a6b;--line:#3a342a;--side:#1f1c15;--hl:#7a5d00;--red:#ef5350}
+            html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,'Iowan Old Style',serif}
+            button{font:inherit;color:inherit}
+            /* left: contents */
+            #side{position:fixed;top:0;left:0;bottom:0;width:310px;display:flex;flex-direction:column;background:var(--side);border-right:1px solid var(--line);box-sizing:border-box;z-index:5}
+            #side .top{padding:10px;border-bottom:1px solid var(--line)}
+            #side input,#searchpanel input{width:100%;box-sizing:border-box;padding:7px 9px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:5px;font:14px system-ui,sans-serif}
+            #side .btns{display:flex;gap:6px;margin-top:8px}
+            #side .btns button{flex:1;padding:4px 6px;border:1px solid var(--line);background:var(--bg);border-radius:5px;cursor:pointer;font:12px system-ui,sans-serif}
+            #tree{overflow:auto;flex:1;padding:6px 6px 40px}
+            #tree ul{list-style:none;margin:0;padding:0 0 0 14px}
+            #tree>ul{padding-left:0}
+            #tree li{margin:1px 0;font:13px/1.35 system-ui,sans-serif}
+            #tree li>.row{display:flex;align-items:flex-start;gap:2px}
+            #tree .tw{flex:0 0 16px;width:16px;height:18px;cursor:pointer;color:var(--muted);text-align:center;user-select:none;font-size:11px;line-height:18px}
+            #tree li.has>.row>.tw::before{content:'\25BE'}
+            #tree li.has.collapsed>.row>.tw::before{content:'\25B8'}
+            #tree li.collapsed>ul{display:none}
+            #tree a{color:inherit;text-decoration:none;padding:1px 3px;border-radius:3px}
+            #tree a:hover{color:var(--accent)}
+            #tree li.d1>.row>a{font-weight:700}
+            #tree li.hit>.row>a{background:var(--hl)}
+            #tree li.hidden{display:none}
+            #tree li.cur>.row>a{background:var(--accent);color:var(--bg);font-weight:700}
+            #tree li.cur>.row>a:focus{outline:2px solid var(--hl);outline-offset:1px}
+            /* main */
+            main{margin-left:310px;padding:28px 56px 120px 60px;max-width:1000px;container-type:inline-size}
+            main a{color:var(--accent)}
+            /* headings: banded (option B) */
+            main :is(h1,h2,h3,h4,h5,h6){line-height:1.25}
+            main :is(h1.d1,h2.d2,h3.d3,h4.d4){clear:both}
+            main h1.d1{font-size:2em;margin-top:56px;background:var(--accent);color:var(--bg);padding:8px 14px;border-radius:4px}
+            main h2.d2{font-size:1.5em;margin-top:40px;background:color-mix(in srgb,var(--accent) 16%,var(--bg));border-left:6px solid var(--accent);padding:5px 12px}
+            main h3.d3{font-size:1.25em;background:color-mix(in srgb,var(--accent) 7%,var(--bg));border-left:4px solid var(--accent);padding:3px 10px}
+            main h4.d4{font-size:1.12em;border-left:3px solid color-mix(in srgb,var(--accent) 60%,var(--bg));padding-left:9px}
+            main h5.d5{font-size:1.02em;border-bottom:1px dashed var(--accent);display:table;padding-bottom:1px}
+            main h6.d6{font-size:.85em;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+            main h6.d7{font-size:.85em;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+            main h6.d8{font-size:.92em;font-style:italic;color:var(--muted);font-weight:500}
+            table{border-collapse:collapse;margin:12px 0;font-size:14px;display:block;overflow-x:auto}
+            td,th{border:1px solid var(--line);padding:4px 8px;vertical-align:top}
+            img{max-width:100%;border-radius:4px;margin:0 0 8px 12px}
+            main img{width:auto!important;height:auto!important;max-width:25cqw!important;max-height:25cqw!important;object-fit:contain;cursor:zoom-in}
+            .flash{animation:flash 2s ease-out}
+            @keyframes flash{0%{background:var(--hl)}100%{background:transparent}}
+            mark{background:var(--hl);color:inherit;padding:0 1px;border-radius:2px}
+            /* toolbar */
+            #tools{position:fixed;top:10px;right:14px;z-index:7;display:flex;gap:8px;transition:right .2s}
+            body.searching #tools{right:404px}
+            #tools button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--side);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+            #tools svg{width:20px;height:20px}
+            #savebtn.dirty{color:#fff;background:var(--red);border-color:var(--red);animation:pulse 2.2s ease-in-out infinite}
+            @keyframes pulse{0%,100%{transform:scale(1);opacity:1;box-shadow:0 0 0 0 rgba(198,40,40,.5)}50%{transform:scale(1.08);opacity:.8;box-shadow:0 0 0 8px rgba(198,40,40,0)}}
+            /* right: search */
+            #searchpanel{position:fixed;top:0;right:0;bottom:0;width:390px;background:var(--side);border-left:1px solid var(--line);z-index:6;transform:translateX(100%);transition:transform .2s;display:flex;flex-direction:column}
+            body.searching #searchpanel{transform:none}
+            #searchpanel .top{padding:10px;border-bottom:1px solid var(--line)}
+            #searchpanel .count{font:12px system-ui,sans-serif;color:var(--muted);margin-top:6px}
+            #results{overflow:auto;flex:1;padding:6px 10px 40px}
+            .res{padding:8px 6px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:4px}
+            .res:hover{background:var(--bg)}
+            .res .crumb{font:11px/1.3 system-ui,sans-serif;color:var(--muted);margin-bottom:3px}
+            .res .snip{font-size:14px}
+            /* editing */
+            #pen{position:absolute;display:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--side);cursor:pointer;z-index:4;align-items:center;justify-content:center;padding:0}
+            #pen svg{width:14px;height:14px}
+            .editing-target{outline:2px dashed var(--accent);outline-offset:3px}
+            .editor{margin:8px 0 16px;border:1px solid var(--accent);border-radius:6px;padding:8px;background:var(--side)}
+            .editor textarea{width:100%;box-sizing:border-box;min-height:90px;font:13px/1.45 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:8px;resize:vertical}
+            .editor .bar{display:flex;gap:8px;align-items:center;margin-top:6px;font:12px system-ui,sans-serif;color:var(--muted)}
+            .editor .bar button{padding:4px 12px;border-radius:4px;border:1px solid var(--line);background:var(--bg);cursor:pointer}
+            .editor .bar button.apply{background:var(--accent);color:#fff;border-color:var(--accent)}
+            .editor .bar span{margin-left:auto}
+            #anchorbtn{position:absolute;display:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--side);cursor:pointer;z-index:4;align-items:center;justify-content:center;padding:0;color:var(--muted)}
+            #anchorbtn:hover{color:var(--accent)}
+            #anchorbtn svg{width:14px;height:14px}
+            main a.ext::after,main a[href^="http"]::after,main a[href^="//"]::after{content:"";display:inline-block;width:.72em;height:.72em;margin-left:.18em;vertical-align:baseline;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%2336c' stroke-width='1.2' d='M5 2.5H2.5v7h7V7'/%3E%3Cpath fill='%2336c' d='M7 1h4v4L9.6 3.6 6.2 7 5 5.8l3.4-3.4z'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.85}
+            main a[href^="http"]:has(img)::after{content:none}
+            @media (prefers-color-scheme:dark){:root:not([data-theme=light]) main a[href^="http"]::after{filter:invert(1) hue-rotate(180deg) brightness(1.4)}}
+            #imgbtn{position:absolute;display:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--side);cursor:pointer;z-index:4;align-items:center;justify-content:center;padding:0;color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+            #imgbtn:hover{color:var(--accent)}
+            #imgbtn svg{width:16px;height:16px}
+            #delbtn,#imgdel{position:absolute;display:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--side);cursor:pointer;z-index:4;align-items:center;justify-content:center;padding:0;color:var(--muted)}
+            #imgdel{width:30px;height:30px;box-shadow:0 1px 3px rgba(0,0,0,.2);color:var(--fg)}
+            #delbtn:hover,#imgdel:hover{color:#fff;background:var(--red);border-color:var(--red)}
+            #delbtn svg{width:14px;height:14px}#imgdel svg{width:16px;height:16px}
+            #pathsdlg{border:1px solid var(--line);border-radius:8px;background:var(--side);color:var(--fg);max-width:720px;width:90vw;font:14px system-ui,sans-serif}
+            #pathsdlg textarea{width:100%;box-sizing:border-box;height:160px;font:12px ui-monospace,Menlo,monospace;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:6px}
+            #pathsdlg button{padding:5px 14px;border-radius:4px;border:1px solid var(--line);background:var(--bg);cursor:pointer;margin-top:8px}
+            #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 16px;border-radius:6px;font:14px system-ui,sans-serif;display:none;z-index:9}
+            #tools #menu{display:none}
+            body.searching main{max-width:calc(100vw - 310px - 390px - 120px)}
+            @media (max-width:900px){#side{transform:translateX(-100%);transition:.2s;width:85vw}#side.open{transform:none}main{margin-left:0;padding:60px 16px 100px}#searchpanel{width:100vw}body.searching #tools{right:14px}body.searching main{max-width:none}#tools #menu{display:flex}#tools{right:14px}img{float:none!important;margin:0 0 8px 0}}
+            .edit-hidden{display:none!important}
+            .editor .ed-label{font:12px system-ui,sans-serif;color:var(--muted);margin:2px 0 3px}
+            .editor textarea.ed-head{min-height:34px;font-weight:700;margin-bottom:8px;resize:vertical}
+            .editor .ed-hrow{display:flex;gap:8px;align-items:flex-start}.editor .ed-hrow .ed-head{flex:1}.editor .ed-lv{display:inline-flex;align-items:center;gap:4px;font:12px system-ui,sans-serif;white-space:nowrap;padding-top:4px}.editor .ed-lv button{width:24px;height:24px;padding:0;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--fg);cursor:pointer;line-height:1}.editor .ed-lv button:disabled{opacity:.35;cursor:default}.editor .ed-lv .lv-n{min-width:1.4em;text-align:center;font-size:14px}.editor .ed-lv.changed .lv-n{color:var(--accent)}
+            main p.note{color:var(--muted);font-style:italic}
+            ul.places{list-style:none;padding-left:0}
+            ul.places>li>.place{font-size:1.25em;font-weight:700;display:block;margin-top:1.2em;background:color-mix(in srgb,var(--accent) 7%,var(--bg));border-left:4px solid var(--accent);padding:3px 10px}
+            ul.places>li>ul>li>.place{font-size:1.05em;font-weight:700;display:inline-block;border-left:3px solid color-mix(in srgb,var(--accent) 60%,var(--bg));padding-left:9px;margin-top:.5em}
+            ul.timeline time{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+            :target{scroll-margin-top:12px}
+        </style>
+        <script>
+(function(){function boot(){
+(function() {
+    'use strict';
+    const main = document.getElementById('guide'),
+        tree = document.getElementById('tree');
+    const $ = id => document.getElementById(id);
+    let dirty = false,
+        fileHandle = null,
+        index = null,
+        editing = null;
+
+    /* ---------- helpers ---------- */
+    function norm(s) {
+        return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    }
+
+    function normMap(t) {
+        let n = '',
+            map = [];
+        for (let i = 0; i < t.length; i++) {
+            const c = norm(t[i]);
+            for (const ch of c) {
+                n += ch;
+                map.push(i);
+            }
+        }
+        map.push(t.length);
+        return [n, map];
+    }
+
+    function esc(s) {
+        return s.replace(/[&<>"]/g, c => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;'
+        } [c]));
+    }
+
+    function headingOf(sec) {
+        return sec.querySelector(':scope>h1,:scope>h2,:scope>h3,:scope>h4,:scope>h5,:scope>h6');
+    }
+
+    function toast(t) {
+        const e = $('toast');
+        e.textContent = t;
+        e.style.display = 'block';
+        clearTimeout(toast.t);
+        toast.t = setTimeout(() => e.style.display = 'none', 1800);
+    }
+
+    function setDirty(v) {
+        dirty = v;
+        $('savebtn').classList.toggle('dirty', v);
+        $('savebtn').title = v ? 'Unsaved changes: save (Ctrl+S)' : 'Save (Ctrl+S)';
+    }
+
+    /* ---------- contents (left) ---------- */
+    function buildTOC() {
+        tree.innerHTML = '';
+        spyH = null;
+        spyOpened.clear();
+        const walk = (sec, ul, d) => {
+            for (const s of sec.children) {
+                if (s.tagName !== 'SECTION') continue;
+                const h = headingOf(s);
+                const kids = [...s.children].some(c => c.tagName === 'SECTION');
+                const li = document.createElement('li');
+                li.className = 'd' + d + (kids ? ' has collapsed' : '');
+                li.dataset.id = s.id;
+                const row = document.createElement('div');
+                row.className = 'row';
+                const tw = document.createElement('span');
+                tw.className = 'tw';
+                row.append(tw);
+                const a = document.createElement('a');
+                a.href = '#' + s.id;
+                a.textContent = h ? h.textContent : '(untitled)';
+                row.append(a);
+                li.append(row);
+                if (kids) {
+                    const sub = document.createElement('ul');
+                    walk(s, sub, d + 1);
+                    li.append(sub);
+                }
+                ul.append(li);
+            }
+        };
+        const ul = document.createElement('ul');
+        walk(main, ul, 1);
+        tree.append(ul);
+    }
+    tree.addEventListener('click', e => {
+        const tw = e.target.closest('.tw');
+        if (tw) {
+            const li = tw.closest('li');
+            if (li.classList.contains('has')) li.classList.toggle('collapsed');
+            return;
+        }
+        if (e.target.closest('a') && window.innerWidth <= 900) $('side').classList.remove('open');
+    });
+    $('expandall').onclick = () => tree.querySelectorAll('li.has').forEach(li => li.classList.remove('collapsed'));
+    $('collapseall').onclick = () => tree.querySelectorAll('li.has').forEach(li => li.classList.add('collapsed'));
+    let tocT;
+    $('tocq').addEventListener('input', () => {
+        clearTimeout(tocT);
+        tocT = setTimeout(filterTOC, 150);
+    });
+
+    function filterTOC() {
+        const q = norm($('tocq').value.trim());
+        const lis = tree.querySelectorAll('li');
+        if (!q) {
+            lis.forEach(li => {
+                li.classList.remove('hidden', 'hit');
+                if (li.classList.contains('has')) li.classList.add('collapsed');
+            });
+            return;
+        }
+        const rec = li => {
+            const self = norm(li.querySelector(':scope>.row>a').textContent).includes(q);
+            let any = false;
+            const sub = li.querySelector(':scope>ul');
+            if (sub)
+                for (const c of sub.children)
+                    if (rec(c)) any = true;
+            li.classList.toggle('hit', self);
+            li.classList.toggle('hidden', !(self || any));
+            if (li.classList.contains('has')) li.classList.toggle('collapsed', !any);
+            return self || any;
+        };
+        for (const li of tree.querySelector('ul').children) rec(li);
+    }
+
+    function hashId() {
+        try {
+            return decodeURIComponent(location.hash.slice(1));
+        } catch (e) {
+            return location.hash.slice(1);
+        }
+    }
+
+    const spyOpened = new Set();
+    let spyH = null; // cached heading list for the scroll spy; reset when the TOC is rebuilt
+
+    function revealInTOC(id, spy) {
+        if (!id) return;
+        const t = document.getElementById(id);
+        if (!t) return;
+        let sec = t.tagName === 'SECTION' ? t : t.closest('section'),
+            li = null;
+        while (sec && !li) {
+            li = tree.querySelector('li[data-id="' + CSS.escape(sec.id) + '"]');
+            if (!li) sec = sec.parentElement && sec.parentElement.closest('section');
+        }
+        if (!li) return;
+        if (li.classList.contains('hidden')) {
+            if (spy) return; // keep the reader's TOC filter while scrolling
+            $('tocq').value = '';
+            filterTOC();
+        }
+        if (spy) {
+            for (const o of [...spyOpened])
+                if (!o.isConnected || !o.contains(li)) {
+                    if (o.isConnected) o.classList.add('collapsed');
+                    spyOpened.delete(o);
+                }
+        } else spyOpened.clear();
+        let p = li.parentElement.closest('li');
+        while (p) {
+            if (spy && p.classList.contains('collapsed')) spyOpened.add(p);
+            p.classList.remove('collapsed');
+            p = p.parentElement.closest('li');
+        }
+        tree.querySelectorAll('li.cur').forEach(x => x.classList.remove('cur'));
+        li.classList.add('cur');
+        const a = li.querySelector(':scope>.row>a');
+        if (a && !spy) a.focus({
+            preventScroll: true
+        });
+        const row = li.querySelector(':scope>.row'),
+            tr = tree.getBoundingClientRect(),
+            rr = row.getBoundingClientRect();
+        if (rr.top < tr.top || rr.bottom > tr.bottom - 20) tree.scrollTop += rr.top - tr.top - tree.clientHeight / 3;
+    }
+    window.addEventListener('hashchange', () => revealInTOC(hashId()));
+
+    /* ---------- scroll spy: the section in view is selected in the TOC, the address bar and the tab title ---------- */
+    (function() {
+        const BASE = "The MCCC Chronicle";
+        const heads = () => main.querySelectorAll('section>h1,section>h2,section>h3,section>h4,section>h5,section>h6');
+        let tick = false,
+            last = undefined,
+            hold = null,
+            holdY = null;
+        const sc = (main.scrollHeight > main.clientHeight + 10 && getComputedStyle(main).overflowY !== 'visible') ? main : window;
+        const pos = () => sc === window ? window.scrollY : main.scrollTop;
+
+        function setFor(sec) {
+            const h = sec && headingOf(sec);
+            const n = h ? h.textContent.replace(/\s+/g, ' ').trim() : '';
+            document.title = 'PN: ' + (n || BASE);
+        }
+        const shown = el => el.getClientRects().length > 0;
+
+        function current() {
+            if (!spyH) spyH = [...heads()];
+            const H = spyH,
+                y = 80;
+            let cur = null,
+                lo = 0,
+                hi = H.length - 1;
+            while (lo <= hi) {
+                let m = (lo + hi) >> 1,
+                    k = m;
+                while (k <= hi && !shown(H[k])) k++; // skip headings hidden by filters
+                if (k > hi) {
+                    k = m - 1;
+                    while (k >= lo && !shown(H[k])) k--;
+                    if (k < lo) break;
+                    hi = k;
+                    m = k;
+                } else m = k;
+                if (H[m].getBoundingClientRect().top <= y) {
+                    cur = H[m];
+                    lo = m + 1;
+                } else hi = m - 1;
+            }
+            return cur && cur.parentElement;
+        }
+
+        function onScroll() {
+            tick = false;
+            if (hold !== null) {
+                if (holdY === null || Math.abs(pos() - holdY) < 40) return; // just jumped to a link: keep its target
+                hold = null;
+            }
+            const sec = current();
+            const id = sec ? sec.id : '';
+            if (id === last) return;
+            last = id;
+            setFor(sec);
+            try {
+                history.replaceState(history.state, '', id ? '#' + id : location.pathname + location.search);
+            } catch (e) {}
+            if (id) revealInTOC(id, true);
+            else tree.querySelectorAll('li.cur').forEach(x => x.classList.remove('cur'));
+        }
+        sc.addEventListener('scroll', () => {
+            if (!tick) {
+                tick = true;
+                requestAnimationFrame(onScroll);
+            }
+        }, {
+            passive: true
+        });
+
+        function jumped() {
+            const id = hashId(),
+                t = id && document.getElementById(id);
+            if (!t) return;
+            const sec = t.tagName === 'SECTION' ? t : t.closest('section');
+            setFor(sec);
+            last = sec ? sec.id : last;
+            hold = id;
+            holdY = null;
+            requestAnimationFrame(() => requestAnimationFrame(() => holdY = pos()));
+        }
+        window.addEventListener('hashchange', jumped);
+        window.addEventListener('load', () => {
+            if (hashId() && document.getElementById(hashId())) jumped();
+            else onScroll();
+        });
+    })();
+    tree.addEventListener('click', e => {
+        const a = e.target.closest('a');
+        if (a && a.getAttribute('href') === '#' + location.hash.slice(1)) setTimeout(() => revealInTOC(hashId()), 0);
+    });
+    $('menu').onclick = () => $('side').classList.toggle('open');
+
+    /* ---------- full-text search (right) ---------- */
+    const BLOCKS = 'h1,h2,h3,h4,h5,h6,.content>*';
+
+    function buildIndex() {
+        index = [];
+        main.querySelectorAll(BLOCKS).forEach(el => {
+            const t = el.textContent.replace(/\s+/g, ' ').trim();
+            if (!t) return;
+            const [n, map] = normMap(t);
+            index.push({
+                el,
+                t,
+                n,
+                map
+            });
+        });
+    }
+
+    function crumb(el) {
+        const out = [];
+        let s = el.closest('section');
+        if (/^H[1-6]$/.test(el.tagName)) s = s && s.parentElement.closest('section');
+        while (s) {
+            const h = headingOf(s);
+            if (h) out.unshift(h.textContent.trim());
+            s = s.parentElement.closest('section');
+        }
+        return out.join(' › ');
+    }
+
+    function snippet(t, s, e) {
+        const pre = t.slice(0, s).match(/(?:\S+\s+){0,5}\S*$/)[0];
+        const post = t.slice(e).match(/^\S*(?:\s+\S+){0,5}/)[0];
+        return (pre.length < s ? '…' : '') + esc(pre) + '<mark>' + esc(t.slice(s, e)) + '</mark>' + esc(post) + (e + post.length < t.length ? '…' : '');
+    }
+    let qT, LIMIT = 300;
+    $('q').addEventListener('input', () => {
+        clearTimeout(qT);
+        qT = setTimeout(runSearch, 220);
+    });
+
+    function runSearch() {
+        const raw = $('q').value.trim(),
+            res = $('results');
+        res.innerHTML = '';
+        if (raw.length < 2) {
+            $('count').textContent = 'Type at least 2 characters.';
+            return;
+        }
+        if (!index) buildIndex();
+        const q = norm(raw);
+        let total = 0;
+        const frag = document.createDocumentFragment();
+        for (const it of index) {
+            let from = 0,
+                k = 0,
+                p;
+            while ((p = it.n.indexOf(q, from)) !== -1 && k < 3) {
+                total++;
+                k++;
+                if (total <= LIMIT) {
+                    const s = it.map[p],
+                        e = it.map[p + q.length];
+                    const d = document.createElement('div');
+                    d.className = 'res';
+                    d.innerHTML = '<div class="crumb">' + esc(crumb(it.el)) + '</div><div class="snip">' + snippet(it.t, s, e) + '</div>';
+                    d.onclick = () => goTo(it.el);
+                    frag.append(d);
+                }
+                from = p + q.length;
+            }
+        }
+        res.append(frag);
+        $('count').textContent = total ? (total + ' match' + (total > 1 ? 'es' : '') + (total > LIMIT ? ' (showing the first ' + LIMIT + ')' : '')) : 'No matches.';
+    }
+
+    function goTo(el) {
+        el.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        el.classList.remove('flash');
+        void el.offsetWidth;
+        el.classList.add('flash');
+        const s = el.closest('section');
+        if (s) revealInTOC(s.id);
+        if (window.innerWidth <= 900) document.body.classList.remove('searching');
+    }
+    $('searchbtn').onclick = () => {
+        const on = document.body.classList.toggle('searching');
+        if (on) setTimeout(() => $('q').focus(), 200);
+    };
+    document.addEventListener('keydown', e => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+            e.preventDefault();
+            save();
+        }
+        if (e.key === 'Escape' && document.body.classList.contains('searching') && !editing) document.body.classList.remove('searching');
+    });
+
+    /* ---------- in-place editing ---------- */
+    const pen = $('pen'),
+        delbtn = $('delbtn'),
+        idel = $('imgdel');
+    let hover = null;
+    /* the edit and delete buttons appear on section headings only */
+    main.addEventListener('mouseover', e => {
+        if (editing) return;
+        const el = e.target.closest('h1,h2,h3,h4,h5,h6');
+        if (!el || !main.contains(el) || el.closest('.editor') || !el.parentElement || el.parentElement.tagName !== 'SECTION') {
+            if (e.target.closest('p,li,table,blockquote,ul,ol,img,.content>*')) {
+                pen.style.display = 'none';
+                delbtn.style.display = 'none';
+                hover = null;
+            }
+            return;
+        }
+        hover = el;
+        const r = el.getBoundingClientRect();
+        pen.style.display = 'flex';
+        pen.style.top = (r.top + window.scrollY + 2) + 'px';
+        pen.style.left = Math.max(4, r.left + window.scrollX - 34) + 'px';
+        pen.title = 'Edit this heading and its text';
+        delbtn.style.display = 'flex';
+        delbtn.style.top = (r.top + window.scrollY + 32) + 'px';
+        delbtn.style.left = pen.style.left;
+        delbtn.title = 'Delete this section';
+    });
+    pen.addEventListener('click', () => {
+        if (hover) startEdit(hover);
+    });
+    /* external links always open in a new tab */
+    main.addEventListener('click', e => {
+        const a = e.target.closest('a[href]');
+        if (!a || !main.contains(a) || a.closest('.editor')) return;
+        if (/^(https?:)?\/\//i.test(a.getAttribute('href'))) {
+            e.preventDefault();
+            window.open(a.href, '_blank', 'noopener');
+        }
+    });
+    /* images: upload from the device, open in a new tab */
+    const ibtn = $('imgbtn');
+    let himg = null;
+    main.addEventListener('mouseover', e => {
+        if (editing) return;
+        const im = e.target.closest('img');
+        if (!im || !main.contains(im)) return;
+        himg = im;
+        const r = im.getBoundingClientRect();
+        ibtn.style.display = 'flex';
+        ibtn.style.top = (r.top + window.scrollY + 6) + 'px';
+        ibtn.style.left = (r.left + window.scrollX + 6) + 'px';
+    });
+    main.addEventListener('mouseover', e => {
+        if (!e.target.closest('img')) {
+            ibtn.style.display = 'none';
+            idel.style.display = 'none';
+        }
+    });
+    ibtn.addEventListener('click', () => {
+        if (!himg) return;
+        const target = himg;
+        const inp = document.createElement('input');
+        inp.type = 'file';
+        inp.accept = 'image/*';
+        inp.onchange = () => {
+            const f = inp.files && inp.files[0];
+            if (f) loadImage(f, target);
+        };
+        inp.click();
+    });
+    const pendingImgs = new Map(); // relative path -> File, written next to the guide on save
+    function imagePathFor(img, file) {
+        const ext = ((file.name.match(/\.([a-z0-9]+)$/i) || [, 'png'])[1]).toLowerCase().replace('jpeg', 'jpg');
+        const sec = img.closest('section');
+        const sid = sec ? sec.id : 'image';
+        const cur = img.getAttribute('data-newsrc') || img.getAttribute('src') || '';
+        let dir = 'images/chronicle';
+        let base = sid,
+            n = 1,
+            path;
+        const taken = p => [...main.querySelectorAll('img')].some(o => o !== img && (o.getAttribute('data-newsrc') === p || o.getAttribute('src') === p));
+        do {
+            path = dir + '/' + base + (n > 1 ? '-' + n : '') + '.' + ext;
+            n++;
+        } while (taken(path));
+        return path;
+    }
+
+    function loadImage(file, img) {
+        if (!/^image\//.test(file.type)) {
+            toast('That file is not an image');
+            return;
+        }
+        const path = imagePathFor(img, file);
+        const url = URL.createObjectURL(file);
+        const test = new Image();
+        test.onload = () => {
+            const old = img.getAttribute('data-newsrc');
+            if (old) pendingImgs.delete(old);
+            img.src = url;
+            img.setAttribute('data-newsrc', path);
+            img.removeAttribute('width');
+            img.removeAttribute('height');
+            if (!img.alt) {
+                const s = img.closest('section');
+                const h = s && headingOf(s);
+                img.alt = h ? h.textContent.trim() : file.name;
+            }
+            pendingImgs.set(path, file);
+            setDirty(true);
+            toast('Image replaced; it will be saved as ' + path);
+        };
+        test.onerror = () => {
+            URL.revokeObjectURL(url);
+            toast('That file is not an image the browser can read');
+        };
+        test.src = url;
+    }
+    main.addEventListener('click', e => {
+        const im = e.target.closest('img');
+        if (!im || !main.contains(im) || im.closest('.editor')) return;
+        e.preventDefault();
+        if (im.src.startsWith('data:')) {
+            fetch(im.src).then(r => r.blob()).then(b => window.open(URL.createObjectURL(b), '_blank'));
+        } else window.open(im.src, '_blank');
+    });
+    /* chain-link: copy a link to the hovered section */
+    const abtn = $('anchorbtn');
+    let ahead = null;
+    main.addEventListener('mouseover', e => {
+        if (editing) return;
+        const h = e.target.closest('h1,h2,h3,h4,h5,h6');
+        if (!h || !main.contains(h)) return;
+        ahead = h;
+        const rg = document.createRange();
+        rg.selectNodeContents(h);
+        const r = rg.getBoundingClientRect(),
+            hr = h.getBoundingClientRect();
+        abtn.style.display = 'flex';
+        abtn.style.top = (hr.top + window.scrollY + Math.max(0, (hr.height - 26) / 2)) + 'px';
+        abtn.style.left = (Math.min(r.right, hr.right - 30) + window.scrollX + 8) + 'px';
+    });
+
+    function pageURL() {
+        return location.href.split('#')[0];
+    }
+    async function copyText(t) {
+        try {
+            await navigator.clipboard.writeText(t);
+            return true;
+        } catch (e) {
+            const ta = document.createElement('textarea');
+            ta.value = t;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.append(ta);
+            ta.select();
+            let ok = false;
+            try {
+                ok = document.execCommand('copy');
+            } catch (e2) {}
+            ta.remove();
+            return ok;
+        }
+    }
+    abtn.addEventListener('click', async () => {
+        if (!ahead) return;
+        const s = ahead.closest('section');
+        if (!s) return;
+        const url = pageURL() + '#' + s.id;
+        if (await copyText(url)) toast('Link copied: #' + s.id);
+        else toast('Could not copy: #' + s.id);
+        history.replaceState(null, '', '#' + s.id);
+        revealInTOC(s.id);
+    });
+    /* pasting a link to this guide into the editor inserts an <a> tag */
+    function linkFromPaste(t) {
+        t = t.trim();
+        let id = null;
+        if (t.startsWith(pageURL() + '#')) id = t.slice(pageURL().length + 1);
+        else if (/^#[\w-]+$/.test(t)) id = t.slice(1);
+        if (!id) return null;
+        const s = document.getElementById(decodeURIComponent(id));
+        if (!s) return null;
+        const h = s.tagName === 'SECTION' ? headingOf(s) : null;
+        return '<a href=' + JSON.stringify('#' + s.id) + '>' + esc(h ? h.textContent.trim() : s.id) + '</a>';
+    }
+    const TAGS = new Set(['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'PRE', 'FIGURE', 'FIGCAPTION', 'BUTTON', 'LABEL', 'INPUT', 'B', 'STRONG', 'I', 'EM', 'U', 'S', 'STRIKE', 'DEL', 'INS', 'SUB', 'SUP', 'BR', 'A', 'CODE', 'SPAN', 'SMALL', 'MARK', 'UL', 'OL', 'LI', 'TABLE', 'THEAD', 'TBODY', 'TR', 'TH', 'TD', 'IMG', 'P', 'BLOCKQUOTE', 'HR', 'DIV', 'Q', 'CITE', 'ABBR']);
+    const DROP = new Set(['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT', 'EMBED', 'FORM', 'TEXTAREA', 'SELECT', 'LINK', 'META', 'BASE', 'SVG', 'MATH']);
+    const ATTRS = new Set(['href', 'src', 'alt', 'title', 'width', 'height', 'align', 'id', 'colspan', 'rowspan', 'class', 'style', 'target', 'rel', 'type', 'hidden', 'checked', 'role', 'start', 'reversed']);
+
+    function sanitize(htmlText) {
+        const t = document.createElement('template');
+        t.innerHTML = htmlText;
+        const clean = node => {
+            for (const c of [...node.childNodes]) {
+                if (c.nodeType === 8) {
+                    c.remove();
+                    continue;
+                }
+                if (c.nodeType !== 1) continue;
+                if (DROP.has(c.tagName)) {
+                    c.remove();
+                    continue;
+                }
+                if (!TAGS.has(c.tagName)) {
+                    clean(c);
+                    c.replaceWith(...c.childNodes);
+                    continue;
+                }
+                for (const a of [...c.attributes]) {
+                    const n = a.name.toLowerCase();
+                    if (c.tagName === 'INPUT' && n === 'type' && !/^checkbox$/i.test(a.value)) a.value = 'checkbox';
+                    if (!(ATTRS.has(n) || /^(data|aria)-[\w-]+$/.test(n)) || ((n === 'href' || n === 'src') && /^\s*(javascript|vbscript|data:text)/i.test(a.value))) c.removeAttribute(a.name);
+                }
+                clean(c);
+            }
+        };
+        clean(t.content);
+        return t.innerHTML;
+    }
+
+    /* a section's own text: what lies between its heading and its first sub-section (anchors excluded) */
+    const WRAP = !!main.querySelector('section>div.content');
+
+    function bodyOf(sec) {
+        const out = [];
+        for (const c of sec.children) {
+            if (c.tagName === 'SECTION') break;
+            if (/^H[1-6]$/.test(c.tagName) || c.classList.contains('editor')) continue;
+            if (c.tagName === 'A' && c.id && !c.textContent.trim() && !c.children.length) continue;
+            out.push(c);
+        }
+        return out;
+    }
+
+    function bodyHTML(nodes) {
+        if (WRAP && nodes.length === 1 && nodes[0].matches('div.content')) return nodes[0].innerHTML.trim();
+        return nodes.map(n => {
+            if (!n.querySelector || !n.querySelector('.tr-app') && !n.matches('.tr-app')) return n.outerHTML;
+            const c = n.cloneNode(true);
+            (c.matches('.tr-app') ? [c] : [...c.querySelectorAll('.tr-app')]).forEach(e => e.innerHTML = '');
+            return c.outerHTML;
+        }).join('\n').trim();
+    }
+
+    function startEdit(h) {
+        if (editing) finishEdit(false);
+        hideTools();
+        const sec = h.closest('section');
+        if (!sec) return;
+        const nodes = bodyOf(sec);
+        editing = {
+            h,
+            sec,
+            nodes,
+            h0: h.innerHTML.trim(),
+            b0: bodyHTML(nodes)
+        };
+        const box = document.createElement('div');
+        box.className = 'editor';
+        const ht = document.createElement('textarea');
+        ht.className = 'ed-head';
+        ht.value = editing.h0;
+        ht.rows = 1;
+        ht.spellcheck = true;
+        const ta = document.createElement('textarea');
+        ta.className = 'ed-body';
+        ta.value = editing.b0;
+        ta.spellcheck = true;
+        const l1 = document.createElement('div'),
+            l2 = document.createElement('div');
+        l1.className = l2.className = 'ed-label';
+        l1.textContent = 'Heading level and text';
+        /* heading level: a smaller number moves the section up the outline, a larger one nests it under the section before it */
+        const d0 = parseInt(sec.dataset.depth, 10) || parseInt(h.tagName.slice(1), 10);
+        editing.d0 = editing.d = d0;
+        let prevSec = sec.previousElementSibling;
+        while (prevSec && prevSec.tagName !== 'SECTION') prevSec = prevSec.previousElementSibling;
+        const dMax = prevSec ? d0 + 1 : d0;
+        const lv = document.createElement('span');
+        lv.className = 'ed-lv';
+        lv.innerHTML = '<button type="button" class="lv-dn" title="Smaller number: move this section up one level">−</button><b class="lv-n"></b><button type="button" class="lv-up" title="Larger number: nest this section under the one before it">+</button>';
+        const lvShow = () => {
+            lv.querySelector('.lv-n').textContent = editing.d;
+            lv.querySelector('.lv-dn').disabled = editing.d <= 1;
+            lv.querySelector('.lv-up').disabled = editing.d >= dMax;
+            lv.title = editing.d === d0 ? 'Heading level ' + d0 : 'Heading level ' + d0 + ' → ' + editing.d + ' (on Apply)';
+            lv.classList.toggle('changed', editing.d !== d0);
+        };
+        lv.querySelector('.lv-dn').onclick = () => { if (editing.d > 1) { editing.d--; lvShow(); } };
+        lv.querySelector('.lv-up').onclick = () => { if (editing.d < dMax) { editing.d++; lvShow(); } };
+        lvShow();
+        const hrow = document.createElement('div');
+        hrow.className = 'ed-hrow';
+        l2.textContent = 'Text of this section (up to its first sub-section)';
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.innerHTML = '<button type="button" class="apply">Apply</button><button type="button" class="cancel">Cancel</button><span>HTML allowed (&lt;p&gt;, &lt;ul&gt;, &lt;b&gt;, &lt;i&gt;, &lt;a href&gt;, &lt;img&gt;, &lt;br&gt;…) · Ctrl+Enter to apply, Esc to cancel</span>';
+        hrow.append(lv, ht);
+        box.append(l1, hrow, l2, ta, bar);
+        h.classList.add('edit-hidden');
+        nodes.forEach(n => n.classList.add('edit-hidden'));
+        h.after(box);
+        ht.style.height = Math.max(34, ht.scrollHeight + 4) + 'px';
+        ta.style.height = Math.min(600, Math.max(120, ta.scrollHeight + 10)) + 'px';
+        ht.focus();
+        bar.querySelector('.apply').onclick = () => finishEdit(true);
+        bar.querySelector('.cancel').onclick = () => finishEdit(false);
+        for (const t of [ht, ta]) {
+            t.addEventListener('paste', e => {
+                const txt = (e.clipboardData || window.clipboardData).getData('text');
+                const a = linkFromPaste(txt);
+                if (a && /<[^>]*$/.test(t.value.slice(0, t.selectionStart))) {
+                    e.preventDefault();
+                    const m = a.match(/href="([^"]+)"/);
+                    t.setRangeText(m[1], t.selectionStart, t.selectionEnd, 'end');
+                    return;
+                }
+                if (a) {
+                    e.preventDefault();
+                    const p0 = t.selectionStart,
+                        p1 = t.selectionEnd;
+                    const sel = t.value.slice(p0, p1);
+                    const tag = sel ? a.replace(/>[^<]*<\/a>$/, '>' + sel + '</a>') : a;
+                    t.setRangeText(tag, p0, p1, 'end');
+                }
+            });
+            t.addEventListener('keydown', e => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    e.preventDefault();
+                    finishEdit(true);
+                }
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    finishEdit(false);
+                }
+                if (t === ht && e.key === 'Enter' && !(e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    ta.focus();
+                }
+            });
+        }
+    }
+
+    function imgKey(i) {
+        return i.getAttribute('data-newsrc') || i.getAttribute('src') || '';
+    }
+
+    function finishEdit(apply) {
+        const ed = editing;
+        if (!ed) return;
+        const {
+            h,
+            sec,
+            nodes
+        } = ed;
+        const box = h.nextElementSibling && h.nextElementSibling.classList.contains('editor') ? h.nextElementSibling : null;
+        if (apply && box) {
+            const hv = box.querySelector('.ed-head').value.trim(),
+                bv = box.querySelector('.ed-body').value.trim();
+            let changed = false;
+            if (hv !== ed.h0) {
+                h.innerHTML = sanitize(hv.replace(/\n+/g, ' '));
+                changed = true;
+                const li = tree.querySelector('li[data-id="' + CSS.escape(sec.id) + '"]>.row>a');
+                if (li) li.textContent = h.textContent;
+                if (location.hash.slice(1) === sec.id) document.title = document.title.replace(/^([A-Z]+: ).*$/, '$1') + h.textContent.replace(/\s+/g, ' ').trim();
+            }
+            if (bv !== ed.b0) {
+                changed = true;
+                const t = document.createElement('template');
+                t.innerHTML = sanitize(bv);
+                let frag = t.content;
+                if (WRAP && frag.textContent.trim() + (frag.querySelector('img,hr,input,button') ? 'x' : '')) {
+                    const only = frag.children.length === 1 && frag.firstElementChild.matches('div.content');
+                    if (!only) {
+                        const d = document.createElement('div');
+                        d.className = 'content';
+                        d.append(frag);
+                        frag = document.createDocumentFragment();
+                        frag.append(d);
+                    }
+                }
+                const keep = new Set([...frag.querySelectorAll('img')].map(imgKey));
+                nodes.forEach(n => n.querySelectorAll ? (n.matches('img') ? [n] : [...n.querySelectorAll('img')]).forEach(i => {
+                    if (!keep.has(imgKey(i))) forgetImage(i);
+                }) : 0);
+                const ref = [...sec.children].find(c => c.tagName === 'SECTION');
+                nodes.forEach(n => n.remove());
+                if (box) box.remove();
+                if (frag.childNodes.length) sec.insertBefore(frag, ref || null);
+                if (window.mcccTrainBoot) window.mcccTrainBoot();
+            }
+            if (changed) {
+                setDirty(true);
+                index = null;
+                spyH = null;
+                if (document.body.classList.contains('searching')) runSearch();
+            }
+        }
+        if (box && box.isConnected) box.remove();
+        h.classList.remove('edit-hidden');
+        nodes.forEach(n => n.isConnected && n.classList.remove('edit-hidden'));
+        editing = null;
+        if (apply && ed.d && ed.d !== ed.d0) moveLevel(sec, ed.d0, ed.d);
+    }
+
+    /* change a section's heading level, moving it (with its sub-sections) in the outline */
+    function moveLevel(sec, d0, d) {
+        if (d > d0) {
+            let p = sec.previousElementSibling;
+            while (p && p.tagName !== 'SECTION') p = p.previousElementSibling;
+            if (!p) return;
+            p.append(sec);
+        } else {
+            let p = sec.parentElement;
+            while (p && p.tagName === 'SECTION' && (parseInt(p.dataset.depth, 10) || 0) > d) p = p.parentElement;
+            if (!p || p.tagName !== 'SECTION') return;
+            p.after(sec);
+        }
+        const delta = d - d0;
+        [sec, ...sec.querySelectorAll('section')].forEach(s => {
+            const nd = (parseInt(s.dataset.depth, 10) || 1) + delta;
+            s.dataset.depth = nd;
+            const oh = headingOf(s);
+            if (!oh) return;
+            const nh = document.createElement('h' + Math.min(6, Math.max(1, nd)));
+            for (const a of oh.attributes) nh.setAttribute(a.name, a.value);
+            nh.className = (oh.className.replace(/\bd\d+\b/g, '').trim() + ' d' + nd).trim();
+            nh.append(...oh.childNodes);
+            oh.replaceWith(nh);
+        });
+        buildTOC();
+        if ($('tocq').value.trim()) filterTOC();
+        setDirty(true);
+        index = null;
+        spyH = null;
+        if (document.body.classList.contains('searching')) runSearch();
+        toast('Moved to heading level ' + d);
+    }
+
+    /* ---------- save ---------- */
+    function serialize() {
+        const root = document.documentElement.cloneNode(true);
+        root.querySelector('#tree').innerHTML = '';
+        root.querySelector('#results').innerHTML = '';
+        root.querySelector('#count').textContent = 'Type at least 2 characters.';
+        root.querySelectorAll('.editor').forEach(e => e.remove());
+        {
+            const t = root.querySelector('title');
+            if (t) t.textContent = "The MCCC Chronicle";
+        }
+        root.querySelectorAll('.editing-target,.flash,.edit-hidden').forEach(e => e.classList.remove('editing-target', 'flash', 'edit-hidden'));
+        root.querySelectorAll('[class=""]').forEach(e => e.removeAttribute('class'));
+        root.querySelector('body').classList.remove('searching');
+        root.querySelector('body').removeAttribute('class');
+        root.querySelector('#savebtn').classList.remove('dirty');
+        root.querySelector('#side').classList.remove('open');
+        root.querySelector('#pen').removeAttribute('style');
+        root.querySelector('#anchorbtn').removeAttribute('style');
+        root.querySelector('#imgbtn').removeAttribute('style');
+        root.querySelector('#delbtn').removeAttribute('style');
+        root.querySelector('#imgdel').removeAttribute('style');
+        root.querySelector('#pathsdlg').removeAttribute('open');
+        root.querySelector('#pathslist').textContent = '';
+        root.querySelector('#toast').removeAttribute('style');
+        root.querySelectorAll('input').forEach(i => i.removeAttribute('value'));
+        root.querySelectorAll('img[data-newsrc]').forEach(i => {
+            i.setAttribute('src', i.getAttribute('data-newsrc'));
+            i.removeAttribute('data-newsrc');
+        });
+        return '<!DOCTYPE html>\n' + root.outerHTML;
+    }
+    /* the guide's folder is picked once and remembered (IndexedDB), so the page and its images are written side by side */
+    const PAGE = decodeURIComponent(location.pathname.split('/').pop() || 'The_MCCC_Chronicle.html');
+    let dirHandle = null;
+
+    function idb() {
+        return new Promise((ok, ko) => {
+            const r = indexedDB.open('mccc-player-notes', 1);
+            r.onupgradeneeded = () => r.result.createObjectStore('h');
+            r.onsuccess = () => ok(r.result);
+            r.onerror = () => ko(r.error);
+        });
+    }
+    async function idbGet(k) {
+        try {
+            const db = await idb();
+            return await new Promise(ok => {
+                const q = db.transaction('h').objectStore('h').get(k);
+                q.onsuccess = () => ok(q.result);
+                q.onerror = () => ok(null);
+            });
+        } catch (e) {
+            return null;
+        }
+    }
+    async function idbSet(k, v) {
+        try {
+            const db = await idb();
+            db.transaction('h', 'readwrite').objectStore('h').put(v, k);
+        } catch (e) {}
+    }
+    async function getFolder() {
+        if (!window.showDirectoryPicker) return null;
+        if (!dirHandle) dirHandle = await idbGet('dir');
+        if (dirHandle) {
+            let st = await dirHandle.queryPermission({
+                mode: 'readwrite'
+            });
+            if (st !== 'granted') st = await dirHandle.requestPermission({
+                mode: 'readwrite'
+            });
+            if (st === 'granted') return dirHandle;
+        }
+        toast('Choose the folder that contains ' + PAGE);
+        const h = await window.showDirectoryPicker({
+            id: 'mccc-player-notes',
+            mode: 'readwrite'
+        });
+        let ok = false;
+        try {
+            await h.getFileHandle(PAGE);
+            ok = true;
+        } catch (e) {}
+        if (!ok && !confirm('"' + PAGE + '" is not in the folder "' + h.name + '". Save the guide and its images there anyway?')) throw new DOMException('cancelled', 'AbortError');
+        dirHandle = h;
+        await idbSet('dir', h);
+        return h;
+    }
+    async function writeFile(dir, path, data) {
+        const parts = path.split('/');
+        let d = dir;
+        for (const p of parts.slice(0, -1)) d = await d.getDirectoryHandle(p, {
+            create: true
+        });
+        const fh = await d.getFileHandle(parts[parts.length - 1], {
+            create: true
+        });
+        const w = await fh.createWritable();
+        await w.write(data);
+        await w.close();
+    }
+
+    function download(name, blob) {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = name;
+        document.body.append(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    }
+    /* deleting text blocks, sections and images */
+    const pendingDeletes = new Set(); // image files to delete from the folder on the next save
+    function imgFilePath(img) {
+        if (img.hasAttribute('data-newsrc')) return null;
+        const s = img.getAttribute('src') || '';
+        if (!s || /^(data:|blob:|https?:|\/\/|file:)/i.test(s)) return null;
+        try {
+            return decodeURI(s.split('#')[0].split('?')[0]);
+        } catch (e) {
+            return s;
+        }
+    }
+
+    function forgetImage(img) {
+        const np = img.getAttribute('data-newsrc');
+        if (np) pendingImgs.delete(np);
+        const p = imgFilePath(img);
+        if (p) pendingDeletes.add(p);
+    }
+
+    function hideTools() {
+        [pen, delbtn, ibtn, idel, abtn].forEach(b => b.style.display = 'none');
+    }
+
+    function label(el) {
+        return {
+            P: 'paragraph',
+            UL: 'list',
+            OL: 'list',
+            TABLE: 'table',
+            BLOCKQUOTE: 'quotation',
+            HR: 'line',
+            DIV: 'block',
+            PRE: 'block'
+        } [el.tagName] || el.tagName.toLowerCase();
+    }
+    delbtn.addEventListener('click', () => {
+        const el = hover;
+        if (!el || !main.contains(el)) return;
+        if (/^H[1-6]$/.test(el.tagName)) {
+            if (editing) finishEdit(false);
+            const sec = el.closest('section');
+            if (!sec) return;
+            const subs = sec.querySelectorAll('section').length,
+                imgs = sec.querySelectorAll('img').length;
+            if (!confirm('Delete the section "' + el.textContent.trim() + '"' + (subs ? ' with its ' + subs + ' sub-section' + (subs > 1 ? 's' : '') : '') + (imgs ? ' and ' + imgs + ' image' + (imgs > 1 ? 's' : '') : '') + '? (Nothing is removed from disk until you save.)')) return;
+            sec.querySelectorAll('img').forEach(forgetImage);
+            sec.remove();
+            buildTOC();
+        } else {
+            const imgs = el.querySelectorAll('img').length;
+            if (!confirm('Delete this ' + label(el) + (imgs ? ' and its image' + (imgs > 1 ? 's' : '') : '') + '?')) return;
+            el.querySelectorAll('img').forEach(forgetImage);
+            const c = el.parentElement;
+            el.remove();
+            if (c && c.classList.contains('content') && !c.children.length) c.remove();
+        }
+        hideTools();
+        hover = null;
+        index = null;
+        setDirty(true);
+        toast('Deleted; save to make it permanent');
+    });
+    idel.addEventListener('click', () => {
+        const im = himg;
+        if (!im || !main.contains(im)) return;
+        const p = imgFilePath(im);
+        if (!confirm('Delete this image?' + (p ? '\nIts file ' + p + ' will be deleted from the folder when you save.' : ''))) return;
+        forgetImage(im);
+        const par = im.parentElement;
+        im.remove();
+        if (par && par.tagName === 'P' && !par.textContent.trim() && !par.querySelector('img,a')) par.remove();
+        hideTools();
+        himg = null;
+        index = null;
+        setDirty(true);
+        toast('Image deleted; save to make it permanent');
+    });
+
+    function guideFolder() {
+        try {
+            return decodeURIComponent(location.pathname.replace(/[^\/]*$/, ''));
+        } catch (e) {
+            return '';
+        }
+    }
+
+    function showPaths(paths, msg) {
+        $('pathsmsg').textContent = msg;
+        $('pathslist').value = paths.map(p => guideFolder() + p).join('\n');
+        const d = $('pathsdlg');
+        if (d.showModal) d.showModal();
+        else d.setAttribute('open', '');
+    }
+    $('pathsclose').onclick = () => $('pathsdlg').close();
+    $('pathscopy').onclick = () => {
+        copyText($('pathslist').value).then(() => toast('Paths copied'));
+    };
+    async function deleteFiles(dir) {
+        const failed = [];
+        for (const p of pendingDeletes) {
+            if ([...main.querySelectorAll('img')].some(i => imgFilePath(i) === p)) continue; // still used elsewhere
+            try {
+                const parts = p.split('/').filter(x => x && x !== '.');
+                let d = dir;
+                for (const q of parts.slice(0, -1)) d = await d.getDirectoryHandle(q);
+                await d.removeEntry(parts[parts.length - 1]);
+            } catch (e) {
+                if (!(e && e.name === 'NotFoundError')) failed.push(p);
+            }
+        }
+        pendingDeletes.clear();
+        return failed;
+    }
+    async function save() {
+        if (editing) finishEdit(true);
+        const data = serialize();
+        try {
+            const dir = await getFolder();
+            if (dir) {
+                for (const [path, file] of pendingImgs) await writeFile(dir, path, file);
+                await writeFile(dir, PAGE, data);
+                const failed = await deleteFiles(dir);
+                if (failed.length) setTimeout(() => showPaths(failed, 'These image files could not be deleted. Please delete them yourself:'), 300);
+                const n = pendingImgs.size;
+                pendingImgs.clear();
+                main.querySelectorAll('img[data-newsrc]').forEach(i => {
+                    i.src = i.getAttribute('data-newsrc');
+                    i.removeAttribute('data-newsrc');
+                });
+                setDirty(false);
+                toast('Saved ' + PAGE + (n ? ' and ' + n + ' image' + (n > 1 ? 's' : '') : '') + ' in ' + dir.name);
+                return;
+            }
+        } catch (err) {
+            if (err && err.name === 'AbortError') return;
+            toast('Could not write to the folder: ' + (err && err.message || err));
+            return;
+        }
+        // browsers without folder access: download the page and the new images
+        download(PAGE, new Blob([data], {
+            type: 'text/html'
+        }));
+        for (const [path, file] of pendingImgs) download(path.split('/').pop(), file);
+        const n = pendingImgs.size;
+        setDirty(false);
+        toast(n ? 'Downloaded the page and ' + n + ' image(s): move the images into ' + [...pendingImgs.keys()].map(p => p.replace(/[^\/]+$/, '')).join(', ') : 'Downloaded a saved copy');
+        pendingImgs.clear();
+        main.querySelectorAll('img[data-newsrc]').forEach(i => {
+            i.setAttribute('src', i.getAttribute('data-newsrc'));
+            i.removeAttribute('data-newsrc');
+        });
+        const del = [...pendingDeletes].filter(p => ![...main.querySelectorAll('img')].some(i => imgFilePath(i) === p));
+        pendingDeletes.clear();
+        if (del.length) setTimeout(() => showPaths(del, 'This browser cannot delete files. Please delete these image files yourself:'), 300);
+    }
+    $('savebtn').onclick = save;
+    window.addEventListener('beforeunload', e => {
+        if (dirty || editing) {
+            e.preventDefault();
+            e.returnValue = 'You have unsaved changes. Close without saving?';
+            return e.returnValue;
+        }
+    });
+
+    buildTOC();
+
+    function resetTOC() {
+        document.querySelectorAll('#tocq,#side input,#searchpanel input').forEach(i => {
+            i.value = '';
+            i.setAttribute('autocomplete', 'off');
+        });
+        tree.querySelectorAll('li').forEach(li => {
+            li.classList.remove('hidden', 'hit', 'cur');
+            if (li.classList.contains('has')) li.classList.add('collapsed');
+        });
+        if (location.hash) revealInTOC(hashId());
+    }
+    resetTOC();
+    window.addEventListener('load', resetTOC);
+    window.addEventListener('pageshow', e => {
+        if (e.persisted) resetTOC();
+    });
+})();
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();})();
+</script>
+    </head>
+    <body>
+        <nav aria-label="Contents" id="side">
+            <div class="top">
+                <input autocomplete="off" id="tocq" placeholder="Search headings…" type="search">
+                <div class="btns"><button id="expandall" type="button">Expand all</button><button id="collapseall" type="button">Collapse all</button></div>
+            </div>
+            <div id="tree"></div>
+        </nav>
+        <div id="tools"><button aria-label="Contents" id="menu" title="Contents" type="button" onclick="document.getElementById('side').classList.toggle('open')"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+<button aria-label="Search the text" id="searchbtn" title="Search the text" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+<button aria-label="Save" id="savebtn" title="Unsaved changes: save (Ctrl+S)" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"></path><path d="M8 3v6h8V3"></path><rect height="6" width="8" x="8" y="13"></rect></svg></button></div>
+        <aside aria-label="Search" id="searchpanel">
+            <div class="top">
+                <input autocomplete="off" id="q" placeholder="Search the whole guide…" type="search">
+                <div class="count" id="count">Type at least 2 characters.</div>
+            </div>
+            <div id="results"></div>
+        </aside>
+        <button aria-label="Edit" id="pen" title="Edit" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M14 6l4 4"></path></svg></button>
+<button aria-label="Copy link to this section" id="anchorbtn" title="Copy link to this section" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"></path><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"></path></svg></button>
+<button aria-label="Upload an image" id="imgbtn" title="Upload an image from this device" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="M7 9l5-5 5 5"></path><path d="M4 16v4h16v-4"></path></svg></button>
+<button aria-label="Delete" id="delbtn" title="Delete this section" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M10 11v6M14 11v6"></path><path d="M6 7l1 13h10l1-13"></path><path d="M9 7V4h6v3"></path></svg></button>
+<button aria-label="Delete this image" id="imgdel" title="Delete this image" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M10 11v6M14 11v6"></path><path d="M6 7l1 13h10l1-13"></path><path d="M9 7V4h6v3"></path></svg></button>
+        <dialog id="pathsdlg">
+            <p id="pathsmsg"></p>
+            <textarea id="pathslist" readonly=""></textarea>
+            <div><button id="pathscopy" type="button">Copy</button> <button id="pathsclose" type="button">Close</button></div>
+        </dialog>
+        <div id="toast">Choose the folder that contains The_MCCC_Chronicle.html</div>
+        <main id="guide">
+            <section data-depth="1" id="timeline">
+                <h1 class="d1">Timeline of the last Árpád kings and the Angevin claims</h1>
+                <ul class="timeline">
+                    <li><time>1270-08-06</time>: Double wedding of the heirs of Anjou and Árpád: Prince <a href="#king-charles-ii-of-naples">Charles II</a> of <a href="#place-capter-anjou-court-of-neapoli">Naples</a> (aged 16) with Princess <a href="#queen-maria-of-naples">Maria</a> (aged 15), and her brother, Prince <strong>László IV the Cuman</strong> (aged 8), with <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta d'Anjou</a> (aged 9). The marriages were meant as a double alliance between the kingdoms to support the intended conquest of <strong>Byzantium</strong>, which never materialised.</li>
+                    <li><time>1272-08-06</time>: King <strong>István V</strong> of <strong>Hungary</strong> dies and is succeeded by his eldest son, <strong>László IV the Cuman</strong>.</li>
+                    <li><time>1274-03-07</time>: Death of <strong>Tommaso d'Aquino</strong>.</li>
+                    <li><time>1274-05-18 to 1274-07-17</time>: The Second Council of <strong>Lyon</strong> decides on the union of the Churches and discusses, inconclusively, plans for more crusades [<a href="https://en.wikipedia.org/wiki/Second_Council_of_Lyon">wikipedia</a>].</li>
+                    <li><time>1276</time>: King <strong>Uroš I</strong> of <strong>Serbia</strong> is deposed by his eldest son, <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>.</li>
+                    <li><time>1278</time>: <a href="#king-andras-iii-of-hungary-and-croatia">András III</a> the Venetian arrives in <strong>Hungary</strong> at the invitation of a rebellious baron, <strong>Iván Kőszegi</strong>, who tries to play him off against <strong>László IV</strong>; the conspiracy collapses and <a href="#king-andras-iii-of-hungary-and-croatia">András</a> returns to <a href="#place-the-republic-of-venice">Venice</a>.</li>
+                    <li><time>1278-08-26</time>: <strong>László IV</strong> allies himself with the Habsburgs against the Přemyslids, and his forces play a pre-eminent role in the Battle on the <strong>Marchfeld</strong> [<a href="https://en.wikipedia.org/wiki/Battle_on_the_Marchfeld">wikipedia</a>].</li>
+                    <li><time>1278-09 to 1278-12</time>: The papal legate, <strong>Filippo di Fermo</strong>, comes to help <strong>László IV</strong> consolidate his authority, but is shocked at the presence of thousands of pagan Cumans. <strong>László</strong> promises to force them to adopt a Christian way of life, but they refuse the legate's demands; <strong>László</strong> sides with the Cumans, and the legate excommunicates him. The Cumans imprison the legate, and the legate's partisans capture <strong>László</strong>.</li>
+                    <li><time>1280-01 to 1280-03</time>: <strong>László IV</strong> agrees to persuade the Cumans to submit to <strong>Filippo di Fermo</strong>.</li>
+                    <li><time>1282-03-30 to 1282-04-28</time>: Rebellion of the Sicilian Vespers [<a href="https://en.wikipedia.org/wiki/Sicilian_Vespers">wikipedia</a>].</li>
+                    <li><time>1282</time>: King <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> of <strong>Serbia</strong> abdicates in favour of his younger brother, <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>.</li>
+                    <li><time>1283</time>: Marriage of King <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> of <strong>Serbia</strong> and Princess <a href="#queen-erzsebet-of-serbia">Erzsebet</a>, sister of <strong>László IV</strong>.</li>
+                    <li><time>1284</time>: Princess <a href="#queen-erzsebet-of-serbia">Erzsebet</a> dies, King <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> marries Princess <a href="#queen-ana-terter">Ana the Bulgar</a>, and <strong>László IV</strong> makes <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> Ban of <strong>Syrmia</strong>, beginning a low-level civil war in the kingdom.</li>
+                    <li><time>1284</time>: The Sicilian admiral <strong>Roger of Lauria</strong> captures <a href="#king-charles-ii-of-naples">Charles II</a> of <a href="#place-capter-anjou-court-of-neapoli">Naples</a> in a naval battle near <a href="#place-capter-anjou-court-of-neapoli">Naples</a>.</li>
+                    <li><time>1285-01-07</time>: King <strong>Charles I</strong> of <a href="#place-capter-anjou-court-of-neapoli">Naples</a> dies while his only son is imprisoned in <strong>Aragon</strong>; the kingdom is ruled by regents for his grandson, <strong>Charles Martel</strong>.</li>
+                    <li><time>1285 to 1286</time>: The Second Mongol Invasion of <strong>Hungary</strong> [<a href="https://en.wikipedia.org/wiki/Second_Mongol_invasion_of_Hungary">wikipedia</a>].</li>
+                    <li><time>1286-09</time>: <strong>László IV</strong> imprisons his wife, <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta d'Anjou</a>, on <strong>Margaret Island</strong>, to live with his Cuman mistresses, at the suggestion of his sister <a href="#queen-erzsebet-of-serbia">Erzsebet</a>.</li>
+                    <li><time>1288</time>: <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> is born.</li>
+                    <li><time>1289</time>: Queen <a href="#queen-maria-of-naples">Maria</a> of <a href="#place-capter-anjou-court-of-neapoli">Naples</a>, with the help of the King of <strong>France</strong> and the Pope, negotiates the release of her husband, King <a href="#king-charles-ii-of-naples">Charles II</a> of <a href="#place-capter-anjou-court-of-neapoli">Naples</a>, so that he can be formally crowned.</li>
+                    <li><time>1289</time>: Queen <a href="#queen-maria-of-naples">Maria</a> frees <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta d'Anjou</a> and takes her under her protection back to her brother, King <a href="#king-charles-ii-of-naples">Charles II</a> of <a href="#place-capter-anjou-court-of-neapoli">Naples</a>.</li>
+                    <li><time>1290</time>: Queen <a href="#queen-maria-of-naples">Maria</a> announces her claim to the Crown of Saint Stephen, stating that the male line of the House of Árpád became extinct with the death of her brother, <strong>László IV</strong> of <strong>Hungary</strong> and <strong>Croatia</strong>. However, her father's cousin, <a href="#king-andras-iii-of-hungary-and-croatia">András III</a> the Venetian, also lays claim to the throne through his father, <strong>István the Posthumous</strong>, even though all the other members of the royal family regarded him as a bastard.</li>
+                    <li><time>1290-07-23</time>: Despite Queen <a href="#queen-maria-of-naples">Maria</a>'s claims, the Hungarian lords and prelates prefer <a href="#king-andras-iii-of-hungary-and-croatia">András</a>, and he is crowned king.</li>
+                    <li><time>1292-01</time>: With the encouragement of the Croatian nobility (the Babonići, Frankopani and Šubići), Queen <a href="#queen-maria-of-naples">Maria</a> transfers her claim to her son, <strong>Charles Martel</strong>.</li>
+                    <li><time>1294</time>: Queen <strong>Fenenna</strong>, first wife of <a href="#king-andras-iii-of-hungary-and-croatia">András III</a>, confirms on <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta d'Anjou</a> the privilege of collecting the donations of the Church in <a href="#place-county-and-diocese-of-veszprem">Veszprém County</a>.</li>
+                    <li><time>1295-08-12</time>: <strong>Charles Martel</strong> dies, and his mother's claim passes to her grandson, <a href="#king-charles-robert-i-of-hungary">Charles Robert</a>.</li>
+                    <li><time>1296-01-15</time>: Marriage of King <a href="#king-andras-iii-of-hungary-and-croatia">András III</a> of <strong>Hungary</strong> and <a href="#queen-agnes-of-austria">Agnes of Austria</a>, daughter of King <a href="#king-albrecht-i-of-the-germans">Albrecht I</a> of <strong>Germany</strong> and first cousin of <a href="#king-charles-robert-i-of-hungary">Charles Robert</a>.</li>
+                    <li><time>1296-02</time>: King <a href="#king-charles-ii-of-naples">Charles II</a> of <a href="#place-capter-anjou-court-of-neapoli">Naples</a> successfully petitions Pope <a href="#papa-bonifacius-viii">Bonifacius VIII</a> to exclude <strong>Charles Martel</strong>'s line from the succession of <a href="#place-capter-anjou-court-of-neapoli">Naples</a> in favour of his living son, <strong>Robert</strong>. Contemporary scholars of law (<a href="#doctor-of-philosophy-durante-di-alighiero-degli-alighieri">Durante</a> and <strong>Villani</strong>) condemn the decision, while much later, when the question of the <a href="#place-capter-anjou-court-of-neapoli">Naples</a> succession resurfaces, <strong>Baldus</strong> refrains from condemning it.</li>
+                    <li><time>1299</time>: King <a href="#king-andras-iii-of-hungary-and-croatia">András III</a> appoints his maternal uncle, <a href="#ban-king-albertino-morosini-of-all-croatia">Albertino Morosini</a>, Ban of <strong>Slavonia</strong> and heir after his future sons, since he is childless. <a href="#ban-king-albertino-morosini-of-all-croatia">Albertino</a> sets himself up in Venetian-allied <a href="#place-morosini-court-of-ragusa">Ragusa</a>, preparing to pacify the disloyal Croatian lords and styling himself (co-)King of <strong>Croatia</strong>.</li>
+                    <li><time>1300-01</time>: This drives the Croatian prelates from resistance to open rebellion, and so <a href="#count-juraj-subic-of-kliss">Juraj Šubić</a> of <strong>Trogir</strong> travels to <a href="#place-capter-anjou-court-of-neapoli">Naples</a> on behalf of his brother, <a href="#count-pavao-i-subic-of-bribir">Pavao I Šubić</a> of <strong>Bribir</strong>, to ask <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> to claim the crown in person. King <a href="#king-charles-ii-of-naples">Charles II</a> accepts and borrows 1,300 ounces of gold from Florentine bankers to finance his grandson's journey.</li>
+                </ul>
+            </section>
+            <section data-depth="1" id="people-and-places">
+                <h1 class="d1">People &amp; Places Known &amp; Visited</h1>
+                <p class="note">As of the spring of 1300 AD.</p>
+                <p class="note">Interacted with 92 of 738 characters.</p>
+                <ul class="places">
+                    <li>
+                        <span class="place" id="place-claimants-of-the-crown-of-saint-stephen">Claimants of the Crown of Saint Stephen</span>
+                        <ul>
+                            <li>
+                                <span class="place" id="place-anjou-main-army">Anjou main army</span>
+                                <ul>
+                                    <li><strong id="king-charles-robert-i-of-hungary">King Charles (Robert) I of Hungary</strong> (teen) [<a href="images/storyteller/characters/char-king-charles-robert-i-of-hungary.png">portrait</a>]: Born in 1288, he inherited his grandmother <a href="#queen-maria-of-naples">Queen Maria</a>’s claim to the crown when his father <strong>Charles Martel</strong> died in 1295. In January 1300 <a href="#count-juraj-subic-of-kliss">Juraj Šubić</a> came to <a href="#place-capter-anjou-court-of-neapoli">Naples</a> to ask him to claim the crown in person, and his grandfather King <a href="#king-charles-ii-of-naples">Charles II</a> borrowed 1,300 ounces of gold from Florentine bankers for the journey. He plans to land at <strong>Salona</strong> in May, join the Šubić forces at <strong>Bribir</strong> and the Frankopán lords of <strong>Krk</strong>, march to <strong>Zagreb</strong> to join the Babonić forces, follow the <strong>Sava</strong> to join <a href="#ispan-ugrin-csak">ispán Ugrin</a> in July or August, and then go north to take the crown from <a href="#king-andras-iii-of-hungary-and-croatia">András III</a> in <a href="#place-arpad-venetian-branch-of-buda">Buda</a>.</li>
+                                    <li><strong id="cardinal-bishop-nicolo-boccasini-of-ostia">Cardinal-Bishop Nicolo Boccasini of Ostia</strong> (s) [<a href="images/storyteller/characters/char-cardinal-bishop-nicolo-boccasini-of-ostia.jpg">portrait</a>]: The papal legate who, according to rumours among the Venetian merchants, is already in <strong>Hungary</strong> travelling through <strong>Serbia</strong> with <a href="#queen-maria-of-naples">Queen Maria</a>. Ispán <a href="#ispan-ugrin-csak">Ugrin</a> wants him brought under his protection in <a href="#place-csak-court-of-ilok-ujlak">Ilok</a>.</li>
+                                    <li><strong id="doctor-of-philosophy-durante-di-alighiero-degli-alighieri">Doctor (of Philosophy) Durante di Alighiero degli Alighieri</strong> (mid-30s) [<a href="images/storyteller/characters/char-doctor-of-philosophy-durante-di-alighiero-degli-alighieri.png">portrait</a>]: In 1296 he condemned, with <strong>Villani</strong>, the decision of Pope <a href="#papa-bonifacius-viii">Bonifacius VIII</a> to exclude <strong>Charles Martel</strong>’s line from the succession of <a href="#place-capter-anjou-court-of-neapoli">Naples</a>.</li>
+                                    <li><strong id="sir-jean-drugeth">Sir Jean Drugeth</strong> (late-20s) [<a href="images/storyteller/characters/char-sir-jean-drugeth.png">portrait</a>]: Personal guardian of <a href="#king-charles-robert-i-of-hungary">King Charles Robert</a>.</li>
+                                    <li><strong id="page-philip-drugeth">Page Philip Drugeth</strong> (teen) [<a href="images/storyteller/characters/char-page-philip-drugeth.png">portrait</a>]: Younger brother of <a href="#sir-jean-drugeth">Jean</a>, and page/confidant of <a href="#king-charles-robert-i-of-hungary">King Charles Robert</a>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-arpad-venetian-branch-of-buda">Arpad-Venetian branch of Buda</span>
+                                <ul>
+                                    <li><strong id="king-andras-iii-of-hungary-and-croatia">King András III of Hungary and Croatia</strong> (mid-30s): The son of <strong>István the Posthumous</strong>, whom the rest of the royal family regarded as a bastard. He first came to <strong>Hungary</strong> in 1278 at the invitation of <strong>Iván Kőszegi</strong>, but the plot collapsed and he returned to <a href="#place-the-republic-of-venice">Venice</a>. The lords and prelates preferred him to <a href="#queen-maria-of-naples">Queen Maria</a> and crowned him on 23 July 1290. He married <a href="#queen-agnes-of-austria">Agnes of Austria</a> in 1296, and in 1299 made his maternal uncle <a href="#ban-king-albertino-morosini-of-all-croatia">Albertino Morosini</a> Ban of <strong>Slavonia</strong> and heir after his future sons. Who supports him, where he is and what forces he can raise against <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> are still unknown.</li>
+                                    <li><strong id="queen-agnes-of-austria">Queen Agnes of Austria</strong> (teen): The daughter of King <a href="#king-albrecht-i-of-the-germans">Albrecht I</a> of the Germans and a first cousin of <a href="#king-charles-robert-i-of-hungary">Charles Robert</a>, she married King <a href="#king-andras-iii-of-hungary-and-croatia">András III</a> on 15 January 1296.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="place" id="place-north-western-counties-transdanubia-lower-and-upper-hungary">North-Western counties (Transdanubia, Lower and Upper Hungary)</span>
+                        <ul>
+                            <li><span class="place" id="place-aba-court-of-gonc">Aba court of Gönc</span></li>
+                            <li><span class="place" id="place-akos-court">Ákos court of central upper Hungary</span></li>
+                            <li><span class="place" id="place-csak-court-of-trencin">Csák court of Trenčín</span></li>
+                            <li><span class="place" id="place-koszegi-courts-of-kapronca-and-sarvar">Kőszegi courts of Kapronca and Sárvár</span></li>
+                            <li><span class="place" id="place-ratot-court-of-eger">Rátót court of Eger</span></li>
+                            <li>
+                                <span class="place" id="place-county-and-diocese-of-veszprem">County and Diocese of Veszprém</span>
+                                <ul>
+                                    <li><strong id="queen-dowager-elisabetta-of-hungary">Queen Dowager Elisabetta of Hungary</strong> (s) [<a href="images/storyteller/characters/char-queen-dowager-elisabetta-of-hungary.png">portrait</a>]: She married <strong>László IV</strong> at the age of 9 in 1270, and was imprisoned by him on <strong>Margaret Island</strong> in 1286 so that he could live with his Cuman mistresses, until <a href="#queen-maria-of-naples">Queen Maria</a> freed her in 1289 and took her back to her brother <a href="#king-charles-ii-of-naples">King Charles II of Naples</a>. In 1294 Queen <strong>Fenenna</strong> confirmed her right to collect the donations of the Church in <a href="#place-county-and-diocese-of-veszprem">Veszprém County</a>, of which she is the titular ispána. In 1300 she stayed on the boat at <a href="#place-village-of-ulqin">Ulcinj</a>, rode with the Byzantines to <a href="#place-nemanjic-court-of-shkoder">Skadar</a> and stayed in <a href="#place-market-town-of-podgorica">Podgorica</a>, then posed as <a href="#jelena-duka-andelina">Zoe</a> in the carriage to <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>, where, on his wedding night, <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> raped <a href="#queen-simonis-palaiologina">Simonis</a> to get her with child, which was impossible, and then pleased himself with her in front of the girl. She remained silent about her ordeals, leaving for <a href="#place-county-and-diocese-of-veszprem">Veszprém</a> to exercise her rightful title's claims.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-archdiocese-of-esztergom">Archdiocese of Esztergom</span>
+                                <ul>
+                                    <li><strong id="archbishop-elect-gergely-bicskei-of-esztergom">Archbishop-elect Gergely Bicskei of Esztergom</strong> (early-50s): .</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="place" id="place-north-eastern-counties-banat-crisana-maramures-and-transylvania">North-Eastern counties (Banat, Crișana, Maramureș and Transylvania)</span>
+                        <ul>
+                            <li><span class="place" id="place-borsa-court-of-adorjan">Borsa court of Adorján</span></li>
+                            <li>
+                                <span class="place" id="place-kan-court-of-deva">Kán court of Déva</span>
+                                <ul>
+                                    <li><strong id="voivode-laszlo-kan-of-transylvania">Voivode László Kán of Transylvania</strong> (70s-to-90s): About sixty years ago, before he became voivode, he besieged <a href="#place-former-teutonic-chapterhouse-of-marienburg">Feldioara</a>, the last holding of the Teutonic Knights in <strong>Transylvania</strong>, on the orders of King <strong>Béla IV</strong>, and impaled the last of the Teutons with their Comptor; rumour says he sacrificed them to the devil. He exiled the Transylvanian Teutons and, according to <strong>Ion</strong>’s vision, trapped the spirit of <strong>Ion</strong>’s father in a world of shadows. He has two sons, <strong>Kálmán</strong> and <strong>Kocsoh</strong>, and a daughter, <strong>Ladiszla</strong>. He is supported by the Saxon nobles, who control food, mines and smiths, by the Hungarian nobles under the protection of his army, and by the Székely frontier nobles, and he could lose his power if he lost his contacts and allies. To enter <a href="#place-kan-court-of-deva">Déva</a> one must pay a high price, and some who entered never came out.</li>
+                                    <li><strong id="father-dan">Father Dan</strong>: The Orthodox priest of <a href="#place-kan-court-of-deva">Déva</a>, who warns the people not to go to the derelict mansion in the centre of the village, burned thirty years ago and now owned by <a href="#voivode-laszlo-kan-of-transylvania">the voivode</a>.</li>
+                                    <li><strong id="knez-coste">Knez Coste</strong>: A Vlach local leader in <a href="#place-kan-court-of-deva">Déva</a>, the father of <a href="#ioan">Ioan</a> and <a href="#irina">Irina</a>.</li>
+                                    <li><strong id="ioan">Ioan</strong>: The son of <a href="#knez-coste">Knez Coste</a> and brother of <a href="#irina">Irina</a>, who has his own room in the bunkers of <a href="#place-kan-court-of-deva">Déva</a> where <strong>Ion</strong> and <strong>Pavo</strong> could stay.</li>
+                                    <li><strong id="irina">Irina</strong>: The daughter of <a href="#knez-coste">Knez Coste</a> and sister of <a href="#ioan">Ioan</a>.</li>
+                                </ul>
+                            </li>
+                            <li><span class="place" id="place-pok-court-of-frauenbach">Pok court of Frauenbach</span></li>
+                            <li>
+                                <span class="place" id="place-vejtehi-court-of-mehadia">Vejtehi court of Mehádia</span>
+                                <ul>
+                                    <li><strong id="ban-tivadar-vejtehi-of-temesvar-and-severin">Ban Tivadar Vejtehi of Temesvár and Severin</strong>: According to the Vlach peasants of <a href="#place-free-royal-town-of-szeged">Szeged</a> he rules as far as <a href="#place-village-of-lipova">Lipova</a>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-archdiocese-of-kalocsa">Archdiocese of Kalocsa</span>
+                                <ul>
+                                    <li><strong id="archbishop-janos-hont-pazmany-of-kalocsa">Archbishop János Hont-Pázmány of Kalocsa</strong> (early-60s) [<a href="images/storyteller/characters/char-archbishop-janos-hont-pazmany-of-kalocsa.jpg">portrait</a>]: He received <strong>Pavo</strong> and <strong>Ion</strong> in <a href="#place-archdiocese-of-kalocsa">Kalocsa</a>, a small town of 500 people with an oversized cathedral whose monks see themselves as the last bastion of Christianity before a sea of pagans. He opened the Pope’s letter that <strong>Pavo</strong> carried, which turned out to be an order for two men to go to the <a href="#bishop-peter-monoszlo-of-alba-iulia">Bishop of Alba Iulia</a> and rebuild the Teutonic chapter of <strong>Transylvania</strong>.</li>
+                                    <li><strong id="archbishop-ugrin-csak-of-kalocsa">Archbishop Ugrin Csák of Kalocsa</strong> (died mid-13th century): The grandfather of <a href="#ispan-ugrin-csak">ispán Ugrin</a>, who defended the Realm of Saint Stephen in the first Mongol invasion almost a century ago. His journal describes a ritual in the ruins of <strong>Sirmium</strong> that granted him a great weapon or tool against the Tatars; <a href="#princess-urosica">Urošica</a> found it, <a href="#prince-stefan-vladislav-ii">Vladislav</a> confiscated it, and <strong>Leo</strong> now has it. He is buried in a sealed grave in the cemetery of <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, beside <a href="#princess-urosica">Urošica</a>’s.</li>
+                                    <li><strong id="janos">János</strong>: The guide who led <strong>Ion</strong> and <strong>Pavo</strong> from <a href="#place-archdiocese-of-kalocsa">Kalocsa</a> across the marshes of the <strong>Cuman plain</strong> and <em>"abandoned"</em> them at dawn after the first night.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-diocese-of-transylvania-alba-iulia">Diocese of Transylvania (Alba Iulia)</span>
+                                <ul>
+                                    <li><strong id="bishop-peter-monoszlo-of-alba-iulia">Bishop Péter Monoszló of Alba Iulia</strong>: <strong>Pavo</strong> delivered the Pope’s letter to him and received an open letter with a golden bull declaring that he is on a papal mission. He told them that many women of <a href="#place-diocese-of-transylvania-alba-iulia">Alba Iulia</a> are the sluts of Satan and need to be tortured and burned.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-diocese-of-csanad">Diocese of Csanád</span>
+                                <ul>
+                                    <li><strong id="bishop-antal-of-csanad">Bishop Antal of Csanád</strong> (s) [<a href="images/storyteller/characters/char-bishop-antal-of-csanad.jpg">portrait</a>]: He invited <strong>Ion</strong> to become a priest and stay in his old room at the monastery. He offered to help <strong>Pavo</strong> and <strong>Ion</strong> free the people from the evil rule of Voivode <a href="#voivode-laszlo-kan-of-transylvania">László</a>, but only without risking the lives of the people of <a href="#place-diocese-of-csanad">Csanád</a>, and made them swear in the name of God to keep it a secret between the three of them. He knows where <strong>Ion</strong>’s father is buried.</li>
+                                    <li><strong id="bishop-bereck">Bishop Bereck</strong> (died in 1289): <strong>Ion</strong>’s father, buried in an unmarked grave in the graveyard of the cathedral of <a href="#place-diocese-of-csanad">Csanád</a> by order of the king, or of <a href="#voivode-laszlo-kan-of-transylvania">László</a>. In <strong>Ion</strong>’s vision he was a kneeling statue before a faceless giant writing in a book, trapped there by <a href="#voivode-laszlo-kan-of-transylvania">László</a>, and <strong>Ion</strong> swore to avenge him, trap <a href="#voivode-laszlo-kan-of-transylvania">László</a> in that world and free his father’s spirit to Heaven. His voice told <strong>Ion</strong> to avenge him.</li>
+                                    <li><strong id="lorinc-telegdi">Lőrinc Telegdi</strong>: A distant relative of <strong>Ion</strong>’s father and, apart from the bishop, the only one who knows about the grave; he has been asking about it.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-former-teutonic-chapterhouse-of-marienburg">Former Teutonic chapterhouse of Marienburg</span>
+                                <ul>
+                                    <li><strong id="comptor-siward-of-the-burzenland">Comptor Siward of the Burzenland</strong>: The Comptor of the Transylvanian Teutonic chapter, who according to <a href="#old-mihaly">Old Mihály</a> was lost and corrupted, cut the chapter off from the others and made it a secret order, which the Saxons and the Magyars, but not the Székelys, are fighting.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-free-royal-town-of-szeged">Free Royal Town of Szeged</span>
+                                <ul>
+                                    <li><strong id="abbot-benedek-of-szeged">Abbot Benedek of Szeged</strong>: The Franciscan abbot of <a href="#place-free-royal-town-of-szeged">Szeged</a>, who told <strong>Ion</strong> and <strong>Pavo</strong> that many local Cumans are now baptised and profit from trade, that Catholics are safe for now, that the castle walls are restored, and that some who entered <a href="#place-kan-court-of-deva">Déva</a> never came out. His monks do not seem to care about the Orthodox.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-market-town-of-arad">Market Town of Arad</span>
+                                <ul>
+                                    <li><strong id="mistress-gabriella">Mistress Gabriella</strong> (s) [<a href="images/storyteller/characters/char-gabriella.jpg">portrait</a>]: Possibly the widow of the previous leader of the town, present with the high-ranking leaders and merchants at the sowing festival when <strong>Ion</strong> and <strong>Pavo</strong> reached <a href="#place-market-town-of-arad">Arad</a>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-village-of-lipova">Village of Lipova</span>
+                                <ul>
+                                    <li><strong id="gellert-the-smith-of-lipova">Gellért the smith of Lipova</strong> (s): The smith at whose house <strong>Ion</strong> and <strong>Pavo</strong> slept on their way to <a href="#place-kan-court-of-deva">Déva</a>.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="place" id="place-southern-banates-counties-and-neighbours">Southern banates, counties and neighbours</span>
+                        <ul>
+                            <li>
+                                <span class="place" id="place-croatian-prelates">Croatian prelates</span>
+                                <ul>
+                                    <li><strong id="count-stjepan-iv-babonic">Count Stjepan IV Babonić</strong>: In 1292 the Babonići, with the Frankopani and Šubići, encouraged <a href="#queen-maria-of-naples">Queen Maria</a> to pass her claim to <strong>Charles Martel</strong>. His forces are to join <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> at <strong>Zagreb</strong>.</li>
+                                    <li><strong id="count-dujam-ii-frankopan">Count Dujam II Frankopán</strong>: In 1292 the Frankopani encouraged <a href="#queen-maria-of-naples">Queen Maria</a> to pass her claim to <strong>Charles Martel</strong>. The Frankopán lords of <strong>Krk</strong> are to reinforce <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> after his landing.</li>
+                                    <li><strong id="count-pavao-i-subic-of-bribir">Count Pavao I Šubić of Bribir</strong> (mid-50s): In January 1300 he sent his brother <a href="#count-juraj-subic-of-kliss">Juraj</a> to <a href="#place-capter-anjou-court-of-neapoli">Naples</a> to ask <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> to claim the crown in person; <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> is to join his forces at <strong>Bribir</strong> after landing at <strong>Salona</strong>.</li>
+                                    <li><strong id="count-juraj-subic-of-kliss">Count Juraj Šubić of Kliss</strong> (eatly-30s): Called <a href="#count-juraj-subic-of-kliss">Juraj Šubić</a> of <strong>Trogir</strong> in the notes, he travelled to <a href="#place-capter-anjou-court-of-neapoli">Naples</a> in January 1300 on behalf of his brother <a href="#count-pavao-i-subic-of-bribir">Pavao</a> to ask <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> to claim the crown in person.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-csak-court-of-ilok-ujlak">Csák court of Ilok/Újlak</span>
+                                <ul>
+                                    <li><strong id="ispan-ugrin-csak">Ispán Ugrin Csák</strong> (mid-60s) [<a href="images/storyteller/characters/char-ugrin-iii-csak-ujlak.jpg">portrait</a>]: The ispán of Upper <strong>Syrmia</strong>, ally of <a href="#ban-stjepan-kotromanic-of-bosnia">Ban Stjepan Kotromanić</a> and of <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> in the old alliance. After <strong>Ion</strong>’s winter report he sent <a href="#prince-miklos-csak">Miklós</a> with <a href="#master-of-arms-almos">Álmos</a>, <strong>Ion</strong> and <a href="#master-of-hunt-stanislav">Stanislav</a> to <a href="#place-triarchy-of-mitrovica">Mitrovica</a> and <a href="#place-nemanjic-court-of-beograd">Beograd</a>, and wanted <a href="#queen-maria-of-naples">Queen Maria</a> and the papal legate under his protection in <a href="#place-csak-court-of-ilok-ujlak">Ilok</a>. <a href="#bishop-vencel-of-mitrovica">Bishop Vencel</a> is his bastard, and his fallback plan, if <a href="#queen-maria-of-naples">Queen Maria</a>’s line fails, is to reveal that <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a>’s children are his bastards too. He made <strong>Leo</strong> constable of <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, was reluctant to let <strong>Ion</strong> visit his father’s grave, and does not want an army of Genoese, Neapolitans and Croatian lords wintering in his fortress.</li>
+                                    <li><strong id="prince-miklos-csak">Prince Miklós Csák</strong> (early-20s): <a href="#ispan-ugrin-csak">Ugrin</a>’s son, who grew up in <a href="#bishop-vencel-of-mitrovica">Bishop Vencel</a>’s house in <a href="#place-triarchy-of-mitrovica">Mitrovica</a>. He led the embassy to <a href="#place-triarchy-of-mitrovica">Mitrovica</a> and <a href="#place-nemanjic-court-of-beograd">Beograd</a>, ordered <a href="#prince-stefan-vladislav-ii">Vladislav</a> to release <strong>Ion</strong>, and was devastated by the death of <a href="#princess-urosica">Urošica</a>, his sister, insisting on visiting her grave against all advice. He agreed to <strong>Leo</strong> investigating <a href="#princess-urosica">Urošica</a>, provided <strong>Leo</strong> reports to him weekly.</li>
+                                    <li><strong id="castellan-dome">Castellan Döme</strong></li>
+                                    <li><strong id="master-of-arms-almos">Master-of-Arms Álmos</strong> (early-30s): He escorted <a href="#prince-miklos-csak">Miklós</a> on the embassy and spent a last night of depraved excess in <a href="#place-nemanjic-court-of-beograd">Beograd</a> before the journey into <strong>Serbia</strong>; the group wondered whether he would give them away.</li>
+                                    <li><strong id="master-of-hunt-stanislav">Master-of-Hunt Stanislav</strong> (mid-30s): He escorted <a href="#prince-miklos-csak">Miklós</a> on the embassy and left <a href="#place-nemanjic-court-of-beograd">Beograd</a> by night, with <a href="#prince-miklos-csak">Miklós</a>’s agreement, to report to <a href="#ispan-ugrin-csak">Ugrin</a> in <a href="#place-csak-court-of-ilok-ujlak">Ilok</a>, expected back in <a href="#place-triarchy-of-mitrovica">Mitrovica</a> with <a href="#ispan-ugrin-csak">Ugrin</a>’s new orders.</li>
+                                    <li><strong id="queen-maria-of-naples">Queen Mária of Naples</strong> (mid-40s) [<a href="images/storyteller/characters/char-queen-maria-of-naples.png">portrait</a>]: The sister of <strong>László IV</strong> and of <a href="#queen-erzsebet-of-serbia">Erzsébet</a>, also known as <a href="#queen-maria-of-naples">the Golden Witch</a>. She married <a href="#king-charles-ii-of-naples">Charles II of Naples</a> in 1270, negotiated his release in 1289, freed <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a>, claimed the crown in 1290 and passed her claim to her son <strong>Charles Martel</strong> in 1292 and then to her grandson <a href="#king-charles-robert-i-of-hungary">Charles Robert</a>. In 1300 she had <a href="#salvatore">Salvatore</a> execute <a href="#captain-garvyn">Captain Garvyn</a>, rode with <strong>Casimir</strong> to <a href="#place-nemanjic-court-of-ras-trgoviste">Trgovište</a>, where she confessed she was <a href="#queen-erzsebet-of-serbia">Erzsébet</a>’s sister, and was assaulted by <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> in the church of <strong>Berane</strong>. With <a href="#jelena-duka-andelina">Zoe</a> she planned <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>’s death at <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>, then took the twin sisters and <a href="#prince-stefan-konstantin">Konstantin</a> to <strong>Ostrog</strong> and <strong>Stupovi</strong>. She later proposed that <strong>Leo</strong> become constable of <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, and promised <strong>Pavo</strong> her help in return for his absolute loyalty.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-kotromanic-court-of-bobovac">Kotromanić court of Bobovac</span>
+                                <ul>
+                                    <li><strong id="ban-stjepan-kotromanic-of-bosnia">Ban Stjepan Kotromanić of Bosnia</strong> (late-50s): An ally of <a href="#ispan-ugrin-csak">ispán Ugrin</a> and of <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> in the old alliance, to whom <a href="#prince-stefan-vladislav-ii">Vladislav</a> was to lead an embassy reaffirming loyalty. He is to receive <a href="#ban-king-albertino-morosini-of-all-croatia">Albertino Morosini</a>, which is suspicious, and the heretical Bosnian Church is growing stronger in his lands.</li>
+                                    <li><strong id="banitsa-jelisaveta">Banitsa Jelisaveta</strong> (late-20s): An older child of <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> and <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a>, whom <a href="#ispan-ugrin-csak">Ugrin</a> commanded <a href="#bishop-vencel-of-mitrovica">Bishop Vencel</a> to imply is a bastard like <a href="#princess-urosica">Urošica</a>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-morosini-court-of-ragusa">Morosini court of Ragusa</span>
+                                <ul>
+                                    <li><strong id="ban-king-albertino-morosini-of-all-croatia">Ban (King) Albertino Morosini of All Croatia</strong> (early-60s): The maternal uncle of <a href="#king-andras-iii-of-hungary-and-croatia">András III</a>, made Ban of <strong>Slavonia</strong> and heir in 1299, who set himself up in Venetian-allied <a href="#place-morosini-court-of-ragusa">Ragusa</a> as co-king of <strong>Croatia</strong>, driving the Croatian prelates into open rebellion. He is rumoured to have joined forces with the Bosnian heretics and is to be received by <a href="#ban-stjepan-kotromanic-of-bosnia">Ban Stjepan Kotromanić</a>. He seems to have a heavy hand in many events, but no one has investigated him yet; members of his house fill the costly inn near <a href="#place-nemanjic-court-of-beograd">Beograd</a>.</li>
+                                    <li><strong id="sandra-d-aquileia">Sandra d'Aquileia</strong> [<a href="images/storyteller/characters/char-sandra-daquileia.png">portrait</a>]: A well-dressed but weary Venetian woman travelling alone in the <strong>Balkans</strong>, whom <strong>Leo</strong> met at the inn of <a href="#place-triarchy-of-mitrovica">Mitrovica</a>. She avoided talk of spirits and satanic powers, asked to sleep in <a href="#princess-urosica">Urošica</a>’s room, and vanished overnight, leaving a letter: "I will wait for you in <a href="#place-nemanjic-court-of-beograd">Beograd</a>. I will give you one more chance. You have ten days." In <a href="#place-nemanjic-court-of-beograd">Beograd</a> she had <strong>Leo</strong> pay for a meeting with <a href="#larissa-the-belly-dancer">Larissa</a>, revealed that <a href="#captain-milos">Miloš</a> had killed <a href="#larissa-the-belly-dancer">Larissa</a>’s family and cursed her village, gave <a href="#larissa-the-belly-dancer">Larissa</a> a key to his journal, and vanished through a window.</li>
+                                    <li><strong id="ludmila">Ludmila</strong> (late-teens) [<a href="images/storyteller/characters/char-ludmila-of-trgoviste.jpg">portrait</a>]: A barmaid of the tavern of <a href="#place-nemanjic-court-of-ras-trgoviste">Trgovište</a> below <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>, who moonlighted as a whore for <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>’s tsupans. She was drawn to <strong>Casimir</strong>’s wolf-self, but when <strong>Casimir</strong>, as the wolf, ate her estranged father, she left for <a href="#place-morosini-court-of-ragusa">Dubrovnik</a>, where she sold herself as a sex-slave. <strong>Casimir</strong> realised who the man was only after she had gone.</li>
+                                    <li><strong id="olga">Olga</strong>: A street whore of <a href="#place-morosini-court-of-ragusa">Ragusa</a>, whom <strong>Casimir</strong> hired, who gave him much of the information he wanted, but led him into many <em>inconvenient</em> situations.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-nemanjic-court-of-beograd">Nemanjić court of Beograd</span>
+                                <ul>
+                                    <li><strong id="ban-king-stefan-dragutin-of-syrmia">Ban (King) Stefan Dragutin of Syrmia (Serbia)</strong> (late-40s) [<a href="images/storyteller/characters/char-stefan-dragutin.jpg">portrait</a>]: He deposed his father <strong>Uroš I</strong> in 1276, abdicated in favour of his brother <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> in 1282 after falling from his horse and being crippled, and was made Ban of <strong>Syrmia</strong> by <strong>László IV</strong> in 1284. In 1300 he is gathering an army against <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> or the Bulgar hordes, is loyal to the old alliance, and suspicious of the Neapolitan, papal and Roman embassies converging on <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>. He has restored the fortifications of <a href="#place-nemanjic-court-of-beograd">Beograd</a> and decorated his <a href="#place-nemanjic-court-of-beograd">White Keep</a> with Byzantine opulence, and no one knows the source of his wealth. With <a href="#prince-stefan-uros-iii-decanski">Dečanski</a> he is preparing to attack <strong>Bulgaria</strong>.</li>
+                                    <li><strong id="prince-vladislaus-of-syrmia-serbia-and-bosnia">Prince Vladislaus of Syrmia, Serbia, and Bosnia</strong> (pre-teen) [<a href="images/storyteller/characters/char-vladislaus-of-bosnia.jpg">portrait</a>]: <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>'s grandson who he raised to be his heir, currently infatuated with a white owl <strong>Leo</strong> believes to be <a href="#princess-urosica">Urošica</a>.</li>
+                                    <li><strong id="castellan-bodor">Castellan Bodor</strong></li>
+                                    <li><strong id="captain-milos">Captain Miloš</strong> (mid-40s) [<a href="images/storyteller/characters/char-captain-milos.jpg">portrait</a>]: He presents himself as <a href="#larissa-the-belly-dancer">Larissa</a>’s protector and father, but according to <a href="#sandra-d-aquileia">Sandra</a> he killed her family, cursed her village and took her with him to exploit her. He keeps a journal hidden under his bed. He is also pimping <a href="#larissa-the-belly-dancer">Larissa</a> to the rich of <a href="#place-nemanjic-court-of-beograd">Beograd</a>.</li>
+                                    <li><strong id="larissa-the-belly-dancer">Larissa, the belly dancer</strong> (teen) [<a href="images/storyteller/characters/char-larissa.png">portrait</a>]: A famous fifteen-year-old performer under the control of <a href="#captain-milos">Miloš</a>. <strong>Leo</strong> paid a fortune for a meeting with her, and after <a href="#sandra-d-aquileia">Sandra</a>’s revelations offered her refuge and protection in <a href="#place-triarchy-of-mitrovica">Mitrovica</a>.</li>
+                                </ul>
+                            </li>
+                            <li><span class="place" id="place-bogomil-heretics-of-vrhbosna">Bogomil heretics of Vrhbosna</span></li>
+                            <li>
+                                <span class="place" id="place-nemanjic-court-of-ras-trgoviste">Nemanjić court of Ras / Trgovište</span>
+                                <ul>
+                                    <li><strong id="king-stefan-uros-ii-milutin-of-serbia">King Stefan Uroš II Milutin of Serbia</strong> (died in spring of 1300): He succeeded his brother <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> in 1282, married Princess <a href="#queen-erzsebet-of-serbia">Erzsébet</a> in 1283 and, after her death, <a href="#queen-ana-terter">Ana Terter</a>. In 1300 he was to marry six-year-old <a href="#queen-simonis-palaiologina">Simonis</a>. He assaulted <a href="#queen-maria-of-naples">Queen Maria</a> in the church of <strong>Berane</strong>, lost his hands to <strong>Pavo</strong> and his head, which joined back to his body, and burned <strong>Berane</strong>. At <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a> he skinned and ate <a href="#father-mateo">Mateo</a> and <a href="#queen-ana-terter">Ana</a>, and at his wedding he was poisoned by <a href="#queen-simonis-palaiologina">Simonis</a> and <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a>. They all waited while he raped Simonis to get her with child, which was impossible, and then pleased himself with Elisabetta in front of her; then <a href="#prince-stefan-uros-iii-decanski">Dečanski</a> slew him, with <strong>Pavo</strong>, <strong>Casimir</strong> and <strong>Leonardo</strong> helping in the patricide.</li>
+                                    <li><strong id="queen-ana-terter">Queen Ana Terter</strong>: The Bulgarian princess, daughter of the tsar, whom <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> married in 1284 after <a href="#queen-erzsebet-of-serbia">Erzsébet</a>’s death. In <strong>Casimir</strong>’s dream she was imprisoned at <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a> and led him and <a href="#father-mateo">Mateo</a> out into the forest; <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> later skinned her with <a href="#father-mateo">Mateo</a> in the courtyard of <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a> and ate her body.</li>
+                                    <li><strong id="queen-erzsebet-of-serbia">Queen Erzsebet of Serbia</strong> (died in 1284): The sister of <strong>László IV</strong> and of <a href="#queen-maria-of-naples">Queen Maria</a>, she married <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> in 1283, and in 1286 she encouraged <strong>László IV</strong> to imprison <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a>. The Venetian merchants say she was not pious and gave <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> only daughters, the twins <a href="#princesses-neda-and-zorica">Neda and Zorica</a>. Her grave at <a href="#place-nemanjic-court-of-ras-trgoviste">Trgovište</a> reads "Here lies the inobedient consort of the king who died on the second winter of the reign of king <strong>Uroš</strong>", and the monk <strong>Vlad</strong> called her a whore who slept with all the king’s men. In <strong>Casimir</strong>’s dream she appeared as an old woman sitting on her grave and gave him a potion that, dropped into <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>’s wounds, stops them healing more than once. A skeleton, likely hers, lies in the cave beneath the twins’ hovel.</li>
+                                    <li><strong id="jelena-duka-andelina">Jelena Duka Anđelina</strong> (late-40s) [<a href="images/storyteller/characters/char-princess-jelena-duka-andelina.jpg">portrait</a>]: She travelled as <a href="#jelena-duka-andelina">Zoe</a>, the handmaiden of <a href="#queen-simonis-palaiologina">Simonis</a>, and was revealed as <a href="#jelena-duka-andelina">Angelina</a>, duchess of <strong>Thessaly</strong>. She knew <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> was a monster and planned his death, explained that when a wolf pack’s founder dies his pack’s wounds return, and that <strong>Casimir</strong> would be protected by wearing the wolf’s skin. She went with <a href="#queen-maria-of-naples">Queen Maria</a>, the twins and <a href="#prince-stefan-konstantin">Konstantin</a> to <strong>Ostrog</strong> and <strong>Stupovi</strong>.</li>
+                                    <li><strong id="prince-stefan-uros-iii-decanski">Prince Stefan Uroš III Dečanski</strong> (late-20s) [<a href="images/storyteller/characters/char-prince-stefan-uros-iii-decanski.jpg">portrait</a>]: <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>’s firstborn, who first appeared as a Varangian guard at the inn of <a href="#place-market-town-of-podgorica">Podgorica</a>. He slew <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> at his wedding with <strong>Pavo</strong>, <strong>Casimir</strong> and <strong>Leonardo</strong>, after his father had raped <a href="#queen-simonis-palaiologina">Simonis</a> and <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a>, and set fire to the fortress of <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>. He is now the new emperor of <strong>Serbia</strong>, and is preparing with <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> to attack <strong>Bulgaria</strong>.</li>
+                                    <li><strong id="queen-simonis-palaiologina">Queen Simonis Palaiologina</strong> (pre-teen) [<a href="images/storyteller/characters/char-princess-simonis-palaiologina.jpg">portrait</a>]: The six-year-old daughter of the Byzantine emperor, brought to <a href="#place-village-of-ulqin">Ulcinj</a> on a great ship to marry <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>. She was to poison him at the wedding. On the wedding night he raped her to get her with child, which was impossible, and then pleased himself with <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a> in front of her.</li>
+                                    <li><strong id="ambassador-theodore-metochites">Ambassador Theodore Metochites</strong> (early-40s) [<a href="images/storyteller/characters/char-ambassador-theodore-metochites.jpg">portrait</a>]: <a href="#ambassador-theodore-metochites">Theodoros</a>, the chief Byzantine diplomat, who negotiated the wedding and peace treaty at the monastery of <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a> in <a href="#place-nemanjic-court-of-shkoder">Skadar</a>, brought the two queens to her, kept <strong>Pavo</strong>’s armour at the monastery of <a href="#place-market-town-of-podgorica">Podgorica</a>, and took <strong>Leonardo</strong> up the hill in <a href="#place-village-of-ulqin">Ulcinj</a> to <a href="#yuri-the-librarian">Yuri</a>’s underground shop and helped him obtain the manuscripts.</li>
+                                    <li><strong id="presbyter-hvalimir">Presbyter Hvalimir</strong>: The presbyter of the monastery at <a href="#place-nemanjic-court-of-ras-trgoviste">Trgovište</a>, who told <strong>Casimir</strong> that the wolves are evil and dangerous, that <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> killed the wolf and took his skin and his power, so that ever since all the wolves hate the people, and that the group will be safe only if they follow the path of the Lord and not the goat away from it, which he called Satan.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-nemanjic-court-of-shkoder">Nemanjić court of Shkodër</span>
+                                <ul>
+                                    <li><strong id="abbess-queen-dowager-of-serbia-jelena">Abbess (Queen dowager of Serbia) Jelena</strong> (late-70s) [<a href="images/storyteller/characters/char-sister-jelena-of-serbia.jpg">portrait</a>]: The mother of <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> and <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>, now an Orthodox nun in <a href="#place-nemanjic-court-of-shkoder">Rozafa castle</a>. She called <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a> and <a href="#queen-maria-of-naples">Maria</a> her sisters, said she was happy to see them in her last moments, and claimed to be a child of <strong>Charles of Anjou</strong>, born before <a href="#king-charles-ii-of-naples">Charles II</a>. She agreed to grant <a href="#inquisitor-giovanni">Giovanni</a> an audience.</li>
+                                    <li><strong id="sister-princess-brnjaca">Sister (Princess) Brnjača</strong> (mid-20s) [<a href="images/storyteller/characters/char-sister-brnjaca.jpg">portrait</a>]: <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a>’s daughter, an Orthodox nun who welcomed the group to <a href="#place-nemanjic-court-of-shkoder">Rozafa castle</a>, built sixty years ago on older ruins. She admitted that she has been investigating the ghosts of the castle, which have haunted it for generations.</li>
+                                    <li><strong id="prince-stefan-konstantin">Prince Stefan Konstantin</strong> (late-teens) [<a href="images/storyteller/characters/char-prince-stefan-konstantin.jpg">portrait</a>]: <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>’s son and a tsupan, an honest man who cares for the villagers of his ward and criticises his father’s war against the Greeks. He met the group at <a href="#queen-erzsebet-of-serbia">Erzsébet</a>’s grave searching for his half-sisters, believes his father is the Antichrist, and loved <strong>Anastasija</strong>, the herbalist and healer girl of <strong>Berane</strong> who gave <strong>Casimir</strong> something for his pain. When <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>’s wolves took <strong>Berane</strong>, one of his henchmen cut off her head in the church; <a href="#prince-stefan-konstantin">Konstantin</a> wept over her, and the next day the group buried her. <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> tore off his knee, which healed. <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> later burned <strong>Berane</strong> to the ground. He roused the villagers of <strong>Metasovo</strong> against <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>, cared for <strong>Casimir</strong> in the twins’ hovel, and now recovers in <a href="#place-nemanjic-court-of-shkoder">Skadar</a> with <a href="#princesses-neda-and-zorica">Neda and Zorica</a>.</li>
+                                    <li><strong id="princesses-neda-and-zorica">Princesses Neda and Zorica</strong> (teens) [<a href="images/storyteller/characters/char-princess-ana-neda.png">portrait</a>]: <a href="#princesses-neda-and-zorica">Ana-Neda and Zorica</a>, <a href="#queen-erzsebet-of-serbia">Erzsébet</a>’s twin daughters by <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>, joined in body. They lived in a hovel in the woods above <a href="#place-market-town-of-podgorica">Podgorica</a>, tended <strong>Casimir</strong>, and led a cult of children to Morana at the ruins of <strong>Doclea</strong> until <strong>Pavo</strong> broke up their rite. They went with <a href="#queen-maria-of-naples">Queen Maria</a> and <a href="#prince-stefan-konstantin">Konstantin</a> to <strong>Ostrog</strong> and now shelter in <a href="#place-nemanjic-court-of-shkoder">Skadar</a> <em>reeducated</em> brutally by the nuns to denounce the devil they had accepted and return to the path of God.</li>
+                                    <li><strong id="inquisitor-giovanni">Inquisitor Giovanni</strong>: He sent <a href="#salvatore">Salvatore</a> and <strong>Casimir</strong> to explore <a href="#place-nemanjic-court-of-shkoder">Rozafa castle</a>, was granted an audience by <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a>, and has gone to <strong>Ochrid</strong> to study the Bogomils.</li>
+                                    <li><strong id="captain-garvyn">Captain Garvyn</strong> (died): The captain of the boat to <a href="#place-village-of-ulqin">Ulcinj</a>, who got drunk in the tavern and told everyone he was carrying two Saxon princesses. <a href="#queen-maria-of-naples">Queen Maria</a> had <a href="#salvatore">Salvatore</a> execute him, and he is buried near the basilica of <a href="#place-nemanjic-court-of-shkoder">Skadar</a>.</li>
+                                    <li><strong id="presbyter-vukasin">Presbyter Vukašin</strong>: The presbyter of the basilica of Saint Stephen and its graveyard in <a href="#place-nemanjic-court-of-shkoder">Skadar</a>, knowledgeable in both the eastern and western rites and suspected of manipulation. He shared that <a href="#barjan">Barjan</a> and <a href="#flaka">Flaka</a> had seen the ghost girl on the walls, and that the former presbyter killed himself over a deadly sin, according to the records of the patriarchate of <strong>Peć</strong>.</li>
+                                    <li><strong id="barjan">Barjan</strong> (50s): An Albanian cook of the old local families of <a href="#place-nemanjic-court-of-shkoder">Skadar</a> and the husband of <a href="#dragana">Dragana</a>. He has seen the ghost girl on the walls, and in his youth explored the haunted castle with his brother <a href="#florin">Florin</a> to find <a href="#rozafa">Rozafa</a>’s hair.</li>
+                                    <li><strong id="dragana">Dragana</strong>: A Slav innkeeper, the wife of <a href="#barjan">Barjan</a>.</li>
+                                    <li><strong id="florin">Florin</strong>: <a href="#barjan">Barjan</a>’s brother, who disappeared in <a href="#place-nemanjic-court-of-shkoder">Rozafa castle</a> in their youth, before <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a> and the Orthodox clergy arrived. <a href="#flaka">Flaka</a> says the former presbyter married him to <a href="#rozafa">Rozafa</a> in Hell.</li>
+                                    <li><strong id="mimoza">Mimoza</strong>: A cotton spinner of the old local families, who sold the group cloth and speaks poor Italian.</li>
+                                    <li><strong id="vera">Vera</strong>: An apprentice healer, <a href="#mimoza">Mimoza</a>’s friend, who translated for her and introduced the group to <a href="#flaka">Flaka</a>.</li>
+                                    <li><strong id="flaka">Flaka</strong> (70s): <a href="#vera">Vera</a>’s grandmother, an alcoholic and the matriarch of the <strong>Tophane</strong> cotton farms. She has seen the ghost girl on the walls, and told of <a href="#barjan">Barjan</a> and <a href="#florin">Florin</a> exploring the haunted castle.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-market-town-of-podgorica">Market town of Podgorica</span>
+                                <ul>
+                                    <li><strong id="olga-of-podgorica">Olga of Podgorica</strong>: The innkeeper of an inn in <a href="#place-market-town-of-podgorica">Podgorica</a>, where <strong>Pavo</strong> and <strong>Leonardo</strong> ate lunch; she told them that everyone who goes to the <strong>Metochia</strong> to be healed returns changed, and that one should go there only if desperate.</li>
+                                    <li><strong id="salvatore">Salvatore</strong>: A sergeant of the queens’ guard who shared with <strong>Casimir</strong> a dream of a girl walled into the fortress of <a href="#place-nemanjic-court-of-shkoder">Skadar</a>, and executed <a href="#captain-garvyn">Captain Garvyn</a> on <a href="#queen-maria-of-naples">Queen Maria</a>’s orders. He went to the ruins of <strong>Doclea</strong> and never returned.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-triarchy-of-mitrovica">Triarchy of Mitrovica</span>
+                                <ul>
+                                    <li><strong id="orthodox-episcope-sava-of-syrmia">Orthodox Episcope Sava of Syrmia</strong> (s): <a href="#orthodox-episcope-sava-of-syrmia">Father Sava</a> was of no help when the group questioned him. He was frightened when <strong>Leo</strong> carried a corpse to him through the streets, and arranged its burial with <a href="#bishop-vencel-of-mitrovica">Vencel</a>; later he dined with <strong>Leo</strong> and <a href="#bishop-vencel-of-mitrovica">Vencel</a> and agreed to begin a new port with two piers.</li>
+                                    <li><strong id="bishop-vencel-of-mitrovica">Bishop Vencel of Mitrovica</strong> (early-40s): <a href="#ispan-ugrin-csak">Ugrin</a>’s bastard and the true father of <a href="#princess-urosica">Urošica</a>, who accepted <a href="#ispan-ugrin-csak">Ugrin</a>’s plan to reveal <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a>’s children as <a href="#ispan-ugrin-csak">Ugrin</a>’s bastards. He buried <a href="#princess-urosica">Urošica</a> and <a href="#father-mateo">Mateo</a>, received <strong>Leo</strong> as constable and settled him in the old episcopal palace, and owns an extensive library on religion, folklore and warfare.</li>
+                                    <li><strong id="prince-stefan-vladislav-ii">Prince Stefan Vladislav II</strong> (died in spring of 1300): <a href="#prince-stefan-vladislav-ii">Vladislav</a>, the firstborn of <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> and <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a> and <a href="#ispan-ugrin-csak">Ugrin</a>’s tax-collector in <a href="#place-triarchy-of-mitrovica">Mitrovica</a>. He confiscated the archbishop’s journal from <a href="#princess-urosica">Urošica</a>, was the tall hooded figure seen climbing over <a href="#bishop-vencel-of-mitrovica">Vencel</a>’s walls, arrested the group, and fed on corpses with the risen <a href="#princess-urosica">Urošica</a>. The group killed him in his house, which then flooded.</li>
+                                    <li><strong id="princess-urosica">Princess Urošica</strong> (teen) [<a href="images/storyteller/characters/char-urosica.png">portrait</a>]: <a href="#bishop-vencel-of-mitrovica">Vencel</a>’s daughter rather than <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>’s. She found the journal of <a href="#archbishop-ugrin-csak-of-kalocsa">Archbishop Ugrin Csák of Kalocsa</a>, died, and rose from her grave at night as the leader of the undead. She has vanished from <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, perhaps to the heretics of <strong>Bosnia</strong> or to <a href="#place-nemanjic-court-of-beograd">Beograd</a> seeking <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>, whom she believed to be her father; she may now drink blood, and young Serbian men are dying in <a href="#place-nemanjic-court-of-beograd">Beograd</a> one each night.</li>
+                                    <li><strong id="banitsa-queen-consort-katalina-of-syrmia">Banitsa (Queen) consort Katalina of Syrmia</strong> (mid-40s) [<a href="images/storyteller/characters/char-katalina.jpg">portrait</a>]: <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>’s wife and <a href="#queen-maria-of-naples">Queen Maria</a>’s sister, suspiciously absent from <a href="#bishop-vencel-of-mitrovica">Vencel</a>’s house. <a href="#ispan-ugrin-csak">Ugrin</a> plans to reveal her children as his bastards. She was devoured by the huge tree at the monastery of <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, which <strong>Leo</strong> later burned.</li>
+                                    <li><strong id="old-mihaly">Old Mihály</strong> (early-70s) [<a href="images/storyteller/characters/char-mihaly-of-mitrovica.jpg">portrait</a>]: The village madman and eccentric Teutonic alchemist of <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, who once served the Teutons in the <a href="#place-former-teutonic-chapterhouse-of-marienburg">Burzenland</a>. He told of the <a href="#the-swamp-lord-of-macso">swamp lord of Macsó</a>, of <a href="#princess-urosica">Urošica</a> leading the undead, of the corruption of <a href="#comptor-siward-of-the-burzenland">Comptor Siward</a>, and that <a href="#place-triarchy-of-mitrovica">Mitrovica</a> is lost to an ancient evil he wants to study to warn others. He gave <strong>Leo</strong> a dangerous book of <strong>Hermes Trismegistus</strong>.</li>
+                                    <li><strong id="father-mateo">Father Mateo</strong> (died): The group’s priest, who saw in the dreams a perversion of the Magi bringing gifts to the Antichrist born of the Whore of Babylon. Captured by the wolves, he was tortured until he lost his faith, then skinned and eaten by <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> at <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>. <a href="#bishop-vencel-of-mitrovica">Bishop Vencel</a> buried his remains in <a href="#place-triarchy-of-mitrovica">Mitrovica</a>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-village-of-ulqin">Village of Ulqin</span>
+                                <ul>
+                                    <li><strong id="yuri-the-librarian">Yuri, the librarian</strong> (early-70s): A sketchy hunchback whose underground shop is full of satanic and Arabic writings. He gave <strong>Leonardo</strong> twenty doses of liquid fire and ancient texts, and told <strong>Casimir</strong> that the witch of <a href="#place-market-town-of-podgorica">Podgorica</a>, <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a>, turned into two girls to corrupt the people.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="place" id="place-beyond-the-realm-of-saint-stephen">Beyond the realm of Saint Stephen</span>
+                        <ul>
+                            <li><span class="place" id="place-basarab-court-of-arges">Basarab court of Argeș</span></li>
+                            <li><span class="place" id="place-bellonid-court-of-barcelona">Bellonid court of Barcelona</span></li>
+                            <li>
+                                <span class="place" id="place-capet-court-of-paris">Capet court of Paris</span>
+                                <ul>
+                                    <li><strong id="king-philip-iv-the-fair-of-france">King Philip IV the Fair of France</strong> (early-30s): In 1289 he helped <a href="#queen-maria-of-naples">Queen Maria</a> negotiate the release of her husband, <a href="#king-charles-ii-of-naples">King Charles II of Naples</a>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-capter-anjou-court-of-neapoli">Capter-Anjou court of Neapoli</span>
+                                <ul>
+                                    <li><strong id="king-charles-ii-of-naples">King Charles II of Naples</strong> (mid-40s): He married <a href="#queen-maria-of-naples">Queen Maria</a> in 1270, was captured by the Sicilian admiral <strong>Roger of Lauria</strong> in 1284 and released in 1289. In 1296 he had Pope <a href="#papa-bonifacius-viii">Bonifacius VIII</a> exclude <strong>Charles Martel</strong>’s line from the succession of <a href="#place-capter-anjou-court-of-neapoli">Naples</a> in favour of his son <strong>Robert</strong>, and in 1300 accepted the Croatian proposal and borrowed 1,300 ounces of gold from Florentine bankers to send <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> to <strong>Hungary</strong>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-habsburg-court-of-wien">Habsburg court of Wien</span>
+                                <ul>
+                                    <li><strong id="king-albrecht-i-of-the-germans">King Albrecht I of the Germans</strong> (mid-40s): The father of Queen <a href="#queen-agnes-of-austria">Agnes of Austria</a>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-palaiologos-court-of-konstantinoupolis">Palaiologos court of Konstantinoupolis</span>
+                                <ul>
+                                    <li><strong id="emperor-andronikos-ii-palaiologos">Emperor Andronikos II Palaiologos</strong> (early-40s): His flag flew on the great ship that brought his youngest daughter <a href="#queen-simonis-palaiologina">Simonis</a> to <a href="#place-village-of-ulqin">Ulcinj</a> to marry <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>.</li>
+                                </ul>
+                            </li>
+                            <li><span class="place" id="place-piast-court-of-krakow">Piast court of Kraków</span></li>
+                            <li><span class="place" id="place-premyslid-court-of-prague">Přemyslid court of Prague</span></li>
+                            <li>
+                                <span class="place" id="place-romanovich-court-of-lviv">Romanovich court of Lviv</span>
+                                <ul>
+                                    <li><strong id="king-lev-i-of-galicia">King Lev I of Galicia</strong> (early-70s): .</li>
+                                </ul>
+                            </li>
+                            <li><span class="place" id="place-terter-court-of-tarnovo">Terter court of Tarnovo</span></li>
+                            <li>
+                                <span class="place" id="place-the-holy-see-of-rome">The Holy See of Rome</span>
+                                <ul>
+                                    <li><strong id="papa-bonifacius-viii">Papa Bonifacius VIII</strong> (early-70s): In 1296 he excluded <strong>Charles Martel</strong>’s line from the succession of <a href="#place-capter-anjou-court-of-neapoli">Naples</a> at the request of King <a href="#king-charles-ii-of-naples">Charles II</a>. <strong>Pavo</strong> carries his letter to <a href="#archbishop-janos-hont-pazmany-of-kalocsa">the archbishop of Kalocsa</a>, which orders the rebuilding of the Teutonic chapter of <strong>Transylvania</strong>.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="place" id="place-the-republic-of-venice">The Republic of Venice</span>
+                                <ul>
+                                    <li><strong id="doge-pietro-gradenigo">Doge Pietro Gradenigo</strong> (late-40s): .</li>
+                                    <li><strong id="grandmaster-gottfried-von-hohenlohe">Grandmaster Gottfried von Hohenlohe</strong> (mid-30s): .</li>
+                                </ul>
+                            </li>
+                            <li><span class="place" id="place-wittelsbach-court-of-munich">Wittelsbach court of Munich</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="place" id="place-dreams-visions-and-the-world-beyond">Dreams, visions and the world beyond</span>
+                        <ul>
+                            <li><strong id="hamelin">Hamelin</strong>: <a href="#hamelin">The Gentleman</a>. A polite man dressed as a Venetian merchant who welcomed <strong>Casimir</strong> in a dream and opened a chained door to a stairway leading down; <strong>Casimir</strong> and <strong>Pavo</strong> believe he is the same as the goat whose presence they felt at the ruins of <strong>Doclea</strong>, and which <a href="#presbyter-hvalimir">the presbyter of Trgovište</a> called Satan; and so he is.</li>
+                            <li><strong id="the-real-king-of-all-the-wolves">The real king of all the wolves</strong>: In <strong>Casimir</strong>’s dream he was found without his skin and bound in chains, and said, "Finally some souls which have not yet surrendered and will save us". The presbyter of <a href="#place-nemanjic-court-of-ras-trgoviste">Trgovište</a> says <a href="#king-stefan-uros-ii-milutin-of-serbia">Stefan Uroš</a> killed the wolf and took his skin and his power, and that ever since all the wolves hate the people.</li>
+                            <li><strong id="the-faceless-black-priest">The faceless black priest</strong>: A figure in black that writes stories in a book. In <strong>Casimir</strong>’s dreams he wrote down <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>’s tale with his pen dipped in <strong>Anastasija</strong>’s severed head; in <strong>Ion</strong>’s vision he was a huge statue with a face like a dark rippling lake, writing in a book before kneeling human statues, among them <strong>Ion</strong>’s father. <a href="#queen-maria-of-naples">Queen Maria</a> says a black figure like him is a legend of the Árpád family, who makes people write stories about the family’s enemies in the castle of <a href="#place-arpad-venetian-branch-of-buda">Buda</a>.</li>
+                            <li><strong id="the-swamp-lord-of-macso">The swamp lord of Macsó</strong>: According to <a href="#old-mihaly">Old Mihály</a>, a mentally unstable lord who lives in a mausoleum and commands the dead, and who is to blame for the ancient evil that has taken <a href="#place-triarchy-of-mitrovica">Mitrovica</a>.</li>
+                            <li><strong id="rozafa">Rozafa</strong>: The ghost of the girl walled into the fortress of <a href="#place-nemanjic-court-of-shkoder">Skadar</a>, who begs for water on the walls. <a href="#florin">Florin</a> wanted to marry her, and <strong>Leo</strong> is haunted by her soul. After <a href="#place-triarchy-of-mitrovica">Mitrovica</a> <strong>Leo</strong> dreamed of her caught in the tree that devoured <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a>, unable to speak, and saw a trail of rot leading from the tree towards <a href="#place-nemanjic-court-of-beograd">Beograd</a>; he believes she is trapped by <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section data-depth="1" id="prequel-the-siege-of-acre">
+                <h1 class="d1">Prequel: The Siege of Acre (1291)</h1>
+                <p>By 1291 the <strong>Kingdom of Jerusalem</strong> had shrunk to a strip of coast around <strong>Acre</strong>, its capital, the seat of the Latin Patriarch and the headquarters of the Templars, the Hospitallers and the Teutonic Order, with the fortified quarters of <a href="#place-the-republic-of-venice">Venice</a>, <strong>Genoa</strong> and <strong>Pisa</strong>. In August 1290 newly arrived Italian crusaders massacred Muslim merchants and peasants around the city, and Sultan <strong>Qalawun</strong> of <strong>Egypt</strong> took it as his cause for war. He died on the march that November, but his son, <strong>al-Ashraf Khalil</strong>, refused every offer of peace.</p>
+                <p>In January 1291 the Grand Master of the Teutonic Order, <strong>Burchard von Schwanden</strong>, resigned and left <strong>Acre</strong> for <strong>Europe</strong>. In the spring the Genoese made their own peace and withdrew, and many women and children were sent to <strong>Cyprus</strong>. On 6 April the sultan's army camped before the walls, and the great trebuchets of the Syrian contingents arrived two days later. For six weeks the defenders raided the Mamluk lines, among them the Templars' night attack with Greek fire on 27 April, while the mangonels battered the walls and the sappers mined the towers. King <strong>Henry II</strong> came from <strong>Cyprus</strong> on 4 May with some 700 men, but judged the city lost, and the last parley ended when a stone from the walls landed near the sultan's tent.</p>
+                <p>Before dawn on 18 May the whole Mamluk army attacked to the sound of drums. By nine in the morning the <strong>Accursed Tower</strong> had fallen and the Grand Master of the Temple, <strong>Guillaume de Beaujeu</strong>, was mortally wounded at the <strong>Gate of Saint Anthony</strong>. By the afternoon the Mamluks were in the streets, and the flight to the harbour became a scramble for the few ships left, their captains selling passage for fortunes. The Templar compound held out until 28 May, when its last tower, undermined, surrendered and collapsed.</p>
+                <p><strong>Pavo</strong>, a fisherman's son of the <strong>Zadar</strong> islands given to the Teutonic Order as a boy, was a young brother-sergeant in <strong>Acre</strong>. He survived its fall, bearing the shield of the last Teuton brother to die on its walls, bathed in their blood, and he has carried it ever since; it is why he is called <strong>Pavo d'Acri</strong>.</p>
+            </section>
+            <section data-depth="1" id="first-story-proserpina">
+                <h1 class="d1">1st Story: Proserpina</h1>
+                <p>In February 1300 the group crossed the <strong>Adriatic</strong> aboard the <em>Proserpina</em>, a sailboat hired under <a href="#captain-garvyn">Captain Garvyn</a>, escorting <a href="#queen-maria-of-naples">Queen Mária of Naples</a> and <a href="#queen-dowager-elisabetta-of-hungary">the dowager queen Elisabetta</a> on a secret mission: to negotiate with <a href="#queen-maria-of-naples">Mária</a>'s sisters, <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a> and <a href="#queen-erzsebet-of-serbia">Erzsebet</a>, in <strong>Serbia</strong>, and so secure the claim of her grandson, <a href="#king-charles-robert-i-of-hungary">Charles Robert</a>, to the Crown of Saint Stephen. With them sailed the queen's confessor, <a href="#father-mateo">Father Mateo</a>, and <a href="#salvatore">Salvatore</a>.</p>
+                <p><a href="#captain-garvyn">Captain Garvyn</a> turned out to be haunted by the ghosts of bodies he had thrown into the sea. While the group was confronting the spectres the crew revolted, and the damaged ship was wrecked on the southern shores of the island of <strong>Vis</strong> on Sunday 29 February 1300. There they met <strong>Casimir</strong>, a Serbian ranger stranded on the island, who joined them.</p>
+                <p><strong>Vis</strong> is heavily forested and ringed by steep cliffs. A cave system on the southern shore, reached by climbing or by a small rowboat, led to an alchemical or necromantic laboratory connected to the mausoleum of the Morosini family, who rule the island; the wrecked <em>Proserpina</em> was abandoned there. Two paths circle the island's central peak, and midway along them stand two "black marble" statues, each about three metres tall, of cloaked and hooded women hiding their weeping faces with one hand and pointing west with the other.</p>
+                <p>The Morosini live in a massive mansion with its own seaport on the hill west of the village, and trade with the other Venetian islands and the mainland. They seemed of lesser intelligence, their blood was clotted, and they did not seem to feel pain, even when mutilated. Between the mansion and the church stood a small abandoned Byzantine church, most of its Orthodox saints defaced and its iconostasis painted with satanic images. The small village on the northern shore, fewer than a hundred souls living from fishing and farming, helped the group against the nobles ruling the island, though reluctantly.</p>
+                <p>The group stole the Morosini sailboat, and aboard it found a mysterious letter in which "Christ", the "sheep-lion" and the "Creator" carried double meanings, and the Apocalypse was implied. In it they sailed on for the Serbian coast.</p>
+            </section>
+            <section data-depth="1" id="the-rozafa-castle-haunting">
+                <h1 class="d1">Side-story: The Rozafa Castle Haunting</h1>
+                <p>On Friday 5 March 1300 the group landed at <a href="#place-village-of-ulqin">Ulcinj</a> and passed themselves off as pilgrims bound for the monastery of <strong>Ostrog</strong>, a day north-west of <a href="#place-market-town-of-podgorica">Podgorica</a>; the queens gave them 200 silver giglia for the journey, 120 of which bought six horses. In the harbour lay a huge vessel flying the flag of the Byzantine emperor, <a href="#emperor-andronikos-ii-palaiologos">Andronikos II</a>: his embassy, led by <a href="#ambassador-theodore-metochites">Theodore Metochites</a>, had brought his six-year-old daughter, <a href="#queen-simonis-palaiologina">Simonis</a>, to marry King <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>, and the wedding and the peace treaty were to be negotiated at the monastery of <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a> in the fortress of <a href="#place-nemanjic-court-of-shkoder">Shkodër</a>. The Venetian merchants said that <a href="#queen-erzsebet-of-serbia">Erzsebet</a> had died years before, impious and having given the king only daughters, and that his queen was now <a href="#queen-ana-terter">Ana</a>, daughter of the Bulgarian tsar, to be set aside for <a href="#queen-simonis-palaiologina">Simonis</a>.</p>
+                <p>Meanwhile <a href="#captain-garvyn">Captain Garvyn</a> left the boat, got drunk in the tavern and told everyone that he was carrying two Saxon princesses; the players had to stop <a href="#queen-maria-of-naples">Queen Mária</a> from murdering him. <a href="#ambassador-theodore-metochites">Metochites</a> took <strong>Leonardo</strong> up the hill to the underground shop of a sketchy hunchback calling himself <a href="#yuri-the-librarian">Yuri</a>, full of satanic and Arabic writings, who gave him twenty doses of "liquid fire" and ancient texts whose contents he would not disclose.</p>
+                <p>On Saturday 6 March the group set out for <a href="#place-nemanjic-court-of-shkoder">Shkodër</a> with the Byzantines: the imperial carriage with <a href="#queen-simonis-palaiologina">Simonis</a> and her handmaiden, <a href="#jelena-duka-andelina">Zoe</a>, and six Varangian guards, while <strong>Casimir</strong> and <a href="#salvatore">Salvatore</a> scouted ahead. That morning the two confessed their dreams to each other in secret, then to <strong>Leonardo</strong> and to <a href="#father-mateo">Mateo</a>. <strong>Casimir</strong> had dreamed of a black-cloaked figure, like the statues of <strong>Vis</strong>, in a basalt gothic cathedral, pointing to an open book whose illumination showed a golden-skinned Virgin and an uncanny child, and three Magi bringing a rotting corpse, a chest of mutilated remains and the same book, repeating without end. <a href="#salvatore">Salvatore</a> had dreamed of a young girl chased across the fields by black-clad Orthodox priests, washed and fed with blood and walled up alive, while she encouraged them and her family screamed. <a href="#father-mateo">Mateo</a> read <strong>Casimir</strong>'s dream as a perversion of the Nativity, the Magi bringing gifts to the Antichrist born of the Whore of Babylon, and when <strong>Casimir</strong> told the queens, he began to think that <a href="#queen-maria-of-naples">Mária</a> looked like the Virgin of his dream.</p>
+                <p>At <a href="#rozafa">Rozafa</a>, the fortress of <a href="#place-nemanjic-court-of-shkoder">Shkodër</a>, an old nun holding a torch welcomed them: <a href="#sister-princess-brnjaca">Sister Brnjača</a>, <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a>'s daughter, who told <strong>Pavo</strong> that the castle was sixty years old, built on older ruins. <a href="#inquisitor-giovanni">Giovanni</a> sent <a href="#salvatore">Salvatore</a> and <strong>Casimir</strong> to look for the place from the dream, and on the walls they saw the ghostly girl embracing a battlement, sinking into the stones and whispering "please give me some water"; the water <a href="#salvatore">Salvatore</a> poured pooled like blood and was sucked into the walls in veins. <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a> received the two queens, called them her sisters, said she was happy to see them in her last moments, and claimed to be a child of <strong>Charles of Anjou</strong>, born before <a href="#king-charles-ii-of-naples">Charles II</a>. <a href="#queen-maria-of-naples">Mária</a> said that the black figure of <strong>Casimir</strong>'s dream recalled a legend of her father's Árpád side: a form like the Holy Ghost that makes men write stories about the family's enemies in the castle of <a href="#place-arpad-venetian-branch-of-buda">Buda</a>. A stone fell from the new walls onto another ghostly figure, and <strong>Pavo</strong>, climbing the walls, saw veins of blood climbing over them and a figure staring at him, begging for water as it sank into the ground. <a href="#sister-princess-brnjaca">Brnjača</a> admitted that she had been investigating the ghosts, which have haunted the castle for generations.</p>
+                <p>The next morning <a href="#queen-maria-of-naples">Mária</a> rode for <a href="#place-nemanjic-court-of-ras-trgoviste">Trgovište</a>, leaving <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a> in charge in <a href="#place-nemanjic-court-of-shkoder">Shkodër</a>: to mend relations with <a href="#sister-princess-brnjaca">Brnjača</a>, to keep an eye on the negotiations between the Serbs and the Byzantines, to end "the <a href="#captain-garvyn">Garvyn</a> loose end", and to investigate the haunting of <a href="#rozafa">Rozafa</a>. <a href="#salvatore">Salvatore</a> "executed" <a href="#captain-garvyn">Garvyn</a>, who lies buried near the basilica. <a href="#presbyter-vukasin">Presbyter Vukašin</a>, versed in both the eastern and western rites but suspected of manipulation, shared a few confessional "asides": <a href="#barjan">Barjan</a> and <a href="#flaka">Flaka</a> had seen the girl ghost on the walls, and the former presbyter had killed himself because he had committed a deadly sin, according to the records of the patriarchate of <strong>Peć</strong>.</p>
+                <p>In the town the group met <a href="#dragana">Dragana</a>, the Slav keeper of the <strong>Pelican's Nest</strong> tavern, and her husband <a href="#barjan">Barjan</a>, an Albanian cook of the old local families, whose brother <a href="#florin">Florin</a> had disappeared in the castle in their youth, before <a href="#abbess-queen-dowager-of-serbia-jelena">Jelena</a> and the Orthodox clergy came. They bought cloth from <a href="#mimoza">Mimoza</a>, a spinner whose Italian was poor, and her friend <a href="#vera">Vera</a>, the healer's apprentice, translated for her and took them to her grandmother <a href="#flaka">Flaka</a>, the hard-drinking matriarch of the <strong>Tophane</strong> cotton farms. <a href="#flaka">Flaka</a> told how <a href="#barjan">Barjan</a> and <a href="#florin">Florin</a> had explored the haunted castle to find <a href="#rozafa">Rozafa</a>'s hair so that <a href="#florin">Florin</a> could marry her, and how "the former presbyter married <a href="#florin">Florin</a> with <a href="#rozafa">Rozafa</a> in Hell". The group also puzzled over a rope-and-noose mystery in the underwall pass of the north wall, and over tombstones from before the first Mongol invasion bearing only Slavic first names, such as TATIANA, 1132–1207, and LUKA, 1198–1238.</p>
+                <p>On Wednesday 10 March <a href="#ambassador-theodore-metochites">Metochites</a> and <a href="#inquisitor-giovanni">Giovanni</a> left for the patriarchate of <strong>Ohrid</strong>. On Thursday 11 March <strong>Leonardo</strong> and his companions resolved the <a href="#rozafa">Rozafa</a> and <a href="#presbyter-vukasin">Vukašin</a> affair, to <a href="#sister-princess-brnjaca">Brnjača</a>'s satisfaction, and <strong>Leonardo</strong> came away from <a href="#place-nemanjic-court-of-shkoder">Shkodër</a> haunted by the soul of <a href="#rozafa">Rozafa</a>. Then <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a>, <strong>Leonardo</strong> and <a href="#salvatore">Salvatore</a> rode for <a href="#place-market-town-of-podgorica">Podgorica</a>, to rejoin the queen at the equinox.</p>
+            </section>
+            <section data-depth="1" id="second-story-a-skin-to-dance-in">
+                <h1 class="d1">2nd Story: A Skin to Dance In</h1>
+                <p>On Sunday 7 March 1300 <a href="#queen-maria-of-naples">Queen Mária</a>, <a href="#father-mateo">Mateo</a>, <strong>Pavo</strong> and <strong>Casimir</strong> set out on a forced march to <a href="#place-nemanjic-court-of-ras-trgoviste">Trgovište</a>, to learn the fate of her younger sister, <a href="#queen-erzsebet-of-serbia">Erzsebet</a>. On the way <a href="#queen-maria-of-naples">Mária</a> told them that <a href="#salvatore">Salvatore</a> had "executed" <a href="#captain-garvyn">Garvyn</a> on her orders. In <a href="#place-market-town-of-podgorica">Podgorica</a>, the largest market town of continental <strong>Travunia</strong>, the children were preparing to drown the Morana dolls at the end of winter, and the townsfolk argued in the church over whether the festival was the work of Satan, for six children had been taken during it in the last decade and never found; people said they were sold as slaves in <a href="#place-morosini-court-of-ragusa">Ragusa</a>. There they met the tsupan <a href="#prince-stefan-konstantin">Konstantin</a>, an honest, hard-working man who cares for the villagers of his ward and is critical of King <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>'s war against the Greeks, who warned them not to get lost at <strong>Bratimin Vir</strong>.</p>
+                <p>On Monday 8 March <strong>Casimir</strong> dreamed that the queen took him alone to the ruins of <strong>Doclea</strong>, where a straw Morana bled, holding two babies whose flesh merged in <a href="#queen-maria-of-naples">Mária</a>'s hands. The party crossed the <strong>Bjelasica</strong> pass and the <strong>Tara</strong>, <a href="#queen-maria-of-naples">Mária</a> steering the talk away from her family, and in <strong>Berane</strong> the old innkeeper <strong>Jovanna</strong> served them a whole pig and would not take payment. They slept in her barn, where the queen slept naked and badly, and what happened in the barn stays in the barn.</p>
+                <p>On Tuesday 9 March <strong>Casimir</strong> dreamed of a wolf seizing <a href="#father-mateo">Mateo</a> by the neck, and <a href="#father-mateo">Mateo</a> woke very sore. The stable boy <strong>Marco</strong> warned them that the caves of <strong>Bratimin Vir</strong> were dangerous, and the healer <strong>Anastasija</strong> gave <a href="#father-mateo">Mateo</a> something for the pain and a pillow for his saddle. In the <strong>Tifran</strong> gorge <strong>Casimir</strong> and <strong>Pavo</strong> found a pack of eight wolves eating a man alive and, retreating, saw a wolf the size of a bear. At the monastery they found <a href="#queen-erzsebet-of-serbia">Erzsebet</a>'s grave, recently disturbed and once tended by two young girls: "Here lies the inobedient consort of the king who died on the second winter of the reign of king <strong>Uroš</strong>". The monk <strong>Vlad</strong> called her a whore who slept with all the king's men. A hooded figure leading a horse found them there: <a href="#prince-stefan-konstantin">Konstantin</a>, <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>'s son, who was looking for <a href="#queen-erzsebet-of-serbia">Erzsebet</a>'s daughters, his half-sisters <a href="#princesses-neda-and-zorica">Ana-Neda and Zorica</a>, rumoured to live in the mountains above <a href="#place-market-town-of-podgorica">Podgorica</a> and to be preparing a ritual to steal young boys. <a href="#queen-maria-of-naples">Mária</a> confessed that she was <a href="#queen-erzsebet-of-serbia">Erzsebet</a>'s sister.</p>
+                <p>On Wednesday 10 March <strong>Casimir</strong> dreamed of <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> as a wolf tearing out <a href="#father-mateo">Mateo</a>'s throat and raping the queen. <a href="#prince-stefan-konstantin">Konstantin</a> confessed that he believed his father was the Antichrist, and they all agreed to find and save his half-sisters. <a href="#presbyter-hvalimir">The presbyter of the monastery</a> told <strong>Casimir</strong> that <a href="#king-stefan-uros-ii-milutin-of-serbia">Stefan Uroš</a> had killed the wolf and taken his skin and his power, so that ever since all the wolves hate the people; that they would be safe only on the path of the Lord, not following the goat, whose milk is the blood of Satan; and that the king's bastard daughters had made a cult of children worshipping Satan. <strong>Casimir</strong> also heard that the witch of <a href="#place-market-town-of-podgorica">Podgorica</a> had turned into two girls to corrupt the people, and that whomever the <a href="#the-real-king-of-all-the-wolves">king of the wolves</a> looks in the eye is his next victim.</p>
+                <p>On the way back the wolves ate <a href="#father-mateo">Mateo</a>'s horse and cornered the party in a cave with a bear; <a href="#prince-stefan-konstantin">Konstantin</a> panicked and galloped back to <strong>Berane</strong> with <a href="#father-mateo">Mateo</a>. In <strong>Berane</strong> the wolves turned into men and summoned them, with the healer <strong>Anastasija</strong>, to the church, where <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>, <a href="#king-stefan-uros-ii-milutin-of-serbia">the big bad wolf</a>, assaulted the queen, threatened to strip them naked and chase them through the woods, and drew a sword on <a href="#father-mateo">Mateo</a>. <strong>Casimir</strong> struck at the king's sides while <strong>Pavo</strong> cut off his hands, which became wolf paws, and the king fled as a wolf. On the bridge <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> tore off <a href="#prince-stefan-konstantin">Konstantin</a>'s knee, and <strong>Pavo</strong> cut off the wolf's head, which flew back onto its body; the wolves retreated, setting fire to the south of the village. As the group left the church, one of the henchmen had beheaded <strong>Anastasija</strong>, whom <a href="#prince-stefan-konstantin">Konstantin</a> loved. By morning his knee had healed. That night <strong>Casimir</strong> saw <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> tell the story of the day to a black-clad priest, who wrote it in his book, dipping his pen in <strong>Anastasija</strong>'s severed head.</p>
+                <p>On Thursday 11 March they buried <strong>Anastasija</strong>, <a href="#father-mateo">Mateo</a> gave a rousing speech calling the villagers to act against <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>, and <a href="#prince-stefan-konstantin">Konstantin</a> roused <strong>Metasovo</strong> to march on <strong>Berane</strong>. On the road to <a href="#place-market-town-of-podgorica">Podgorica</a> five wolves ambushed them: <strong>Casimir</strong> was severely wounded and <a href="#father-mateo">Mateo</a> was carried off to <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> for "interrogation". On the way two lost sisters met <a href="#prince-stefan-konstantin">Konstantin</a> and took the party to their hovel in the woods, where they treated <strong>Casimir</strong>.</p>
+                <p>On Friday 12 March, the vernal equinox, <strong>Pavo</strong> and <a href="#queen-maria-of-naples">Mária</a> rode to <a href="#place-market-town-of-podgorica">Podgorica</a> and met <strong>Leonardo</strong>, who reported that <a href="#salvatore">Salvatore</a> had gone towards the ruins the day before and never returned. At the Byzantines' monastery <strong>Pavo</strong> and <strong>Leonardo</strong> met <a href="#jelena-duka-andelina">Zoe</a>, who knew that <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> was a monster and had a plan against him, and at lunch the innkeeper <a href="#olga-of-podgorica">Olga</a> warned them that everyone who goes to the <strong>Metochia</strong> to be healed comes back changed. Back at the hovel <strong>Casimir</strong> told of his dream: <a href="#hamelin">Hamelin</a>, a polite man dressed as a Venetian merchant, had opened a chained door to a stair going down; an old woman sitting on <a href="#queen-erzsebet-of-serbia">Erzsebet</a>'s grave gave him a potion that, dropped into <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>'s wounds, would stop them healing more than once; in <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a> he freed <a href="#father-mateo">Mateo</a>, crucified, tortured and faithless, and met Queen <a href="#queen-ana-terter">Ana</a>, who led them out into the forest, where, running as wolves, they found <a href="#the-real-king-of-all-the-wolves">the real king of the wolves</a>, skinless and chained, who told them, "Finally some souls which have not yet surrendered and will save us". <a href="#prince-stefan-konstantin">Konstantin</a> hushed him, for <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> can know what he knows.</p>
+                <p>That night, feeling the presence of the goat, the group went to the ruins of <strong>Doclea</strong>, where one of the sisters prayed to Morana to take her power and control the seasons, while the girls danced around the fire and maypole and the boys wore Roman togas and nothing else. Fearing the children would be lost as in previous years, <strong>Pavo</strong> dragged her away from her prayer; she cried that he had ruined everything, the children lay around them seemingly violated as if much time had passed, and her eyes bled until <strong>Pavo</strong> and <strong>Leonardo</strong> brought her back to her sister. The twins wept that they had betrayed God for Satan and now had betrayed Satan too. At the inn <a href="#queen-maria-of-naples">Mária</a> introduced <a href="#jelena-duka-andelina">Zoe</a> as <a href="#jelena-duka-andelina">Angelina</a>, duchess of <strong>Thessaly</strong>, and the Varangian as <a href="#prince-stefan-uros-iii-decanski">Stefan Uroš Dečanski</a>, <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>'s firstborn son.</p>
+                <p>The plan was set: <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a>, posing as <a href="#jelena-duka-andelina">Zoe</a>, and <strong>Leonardo</strong>, as her tutor, would bring <a href="#queen-simonis-palaiologina">Simonis</a> to <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a> in the carriage with <a href="#prince-stefan-uros-iii-decanski">Dečanski</a>; <a href="#queen-simonis-palaiologina">Simonis</a> would poison <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>, <a href="#prince-stefan-uros-iii-decanski">Dečanski</a> would slay him, and <strong>Casimir</strong> and <strong>Pavo</strong> would enter by a secondary gate during the wedding, while <a href="#queen-maria-of-naples">Mária</a> and <a href="#jelena-duka-andelina">Angelina</a> took the twins and <a href="#prince-stefan-konstantin">Konstantin</a> to <strong>Ostrog</strong> and <strong>Stupovi</strong>. <a href="#jelena-duka-andelina">Angelina</a> told <strong>Casimir</strong> that when the founder of a wolf pack dies, all the wounds dealt by his pack return, but that he would be protected by wearing the wolf's skin. At the ruined hovel <strong>Casimir</strong> went down a hole into a cave with a skeleton, likely <a href="#queen-erzsebet-of-serbia">Erzsebet</a>'s, and found himself, with <strong>Pavo</strong>, in the dungeons of <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>; time had passed. The carriage passed <strong>Berane</strong>, destroyed and burned, all its villagers killed, and <strong>Leonardo</strong> woke at <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a> with <a href="#prince-stefan-uros-iii-decanski">Dečanski</a>. In the courtyard <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> skinned <a href="#father-mateo">Mateo</a> and <a href="#queen-ana-terter">Queen Ana</a> while the court watched; they burned the skins, ate their bodies and drank their blood. On the wedding night they waited while <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> raped <a href="#queen-simonis-palaiologina">Simonis</a>, to get her with child, which was impossible, and then pleased himself with <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a> in front of her, a harrowing scene for both women. Then <a href="#prince-stefan-uros-iii-decanski">Dečanski</a>, <strong>Pavo</strong>, <strong>Casimir</strong> and <strong>Leonardo</strong> killed him, <a href="#prince-stefan-uros-iii-decanski">Dečanski</a> set the fortress on fire, and <strong>Leonardo</strong> barely escaped the burning building with his ancient texts. <strong>Casimir</strong>, wearing the wolf's skin, was spared when the wounds returned. <a href="#prince-stefan-uros-iii-decanski">Dečanski</a> is now the new "emperor" of <strong>Serbia</strong>.</p>
+                <p>At the tavern of <a href="#place-nemanjic-court-of-ras-trgoviste">Trgovište</a>, below <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>, <strong>Casimir</strong> met <a href="#ludmila">Ludmila</a>, a barmaid who moonlighted as a whore for <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a>'s tsupans and was drawn to his wolf-self. When <strong>Casimir</strong>, as the wolf, ate a man there, she left for <a href="#place-morosini-court-of-ragusa">Dubrovnik</a>, where she sold herself as a sex-slave; only after she had gone did he realise that the man had been her estranged father.</p>
+                <p>Later <strong>Casimir</strong> rode south to <a href="#place-nemanjic-court-of-shkoder">Shkodër</a>, where <a href="#prince-stefan-konstantin">Konstantin</a> and his twin half-sisters had taken refuge, and gave the nuns gold from <a href="#queen-maria-of-naples">Mária</a> to help her nieces return to the path of God. He and <a href="#prince-stefan-konstantin">Konstantin</a> bonded further over all they had been through together.</p>
+            </section>
+            <section data-depth="1" id="third-story-weathering-the-storm">
+                <h1 class="d1">3rd Story: Weathering the Storm</h1>
+                <p>In <a href="#place-csak-court-of-ilok-ujlak">Ilok</a> <strong>Ion</strong> brought ispán <a href="#ispan-ugrin-csak">Ugrin Csák</a> his winter report from <strong>Đakovo</strong>. <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> planned to land at <strong>Salona</strong> in May, join the Šubić forces at <strong>Bribir</strong>, take reinforcements from the Frankopán lords of <strong>Krk</strong>, march inland to <strong>Zagreb</strong> to join the Babonić, follow the <strong>Sava</strong> downstream to join <a href="#ispan-ugrin-csak">Ugrin</a> in July or August, and then go north to take the crown from the "bastard" king <a href="#king-andras-iii-of-hungary-and-croatia">András III</a> in <a href="#place-arpad-venetian-branch-of-buda">Buda</a>. Venetian merchants said that his grandmother and the papal legate were already travelling through <strong>Serbia</strong>. The heretic church of <strong>Bosnia</strong> was gaining control over the Catholic bishop of <strong>Đakovo</strong> and was rumoured to have joined forces with <a href="#ban-king-albertino-morosini-of-all-croatia">Albertino Morosini</a>, whom the <a href="#king-andras-iii-of-hungary-and-croatia">bastard king</a> had made Ban of all <strong>Croatia</strong>, and <a href="#ban-king-albertino-morosini-of-all-croatia">Albertino</a> was to be received by <a href="#ban-stjepan-kotromanic-of-bosnia">Ban Stjepan Kotromanić</a>, <a href="#ispan-ugrin-csak">Ugrin</a>'s ally along with <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>, for reasons no one could uncover.</p>
+                <p><a href="#ispan-ugrin-csak">Ugrin</a> sent his son, <a href="#prince-miklos-csak">Miklós</a>, under the protection of <a href="#master-of-arms-almos">Álmos</a>, <strong>Ion</strong> and <a href="#master-of-hunt-stanislav">Stanislav</a>, to deliver a letter to his bastard, <a href="#bishop-vencel-of-mitrovica">Bishop Vencel</a> of <a href="#place-triarchy-of-mitrovica">Mitrovica</a>; to have <a href="#bishop-vencel-of-mitrovica">Vencel</a> and <a href="#prince-miklos-csak">Miklós</a> send <a href="#prince-stefan-vladislav-ii">Vladislav</a>, the firstborn of <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> and <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a> and <a href="#ispan-ugrin-csak">Ugrin</a>'s tax-collector in <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, on an embassy to the <a href="#ban-stjepan-kotromanic-of-bosnia">Kotromanić</a> reaffirming the old alliance; to reaffirm <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>'s loyalty to it; and to bring the <a href="#queen-maria-of-naples">Queen of Naples</a> and the papal legate under his "protection" in <a href="#place-csak-court-of-ilok-ujlak">Ilok</a>. In <a href="#place-triarchy-of-mitrovica">Mitrovica</a> <a href="#bishop-vencel-of-mitrovica">Vencel</a>, devastated by his father's letter, confessed to <a href="#prince-miklos-csak">Miklós</a> that he, not <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>, was the father of <a href="#princess-urosica">Urošica</a>, and that <a href="#ispan-ugrin-csak">Ugrin</a> had ordered him to imply that <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>'s older children, <a href="#prince-stefan-vladislav-ii">Vladislav</a> and <a href="#banitsa-jelisaveta">Jelisaveta</a>, were bastards like her. <a href="#princess-urosica">Urošica</a> revealed that she had found the journal of the late <a href="#archbishop-ugrin-csak-of-kalocsa">Archbishop Ugrin Csák of Kalocsa</a>, describing a ritual in the ancient ruins of <strong>Sirmium</strong> that had granted him a great weapon or tool against the Tatars almost a century ago; <a href="#prince-stefan-vladislav-ii">Vladislav</a> confiscated it, and <strong>Ion</strong> saw both their shadows shrink in the sunlight. <strong>Ion</strong> also failed spectacularly to seduce anyone in broad daylight, earning an unenviable reputation among the peasants, and <a href="#bishop-vencel-of-mitrovica">Vencel</a>'s house stood deserted, with <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a> suspiciously absent.</p>
+                <p>In <a href="#place-nemanjic-court-of-beograd">Beograd</a> <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>, gathering an army against <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> or the Bulgar hordes, received the embassy at once, alone but for a little boy. Loyal to the old alliance and suspicious of the Neapolitan, papal and Roman embassies converging on <a href="#place-nemanjic-court-of-ras-trgoviste">Ras</a>, he offered to arrange an audience with <a href="#king-stefan-uros-ii-milutin-of-serbia">Milutin</a> so that <a href="#prince-miklos-csak">Miklós</a> and his companions could investigate further. Everyone wondered how he had restored the walls of <a href="#place-nemanjic-court-of-beograd">Beograd</a> and filled his <a href="#place-nemanjic-court-of-beograd">White Keep</a> with Byzantine opulence in lands ravaged by civil war and the steppe hordes for a century. <a href="#master-of-hunt-stanislav">Stanislav</a> left by night, with <a href="#prince-miklos-csak">Miklós</a>'s agreement, to report to <a href="#ispan-ugrin-csak">Ugrin</a>, and <a href="#master-of-arms-almos">Álmos</a> went out for a last night of depraved excess. The group weighed their next moves, mindful of <a href="#ispan-ugrin-csak">Ugrin</a>'s fallback plan, which <a href="#bishop-vencel-of-mitrovica">Vencel</a> had accepted: if <a href="#queen-maria-of-naples">Queen Mária</a>'s line failed, to reveal <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a>'s children as <a href="#ispan-ugrin-csak">Ugrin</a>'s own bastards.</p>
+                <p>Back in <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, a town built on Roman ruins and covered in unnatural darkness, <strong>Ion</strong> saw a tall hooded figure climb quickly over <a href="#bishop-vencel-of-mitrovica">Vencel</a>'s walls, and inside the house the group found bloody entrails laid out on the dining table, which they took outside and burned. In the cathedral <a href="#bishop-vencel-of-mitrovica">Vencel</a> told them that <a href="#princess-urosica">Urošica</a> was dead and that he would bury <a href="#father-mateo">Mateo</a> later. At the inn a scream in the night led them to a young woman standing over a bleeding corpse, and they learned that the town was terrorised by a killer: five murders and six disappearances, and someone had risen from the grave after an Orthodox burial. At <a href="#prince-stefan-vladislav-ii">Vladislav</a>'s house <strong>Ion</strong> recognised him as the hooded figure, and <a href="#prince-stefan-vladislav-ii">Vladislav</a> arrested the party until <a href="#prince-miklos-csak">Miklós</a> ordered <strong>Ion</strong>'s release.</p>
+                <p><a href="#old-mihaly">Old Mihály</a>, the village madman, told them of <a href="#the-swamp-lord-of-macso">the swamp lord of Macsó</a>, mentally unstable, who lives in a mausoleum and commands the dead, and claimed that <a href="#princess-urosica">Urošica</a> led the undead. <a href="#orthodox-episcope-sava-of-syrmia">Father Sava</a>, the Orthodox episcope, was of no help, but the gravedigger showed them <a href="#princess-urosica">Urošica</a>'s grave, its soil unusually fresh beside the sealed grave of the archbishop. Devastated, <a href="#prince-miklos-csak">Miklós</a> insisted on visiting his sister's grave that night against all advice; there the group saw <a href="#prince-stefan-vladislav-ii">Vladislav</a> and two strangers standing silently before it, a large white owl diving into the grave, and <a href="#princess-urosica">Urošica</a> rising to feed on a corpse with them.</p>
+                <p>Afterwards <a href="#old-mihaly">Mihály</a> told <strong>Leonardo</strong> and <strong>Pavo</strong> of <a href="#comptor-siward-of-the-burzenland">Comptor Siward</a>, lost and corrupted, whose Transylvanian chapter in the <a href="#place-former-teutonic-chapterhouse-of-marienburg">Burzenland</a> had lost touch with the others and become a secret order, fought by the Saxons and the Magyars but not the Székelys, and said that <a href="#place-triarchy-of-mitrovica">Mitrovica</a> was lost to the ancient evil unleashed there, for which the <a href="#the-swamp-lord-of-macso">lord of the swamp</a> was to blame. When figures began walking from the graveyard towards the town, <strong>Ion</strong> had the priests ring all the bells. While <a href="#queen-maria-of-naples">Mária</a>, <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a> and <a href="#prince-miklos-csak">Miklós</a> held the inn, <strong>Pavo</strong>, <strong>Leonardo</strong>, <strong>Ion</strong> and <strong>Casimir</strong> climbed into <a href="#prince-stefan-vladislav-ii">Vladislav</a>'s house, found half-eaten human organs, and fought him when he attacked; he lost an arm and his life, and two other figures escaped without a trace. The feeding recalled what they had seen on <strong>Vis</strong>, and the house began to flood as they fled. <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a> was found in the old Benedictine monastery outside <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, devoured by a huge tree.</p>
+            </section>
+            <section data-depth="1" id="until-the-return-of-the-king">
+                <h1 class="d1">Until the “Return” of the King</h1>
+                <p>From April to November 1300, with <a href="#queen-maria-of-naples">Queen Mária</a> brought to safety, the group at last had time for their own goals while the army of <a href="#king-charles-robert-i-of-hungary">Charles Robert</a> made its way to the domain of <a href="#ispan-ugrin-csak">Ugrin Csák</a>. <strong>Casimir</strong> went south.</p>
+                <p>After <a href="#place-triarchy-of-mitrovica">Mitrovica</a> <strong>Leonardo</strong> tried to dream of <a href="#rozafa">Rozafa</a> and saw her caught in the tree that had devoured <a href="#banitsa-queen-consort-katalina-of-syrmia">Katalina</a> at the monastery, unable to speak, as if held by the evil released from the mausoleum; he shared it with <strong>Casimir</strong>, asking him to keep it secret for now. He proposed to take <a href="#prince-stefan-vladislav-ii">Vladislav</a>'s place, but <a href="#queen-maria-of-naples">Mária</a> suggested instead that he become constable of <a href="#place-triarchy-of-mitrovica">Mitrovica</a>, with some authority but without too great a debt to <a href="#ispan-ugrin-csak">Ugrin</a>, or the burden of bureaucracy and tax-collecting. <a href="#prince-miklos-csak">Miklós</a> agreed to speak to <a href="#ispan-ugrin-csak">Ugrin</a>, provided <strong>Leonardo</strong> reported to him weekly on his investigation of <a href="#princess-urosica">Urošica</a>. That night <strong>Leonardo</strong> saw a trail of rot running from the monastery's tree towards <a href="#place-nemanjic-court-of-beograd">Beograd</a>, as if <a href="#the-swamp-lord-of-macso">the lord of the swamp</a> had trapped <a href="#rozafa">Rozafa</a> with him. <a href="#ispan-ugrin-csak">Ugrin</a> agreed, though <a href="#queen-maria-of-naples">Mária</a> disliked his going to <a href="#prince-miklos-csak">Miklós</a>.</p>
+                <p><strong>Leonardo</strong> returned to <a href="#place-triarchy-of-mitrovica">Mitrovica</a> with <a href="#ispan-ugrin-csak">Ugrin</a>'s letter, and <a href="#bishop-vencel-of-mitrovica">Vencel</a> installed him in the old episcopal palace. At the inn he met <a href="#sandra-d-aquileia">Sandra of Aquela</a>, a well-dressed but weary Venetian woman travelling alone in the <strong>Balkans</strong>, who seemed to know more than she said and avoided any talk of spirits and satanic powers. He invited her to stay at the palace but refused her <a href="#princess-urosica">Urošica</a>'s room, and by morning she was gone, leaving a letter: "I will wait for you in <a href="#place-nemanjic-court-of-beograd">Beograd</a>. I will give you one more chance. You have ten days." Finding a corpse linked to cannibalism in the residence, he carried it wrapped in a sheet through the streets to the frightened <a href="#orthodox-episcope-sava-of-syrmia">Father Sava</a>, who arranged its burial with <a href="#bishop-vencel-of-mitrovica">Vencel</a>, and the town noticed both the woman and the corpse.</p>
+                <p><a href="#old-mihaly">Mihály</a>, the eccentric Teutonic alchemist, discussed <a href="#princess-urosica">Urošica</a>'s disappearance with him: she might have gone to a relative among the heretics of <strong>Bosnia</strong>, to <a href="#place-nemanjic-court-of-beograd">Beograd</a> seeking <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a>, whom she believed to be her father, or with the heretical troupe linked to <a href="#sandra-d-aquileia">Sandra</a>, and two of the three roads led to <a href="#place-nemanjic-court-of-beograd">Beograd</a>. At the monastery <strong>Leonardo</strong> burned the rotting tree with liquid fire, and much of the monastery ruins with it; whether <a href="#rozafa">Rozafa</a> was there remains unknown. On his way back <a href="#old-mihaly">Mihály</a> gave him a book of <strong>Hermes Trismegistus</strong>, full of forbidden knowledge and hard to put down.</p>
+                <p>As constable <strong>Leonardo</strong> worked to win the trust of the town and to mend his relations with <a href="#bishop-vencel-of-mitrovica">Vencel</a> and <a href="#orthodox-episcope-sava-of-syrmia">Father Sava</a>, and over a friendly dinner they agreed to begin a new port with two piers and to ask <a href="#ispan-ugrin-csak">Ugrin</a> for help, although his first official letter was not quite a success. A black stain began to mark his hands as he read the book. He rode to <a href="#place-nemanjic-court-of-beograd">Beograd</a> and, at a costly inn by the <strong>Sava</strong> full of Venetians and Morosini, met <a href="#sandra-d-aquileia">Sandra</a> again and heard that <a href="#ban-king-stefan-dragutin-of-syrmia">Dragutin</a> and <a href="#prince-stefan-uros-iii-decanski">Dečanski</a> were preparing to attack <strong>Bulgaria</strong>. <a href="#sandra-d-aquileia">Sandra</a> had him pay a fortune for a meeting with <a href="#larissa-the-belly-dancer">Larissa</a>, a famous fifteen-year-old performer under <a href="#captain-milos">Miloš</a>, who passed as her protector and father, then revealed to her that <a href="#captain-milos">Miloš</a> had killed her family, cursed her village and taken her to exploit her, gave her a key to his journal hidden under his bed, and vanished through the window. <strong>Leonardo</strong> offered <a href="#larissa-the-belly-dancer">Larissa</a> refuge and protection in <a href="#place-triarchy-of-mitrovica">Mitrovica</a>. He also learned that <a href="#princess-urosica">Urošica</a> was probably in <a href="#place-nemanjic-court-of-beograd">Beograd</a> and might now drink blood, while young Serbian men were dying there one each night.</p>
+                <p><strong>Pavo</strong> and <strong>Ion</strong> went to <a href="#place-csak-court-of-ilok-ujlak">Ilok</a>, where <a href="#queen-maria-of-naples">Mária</a> told them that <a href="#voivode-laszlo-kan-of-transylvania">Voivode László Kán</a> had exiled the Transylvanian Teutons, though she had been too young to know more and <a href="#queen-dowager-elisabetta-of-hungary">Elisabetta</a> might. <strong>Pavo</strong> had to deliver a letter from <a href="#papa-bonifacius-viii">the Pope</a> to <a href="#archbishop-janos-hont-pazmany-of-kalocsa">the archbishop of Kalocsa</a> by Christmas, and <a href="#queen-maria-of-naples">Mária</a> had promised to help him in return for his absolute loyalty. <strong>Ion</strong> asked leave to visit his father's grave, and <a href="#ispan-ugrin-csak">Ugrin</a> was not enthusiastic. <a href="#place-archdiocese-of-kalocsa">Kalocsa</a> proved a small town of 500 people with an oversized cathedral, whose monks see themselves as the last bastion of Christianity before a sea of pagans. <a href="#archbishop-janos-hont-pazmany-of-kalocsa">Archbishop János Hont-Pázmány</a> opened the letter: a ticket for two to the <a href="#bishop-peter-monoszlo-of-alba-iulia">Bishop of Alba Iulia</a>, with an order to rebuild the Teutonic chapter of <strong>Transylvania</strong>.</p>
+                <p>Crossing the marshes of the <strong>Cuman plain</strong>, they were <em>"abandoned"</em> at dawn by their guide, <a href="#janos">János</a>, and five riders let them pass for 950 silver and their horses. At <a href="#place-free-royal-town-of-szeged">Szeged</a> the ferryman raised his price and made an enemy or two, and they crossed by boat to the harbour. Vlach peasants told them that they did not trust the Hungarian Catholics, that the king sent no money to repair the town, and that <a href="#ban-tivadar-vejtehi-of-temesvar-and-severin">Ban Tivadar Vejtehi</a> of <strong>Temesvár</strong> and <strong>Severin</strong> ruled as far as <a href="#place-village-of-lipova">Lipova</a>, and <a href="#abbot-benedek-of-szeged">the abbot of the Franciscan monastery</a> told them that many Cumans were now baptised and profited from the trade in salt and animals, that Catholics were safe for now, that the castle walls were restored, and that some who entered <a href="#place-kan-court-of-deva">Déva</a> never came out.</p>
+                <p>At <a href="#place-diocese-of-csanad">Csanád</a>, which <strong>Ion</strong> had fled as a boy when <a href="#voivode-laszlo-kan-of-transylvania">László</a>'s men sacked it, <strong>Ion</strong> touched the walls of his old room and heard his father's voice: "Avenge me". <a href="#bishop-antal-of-csanad">Bishop Antal</a> invited him to become a priest and keep the room, and told them how, sixty years ago, before he was voivode, <a href="#voivode-laszlo-kan-of-transylvania">László</a> had besieged <a href="#place-former-teutonic-chapterhouse-of-marienburg">Feldioara</a>, the last holding of the Teutonic Knights in <strong>Transylvania</strong>, on the orders of King <strong>Béla IV</strong>, and staked the last of the Teutons with their Comptor, perhaps as a sacrifice to the devil. <a href="#voivode-laszlo-kan-of-transylvania">László</a> has two sons, <strong>Kálmán</strong> and <strong>Kocsoh</strong>, and a daughter, <strong>Ladiszla</strong>, and is supported by the Saxon, Hungarian and Székely nobles; he could lose his power if he lost his contacts and allies. The bishop offered to help free the people from <a href="#voivode-laszlo-kan-of-transylvania">László</a>'s evil rule, so long as the people of <a href="#place-diocese-of-csanad">Csanád</a> were never put at risk, and swore them both to secrecy.</p>
+                <p>At his father's unmarked grave <strong>Ion</strong> read the shadows and was drawn into a dark realm, under a darker sun and in silence, into a church where a huge faceless statue, its head a dark rippling lake, wrote in a book before kneeling human statues. One of them was his father, <a href="#bishop-bereck">Bishop Bereck</a>, who told him that <a href="#voivode-laszlo-kan-of-transylvania">László</a> had trapped him in this devil's world; <strong>Ion</strong> swore to trap <a href="#voivode-laszlo-kan-of-transylvania">László</a> there in his turn and free his father's spirit to Heaven. Apart from the bishop, only a "foreign relative" of his father, <a href="#lorinc-telegdi">Lőrinc Telegdi</a>, knew of the grave. When <strong>Ion</strong> took <strong>Pavo</strong> into the shadows too, they found the monastery burning with a sickly blue flame and the cathedral chained shut, and a knight in full plate with a dragon helm, an upside-down cross and a spear dripping blood, who named himself "your end", impaled <strong>Pavo</strong> and asked whether he would be saved by God or by his blade. <strong>Pavo</strong> chose God and died slowly, and woke holding <strong>Ion</strong>'s hand at the grave, with an old scar where the spear had pierced him.</p>
+                <p>In <a href="#place-market-town-of-arad">Arad</a> they found the town celebrating the sowing, with <a href="#mistress-gabriella">the widow of the previous leader</a> among the notables, and at <a href="#place-village-of-lipova">Lipova</a> they slept at the house of <a href="#gellert-the-smith-of-lipova">Gellért the smith</a>. <a href="#place-kan-court-of-deva">Déva</a> proved a village no bigger than <a href="#place-village-of-lipova">Lipova</a> beside an oversized harbour and an even more oversized fortress on a volcano, its people scared and its guards suspicious. At the inn, the <strong>Blood of the Grape</strong>, the servant girls told them that the derelict mansion in the village centre had burned thirty years before, once a rich Saxon family's and now <a href="#voivode-laszlo-kan-of-transylvania">the voivode</a>'s, and <a href="#father-dan">Father Dan</a> warned people away from it. <a href="#ioan">Ioan</a>, son of <a href="#knez-coste">Knez Koste</a> and brother of <a href="#irina">Irina</a>, had his own room in the bunkers, where they could stay. Then <strong>Leonardo</strong> arrived and told the guards that he was looking for a Teutonic knight, and that one was here, and the three fled on horseback, reaching <a href="#place-diocese-of-transylvania-alba-iulia">Alba Iulia</a> the next midday. There <strong>Pavo</strong> gave the letter to <a href="#bishop-peter-monoszlo-of-alba-iulia">the bishop</a> and received an open letter with a golden bull declaring that he is on a papal mission; the bishop also told them that many women of <a href="#place-diocese-of-transylvania-alba-iulia">Alba Iulia</a> are the sluts of Satan and need to be tortured and burned.</p>
+            </section>
+        </main>
+    </body>
+</html>
