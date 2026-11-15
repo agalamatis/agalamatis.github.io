@@ -1343,7 +1343,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('button.ev-rw');i
 <button aria-label="Delete" id="delbtn" title="Delete this section" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M10 11v6M14 11v6"></path><path d="M6 7l1 13h10l1-13"></path><path d="M9 7V4h6v3"></path></svg></button>
 <button aria-label="Delete this image" id="imgdel" title="Delete this image" type="button"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M10 11v6M14 11v6"></path><path d="M6 7l1 13h10l1-13"></path><path d="M9 7V4h6v3"></path></svg></button>
 <dialog id="pathsdlg"><p id="pathsmsg"></p><textarea id="pathslist" readonly=""></textarea><div><button id="pathscopy" type="button">Copy</button> <button id="pathsclose" type="button">Close</button></div></dialog>
-<div id="toast">Link copied: #pg-tpl-assassin</div>
+<div id="toast">Link copied: #pg-burning-critical</div>
 <main id="guide">
 <section data-depth="1" id="pg-introduction">
 <h1 class="d1">Introduction</h1>
@@ -7480,7 +7480,8 @@ The <strong>Slavic</strong> badnjak (a young oak) burnt on Christmas Eve [<a hre
 
 
 
-<p>In the summer of 1300 the twelve-year-old Charles Robert sails from Naples to Split and rides through Croatia to Zagreb, at the head of an expedition paid for with Florentine money.</p>
+
+<p>In the summer of 1300 the twelve-year-old Charles Robert sails from Naples to Split and rides through Croatia to Zagreb, at the head of an expedition paid for with Florentine money borrowed by the Kingdom of Naples.</p>
 <ul>
 <li><strong>Jean Drugeth</strong> (NPC, man); A knight of a family long in Angevin service, the prince's master-at-arms, who leads the troop of Neapolitan and Provençal knights. [ask the storyteller]</li>
 <li><strong>Philip Drugeth</strong> (NPC, man); Jean's younger brother, the prince's age and his closest companion since childhood. [ask the storyteller]</li>
@@ -24035,6 +24036,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <p>The everyday gear of the Realm in 1300, by group. Prices are in silver coins (<abbr class="coin" title="Silver coin (𝒮): 100 copper coins; 100 make a gold coin. Worth about what €1 buys today; all prices are in silver coins. About 1.4 gr.">𝒮</abbr>) for goods of ordinary make; the crafting and repair rules above apply to other gear too, with the time the storyteller sets for the craft (see <a href="#pg-development-equipment">Equipment, at Any Time</a>). The suggested gear of the <a href="#pg-professions">Professions</a> links to these tables.</p>
 <p><strong>Durability</strong>: as for weapons and armour, this is the maximum durability of a standard item. It follows the item’s main material and its weight: the material’s value below × √(weight in kg), rounded, and never less than the material’s value for cloth, fur and leather. The values for cloth, fur, felt, straw and leather are those of the armour materials; the others follow the weapons of the same make, and the square root lets great engines and vehicles (a trebuchet of 3,000 kg has 5,000) keep in line with small tools. An item loses durability when it is struck (by the damage, after its DR if it is worn as armour), dropped, burned, soaked or overloaded, and by hard use: a day of heavy work in a long task costs a tool 1, and a result of −10 or worse with it costs a tenth of its maximum. All its numerical stats (the capacity of a container, the people a tent shelters, the bonus of good tools) are multiplied by its current over starting durability, rounded to the closest integer; at 0 it is broken. Repairs follow the rules for weapons and armour above: a separate crafting roll, a share of the time equal to the durability restored, 150% of the cost, and a tenth of the current maximum durability lost each time.</p>
 <p><strong>Volume (l)</strong>: the space an item takes in litres when folded, rolled, nested or packed as small as it will go; for rigid things (boxes, barrels, saddles, instruments, vehicles, machines) it is their outer volume. An item fits in a container if its volume is no more than what the container holds; what he can carry is set by its weight (see <a href="#pg-encumbrance">Encumbrance</a>). Where it is not given, it is the weight divided by the density of the material below. Living animals have neither (N/A).</p>
+<p><strong>Capacity</strong>: a container’s notes give the litres it holds and the weight in kg it bears; filling it with more than that weight overloads it, costing it durability as above, and a worn container holds less in proportion to its current durability. Liquids weigh about 1 kg a litre; grain and flour about 0.75 kg, coins about 2 kg (see the pouch sizes in <a href="#pg-economy">Economy</a>).</p>
 <table>
 <thead><tr><th>Material</th><th>Durability (per √kg)</th><th>Packed density (kg/l)</th></tr></thead>
 <tbody>
@@ -24112,7 +24114,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 
 
 
-<tr><td>Leather Pouch</td><td>24</td><td>0.2</td><td>0.4</td><td>10</td><td>Holds about 4 litres, or the coins the pouch sizes in Economy allow.</td></tr><tr><td>Cloth Bag</td><td>3</td><td>0.1</td><td>0.25</td><td>2</td><td>Holds about 4 litres.</td></tr><tr><td>Sack</td><td>3</td><td>0.5</td><td>1.2</td><td>4</td><td>Hemp, holds about 50 litres.</td></tr><tr><td>Satchel</td><td>24</td><td>0.5</td><td>1</td><td>12</td><td>A leather shoulder bag, for letters, books and tools.</td></tr><tr><td>Backpack</td><td>29</td><td>1.5</td><td>3</td><td>60</td><td>Leather, small, holds about 20 kg.</td></tr><tr><td>Carrying Frame</td><td>69</td><td>3</td><td>40</td><td>60</td><td>A wooden frame strapped to the back, for loads up to the carrier’s limit.</td></tr><tr><td>Carrying Yoke</td><td>57</td><td>2</td><td>8</td><td>10</td><td>A pole across the shoulders with a bucket or basket at each end.</td></tr><tr><td>Wicker Basket</td><td>1</td><td>0.5</td><td>5</td><td>3</td><td>Holds about 4 litres; larger baskets for the back or a mule, 10.</td></tr><tr><td>Wooden Box</td><td>40</td><td>1</td><td>5</td><td>5</td><td>Holds about 4 litres.</td></tr><tr><td>Metal Box</td><td>354</td><td>2</td><td>5</td><td>30</td><td>Iron-bound, with a lock, holds about 4 litres.</td></tr><tr><td>Chest</td><td>387</td><td>15</td><td>120</td><td>100</td><td>Oak, bound with iron straps, with a lock; the strongbox of a house, a church or a merchant.</td></tr><tr><td>Wooden Barrel</td><td>346</td><td>12</td><td>95</td><td>30</td><td>Holds about 75 litres of wine, beer, salt fish or flour.</td></tr><tr><td>Earthenware Jar</td><td>2</td><td>1.5</td><td>5</td><td>3</td><td>Holds about 4 litres.</td></tr><tr><td>Water Jug</td><td>2</td><td>1</td><td>4</td><td>2</td><td>Unglazed clay, keeps water cool.</td></tr><tr><td>Glass Bottle</td><td>1</td><td>0.5</td><td>1.3</td><td>20</td><td>Holds about 1 litre; glass is still rare and dear.</td></tr><tr><td>Wineskin</td><td>24</td><td>0.25</td><td>0.5</td><td>10</td><td>Leather, holds about 2 litres of wine or water.</td></tr></tbody>
+<tr><td>Leather Pouch</td><td>24</td><td>0.2</td><td>0.4</td><td>10</td><td>Capacity 1 l, up to 2 kg (about 1,400 silver coins); for smaller sums, see the pouch sizes in <a href="#pg-economy">Economy</a>.</td></tr><tr><td>Cloth Bag</td><td>3</td><td>0.1</td><td>0.25</td><td>2</td><td>Capacity 4 l, up to 4 kg.</td></tr><tr><td>Sack</td><td>3</td><td>0.5</td><td>1.2</td><td>4</td><td>Hemp; capacity 50 l, up to 50 kg.</td></tr><tr><td>Satchel</td><td>24</td><td>0.5</td><td>1</td><td>12</td><td>A leather shoulder bag, for letters, books and tools; capacity 8 l, up to 5 kg.</td></tr><tr><td>Backpack</td><td>29</td><td>1.5</td><td>3</td><td>60</td><td>Leather, small; capacity 30 l, up to 20 kg.</td></tr><tr><td>Carrying Frame</td><td>69</td><td>3</td><td>40</td><td>60</td><td>A wooden frame strapped to the back; capacity about 100 l lashed to it, up to 60 kg, or the carrier’s limit if lower.</td></tr><tr><td>Carrying Yoke</td><td>57</td><td>2</td><td>8</td><td>10</td><td>A pole across the shoulders with a bucket or basket at each end; capacity 2 × 12 l, up to 25 kg in all.</td></tr><tr><td>Wicker Basket</td><td>1</td><td>0.5</td><td>5</td><td>3</td><td>Capacity 4 l, up to 3 kg; larger baskets for the back or a mule (40 l, up to 20 kg), 10.</td></tr><tr><td>Wooden Box</td><td>40</td><td>1</td><td>5</td><td>5</td><td>Capacity 4 l, up to 8 kg.</td></tr><tr><td>Metal Box</td><td>354</td><td>2</td><td>5</td><td>30</td><td>Iron-bound, with a lock; capacity 4 l, up to 15 kg.</td></tr><tr><td>Chest</td><td>387</td><td>15</td><td>120</td><td>100</td><td>Oak, bound with iron straps, with a lock; capacity 90 l, up to 150 kg; the strongbox of a house, a church or a merchant.</td></tr><tr><td>Wooden Barrel</td><td>346</td><td>12</td><td>95</td><td>30</td><td>Capacity 75 l, up to 80 kg, of wine, beer, salt fish or flour.</td></tr><tr><td>Earthenware Jar</td><td>2</td><td>1.5</td><td>5</td><td>3</td><td>Capacity 4 l, up to 5 kg.</td></tr><tr><td>Water Jug</td><td>2</td><td>1</td><td>4</td><td>2</td><td>Unglazed clay, keeps water cool; capacity 3 l, up to 3 kg.</td></tr><tr><td>Glass Bottle</td><td>1</td><td>0.5</td><td>1.3</td><td>20</td><td>Capacity 1 l, up to 1 kg; glass is still rare and dear.</td></tr><tr><td>Wineskin</td><td>24</td><td>0.25</td><td>0.5</td><td>10</td><td>Leather; capacity 2 l, up to 2 kg, of wine or water.</td></tr></tbody>
 </table>
 </section>
 <section data-depth="4" id="pg-gear-camping">
@@ -24191,7 +24193,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 
 
 
-<tr><td>Riding Saddle</td><td>63</td><td>7</td><td>40</td><td>150</td><td>With girth; stirrups, long known in the Realm, are counted with it.</td></tr><tr><td>War Saddle</td><td>96</td><td>16</td><td>70</td><td>250</td><td>High-backed, to keep a knight in the saddle at the charge.</td></tr><tr><td>Sidesaddle<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, the sidesaddle with a footrest appears only later in the 14th century; in 1300 women ride astride or sit sideways on a pillion behind a rider.</span></td><td>72</td><td>9</td><td>50</td><td>200</td><td>A chair-like saddle for a lady.</td></tr><tr><td>Pack Saddle</td><td>300</td><td>9</td><td>50</td><td>60</td><td>A wooden frame with panniers for a horse or a mule.</td></tr><tr><td>Saddlebags</td><td>29</td><td>1.5</td><td>3</td><td>100</td><td>A pair of leather bags.</td></tr><tr><td>Bridle and Bit</td><td>29</td><td>1.5</td><td>3</td><td>35</td><td></td></tr><tr><td>Halter</td><td>24</td><td>0.7</td><td>1.4</td><td>5</td><td>Rope or leather, for leading.</td></tr><tr><td>Horseshoes</td><td>354</td><td>2</td><td>0.5</td><td>50</td><td>A set of four, with the nails, fitted by a smith.</td></tr><tr><td>Spurs</td><td>177</td><td>0.5</td><td>0.3</td><td>50</td><td>A knight’s are gilded.</td></tr><tr><td>Horse Collar</td><td>68</td><td>8</td><td>30</td><td>65</td><td>The padded collar that lets a horse pull a plough or a wagon.</td></tr><tr><td>Ox Yoke</td><td>113</td><td>8</td><td>25</td><td>30</td><td>For a pair of oxen.</td></tr><tr><td>Riding horse</td><td>N/A</td><td>—</td><td>N/A</td><td>1,200</td><td>A sturdy horse for travel.</td></tr><tr><td>Palfrey</td><td>N/A</td><td>—</td><td>N/A</td><td>2,000</td><td>An ambling horse, comfortable for ladies, clerics and long journeys.</td></tr><tr><td>Warhorse</td><td>N/A</td><td>—</td><td>N/A</td><td>6,000</td><td>A destrier or courser trained for battle; the best cost 20,000 and more.</td></tr><tr><td>Pack horse</td><td>N/A</td><td>—</td><td>N/A</td><td>600</td><td></td></tr><tr><td>Mule</td><td>N/A</td><td>—</td><td>N/A</td><td>800</td><td>Sure-footed in the mountains, the beast of merchants and clerics.</td></tr><tr><td>Donkey</td><td>N/A</td><td>—</td><td>N/A</td><td>150</td><td></td></tr><tr><td>Ox</td><td>N/A</td><td>—</td><td>N/A</td><td>400</td><td>A plough team of four to eight oxen with its plough costs 2,000 to 4,000.</td></tr><tr><td>Cart</td><td>1,000</td><td>100</td><td>1,500</td><td>150</td><td>Two-wheeled, for a donkey, a mule or a horse.</td></tr><tr><td>Oxcart</td><td>1,225</td><td>150</td><td>2,500</td><td>250</td><td>Two-wheeled, for a pair of oxen.</td></tr><tr><td>Wagon</td><td>1,732</td><td>300</td><td>6,000</td><td>600</td><td>Four-wheeled, for two horses or two to four oxen; covered, 900.</td></tr><tr><td>Wheelbarrow</td><td>283</td><td>8</td><td>150</td><td>60</td><td></td></tr><tr><td>Litter</td><td>133</td><td>11</td><td>400</td><td>100</td><td>Carried by two or four bearers.</td></tr><tr><td>Horse Litter</td><td>237</td><td>35</td><td>800</td><td>250</td><td>Slung between two horses, for the great, the old and the sick.</td></tr><tr><td>Sedan Chair</td><td>268</td><td>45</td><td>900</td><td>1,000</td><td>A covered chair carried by four.</td></tr><tr><td>Oar</td><td>80</td><td>4</td><td>6</td><td>15</td><td></td></tr><tr><td>Fishing Boat</td><td>490</td><td>150</td><td>3,000</td><td>600</td><td>A dugout or a small plank boat for two or three.</td></tr><tr><td>River Barge</td><td>6,325</td><td>—</td><td>40,000</td><td>4,000</td><td>A flat-bottomed boat for cargo, rowed, poled or towed upstream.</td></tr></tbody>
+<tr><td>Riding Saddle</td><td>63</td><td>7</td><td>40</td><td>150</td><td>With girth; stirrups, long known in the Realm, are counted with it.</td></tr><tr><td>War Saddle</td><td>96</td><td>16</td><td>70</td><td>250</td><td>High-backed, to keep a knight in the saddle at the charge.</td></tr><tr><td>Sidesaddle<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, the sidesaddle with a footrest appears only later in the 14th century; in 1300 women ride astride or sit sideways on a pillion behind a rider.</span></td><td>72</td><td>9</td><td>50</td><td>200</td><td>A chair-like saddle for a lady.</td></tr><tr><td>Pack Saddle</td><td>300</td><td>9</td><td>50</td><td>60</td><td>A wooden frame with panniers for a horse or a mule; the panniers hold 80 l, up to 100 kg.</td></tr><tr><td>Saddlebags</td><td>29</td><td>1.5</td><td>3</td><td>100</td><td>A pair of leather bags; capacity 2 × 10 l, up to 10 kg in all.</td></tr><tr><td>Bridle and Bit</td><td>29</td><td>1.5</td><td>3</td><td>35</td><td></td></tr><tr><td>Halter</td><td>24</td><td>0.7</td><td>1.4</td><td>5</td><td>Rope or leather, for leading.</td></tr><tr><td>Horseshoes</td><td>354</td><td>2</td><td>0.5</td><td>50</td><td>A set of four, with the nails, fitted by a smith.</td></tr><tr><td>Spurs</td><td>177</td><td>0.5</td><td>0.3</td><td>50</td><td>A knight’s are gilded.</td></tr><tr><td>Horse Collar</td><td>68</td><td>8</td><td>30</td><td>65</td><td>The padded collar that lets a horse pull a plough or a wagon.</td></tr><tr><td>Ox Yoke</td><td>113</td><td>8</td><td>25</td><td>30</td><td>For a pair of oxen.</td></tr><tr><td>Riding horse</td><td>N/A</td><td>—</td><td>N/A</td><td>1,200</td><td>A sturdy horse for travel.</td></tr><tr><td>Palfrey</td><td>N/A</td><td>—</td><td>N/A</td><td>2,000</td><td>An ambling horse, comfortable for ladies, clerics and long journeys.</td></tr><tr><td>Warhorse</td><td>N/A</td><td>—</td><td>N/A</td><td>6,000</td><td>A destrier or courser trained for battle; the best cost 20,000 and more.</td></tr><tr><td>Pack horse</td><td>N/A</td><td>—</td><td>N/A</td><td>600</td><td></td></tr><tr><td>Mule</td><td>N/A</td><td>—</td><td>N/A</td><td>800</td><td>Sure-footed in the mountains, the beast of merchants and clerics.</td></tr><tr><td>Donkey</td><td>N/A</td><td>—</td><td>N/A</td><td>150</td><td></td></tr><tr><td>Ox</td><td>N/A</td><td>—</td><td>N/A</td><td>400</td><td>A plough team of four to eight oxen with its plough costs 2,000 to 4,000.</td></tr><tr><td>Cart</td><td>1,000</td><td>100</td><td>1,500</td><td>150</td><td>Two-wheeled, for a donkey, a mule or a horse; capacity 1,000 l, up to 500 kg.</td></tr><tr><td>Oxcart</td><td>1,225</td><td>150</td><td>2,500</td><td>250</td><td>Two-wheeled, for a pair of oxen; capacity 2,000 l, up to 1,000 kg.</td></tr><tr><td>Wagon</td><td>1,732</td><td>300</td><td>6,000</td><td>600</td><td>Four-wheeled, for two horses or two to four oxen; capacity 5,000 l, up to 2,000 kg; covered, 900.</td></tr><tr><td>Wheelbarrow</td><td>283</td><td>8</td><td>150</td><td>60</td><td>Capacity 100 l, up to 100 kg.</td></tr><tr><td>Litter</td><td>133</td><td>11</td><td>400</td><td>100</td><td>Carried by two or four bearers.</td></tr><tr><td>Horse Litter</td><td>237</td><td>35</td><td>800</td><td>250</td><td>Slung between two horses, for the great, the old and the sick.</td></tr><tr><td>Sedan Chair</td><td>268</td><td>45</td><td>900</td><td>1,000</td><td>A covered chair carried by four.</td></tr><tr><td>Oar</td><td>80</td><td>4</td><td>6</td><td>15</td><td></td></tr><tr><td>Fishing Boat</td><td>490</td><td>150</td><td>3,000</td><td>600</td><td>A dugout or a small plank boat for two or three; capacity 2,000 l, up to 300 kg with the crew.</td></tr><tr><td>River Barge</td><td>6,325</td><td>—</td><td>40,000</td><td>4,000</td><td>A flat-bottomed boat for cargo, rowed, poled or towed upstream; capacity 30,000 l, up to 20,000 kg of cargo.</td></tr></tbody>
 </table>
 </section>
 <section data-depth="4" id="pg-gear-tools">
@@ -24291,7 +24293,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 
 
 
-<tr><td>Wax Tablet and Stylus</td><td>38</td><td>0.9</td><td>1</td><td>10</td><td>A pair of wooden boards with wax, for notes; the wax is smoothed to write again.</td></tr><tr><td>Medieval Scribal Kit</td><td>47</td><td>1.4</td><td>2</td><td>24</td><td>Quills, penknife, inkhorn, ruler, pumice, chalk.</td></tr><tr><td>Pen</td><td>13</td><td>0.2</td><td>0.1</td><td>3</td><td>Quill or reed.</td></tr><tr><td>Ink</td><td>1</td><td>0.2</td><td>0.25</td><td>5</td><td>A small pot of iron-gall ink.</td></tr><tr><td>Pumice Eraser</td><td>1</td><td>0.05</td><td>0.05</td><td>1</td><td>For scraping parchment clean.</td></tr><tr><td>Invisible Ink</td><td>1</td><td>0.1</td><td>0.1</td><td>20</td><td>Milk or lemon juice, read over a flame.</td></tr><tr><td>Pigments and Gold Leaf</td><td>1</td><td>0.5</td><td>0.3</td><td>100</td><td>For illumination; the blue of lapis lazuli costs more than gold.</td></tr><tr><td>Parchment</td><td>1</td><td>—</td><td>0.03</td><td>2</td><td>A sheet; a codex needs hundreds.</td></tr><tr><td>Paper<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, paper is still imported from Italy and Spain in 1300, used in the royal chancery of Hungary only from the 1320s and 1330s.</span></td><td>1</td><td>—</td><td>0.02</td><td>1</td><td>A sheet.</td></tr><tr><td>Hand-Copied Codex</td><td>7</td><td>2</td><td>4</td><td>1,500</td><td>A book of a few hundred leaves; illuminated, ten times as much.</td></tr><tr><td>Breviary</td><td>6</td><td>1.5</td><td>2</td><td>800</td><td>The daily prayers of the hours; a portable one is half the size and as dear.</td></tr><tr><td>Abacus</td><td>38</td><td>0.9</td><td>3</td><td>50</td><td>A counting board and counters, as merchants and the royal chamber reckon.</td></tr><tr><td>Balance Scale</td><td>106</td><td>0.5</td><td>1</td><td>25</td><td>Small, for coins, spices and silver.</td></tr><tr><td>Large Balance Scale</td><td>300</td><td>9</td><td>25</td><td>100</td><td>For a merchant’s goods.</td></tr><tr><td>Steelyard Balance</td><td>750</td><td>9</td><td>20</td><td>100</td><td>A beam with a sliding weight, for heavy loads.</td></tr><tr><td>Measuring Rod</td><td>20</td><td>0.25</td><td>1</td><td>5</td><td>The local ell or rod; every town has its own.</td></tr><tr><td>Measuring Basket or Jug</td><td>28</td><td>0.5</td><td>5</td><td>3</td><td>For grain or wine, stamped by the town.</td></tr><tr><td>Sandglass<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, the sandglass is new in 1300, first used on Italian ships; it is painted for the first time in 1338.</span></td><td>1</td><td>1.4</td><td>2.5</td><td>50</td><td>Runs an hour or half an hour.</td></tr><tr><td>Sundial</td><td>150</td><td>1</td><td>2</td><td>100</td><td>Portable; a church’s sundial is carved on its south wall.</td></tr><tr><td>Weight-Driven Clock<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, the first mechanical clocks are built in a few cathedrals and abbeys of the West around 1300; none is known in Hungary until later.</span></td><td>5,590</td><td>—</td><td>800</td><td>10,000</td><td>A great iron clock that strikes the hours.</td></tr><tr><td>Astrolabe</td><td>227</td><td>2.3</td><td>1.5</td><td>250</td><td>For the hours and the stars; <a href="#pg-astronomy">Astronomy</a>.</td></tr><tr><td>Periplus</td><td>7</td><td>1.8</td><td>4</td><td>40</td><td>A sailing guide and chart of the coasts; <a href="#pg-cartography">Cartography</a>.</td></tr><tr><td>Lead Line</td><td>17</td><td>3</td><td>2</td><td>10</td><td>For sounding the depth.</td></tr><tr><td>Sounding Pole</td><td>69</td><td>3</td><td>6</td><td>2</td><td></td></tr><tr><td>Signet Ring</td><td>14</td><td>—</td><td>0.01</td><td>100</td><td>Silver or gold, cut with the owner’s arms to seal letters.</td></tr><tr><td>Skytale</td><td>22</td><td>0.3</td><td>0.5</td><td>10</td><td>A staff for winding a cipher strip; <a href="#pg-cryptography">Cryptography</a>.</td></tr><tr><td>Eyeglasses<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, spectacles were invented in Italy around 1286 and are still rare and costly in 1300.</span></td><td>1</td><td>0.05</td><td>0.1</td><td>300</td><td>Riveted lenses for reading.</td></tr><tr><td>Diagnostic Manual</td><td>6</td><td>1.5</td><td>3</td><td>400</td><td>A book of urines, pulses and signs; <a href="#pg-diagnostics">Diagnostics</a>; a comprehensive one, 1,500.</td></tr></tbody>
+<tr><td>Wax Tablet and Stylus</td><td>38</td><td>0.9</td><td>1</td><td>10</td><td>A pair of wooden boards with wax, for notes; the wax is smoothed to write again.</td></tr><tr><td>Medieval Scribal Kit</td><td>47</td><td>1.4</td><td>2</td><td>24</td><td>Quills, penknife, inkhorn, ruler, pumice, chalk.</td></tr><tr><td>Pen</td><td>13</td><td>0.2</td><td>0.1</td><td>3</td><td>Quill or reed.</td></tr><tr><td>Ink</td><td>1</td><td>0.2</td><td>0.25</td><td>5</td><td>A small pot of iron-gall ink.</td></tr><tr><td>Pumice Eraser</td><td>1</td><td>0.05</td><td>0.05</td><td>1</td><td>For scraping parchment clean.</td></tr><tr><td>Invisible Ink</td><td>1</td><td>0.1</td><td>0.1</td><td>20</td><td>Milk or lemon juice, read over a flame.</td></tr><tr><td>Pigments and Gold Leaf</td><td>1</td><td>0.5</td><td>0.3</td><td>100</td><td>For illumination; the blue of lapis lazuli costs more than gold.</td></tr><tr><td>Parchment</td><td>1</td><td>—</td><td>0.03</td><td>2</td><td>A sheet; a codex needs hundreds.</td></tr><tr><td>Paper<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, paper is still imported from Italy and Spain in 1300, used in the royal chancery of Hungary only from the 1320s and 1330s.</span></td><td>1</td><td>—</td><td>0.02</td><td>1</td><td>A sheet.</td></tr><tr><td>Hand-Copied Codex</td><td>7</td><td>2</td><td>4</td><td>1,500</td><td>A book of a few hundred leaves; illuminated, ten times as much.</td></tr><tr><td>Breviary</td><td>6</td><td>1.5</td><td>2</td><td>800</td><td>The daily prayers of the hours; a portable one is half the size and as dear.</td></tr><tr><td>Abacus</td><td>38</td><td>0.9</td><td>3</td><td>50</td><td>A counting board and counters, as merchants and the royal chamber reckon.</td></tr><tr><td>Balance Scale</td><td>106</td><td>0.5</td><td>1</td><td>25</td><td>Small, for coins, spices and silver.</td></tr><tr><td>Large Balance Scale</td><td>300</td><td>9</td><td>25</td><td>100</td><td>For a merchant’s goods.</td></tr><tr><td>Steelyard Balance</td><td>750</td><td>9</td><td>20</td><td>100</td><td>A beam with a sliding weight, for heavy loads.</td></tr><tr><td>Measuring Rod</td><td>20</td><td>0.25</td><td>1</td><td>5</td><td>The local ell or rod; every town has its own.</td></tr><tr><td>Measuring Basket or Jug</td><td>28</td><td>0.5</td><td>5</td><td>3</td><td>For grain or wine, stamped by the town; capacity one local measure, about 4 l, up to 4 kg.</td></tr><tr><td>Sandglass<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, the sandglass is new in 1300, first used on Italian ships; it is painted for the first time in 1338.</span></td><td>1</td><td>1.4</td><td>2.5</td><td>50</td><td>Runs an hour or half an hour.</td></tr><tr><td>Sundial</td><td>150</td><td>1</td><td>2</td><td>100</td><td>Portable; a church’s sundial is carved on its south wall.</td></tr><tr><td>Weight-Driven Clock<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, the first mechanical clocks are built in a few cathedrals and abbeys of the West around 1300; none is known in Hungary until later.</span></td><td>5,590</td><td>—</td><td>800</td><td>10,000</td><td>A great iron clock that strikes the hours.</td></tr><tr><td>Astrolabe</td><td>227</td><td>2.3</td><td>1.5</td><td>250</td><td>For the hours and the stars; <a href="#pg-astronomy">Astronomy</a>.</td></tr><tr><td>Periplus</td><td>7</td><td>1.8</td><td>4</td><td>40</td><td>A sailing guide and chart of the coasts; <a href="#pg-cartography">Cartography</a>.</td></tr><tr><td>Lead Line</td><td>17</td><td>3</td><td>2</td><td>10</td><td>For sounding the depth.</td></tr><tr><td>Sounding Pole</td><td>69</td><td>3</td><td>6</td><td>2</td><td></td></tr><tr><td>Signet Ring</td><td>14</td><td>—</td><td>0.01</td><td>100</td><td>Silver or gold, cut with the owner’s arms to seal letters.</td></tr><tr><td>Skytale</td><td>22</td><td>0.3</td><td>0.5</td><td>10</td><td>A staff for winding a cipher strip; <a href="#pg-cryptography">Cryptography</a>.</td></tr><tr><td>Eyeglasses<button class="ev-rw" type="button" title="In the real world…" aria-expanded="false">⚠</button><span class="ev-rw-note" hidden="">In the real world, spectacles were invented in Italy around 1286 and are still rare and costly in 1300.</span></td><td>1</td><td>0.05</td><td>0.1</td><td>300</td><td>Riveted lenses for reading.</td></tr><tr><td>Diagnostic Manual</td><td>6</td><td>1.5</td><td>3</td><td>400</td><td>A book of urines, pulses and signs; <a href="#pg-diagnostics">Diagnostics</a>; a comprehensive one, 1,500.</td></tr></tbody>
 </table>
 </section>
 <section data-depth="4" id="pg-gear-medicine">
@@ -24316,7 +24318,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 
 
 
-<tr><td>Bandages</td><td>3</td><td>1</td><td>2.5</td><td>10</td><td>A basket of linen strips.</td></tr><tr><td>Lancet</td><td>79</td><td>0.1</td><td>0.02</td><td>20</td><td>For bleeding.</td></tr><tr><td>Arrow Spoon</td><td>79</td><td>0.1</td><td>0.05</td><td>30</td><td>A spoon-shaped probe for drawing out barbed arrowheads, described by Albucasis.</td></tr><tr><td>Cup</td><td>1</td><td>0.25</td><td>0.3</td><td>25</td><td>A bloodletting cup of glass or horn.</td></tr><tr><td>Cautery</td><td>177</td><td>0.5</td><td>0.3</td><td>30</td><td>An iron, heated to seal wounds.</td></tr><tr><td>Dental Forceps</td><td>125</td><td>0.25</td><td>0.1</td><td>40</td><td></td></tr><tr><td>Urine Flask</td><td>1</td><td>0.5</td><td>1</td><td>20</td><td>The <em>matula</em>, for reading the urine.</td></tr><tr><td>Olive Oil</td><td>1</td><td>0.5</td><td>0.55</td><td>6</td><td>Half a litre, for wounds and salves.</td></tr><tr><td>Lanolin</td><td>1</td><td>0.5</td><td>0.55</td><td>20</td><td>Half a litre, wool-fat for ointments.</td></tr><tr><td>Herbs</td><td>1</td><td>0.1</td><td>0.5</td><td>5</td><td>A bundle of common herbs; rare ones from the East, 50 and more.</td></tr><tr><td>Bar Soap</td><td>1</td><td>0.25</td><td>0.25</td><td>2</td><td>Soft soap of ash and fat; hard Castile soap from Spain, 10.</td></tr><tr><td>Razor</td><td>79</td><td>0.1</td><td>0.05</td><td>18</td><td></td></tr><tr><td>Comb</td><td>4</td><td>—</td><td>0.05</td><td>2</td><td>Bone or wood; ivory, 50.</td></tr><tr><td>Brush</td><td>20</td><td>0.25</td><td>0.5</td><td>6</td><td></td></tr><tr><td>Mirror</td><td>75</td><td>0.25</td><td>0.2</td><td>100</td><td>Polished metal, or a small glass backed with lead.</td></tr></tbody>
+<tr><td>Bandages</td><td>3</td><td>1</td><td>2.5</td><td>10</td><td>A basket of linen strips.</td></tr><tr><td>Lancet</td><td>79</td><td>0.1</td><td>0.02</td><td>20</td><td>For bleeding.</td></tr><tr><td>Arrow Spoon</td><td>79</td><td>0.1</td><td>0.05</td><td>30</td><td>A spoon-shaped probe for drawing out barbed arrowheads, described by Albucasis.</td></tr><tr><td>Cup</td><td>1</td><td>0.25</td><td>0.3</td><td>25</td><td>A bloodletting cup of glass or horn.</td></tr><tr><td>Cautery</td><td>177</td><td>0.5</td><td>0.3</td><td>30</td><td>An iron, heated to seal wounds.</td></tr><tr><td>Dental Forceps</td><td>125</td><td>0.25</td><td>0.1</td><td>40</td><td></td></tr><tr><td>Urine Flask</td><td>1</td><td>0.5</td><td>1</td><td>20</td><td>The <em>matula</em>, for reading the urine; capacity 0.5 l, up to 0.5 kg.</td></tr><tr><td>Olive Oil</td><td>1</td><td>0.5</td><td>0.55</td><td>6</td><td>Half a litre, for wounds and salves.</td></tr><tr><td>Lanolin</td><td>1</td><td>0.5</td><td>0.55</td><td>20</td><td>Half a litre, wool-fat for ointments.</td></tr><tr><td>Herbs</td><td>1</td><td>0.1</td><td>0.5</td><td>5</td><td>A bundle of common herbs; rare ones from the East, 50 and more.</td></tr><tr><td>Bar Soap</td><td>1</td><td>0.25</td><td>0.25</td><td>2</td><td>Soft soap of ash and fat; hard Castile soap from Spain, 10.</td></tr><tr><td>Razor</td><td>79</td><td>0.1</td><td>0.05</td><td>18</td><td></td></tr><tr><td>Comb</td><td>4</td><td>—</td><td>0.05</td><td>2</td><td>Bone or wood; ivory, 50.</td></tr><tr><td>Brush</td><td>20</td><td>0.25</td><td>0.5</td><td>6</td><td></td></tr><tr><td>Mirror</td><td>75</td><td>0.25</td><td>0.2</td><td>100</td><td>Polished metal, or a small glass backed with lead.</td></tr></tbody>
 </table>
 </section>
 <section data-depth="4" id="pg-gear-household">
@@ -24333,7 +24335,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 
 
 
-<tr><td>Spits and Pots</td><td>559</td><td>5</td><td>12</td><td>20</td><td>An iron pot, a pan and spits for the hearth; a bronze cauldron, 80.</td></tr><tr><td>Mattress</td><td>3</td><td>7</td><td>60</td><td>10</td><td>A sack of straw; of wool or feathers, 60.</td></tr><tr><td>Pillow</td><td>3</td><td>0.5</td><td>5</td><td>5</td><td></td></tr><tr><td>Bed Sheets</td><td>3</td><td>1</td><td>2.5</td><td>35</td><td>Linen.</td></tr><tr><td>Leather Bucket</td><td>24</td><td>1</td><td>10</td><td>5</td><td></td></tr><tr><td>Begging Bowl</td><td>22</td><td>0.3</td><td>1</td><td>1</td><td>Wood or clay.</td></tr><tr><td>Bed</td><td>283</td><td>50</td><td>1,000</td><td>100</td><td>A wooden bed with curtains for the well-off; most sleep on straw.</td></tr></tbody>
+<tr><td>Spits and Pots</td><td>559</td><td>5</td><td>12</td><td>20</td><td>An iron pot, a pan and spits for the hearth; the pot’s capacity is 6 l, up to 6 kg; a bronze cauldron, 80.</td></tr><tr><td>Mattress</td><td>3</td><td>7</td><td>60</td><td>10</td><td>A sack of straw; of wool or feathers, 60.</td></tr><tr><td>Pillow</td><td>3</td><td>0.5</td><td>5</td><td>5</td><td></td></tr><tr><td>Bed Sheets</td><td>3</td><td>1</td><td>2.5</td><td>35</td><td>Linen.</td></tr><tr><td>Leather Bucket</td><td>24</td><td>1</td><td>10</td><td>5</td><td>Capacity 9 l, up to 9 kg.</td></tr><tr><td>Begging Bowl</td><td>22</td><td>0.3</td><td>1</td><td>1</td><td>Wood or clay; capacity 0.75 l, up to 1 kg.</td></tr><tr><td>Bed</td><td>283</td><td>50</td><td>1,000</td><td>100</td><td>A wooden bed with curtains for the well-off; most sleep on straw.</td></tr></tbody>
 </table>
 </section>
 <section data-depth="4" id="pg-gear-restraints">
@@ -24403,7 +24405,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 
 
 
-<tr><td>Fishhook</td><td>18</td><td>—</td><td>0.01</td><td>5</td><td>With line.</td></tr><tr><td>Fishing Net</td><td>22</td><td>5</td><td>12</td><td>50</td><td></td></tr><tr><td>Fish Trap</td><td>1</td><td>2</td><td>40</td><td>10</td><td>Wicker.</td></tr><tr><td>Fishing Spear</td><td>122</td><td>1.5</td><td>3</td><td>20</td><td></td></tr><tr><td>Harpoon</td><td>158</td><td>2.5</td><td>4</td><td>40</td><td>For sturgeon in the Danube.</td></tr><tr><td>Snare</td><td>4</td><td>0.2</td><td>0.5</td><td>3</td><td></td></tr><tr><td>Hip Quiver</td><td>24</td><td>0.5</td><td>3</td><td>15</td><td>Holds 20 arrows.</td></tr><tr><td>Shoulder Quiver</td><td>24</td><td>0.25</td><td>2</td><td>10</td><td>Holds 12 arrows.</td></tr><tr><td>Hunting Hound</td><td>N/A</td><td>—</td><td>N/A</td><td>150</td><td></td></tr><tr><td>Sheepdog</td><td>N/A</td><td>—</td><td>N/A</td><td>60</td><td></td></tr><tr><td>Hawk</td><td>N/A</td><td>—</td><td>N/A</td><td>1,000</td><td>A trained falcon or hawk, the pride of noble hunters; a gerfalcon is a gift for kings.</td></tr></tbody>
+<tr><td>Fishhook</td><td>18</td><td>—</td><td>0.01</td><td>5</td><td>With line.</td></tr><tr><td>Fishing Net</td><td>22</td><td>5</td><td>12</td><td>50</td><td></td></tr><tr><td>Fish Trap</td><td>1</td><td>2</td><td>40</td><td>10</td><td>Wicker.</td></tr><tr><td>Fishing Spear</td><td>122</td><td>1.5</td><td>3</td><td>20</td><td></td></tr><tr><td>Harpoon</td><td>158</td><td>2.5</td><td>4</td><td>40</td><td>For sturgeon in the Danube.</td></tr><tr><td>Snare</td><td>4</td><td>0.2</td><td>0.5</td><td>3</td><td></td></tr><tr><td>Hip Quiver</td><td>24</td><td>0.5</td><td>3</td><td>15</td><td>Holds 20 arrows; capacity about 2 l, up to 1.5 kg.</td></tr><tr><td>Shoulder Quiver</td><td>24</td><td>0.25</td><td>2</td><td>10</td><td>Holds 12 arrows; capacity about 1.5 l, up to 1 kg.</td></tr><tr><td>Hunting Hound</td><td>N/A</td><td>—</td><td>N/A</td><td>150</td><td></td></tr><tr><td>Sheepdog</td><td>N/A</td><td>—</td><td>N/A</td><td>60</td><td></td></tr><tr><td>Hawk</td><td>N/A</td><td>—</td><td>N/A</td><td>1,000</td><td>A trained falcon or hawk, the pride of noble hunters; a gerfalcon is a gift for kings.</td></tr></tbody>
 </table>
 </section>
 </section>
@@ -24454,8 +24456,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <p><strong>Repeated attacks on the same location accumulate damage for the purposes of the wound effects below</strong>. For example, let’s assume a first swing attack from a mace resulted in a 2 (crushing minor wound) and a second thrust attack from a spear resulted in a 5 (piercing major wound, alone), <strong>instead the second is summed with the first for a total of 7 (piercing critical wound)</strong>.<br>
 <strong>Any character can cap the worst type of wound an attack inflicts by taking a penalty equal to Reason + Physician -6 on the attack roll</strong>.</p>
 <p>The wounds below grow worse with their severity and with how hard the location is to strike. Their main penalty is 1, 3 or 5 for a minor, major or critical wound, plus 1 for every three steps along the locations, from the arm (0) through the leg, hand, foot, vitals, groin, face, neck and skull to the eyes (9); the Health rolls they call for take 0, half the step, or 2 plus half the step as a penalty. The penalties of a minor wound fade by themselves within minutes or hours, or end with First Aid; those of a major wound stay until a Physician treats it, then fade by one a week; those of a critical wound stay until Surgery, and leave a permanent mark. An untreated critical wound kills within an hour, or within ten minutes in the vitals and groin and five minutes in the neck.</p>
-</ol></li></ol></section>
-<section data-depth="3" id="pg-burning">
+</ol></li></ol><section data-depth="3" id="pg-burning">
 <h3 class="d3">Burning</h3>
 
 <section data-depth="4" id="pg-burning-minor">
@@ -24465,9 +24466,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <p>A lick of flame or a spray of sparks singes the lashes and brow, and the eye slams shut on reflex a fraction too late. The lid reddens and the eye streams with tears, but the cornea itself escapes serious harm.</p>
 <ul>
 <li>-4 to rolls requiring vision (including fighting), reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
-
-
-
+</ul>
+</section>
 <section data-depth="5" id="pg-burning-minor-skull">
 <h5 class="d5">Skull</h5>
 <p>Burning debris or a lick of alchemist's fire catches the scalp, singeing hair and raising an angry red welt across the skull. It hurts fiercely for a moment, but the burn is shallow and the moment passes.</p>
@@ -24475,6 +24475,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-3 to actions requiring a mental attribute, reduced by one per minute, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 <li>Until the penalty is gone, a Health roll after any action or reaction that needs balance (including fighting), or the target stumbles and falls to their knees.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-minor-neck">
 <h5 class="d5">Neck</h5>
@@ -24482,6 +24483,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>A Health roll (minus the damage after DR), or -3 to all actions, reduced by one per minute, as the target coughs and clutches the burn.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-minor-face">
 <h5 class="d5">Face</h5>
@@ -24489,6 +24491,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-3 to Influence rolls from the reddened blister and singed brow, until a day has passed or a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-minor-foot">
 <h5 class="d5">Foot</h5>
@@ -24496,6 +24499,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-2 to base move and to Agility-based balance rolls, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-minor-hand">
 <h5 class="d5">Hand</h5>
@@ -24503,6 +24507,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions that need a firm grip with that hand, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-minor-groin">
 <h5 class="d5">Groin</h5>
@@ -24511,6 +24516,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (minus the damage after DR), or the target doubles over and loses their next action.</li>
 <li>-2 to Agility-based actions, reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-minor-vitals">
 <h5 class="d5">Vitals</h5>
@@ -24520,6 +24526,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-2 stamina points until a successful <a href="#pg-first-aid">First Aid</a> roll or a few hours of rest.</li>
 <li>-2 to all actions, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-minor-leg">
 <h5 class="d5">Leg</h5>
@@ -24527,6 +24534,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to base move, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-minor-arm">
 <h5 class="d5">Arm</h5>
@@ -24534,8 +24542,11 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions with that arm, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
+
+
 </section>
-</ul></section>
+</section>
 <section data-depth="4" id="pg-burning-major">
 <h4 class="d4">Major</h4>
 <section data-depth="5" id="pg-burning-major-eye">
@@ -24546,6 +24557,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-6 to rolls requiring vision (including fighting), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-skull">
 <h5 class="d5">Skull</h5>
@@ -24555,6 +24567,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-5 to Reason and Perception rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-neck">
 <h5 class="d5">Neck</h5>
@@ -24564,6 +24577,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-5 to actions that need speaking (Influence, Performance, Public Speaking, Singing) and to strenuous actions, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-face">
 <h5 class="d5">Face</h5>
@@ -24574,6 +24588,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-5 to Influence rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 <li>When it heals, it leaves a scar: −1 <a href="#pg-appearance">Appearance</a>, but +1 to <a href="#pg-intimidation">Intimidation</a>. A successful <a href="#pg-physician">Physician</a> roll a week after the wound avoids the scar.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-foot">
 <h5 class="d5">Foot</h5>
@@ -24583,6 +24598,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to base move and to Agility-based balance rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-hand">
 <h5 class="d5">Hand</h5>
@@ -24592,6 +24608,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Agility-based actions with that hand, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-groin">
 <h5 class="d5">Groin</h5>
@@ -24601,6 +24618,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to Agility-based actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-vitals">
 <h5 class="d5">Vitals</h5>
@@ -24610,6 +24628,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to all actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-leg">
 <h5 class="d5">Leg</h5>
@@ -24619,6 +24638,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to base move and to Agility-based actions that use the leg (including fighting while standing), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-major-arm">
 <h5 class="d5">Arm</h5>
@@ -24628,6 +24648,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Strength- and Agility-based actions with that arm, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-burning-critical">
@@ -24641,6 +24663,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock from the burn.</li>
 <li>-8 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-skull">
 <h5 class="d5">Skull</h5>
@@ -24651,6 +24674,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of infection and swelling beneath the cooked bone; trepanation to relieve the pressure is the only desperate recourse.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-neck">
 <h5 class="d5">Neck</h5>
@@ -24661,6 +24685,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within five minutes, the character dies of asphyxiation as the burned tissue swells the airway shut.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-face">
 <h5 class="d5">Face</h5>
@@ -24671,6 +24696,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and infection.</li>
 <li>-7 to actions using the face until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-foot">
 <h5 class="d5">Foot</h5>
@@ -24681,6 +24707,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and the gangrene that follows.</li>
 <li>-6 to actions using the foot until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-hand">
 <h5 class="d5">Hand</h5>
@@ -24691,6 +24718,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and sepsis.</li>
 <li>-5 to actions using the hand until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-groin">
 <h5 class="d5">Groin</h5>
@@ -24701,6 +24729,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character dies of shock and infection from the burn.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-vitals">
 <h5 class="d5">Vitals</h5>
@@ -24711,6 +24740,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> (or <a href="#pg-surgery">Surgery</a>) roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character dies of asphyxiation as the seared airway closes.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-leg">
 <h5 class="d5">Leg</h5>
@@ -24721,6 +24751,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and fluid loss.</li>
 <li>-5 to actions using the leg until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-burning-critical-arm">
 <h5 class="d5">Arm</h5>
@@ -24731,9 +24762,12 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and fluid loss.</li>
 <li>-5 to actions using the arm until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
-</section>
-</section>
 
+
+
+
+</section>
+</section>
 </section>
 <section data-depth="3" id="pg-corroding">
 <h3 class="d3">Corroding</h3>
@@ -24746,6 +24780,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-4 to rolls requiring vision (including fighting), reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-skull">
 <h5 class="d5">Skull</h5>
@@ -24754,6 +24789,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-3 to actions requiring a mental attribute, reduced by one per minute, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 <li>Until the penalty is gone, a Health roll after any action or reaction that needs balance (including fighting), or the target stumbles and falls to their knees.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-neck">
 <h5 class="d5">Neck</h5>
@@ -24761,6 +24797,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>A Health roll (minus the damage after DR), or -3 to all actions, reduced by one per minute, as the target chokes on the fumes.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-face">
 <h5 class="d5">Face</h5>
@@ -24768,6 +24805,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-3 to Influence rolls from the raw, weeping welt, until a day has passed or a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-foot">
 <h5 class="d5">Foot</h5>
@@ -24775,6 +24813,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-2 to base move and to Agility-based balance rolls, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-hand">
 <h5 class="d5">Hand</h5>
@@ -24782,6 +24821,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions that need a firm grip with that hand, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-groin">
 <h5 class="d5">Groin</h5>
@@ -24790,6 +24830,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (minus the damage after DR), or the target doubles over and loses their next action.</li>
 <li>-2 to Agility-based actions, reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-vitals">
 <h5 class="d5">Vitals</h5>
@@ -24799,6 +24840,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-2 stamina points until a successful <a href="#pg-first-aid">First Aid</a> roll or a few hours of rest.</li>
 <li>-2 to all actions, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-leg">
 <h5 class="d5">Leg</h5>
@@ -24806,6 +24848,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to base move, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-minor-arm">
 <h5 class="d5">Arm</h5>
@@ -24813,6 +24856,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions with that arm, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-corroding-major">
@@ -24825,6 +24870,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-6 to rolls requiring vision (including fighting), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-skull">
 <h5 class="d5">Skull</h5>
@@ -24834,6 +24880,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-5 to Reason and Perception rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-neck">
 <h5 class="d5">Neck</h5>
@@ -24843,6 +24890,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-5 to actions that need speaking (Influence, Performance, Public Speaking, Singing) and to strenuous actions, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-face">
 <h5 class="d5">Face</h5>
@@ -24853,6 +24901,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-5 to Influence rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 <li>When it heals, it leaves a scar: −1 <a href="#pg-appearance">Appearance</a>, but +1 to <a href="#pg-intimidation">Intimidation</a>. A successful <a href="#pg-physician">Physician</a> roll a week after the wound avoids the scar.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-foot">
 <h5 class="d5">Foot</h5>
@@ -24862,6 +24911,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to base move and to Agility-based balance rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-hand">
 <h5 class="d5">Hand</h5>
@@ -24871,6 +24921,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Agility-based actions with that hand, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-groin">
 <h5 class="d5">Groin</h5>
@@ -24880,6 +24931,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to Agility-based actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-vitals">
 <h5 class="d5">Vitals</h5>
@@ -24889,6 +24941,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to all actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-leg">
 <h5 class="d5">Leg</h5>
@@ -24898,6 +24951,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to base move and to Agility-based actions that use the leg (including fighting while standing), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-major-arm">
 <h5 class="d5">Arm</h5>
@@ -24907,6 +24961,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Strength- and Agility-based actions with that arm, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-corroding-critical">
@@ -24920,6 +24976,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies as the acid burns through into the skull.</li>
 <li>-8 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-skull">
 <h5 class="d5">Skull</h5>
@@ -24930,6 +24987,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of the corrosion and swelling; only trepanation to clear the ruined bone and relieve the pressure offers any chance of survival.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-neck">
 <h5 class="d5">Neck</h5>
@@ -24940,6 +24998,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within five minutes, the character dies of blood loss or suffocation as the corroded wound finishes its work.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-face">
 <h5 class="d5">Face</h5>
@@ -24950,6 +25009,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and infection.</li>
 <li>-7 to actions using the face until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-foot">
 <h5 class="d5">Foot</h5>
@@ -24960,6 +25020,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and the sepsis that follows the dissolved tissue.</li>
 <li>-6 to actions using the foot until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-hand">
 <h5 class="d5">Hand</h5>
@@ -24970,6 +25031,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of sepsis.</li>
 <li>-5 to actions using the hand until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-groin">
 <h5 class="d5">Groin</h5>
@@ -24980,6 +25042,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character dies of shock and infection from the corrosive wound.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-vitals">
 <h5 class="d5">Vitals</h5>
@@ -24990,6 +25053,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> (or <a href="#pg-surgery">Surgery</a>) roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character dies of organ failure and internal bleeding as the acid eats inward.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-leg">
 <h5 class="d5">Leg</h5>
@@ -25000,6 +25064,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and sepsis.</li>
 <li>-5 to actions using the leg until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-corroding-critical-arm">
 <h5 class="d5">Arm</h5>
@@ -25010,9 +25075,12 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of sepsis and tissue necrosis.</li>
 <li>-5 to actions using the arm until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
-</section>
-</section>
 
+
+
+
+</section>
+</section>
 </section>
 <section data-depth="3" id="pg-crushing">
 <h3 class="d3">Crushing</h3>
@@ -25027,6 +25095,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-4 to rolls requiring vision (including fighting), reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull">
 <h5 class="d5">Skull</h5>
@@ -25036,6 +25105,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-3 to actions requiring a mental attribute, reduced by one per minute, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 <li>Until the penalty is gone, a Health roll after any action or reaction that needs balance (including fighting), or the target stumbles and falls to their knees.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck">
 <h5 class="d5">Neck</h5>
@@ -25044,6 +25114,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>A Health roll (minus the damage after DR), or -3 to all actions, reduced by one per minute, as the target chokes and gasps for breath.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face">
 <h5 class="d5">Face</h5>
@@ -25052,6 +25123,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-3 to Influence rolls from the visibly swollen jaw, until a day has passed or a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot">
 <h5 class="d5">Foot</h5>
@@ -25060,6 +25132,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-2 to base move and to Agility-based balance rolls, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand">
 <h5 class="d5">Hand</h5>
@@ -25068,6 +25141,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions that need a firm grip with that hand, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin">
 <h5 class="d5">Groin</h5>
@@ -25076,6 +25150,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (minus the damage after DR), or the target doubles over and loses their next action.</li>
 <li>-2 to Agility-based actions, reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals">
 <h5 class="d5">Vitals</h5>
@@ -25085,6 +25160,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-2 stamina points until a successful <a href="#pg-first-aid">First Aid</a> roll or a few hours of rest.</li>
 <li>-2 to all actions, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg">
 <h5 class="d5">Leg</h5>
@@ -25092,6 +25168,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to base move, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-1">
 <h5 class="d5">Arm</h5>
@@ -25099,6 +25176,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions with that arm, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-major">
@@ -25112,6 +25191,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (at -4, minus the damage after DR), or the target loses consciousness for minutes equal to the margin of failure.</li>
 <li>-6 to rolls requiring vision (including fighting), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull-1">
 <h5 class="d5">Skull</h5>
@@ -25122,6 +25202,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-5 to Reason and Perception rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 <li>Until the penalty is gone, a Health roll after any action or reaction that needs balance (including fighting), or the target stumbles and falls to their knees.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck-1">
 <h5 class="d5">Neck</h5>
@@ -25131,6 +25212,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (at -3, minus the damage after DR), or the target chokes into unconsciousness for minutes equal to the margin of failure.</li>
 <li>-5 to actions that need speaking (Influence, Performance, Public Speaking, Singing) and to strenuous actions, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face-1">
 <h5 class="d5">Face</h5>
@@ -25141,6 +25223,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-5 to Influence rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 <li>When it heals, it leaves a scar: −1 <a href="#pg-appearance">Appearance</a>, but +1 to <a href="#pg-intimidation">Intimidation</a>. A successful <a href="#pg-physician">Physician</a> roll a week after the wound avoids the scar.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot-1">
 <h5 class="d5">Foot</h5>
@@ -25150,6 +25233,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (at -1, minus the damage after DR), or the target falls prone and loses consciousness for minutes equal to the margin of failure.</li>
 <li>-4 to base move and to Agility-based balance rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand-1">
 <h5 class="d5">Hand</h5>
@@ -25159,6 +25243,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (at -1, minus the damage after DR), or the target drops anything held in that hand and loses consciousness for minutes equal to the margin of failure.</li>
 <li>-3 to Agility-based actions with that hand, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin-1">
 <h5 class="d5">Groin</h5>
@@ -25167,6 +25252,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (at -2, minus the damage after DR), or the target falls and loses consciousness for minutes equal to the margin of failure.</li>
 <li>-4 to Agility-based actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals-1">
 <h5 class="d5">Vitals</h5>
@@ -25175,6 +25261,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (at -2, minus the damage after DR), or the target loses consciousness for minutes equal to the margin of failure.</li>
 <li>-4 to all actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg-1">
 <h5 class="d5">Leg</h5>
@@ -25183,6 +25270,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (minus the damage after DR), or the target falls prone and loses consciousness for minutes equal to the margin of failure.</li>
 <li>-3 to base move and to Agility-based actions that use the leg (including fighting while standing), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-2">
 <h5 class="d5">Arm</h5>
@@ -25192,6 +25280,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Strength- and Agility-based actions with that arm, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-critical">
@@ -25207,6 +25297,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of bleeding inside the skull.</li>
 <li>-8 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull-2">
 <h5 class="d5">Skull</h5>
@@ -25218,6 +25309,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies as swelling inside the skull crushes the brain; only emergency trepanation to relieve the pressure offers any chance of survival.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck-2">
 <h5 class="d5">Neck</h5>
@@ -25229,6 +25321,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within five minutes, the character dies of asphyxiation as the crushed windpipe closes.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face-2">
 <h5 class="d5">Face</h5>
@@ -25240,6 +25333,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character chokes to death on blood and broken teeth.</li>
 <li>-7 to actions using the face until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot-2">
 <h5 class="d5">Foot</h5>
@@ -25251,6 +25345,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and the gangrene of the crushed tissue.</li>
 <li>-6 to actions using the foot until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand-2">
 <h5 class="d5">Hand</h5>
@@ -25262,6 +25357,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and the gangrene of the crushed tissue.</li>
 <li>-5 to actions using the hand until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin-2">
 <h5 class="d5">Groin</h5>
@@ -25272,6 +25368,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character bleeds to death internally from the ruptured pelvic vessels.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals-2">
 <h5 class="d5">Vitals</h5>
@@ -25282,6 +25379,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> (or <a href="#pg-surgery">Surgery</a>) roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character dies as the flooding chest cavity crushes the heart.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg-2">
 <h5 class="d5">Leg</h5>
@@ -25292,6 +25390,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of shock and internal bleeding.</li>
 <li>-5 to actions using the leg until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-3">
 <h5 class="d5">Arm</h5>
@@ -25302,6 +25401,9 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss.</li>
 <li>-5 to actions using the arm until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
+
+
 </section>
 </section>
 </section>
@@ -25317,6 +25419,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-4 to rolls requiring vision (including fighting), reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull-3">
 <h5 class="d5">Skull</h5>
@@ -25325,6 +25428,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-3 to actions requiring a mental attribute, reduced by one per minute, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 <li>Until the penalty is gone, a Health roll after any action or reaction that needs balance (including fighting), or the target stumbles and falls to their knees.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck-3">
 <h5 class="d5">Neck</h5>
@@ -25332,6 +25436,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>A Health roll (minus the damage after DR), or -3 to all actions, reduced by one per minute, as the target flinches at the sting and the trickle of blood.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face-3">
 <h5 class="d5">Face</h5>
@@ -25339,6 +25444,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-3 to Influence rolls from the bloodied wound, until a day has passed or a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot-3">
 <h5 class="d5">Foot</h5>
@@ -25346,6 +25452,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-2 to base move and to Agility-based balance rolls, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand-3">
 <h5 class="d5">Hand</h5>
@@ -25353,6 +25460,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions that need a firm grip with that hand, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin-3">
 <h5 class="d5">Groin</h5>
@@ -25361,6 +25469,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (minus the damage after DR), or the target doubles over and loses their next action.</li>
 <li>-2 to Agility-based actions, reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals-3">
 <h5 class="d5">Vitals</h5>
@@ -25370,6 +25479,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-2 stamina points until a successful <a href="#pg-first-aid">First Aid</a> roll or a few hours of rest.</li>
 <li>-2 to all actions, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg-3">
 <h5 class="d5">Leg</h5>
@@ -25377,6 +25487,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to base move, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-4">
 <h5 class="d5">Arm</h5>
@@ -25384,6 +25495,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions with that arm, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-major-1">
@@ -25397,6 +25510,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-6 to rolls requiring vision (including fighting), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull-4">
 <h5 class="d5">Skull</h5>
@@ -25406,6 +25520,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-5 to Reason and Perception rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck-4">
 <h5 class="d5">Neck</h5>
@@ -25415,6 +25530,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-5 to actions that need speaking (Influence, Performance, Public Speaking, Singing) and to strenuous actions, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face-4">
 <h5 class="d5">Face</h5>
@@ -25425,6 +25541,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-5 to Influence rolls and to actions that need speaking, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 <li>When it heals, it leaves a scar: −1 <a href="#pg-appearance">Appearance</a>, but +1 to <a href="#pg-intimidation">Intimidation</a>. A successful <a href="#pg-physician">Physician</a> roll a week after the wound avoids the scar.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot-4">
 <h5 class="d5">Foot</h5>
@@ -25434,6 +25551,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to base move and to Agility-based balance rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand-4">
 <h5 class="d5">Hand</h5>
@@ -25443,6 +25561,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Agility-based actions with that hand, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin-4">
 <h5 class="d5">Groin</h5>
@@ -25452,6 +25571,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to Agility-based actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals-4">
 <h5 class="d5">Vitals</h5>
@@ -25461,6 +25581,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to all actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg-4">
 <h5 class="d5">Leg</h5>
@@ -25470,6 +25591,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to base move and to Agility-based actions that use the leg (including fighting while standing), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-5">
 <h5 class="d5">Arm</h5>
@@ -25479,6 +25601,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Strength- and Agility-based actions with that arm, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-critical-1">
@@ -25493,6 +25617,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies as the wound track bleeds into the skull.</li>
 <li>-8 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull-5">
 <h5 class="d5">Skull</h5>
@@ -25503,6 +25628,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies as blood and swelling fill the skull; only trepanation to remove the fragment and relieve the pressure offers any chance of survival.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck-5">
 <h5 class="d5">Neck</h5>
@@ -25513,6 +25639,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within five minutes, the character dies of blood loss or suffocation.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face-5">
 <h5 class="d5">Face</h5>
@@ -25523,6 +25650,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character drowns in their own blood.</li>
 <li>-7 to actions using the face until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot-5">
 <h5 class="d5">Foot</h5>
@@ -25533,6 +25661,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss.</li>
 <li>-6 to actions using the foot until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand-5">
 <h5 class="d5">Hand</h5>
@@ -25543,6 +25672,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss.</li>
 <li>-5 to actions using the hand until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin-5">
 <h5 class="d5">Groin</h5>
@@ -25553,6 +25683,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character bleeds to death from the severed femoral vessels.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals-5">
 <h5 class="d5">Vitals</h5>
@@ -25563,6 +25694,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> (or <a href="#pg-surgery">Surgery</a>) roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character dies of cardiac arrest and internal bleeding.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg-5">
 <h5 class="d5">Leg</h5>
@@ -25573,6 +25705,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss.</li>
 <li>-5 to actions using the leg until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-6">
 <h5 class="d5">Arm</h5>
@@ -25583,6 +25716,9 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss.</li>
 <li>-5 to actions using the arm until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
+
+
 </section>
 </section>
 </section>
@@ -25598,6 +25734,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-4 to rolls requiring vision (including fighting), reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull-6">
 <h5 class="d5">Skull</h5>
@@ -25606,6 +25743,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-3 to actions requiring a mental attribute, reduced by one per minute, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 <li>Until the penalty is gone, a Health roll after any action or reaction that needs balance (including fighting), or the target stumbles and falls to their knees.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck-6">
 <h5 class="d5">Neck</h5>
@@ -25613,6 +25751,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>A Health roll (minus the damage after DR), or -3 to all actions, reduced by one per minute, as the target flinches from the shock of the cut.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face-6">
 <h5 class="d5">Face</h5>
@@ -25620,6 +25759,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-3 to Perception rolls by hearing on that side, reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot-6">
 <h5 class="d5">Foot</h5>
@@ -25627,6 +25767,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-2 to base move and to Agility-based balance rolls, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand-6">
 <h5 class="d5">Hand</h5>
@@ -25634,6 +25775,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions that need a firm grip with that hand, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin-6">
 <h5 class="d5">Groin</h5>
@@ -25642,6 +25784,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>A Health roll (minus the damage after DR), or the target doubles over and loses their next action.</li>
 <li>-2 to Agility-based actions, reduced by one every ten minutes, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals-6">
 <h5 class="d5">Vitals</h5>
@@ -25651,6 +25794,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-2 stamina points until a successful <a href="#pg-first-aid">First Aid</a> roll or a few hours of rest.</li>
 <li>-2 to all actions, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg-6">
 <h5 class="d5">Leg</h5>
@@ -25658,6 +25802,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to base move, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-7">
 <h5 class="d5">Arm</h5>
@@ -25665,6 +25810,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <ul>
 <li>-1 to Agility-based actions with that arm, reduced by one per hour, or ended by a successful <a href="#pg-first-aid">First Aid</a> roll.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-major-2">
@@ -25678,6 +25825,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-6 to rolls requiring vision (including fighting), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull-7">
 <h5 class="d5">Skull</h5>
@@ -25687,6 +25835,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-5 to Reason and Perception rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck-7">
 <h5 class="d5">Neck</h5>
@@ -25696,6 +25845,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-5 to actions that need speaking (Influence, Performance, Public Speaking, Singing) and to strenuous actions, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face-7">
 <h5 class="d5">Face</h5>
@@ -25706,6 +25856,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>-5 to Influence rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 <li>When it heals, it leaves a scar: −1 <a href="#pg-appearance">Appearance</a>, but +1 to <a href="#pg-intimidation">Intimidation</a>. A successful <a href="#pg-physician">Physician</a> roll a week after the wound avoids the scar.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot-7">
 <h5 class="d5">Foot</h5>
@@ -25715,6 +25866,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to base move and to Agility-based balance rolls, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand-7">
 <h5 class="d5">Hand</h5>
@@ -25724,6 +25876,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Agility-based actions with that hand, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin-7">
 <h5 class="d5">Groin</h5>
@@ -25733,6 +25886,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to Agility-based actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals-7">
 <h5 class="d5">Vitals</h5>
@@ -25742,6 +25896,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-4 to all actions and -2 stamina points, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg-7">
 <h5 class="d5">Leg</h5>
@@ -25751,6 +25906,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to base move and to Agility-based actions that use the leg (including fighting while standing), until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-8">
 <h5 class="d5">Arm</h5>
@@ -25760,6 +25916,8 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR) within a day, and once a week thereafter until healed, the wound gets infected (see <a href="#pg-infections">Infections</a>).</li>
 <li>-3 to Strength- and Agility-based actions with that arm, until the wound is treated by a successful <a href="#pg-physician">Physician</a> roll; then reduced by one per week.</li>
 </ul>
+
+
 </section>
 </section>
 <section data-depth="4" id="pg-critical-2">
@@ -25774,6 +25932,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss and shock.</li>
 <li>-8 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-skull-8">
 <h5 class="d5">Skull</h5>
@@ -25784,6 +25943,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss and brain trauma; even emergency trepanation rarely saves a skull cloven this deeply.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-neck-8">
 <h5 class="d5">Neck</h5>
@@ -25794,6 +25954,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within five minutes, the character dies of catastrophic blood loss.</li>
 <li>-7 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-face-8">
 <h5 class="d5">Face</h5>
@@ -25804,6 +25965,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character bleeds out from the wound.</li>
 <li>-7 to actions using the face until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-foot-8">
 <h5 class="d5">Foot</h5>
@@ -25814,6 +25976,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss.</li>
 <li>-6 to actions using the foot until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-hand-8">
 <h5 class="d5">Hand</h5>
@@ -25824,6 +25987,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss.</li>
 <li>-5 to actions using the hand until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-groin-8">
 <h5 class="d5">Groin</h5>
@@ -25834,6 +25998,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character bleeds to death from the severed vessels.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-vitals-8">
 <h5 class="d5">Vitals</h5>
@@ -25844,6 +26009,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> (or <a href="#pg-surgery">Surgery</a>) roll (± target’s Health - damage after DR, -1 per minute left untreated) within ten minutes, the character dies of evisceration and catastrophic blood loss.</li>
 <li>-6 to all actions until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-leg-8">
 <h5 class="d5">Leg</h5>
@@ -25854,6 +26020,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 <li>If not treated by a successful <a href="#pg-physician">Physician</a> roll (± target’s Health - damage after DR, -1 per 10 minutes left untreated) within an hour, the character dies of blood loss.</li>
 <li>-5 to actions using the leg until the wound is treated by a successful <a href="#pg-surgery">Surgery</a> roll.</li>
 </ul>
+
 </section>
 <section data-depth="5" id="pg-arm-9">
 <h5 class="d5">Arm</h5>
@@ -25873,6 +26040,7 @@ The cost (both for materials and labour) and crafting time are adjusted based on
 </section>
 </section>
 </section>
+
 <section data-depth="2" id="pg-health-section">
 <h2 class="d2">Health</h2>
 
